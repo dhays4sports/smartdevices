@@ -1,0 +1,10 @@
+SmartDevices v4.2.0-rc.1 release provenance
+Gate: SD42-CERT-10.5
+Release date UTC: 2026-08-26
+Final source commit: 7233344d7b8455628a001c45ccb02bac689f1535
+Mutable v4.1 baseline SHA-256: 1fc5e83892789298ab6369d04748e561ad3a0606ad6bc1634b8746740d90f6c2
+Protected v3 historical baseline SHA-256: 08aad9341d0545821493800dd2ffb7e874afed1b3f613b91c903bfd5bfeffa8d
+Package model: Git archive of the exact final source commit plus this root provenance record.
+Root-deployable model: fresh exact SOURCE extraction plus only the production dist emitted by that extraction's passed build.
+Checksum authority: sibling SmartDevices_v4.2.0_rc1_SHA256SUMS.txt, generated after both ZIPs became immutable.
+Deployment: local production candidate only; no public deployment, live carrier/partner call, message, upload, account, or external certification occurred.

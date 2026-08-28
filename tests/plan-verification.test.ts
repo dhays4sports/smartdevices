@@ -1,0 +1,9 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { canRecordVerification, createVerificationEvent, DisabledEvidenceUploadAdapter } from "../app/lib/plan-verification";
+
+test("consumer cannot assert professional review or carrier determination", () => { assert.equal(canRecordVerification("consumer", "professional-reviewed"), false); assert.equal(canRecordVerification("consumer", "carrier-determined"), false); assert.throws(() => createVerificationEvent({ planId: "plan_12345", actorType: "consumer", eventType: "carrier-determined", determination: "accepted", assertionSource: "self", idempotencyKey: "idem_12345678" }), /FORBIDDEN/); });
+test("purchase and installation remain explicitly self-reported", () => { for (const eventType of ["purchased-self-reported", "installed-self-reported"] as const) assert.equal(createVerificationEvent({ planId: "plan_12345", actorType: "consumer", eventType, determination: "not-applicable", assertionSource: "consumer", idempotencyKey: `idem_${eventType.replaceAll("-", "")}` }).eventType, eventType); });
+test("view or outbound click cannot advance state", () => { assert.equal(canRecordVerification("system", "selected"), false); assert.equal(canRecordVerification("system", "purchased-self-reported"), false); });
+test("carrier actor may record only literal determination or unknown", () => { assert.equal(canRecordVerification("carrier", "carrier-determined"), true); assert.equal(canRecordVerification("carrier", "carrier-unknown"), true); assert.equal(canRecordVerification("professional", "carrier-determined"), false); });
+test("evidence adapter fails honestly until secure storage and scanning are activated", async () => { await assert.rejects(new DisabledEvidenceUploadAdapter().requestUpload({ planId: "plan_12345", documentClass: "receipt", retentionPolicyVersion: "disabled-v1" }), /NOT_ACTIVATED/); });
