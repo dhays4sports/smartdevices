@@ -1,0 +1,5 @@
+import Link from "next/link";
+import { SiteFooter } from "./SiteFooter";
+import { SiteHeader } from "./SiteHeader";
+export type InstitutionalSection = { heading: string; paragraphs: string[]; bullets?: string[] };
+export function InstitutionalPage({ eyebrow, title, lede, sections, action }: { eyebrow: string; title: string; lede: string; sections: InstitutionalSection[]; action?: { href: string; label: string } }) { return <><SiteHeader /><main className="page-main institutional-page"><header className="page-hero"><p className="eyebrow">{eyebrow}</p><h1>{title}</h1><p>{lede}</p>{action ? <Link className="button-primary" href={action.href}>{action.label}</Link> : null}</header><div className="institutional-content">{sections.map((section) => <section key={section.heading}><h2>{section.heading}</h2>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.bullets ? <ul>{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul> : null}</section>)}</div></main><SiteFooter /></>; }
