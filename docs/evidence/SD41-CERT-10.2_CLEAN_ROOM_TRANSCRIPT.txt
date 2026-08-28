@@ -1,0 +1,200 @@
+UTC 2026-08-22T17:30:16Z
+SOURCE_COMMIT d189cae312ccdf1c5a3151cc2f19849aace123a0
+ARCHIVE_SHA256 128d300b8e7e7dcbde3eb65047a4712211a072115862acd5f455fd6d3d3cfc68
+CLEAN_DIR /tmp/smartdevices-v41-clean-YtAYY3
+FIRST_ENTRY .env.example
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> smartdevices-protection@4.1.0-rc.1 install:ci
+> bash scripts/install-ci.sh
+
+/usr/bin/flock
+/usr/bin/timeout
+/usr/bin/curl
+/usr/bin/sha256sum
+[sites] validating writable install environment
+[sites] environment passed: HOME=/tmp/smartdevices-v41-clean-YtAYY3/.sites-runtime/home, cache=/tmp/smartdevices-v41-clean-YtAYY3/.sites-runtime/npm-cache
+[sites] image cache seed does not match this lockfile; using the network path
+[sites] downloading the complete locked vinext tarball
+[sites] verifying locked vinext tarball integrity
+[sites] network and integrity preflight passed
+[sites] running exactly one bounded npm ci
+npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+
+added 520 packages in 1m
+[sites] npm ci passed and vinext is available
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> smartdevices-protection@4.1.0-rc.1 typecheck
+> bash scripts/sites-env.sh -- tsc --noEmit
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> smartdevices-protection@4.1.0-rc.1 lint
+> bash scripts/sites-env.sh -- eslint . --ignore-pattern dist --ignore-pattern .next
+
+  File "<stdin>", line 1
+    +import glob
+     ^^^^^^
+SyntaxError: invalid syntax
+CORRECTION_UTC 2026-08-22T17:32:06Z
+CORRECTION Reason: transcript command contained patch-marker prefixes in the Python harness; archive and application were unchanged
+Traceback (most recent call last):
+  File "<stdin>", line 13, in <module>
+AssertionError: ['agent_profiles', 'audit_events', 'consent_events', 'handoff_receipts', 'plan_recommendations', 'plan_responses', 'plan_templates', 'plans', 'rate_limit_windows', 'scan_responses', 'scan_sessions', 'suppression_entries']
+CORRECTION_UTC 2026-08-22T17:32:18Z
+CORRECTION Reason: expected-table fixture corrected from 13 to the actual governed 12-table schema; migrations and application were unchanged
+MIGRATIONS_PASS 12 agent_profiles,audit_events,consent_events,handoff_receipts,plan_recommendations,plan_responses,plan_templates,plans,rate_limit_windows,scan_responses,scan_sessions,suppression_entries
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> smartdevices-protection@4.1.0-rc.1 test
+> npm run build && node --test tests/*.test.mjs && node --import tsx --test tests/*.test.ts
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> smartdevices-protection@4.1.0-rc.1 build
+> bash scripts/build-verified.sh
+
+/usr/bin/timeout
+Running bounded vinext build...
+
+  vinext build  (Vite 8.0.13)
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mProxy environment variables detected. We'll use your proxy for fetch requests.[0m
+
+
+[1/5] analyze client references...
+[2Ktransforming...✓ 278 modules transformed.
+rendering chunks...
+✓ built in 2.35s
+[2/5] analyze server references...
+[2Ktransforming...✓ 123 modules transformed.
+rendering chunks...
+✓ built in 509ms
+[3/5] build rsc environment...
+[2Ktransforming...✓ 284 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 2.07s
+[4/5] build client environment...
+[2Ktransforming...✓ 130 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 1.22s
+[5/5] build ssr environment...
+[2Ktransforming...✓ 129 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 509ms
+[0m
+  Route (app)
+  ┌ ? /
+  ├ ? /about
+  ├ ? /accessibility
+  ├ λ /api/integrations/handoff
+  ├ λ /api/plans
+  ├ λ /api/plans/:id
+  ├ ? /compare
+  ├ ? /devices
+  ├ ƒ /devices/:slug
+  ├ ? /disclosures
+  ├ ? /index
+  ├ ? /partners
+  ├ ƒ /plans/:id
+  ├ ? /privacy
+  ├ ? /pro
+  ├ ? /pro/workspace
+  ├ ƒ /protect/:domain
+  ├ ? /research
+  └ ? /terms
+
+  λ API  ƒ Dynamic  ? Unknown
+
+  ? Some routes could not be classified. vinext currently uses static analysis
+    and cannot detect dynamic API usage (headers(), cookies(), etc.) at build time.
+    Automatic classification will be improved in a future release.
+
+  Build complete. Run `vinext start` to start the production server.
+
+✔ global accessibility modes and focus treatment remain explicit (1.056261ms)
+✔ primary controls and text-equivalent scene controls meet the 44px target contract (0.421405ms)
+✔ spatial discovery and visual result maps preserve ordered text equivalents (0.206895ms)
+✔ scan and journey expose names, values, progress, and live state (0.177635ms)
+✔ v4.1 checkpoint contract requires reproducible evidence (0.922143ms)
+✔ domain and concern identifiers are unique and complete (1.46946ms)
+✔ seed catalog is small, traceable, and publishable (0.640035ms)
+✔ catalog supports both full launch domains without forcing three records per concern (0.153199ms)
+✔ nonessential scenes are lazy and missing images preserve every text control (1.107827ms)
+✔ motion is interruptible in a background tab (1.052422ms)
+✔ analytics-disabled mode is literal and stores no event (0.354474ms)
+✔ scene imagery remains within the published lazy-load budget (9.048079ms)
+✔ homepage renders the preservation contract and interactive explorer (29.093632ms)
+✔ direct routes load for vehicle, catalog, plan, and Pro demo (91.680278ms)
+✔ invalid and unavailable plan input fails honestly (16.164784ms)
+✔ external handoff endpoint rejects unauthenticated callers (11.580107ms)
+✔ missing hosted storage fails explicitly without breaking public value (19.685619ms)
+✔ durable schema keeps recommendation, intent, fulfillment, consent, suppression, and audit state separate (1.275346ms)
+✔ plan state transitions and input limits are explicit (0.264089ms)
+✔ Pro production route has a server-side authorization boundary (84.429575ms)
+✔ opaque capabilities and bounded JSON inputs remain enforced (1.005378ms)
+✔ partner handoffs use consent, expiry, HMAC, replay storage, and a route rate limit (0.237234ms)
+✔ worker responses carry the published browser security headers (0.144736ms)
+✔ scan and analytics event contracts exclude PII and free text (0.660766ms)
+✔ local environment files and generated outputs are excluded (0.422303ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 803.903871
+✔ demonstration reducer supports play, pause, replay, skip, and completion (1.56011ms)
+✔ only the three authorized launch concerns receive demonstrations (0.226616ms)
+✔ every stage has equivalent narration and a limitation (0.266977ms)
+✔ smoke and heat demo preserves life-safety boundaries (0.573589ms)
+✔ vehicle tracking demo never promises recovery or unsafe action (0.368295ms)
+✔ background-tab pause remains a safe idempotent transition (0.176759ms)
+✔ journey transitions are explicit and reversible (1.573459ms)
+✔ invalid journey transitions do not manufacture state (0.140295ms)
+✔ rapid concern switching increments revision and returns to exploration (0.405945ms)
+✔ history restoration creates direct-route states without stale context (0.114444ms)
+✔ event adapters are literal and PII-free by contract (0.498352ms)
+✔ published content avoids prohibited insurance and outcome promises (1.15114ms)
+✔ scan contains no identity fields, score, or effect-free questions (0.426038ms)
+✔ Family and Business remain neutral starter guides (0.499576ms)
+✔ plan v2 preserves explainable provenance outside the share URL (6.1547ms)
+✔ v1 and v2 sanitized selections remain readable (0.6348ms)
+✔ plan client exposes save, resume, share, print, and export continuity (0.376959ms)
+✔ intent is explicit and contact remains optional after value (0.347387ms)
+✔ Pro builder is scan-aware and keeps templates PII-free (12.173224ms)
+✔ co-branding is secondary and professional assertions remain labeled (0.254774ms)
+✔ sharing and follow-up states stay literal (13.259189ms)
+✔ handoff v1 remains readable and v2 carries only consented provenance (88.317322ms)
+✔ published scan schema is valid and every question changes a decision (2.285646ms)
+✔ home and vehicle paths remain within three to five questions (0.422328ms)
+✔ home branches keep rationale tied to published answers (3.095858ms)
+✔ matching is deterministic and preserves unknowns (0.861217ms)
+✔ pre-1996 vehicle input does not manufacture OBD compatibility (0.766672ms)
+✔ vehicle branches avoid identifiers and preserve consent and compatibility checks (2.761923ms)
+✔ malformed question sets return actionable errors (0.402244ms)
+✔ insufficient input yields an honest stable result without forced certainty (0.155307ms)
+✔ Device Universe result contract preserves concern to device provenance (0.15891ms)
+✔ scene zones preserve complete text-control parity (1.318779ms)
+✔ exactly three launch demonstrations are attached to supported concerns (0.189735ms)
+✔ Home property exposes all launch zones and only supported demos (0.150302ms)
+✔ Vehicle environment exposes factual zones without diagnosis claims (0.215521ms)
+✔ scene keeps static and direct-route fallbacks (0.251947ms)
+✔ Device Universe links comparison, detail, and explanation without scores (0.741349ms)
+✔ visual map is hidden from assistive technology and list is ordered (0.145881ms)
+✔ plan bridge caps stated selections at five and preserves literal state (0.179541ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 785.421661
+CLEAN_ROOM_PASS

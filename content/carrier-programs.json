@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "programs": [
+    {
+      "id": "farmers-ca-home-public-guidance-v1",
+      "version": 1,
+      "carrierId": "farmers",
+      "name": "California Home device guidance pilot",
+      "jurisdiction": "CA",
+      "line": "homeowners",
+      "policyScope": "unknown",
+      "status": "active",
+      "visibility": "public",
+      "effectiveDate": null,
+      "expiryDate": null,
+      "checkedDate": "2026-08-26",
+      "reviewDueDate": "2026-09-25",
+      "sourceIds": ["farmers-home-discounts-2026-08-26", "farmers-leak-detection-ca-2026-08-26"],
+      "limitations": ["Public category guidance cannot determine an individual policy requirement, eligibility, savings, or documentation acceptance."]
+    }
+  ]
+}

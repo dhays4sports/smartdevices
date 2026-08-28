@@ -1,0 +1,16 @@
+SmartDevices v4.1 rollback rehearsal transcript — append-only summary
+Run date: 2026-08-26 UTC
+Rollback source commit: 86b73b204c8e6945227be76d1e65286d2f72c2cd
+Declared version: 4.1.0-rc.1
+Temporary root: /workspace/scratch/bd2680e5ab01/sd42-clean-Q0fVgB/rollback-v41
+
+COMMAND: git archive 86b73b204c8e6945227be76d1e65286d2f72c2cd | tar -xf - -C <new-empty-directory>
+RESULT: exit 0; package.json at root.
+
+COMMAND: npm ci --cache <existing-local-cache> --prefer-offline --no-audit
+RESULT: exit 0; added 520 packages in 11s from the v4.1 lockfile.
+
+COMMAND: npm run typecheck && npm run lint && npm test
+RESULT: exit 0; v4.1 five-stage Vinext production build passed; 25 JavaScript + 39 TypeScript tests passed (64 total). Tests include direct routes, fail-closed Pro, unavailable storage, plan v1/v2 readers, handoff v1/v2 readers, security headers, scan rules, Device Universe, and causal-demo controls.
+
+MIGRATION DISPOSITION: v4.2 migration 0003 creates only plan_verification_events and indexes; it does not modify prior tables or rows. Operational rollback disables v4.2 writers/adapters before routing traffic to v4.1. A real D1 backup/restore and traffic shift require external owner credentials and were not performed.

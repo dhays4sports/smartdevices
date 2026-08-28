@@ -1,0 +1,126 @@
+UTC 2026-08-22T17:32:57Z
+BASELINE_SHA256 0e19b173ea61d1df5a8fa5c024a9c012243bdbe6f3e67eacdacd22d29b718202
+ROLLBACK_DIR /tmp/smartdevices-v40-rollback-5zxeJv
+FIRST_ENTRY drizzle.config.ts
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> smartdevices-protection@4.0.0-rc.1 install:ci
+> bash scripts/install-ci.sh
+
+/usr/bin/flock
+/usr/bin/timeout
+/usr/bin/curl
+/usr/bin/sha256sum
+[sites] validating writable install environment
+[sites] environment passed: HOME=/tmp/smartdevices-v40-rollback-5zxeJv/.sites-runtime/home, cache=/tmp/smartdevices-v40-rollback-5zxeJv/.sites-runtime/npm-cache
+[sites] image cache seed does not match this lockfile; using the network path
+[sites] downloading the complete locked vinext tarball
+[sites] verifying locked vinext tarball integrity
+[sites] network and integrity preflight passed
+[sites] running exactly one bounded npm ci
+npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+
+added 520 packages in 1m
+[sites] npm ci passed and vinext is available
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> smartdevices-protection@4.0.0-rc.1 typecheck
+> bash scripts/sites-env.sh -- tsc --noEmit
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> smartdevices-protection@4.0.0-rc.1 lint
+> bash scripts/sites-env.sh -- eslint . --ignore-pattern dist --ignore-pattern .next
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> smartdevices-protection@4.0.0-rc.1 test
+> npm run build && node --test tests/*.test.mjs
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> smartdevices-protection@4.0.0-rc.1 build
+> bash scripts/build-verified.sh
+
+/usr/bin/timeout
+Running bounded vinext build...
+
+  vinext build  (Vite 8.0.13)
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mProxy environment variables detected. We'll use your proxy for fetch requests.[0m
+
+
+[1/5] analyze client references...
+[2Ktransforming...✓ 278 modules transformed.
+rendering chunks...
+✓ built in 1.56s
+[2/5] analyze server references...
+[2Ktransforming...✓ 115 modules transformed.
+rendering chunks...
+✓ built in 413ms
+[3/5] build rsc environment...
+[2Ktransforming...✓ 284 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 1.46s
+[4/5] build client environment...
+[2Ktransforming...✓ 122 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 538ms
+[5/5] build ssr environment...
+[2Ktransforming...✓ 121 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 524ms
+[0m
+  Route (app)
+  ┌ ? /
+  ├ ? /about
+  ├ ? /accessibility
+  ├ λ /api/integrations/handoff
+  ├ λ /api/plans
+  ├ λ /api/plans/:id
+  ├ ? /compare
+  ├ ? /devices
+  ├ ƒ /devices/:slug
+  ├ ? /disclosures
+  ├ ? /index
+  ├ ? /partners
+  ├ ƒ /plans/:id
+  ├ ? /privacy
+  ├ ? /pro
+  ├ ? /pro/workspace
+  ├ ƒ /protect/:domain
+  ├ ? /research
+  └ ? /terms
+
+  λ API  ƒ Dynamic  ? Unknown
+
+  ? Some routes could not be classified. vinext currently uses static analysis
+    and cannot detect dynamic API usage (headers(), cookies(), etc.) at build time.
+    Automatic classification will be improved in a future release.
+
+  Build complete. Run `vinext start` to start the production server.
+
+✔ domain and concern identifiers are unique and complete (4.299606ms)
+✔ seed catalog is small, traceable, and publishable (1.273443ms)
+✔ catalog supports both full launch domains without forcing three records per concern (0.190807ms)
+✔ homepage renders the preservation contract and interactive explorer (34.922567ms)
+✔ direct routes load for vehicle, catalog, plan, and Pro demo (72.964475ms)
+✔ invalid and unavailable plan input fails honestly (12.880112ms)
+✔ external handoff endpoint rejects unauthenticated callers (13.383767ms)
+✔ durable schema keeps recommendation, intent, fulfillment, consent, suppression, and audit state separate (0.831053ms)
+✔ plan state transitions and input limits are explicit (0.298034ms)
+✔ Pro production route has a server-side authorization boundary (4.566749ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 809.602303
+ROLLBACK_REHEARSAL_PASS
+NOTE v4.1 migration 0002 is additive and nullable; production data rollback still requires owner-approved backup/restore and D1 rehearsal

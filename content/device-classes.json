@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "classes": [
+    {"id":"point-water-detection","label":"Point leak detection","description":"A sensor detects water only where it is placed and does not itself close the main water line.","safetyBoundary":"Placement, battery, network, and notification conditions can affect alerts."},
+    {"id":"whole-home-flow-monitoring","label":"Whole-home flow monitoring","description":"An in-line device observes water flow across the home plumbing supply.","safetyBoundary":"Monitoring alone is not automatic shutoff and does not guarantee every leak is detected."},
+    {"id":"automatic-main-water-shutoff","label":"Automatic main-line water shutoff","description":"An installed valve can close the main water supply for supported detected conditions.","safetyBoundary":"Compatibility, installation, power, connectivity, configuration, and event conditions affect operation."},
+    {"id":"automatic-gas-shutoff","label":"Automatic or seismic gas shutoff","description":"A listed residential valve can stop gas flow when its supported activation condition occurs.","safetyBoundary":"No DIY gas work; local permitting, utility position, listing, and qualified installation require confirmation."},
+    {"id":"local-fire-alert","label":"Local fire or smoke alert","description":"An alarm sounds at the property and may provide app alerts without central monitoring.","safetyBoundary":"Follow alarm instructions and contact emergency services for an emergency; app notification is not dispatch."},
+    {"id":"professionally-monitored-fire-security","label":"Professionally monitored fire or security","description":"An enrolled service may receive supported alarm signals and follow the provider's response process.","safetyBoundary":"Hardware, plan, signal path, certificate, dispatch linkage, jurisdiction, and carrier documentation must be confirmed."},
+    {"id":"connected-home-remote-monitor-control","label":"Connected-home remote monitoring and control","description":"A connected system supports remote status, alerts, or control through an app, hub, local controller, or cloud.","safetyBoundary":"Interoperability, outages, subscriptions, account security, privacy, and carrier treatment remain separate checks."},
+    {"id":"independent-protection-recommendation","label":"Independent SmartDevices protection option","description":"Editorial guidance that may help a selected concern but has no carrier applicability claim.","safetyBoundary":"Not a carrier requirement, offer, eligibility, or discount determination."}
+  ]
+}

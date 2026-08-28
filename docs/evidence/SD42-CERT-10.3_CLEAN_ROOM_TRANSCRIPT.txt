@@ -1,0 +1,36 @@
+SmartDevices v4.2 clean-room transcript — append-only summary
+Run date: 2026-08-26 UTC
+Source commit: 76457b334a6168468435c0cbfcd6ad543d937fc4
+Temporary Git archive: sd42-source.tar
+SHA-256: 9e7871d83f707f732004ab78516d2eb82f72fd6f025bc3c6c99dd25629a8827e
+Temporary root: /workspace/scratch/bd2680e5ab01/sd42-clean-Q0fVgB
+
+COMMAND: git archive --format=tar --output="$clean_root/sd42-source.tar" HEAD
+RESULT: exit 0; package.json at extraction root; no wrapper.
+
+COMMAND: npm ci --cache <existing-local-cache> --prefer-offline --no-audit
+RESULT: exit 0; added 520 packages in 11s from package-lock.json.
+
+COMMAND: apply drizzle/0000 through 0003 to a new SQLite database; assert 13 tables and verification table.
+FIRST RESULT: harness assertion failed after successful migration because it expected `verification_events`; actual governed schema/table output was:
+  applied 0000_cute_aaron_stack.sql
+  applied 0001_chief_morbius.sql
+  applied 0002_needy_wendell_rand.sql
+  applied 0003_supreme_stepford_cuckoos.sql
+  table_count 13
+  agent_profiles,audit_events,consent_events,handoff_receipts,plan_recommendations,plan_responses,plan_templates,plan_verification_events,plans,rate_limit_windows,scan_responses,scan_sessions,suppression_entries
+CORRECTION: assertion changed only in the temporary harness to `plan_verification_events`.
+CORRECTED RESULT: exit 0; four migrations and all 13 tables verified.
+
+COMMAND: npm run typecheck && npm run lint && npm test
+RESULT: exit 0; five-stage Vinext build passed; 67 JavaScript + 115 TypeScript tests passed (182 total).
+BUILT-RUNTIME RESULT: direct homepage, Vehicle/catalog, insurance directory, canonical Farmers, sanitized alias, v1/v2/v3 plan/error states, production Pro lock, handoff rejection, and unavailable persistence passed inside the normalized suite.
+
+COMMAND: inspect tar entries for node_modules, .git, dist, .next, .wrangler, .sites-runtime, .env.local, and *.zip; verify protected SVG hashes.
+FIRST RESULT: exclusion assertion passed, then the temporary hash command failed because it named four nonexistent generated-art paths.
+CORRECTION: hash command changed only in the harness to the protected legacy paths.
+CORRECTED RESULT: exit 0; no excluded path found; hashes:
+  ece176a9df80ba2d6f05b9552fc6e249272020b3ee810c38e20c447382606052  public/legacy/device-museum.svg
+  e9bb37fddbf44591364fec2485b8163e34cefebf10765b36f18546293b03f026  public/legacy/intelligence-globe.svg
+
+No deployment, live D1 operation, external call, message, account, credential, or protected-file mutation occurred.

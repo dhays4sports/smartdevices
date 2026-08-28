@@ -1,0 +1,182 @@
+[
+  {
+    "id": "home",
+    "label": "Home",
+    "headline": "Help your home notice trouble sooner.",
+    "description": "Explore practical technology for water, fire, security, air quality, and properties that are sometimes empty.",
+    "scene": "/assets/home-protection-hero.png",
+    "concerns": [
+      {
+        "id": "water",
+        "label": "Water",
+        "prompt": "Stop a major leak automatically",
+        "why": "A whole-home system can watch water flow, alert you to unusual activity, and—when supported—close the main valve.",
+        "stages": ["Unusual flow begins", "The system detects a pattern", "An alert or automatic shutoff responds"],
+        "position": { "x": 27, "y": 61 }
+      },
+      {
+        "id": "fire-electrical",
+        "label": "Fire + electrical",
+        "prompt": "Get earlier warning of smoke, CO, or electrical hazards",
+        "why": "Connected alarms and electrical-monitoring services can add remote awareness, but they do not replace required life-safety devices or professional repair.",
+        "stages": ["A warning condition develops", "A compatible sensor recognizes it", "People are alerted and can respond"],
+        "position": { "x": 49, "y": 33 }
+      },
+      {
+        "id": "security",
+        "label": "Security",
+        "prompt": "Monitor doors, alarms, and activity",
+        "why": "Connected security can combine entry sensors, cameras, and optional professional monitoring while keeping subscription and privacy tradeoffs visible.",
+        "stages": ["Unexpected activity occurs", "A sensor or camera reports it", "You or a monitoring service reviews the alert"],
+        "position": { "x": 69, "y": 59 }
+      },
+      {
+        "id": "vacant-monitoring",
+        "label": "Away from home",
+        "prompt": "Keep watch while a property is empty",
+        "why": "Water, temperature, entry, and power alerts can help surface problems while nobody is there.",
+        "stages": ["The property is unattended", "A condition moves outside your limits", "A remote alert creates a chance to investigate"],
+        "position": { "x": 83, "y": 62 }
+      },
+      {
+        "id": "garage-access",
+        "label": "Garage + access",
+        "prompt": "Know whether an access point was left open",
+        "why": "Connected garage and access devices can report state and support remote control, but mechanical compatibility and account security require verification.",
+        "stages": ["An access point changes state", "A compatible controller reports it", "You review the alert before acting"],
+        "position": { "x": 85, "y": 48 }
+      },
+      {
+        "id": "home-temperature",
+        "label": "Temperature",
+        "prompt": "Notice heating or cooling trouble while away",
+        "why": "Temperature sensors can flag conditions that may threaten plumbing, comfort, pets, or stored property without diagnosing the equipment failure.",
+        "stages": ["Temperature moves outside a set range", "A sensor records the condition", "An alert creates a chance to investigate"],
+        "position": { "x": 58, "y": 54 }
+      }
+    ]
+  },
+  {
+    "id": "vehicle",
+    "label": "Vehicle",
+    "headline": "Give your vehicle better memory and awareness.",
+    "description": "Compare incident recording, theft tracking, driver alerts, diagnostics, and maintenance tools without turning this into an insurance quote.",
+    "scene": "/assets/vehicle-protection-hero.png",
+    "concerns": [
+      {
+        "id": "dashcam",
+        "label": "Incident recording",
+        "prompt": "Document what happens on the road",
+        "why": "Dash cameras differ meaningfully in video quality, field of view, parking behavior, power, storage, and subscription features.",
+        "stages": ["An incident occurs", "The camera detects or records it", "The saved video can be reviewed"],
+        "position": { "x": 40, "y": 41 }
+      },
+      {
+        "id": "theft",
+        "label": "Theft tracking",
+        "prompt": "Receive movement alerts and locate a vehicle",
+        "why": "Dedicated cellular GPS tools can report location and suspicious movement, but coverage, power, tampering, and subscriptions matter.",
+        "stages": ["Unexpected movement begins", "The tracker sends an alert", "Location information may support a response"],
+        "position": { "x": 61, "y": 30 }
+      },
+      {
+        "id": "teen-driver",
+        "label": "Teen driver",
+        "prompt": "Share driving alerts with clear household consent",
+        "why": "Some connected-vehicle tools can report trips, speed, braking, or geofences. Everyone being monitored should understand the setup.",
+        "stages": ["A trip begins", "Selected driving events are recorded", "Agreed alerts are shared"],
+        "position": { "x": 69, "y": 57 }
+      },
+      {
+        "id": "diagnostics",
+        "label": "Diagnostics",
+        "prompt": "Translate warning lights and maintenance signals",
+        "why": "OBD tools can make vehicle codes easier to understand, but they do not replace manufacturer warnings or a qualified repair diagnosis.",
+        "stages": ["The vehicle reports a code", "A compatible reader translates it", "You decide whether professional service is needed"],
+        "position": { "x": 45, "y": 72 }
+      },
+      {
+        "id": "tires",
+        "label": "Tires",
+        "prompt": "Keep tire condition and pressure visible",
+        "why": "Vehicle and aftermarket systems may surface pressure or condition information, but compatibility and recommended manual inspection still matter.",
+        "stages": ["Pressure or condition changes", "A compatible system reports it", "The driver checks before continuing"],
+        "position": { "x": 76, "y": 74 }
+      },
+      {
+        "id": "emergency",
+        "label": "Emergency help",
+        "prompt": "Understand connected emergency-response options",
+        "why": "Some vehicle and phone services can help request assistance after an incident, subject to coverage, subscription, device power, and service limitations.",
+        "stages": ["An incident or breakdown occurs", "A supported system detects or receives a request", "Location and event context may reach a response service"],
+        "position": { "x": 28, "y": 58 }
+      },
+      {
+        "id": "ev-charging",
+        "label": "EV charging",
+        "prompt": "Monitor charging without overlooking electrical fit",
+        "why": "Connected chargers can schedule and report sessions, but circuit capacity, installation, vehicle compatibility, and utility programs need independent verification.",
+        "stages": ["A vehicle connects", "The charger manages and records the session", "Alerts or schedules help the owner respond"],
+        "position": { "x": 20, "y": 72 }
+      }
+    ]
+  },
+  {
+    "id": "family",
+    "label": "Family",
+    "headline": "Make invisible conditions easier to notice.",
+    "description": "A carefully bounded starting point for household air, environmental awareness, and consent-based alerts—not medical advice or guaranteed emergency response.",
+    "scene": "/assets/home-protection-hero.png",
+    "concerns": [
+      {
+        "id": "air-quality",
+        "label": "Air quality",
+        "prompt": "See indoor air and radon conditions over time",
+        "why": "Multi-sensor monitors can make radon, particulate matter, carbon dioxide, VOC, humidity, and temperature trends visible.",
+        "stages": ["An invisible condition changes", "Sensors track the trend", "The app provides readings and alerts"],
+        "position": { "x": 47, "y": 32 }
+      },
+      {
+        "id": "household-alerts",
+        "label": "Household alerts",
+        "prompt": "Keep important home alerts in one place",
+        "why": "Connected smoke, CO, water, and security alerts can improve remote awareness, subject to connectivity and device limitations.",
+        "stages": ["A supported condition occurs", "The connected system detects it", "A household member receives an alert"],
+        "position": { "x": 68, "y": 58 }
+      }
+    ]
+  },
+  {
+    "id": "business",
+    "label": "Business",
+    "headline": "Monitor the conditions your operation depends on.",
+    "description": "Starter guidance for water, temperature, and facility awareness. These tools do not replace code, inspections, or commercial risk engineering.",
+    "scene": "/assets/home-protection-hero.png",
+    "concerns": [
+      {
+        "id": "business-temperature",
+        "label": "Temperature",
+        "prompt": "Watch refrigeration or environmental conditions remotely",
+        "why": "Commercial sensors can record temperature and send alerts when readings move outside configured limits.",
+        "stages": ["Temperature leaves the target range", "The sensor records the change", "An alert creates a chance to investigate"],
+        "position": { "x": 45, "y": 53 }
+      },
+      {
+        "id": "business-water",
+        "label": "Water",
+        "prompt": "Detect water near equipment or inventory",
+        "why": "Commercial leak sensors can report water at selected locations, but detection-only devices do not shut off the water supply.",
+        "stages": ["Water reaches the monitored area", "The sensor changes state", "A remote alert is sent"],
+        "position": { "x": 28, "y": 63 }
+      },
+      {
+        "id": "business-security",
+        "label": "Access + security",
+        "prompt": "Add awareness around entry and activity",
+        "why": "Connected intrusion and access systems can add alerts and optional monitoring, with privacy, code, and professional-system boundaries.",
+        "stages": ["Unexpected entry or activity occurs", "A configured sensor reports it", "A person or monitoring service reviews the event"],
+        "position": { "x": 70, "y": 58 }
+      }
+    ]
+  }
+]

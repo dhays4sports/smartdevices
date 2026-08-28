@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "publishedAt": "2026-08-22",
+  "questions": [
+    {
+      "id": "H-AWAY",
+      "prompt": "How often is the property empty for a day or longer?",
+      "why": "Time away changes the value of remote alerts, backup connectivity, and automatic response.",
+      "domains": ["home"],
+      "concerns": ["water", "fire-electrical", "security", "vacant-monitoring", "garage-access", "home-temperature"],
+      "allowUnknown": true,
+      "allowSkip": true,
+      "effectAreas": ["priority", "explanation", "connectivity"],
+      "options": [
+        {"id": "rarely", "label": "Rarely", "effects": ["local-awareness"]},
+        {"id": "sometimes", "label": "Sometimes", "effects": ["remote-awareness"]},
+        {"id": "often", "label": "Often", "effects": ["remote-awareness", "response-continuity"]},
+        {"id": "unknown", "label": "I’m not sure", "effects": ["unknown-away"]}
+      ]
+    },
+    {
+      "id": "H-RESPONSE",
+      "prompt": "If a water problem is detected, what response feels appropriate?",
+      "why": "Detection-only sensors and whole-home shutoff systems solve different parts of the problem.",
+      "domains": ["home"],
+      "concerns": ["water"],
+      "allowUnknown": true,
+      "allowSkip": false,
+      "effectAreas": ["filtering", "priority", "setup", "compatibility"],
+      "options": [
+        {"id": "alert", "label": "Alert me so I can act", "effects": ["detection-only"]},
+        {"id": "automatic", "label": "Automatic shutoff where supported", "effects": ["automatic-response", "professional-install"]},
+        {"id": "compare", "label": "Show both approaches", "effects": ["compare-response"]},
+        {"id": "unknown", "label": "I’m not sure", "effects": ["unknown-response"]}
+      ]
+    },
+    {
+      "id": "H-ALERTING",
+      "prompt": "Who should receive an alert when nobody is nearby?",
+      "why": "Self-notification and professional monitoring have different cost, setup, and response boundaries.",
+      "domains": ["home"],
+      "concerns": ["fire-electrical", "security", "vacant-monitoring", "garage-access", "home-temperature"],
+      "allowUnknown": true,
+      "allowSkip": true,
+      "effectAreas": ["filtering", "subscription", "explanation"],
+      "options": [
+        {"id": "household", "label": "My household", "effects": ["self-monitoring"]},
+        {"id": "professional", "label": "A monitoring service where available", "effects": ["professional-monitoring", "subscription-likely"]},
+        {"id": "compare", "label": "Compare both", "effects": ["compare-monitoring"]},
+        {"id": "unknown", "label": "I’m not sure", "effects": ["unknown-alerting"]}
+      ]
+    },
+    {
+      "id": "U-INSTALL",
+      "prompt": "What level of setup are you comfortable with?",
+      "why": "Some options are placed or plugged in; others require plumbing, wiring, or concealed installation.",
+      "domains": ["home", "vehicle"],
+      "allowUnknown": true,
+      "allowSkip": false,
+      "effectAreas": ["filtering", "setup", "cost"],
+      "options": [
+        {"id": "diy", "label": "Simple DIY setup", "effects": ["diy-preferred"]},
+        {"id": "professional", "label": "Professional installation is okay", "effects": ["professional-install-ok"]},
+        {"id": "either", "label": "Either", "effects": ["install-flexible"]},
+        {"id": "unknown", "label": "I’m not sure", "effects": ["unknown-install"]}
+      ]
+    },
+    {
+      "id": "U-SUBSCRIPTION",
+      "prompt": "How do you feel about an ongoing service cost?",
+      "why": "Cellular tracking, cloud video, and professional monitoring may require a recurring plan.",
+      "domains": ["home", "vehicle"],
+      "allowUnknown": true,
+      "allowSkip": false,
+      "effectAreas": ["filtering", "subscription", "cost"],
+      "options": [
+        {"id": "avoid", "label": "Prefer no required subscription", "effects": ["avoid-subscription"]},
+        {"id": "open", "label": "Open to a useful subscription", "effects": ["subscription-ok"]},
+        {"id": "compare", "label": "Compare both", "effects": ["compare-subscription"]},
+        {"id": "unknown", "label": "I’m not sure", "effects": ["unknown-subscription"]}
+      ]
+    },
+    {
+      "id": "H-CONNECTIVITY",
+      "prompt": "Is reliable Wi-Fi available where the device would operate?",
+      "why": "Remote alerts and connected features may be unavailable when power or internet service is interrupted.",
+      "domains": ["home"],
+      "allowUnknown": true,
+      "allowSkip": true,
+      "effectAreas": ["compatibility", "maintenance", "explanation"],
+      "options": [
+        {"id": "reliable", "label": "Usually reliable", "effects": ["wifi-available"]},
+        {"id": "limited", "label": "Limited or unreliable", "effects": ["connectivity-risk"]},
+        {"id": "none", "label": "No Wi-Fi", "effects": ["wifi-unavailable"]},
+        {"id": "unknown", "label": "I’m not sure", "effects": ["unknown-connectivity"]}
+      ]
+    },
+    {
+      "id": "V-PARKING",
+      "prompt": "Where is the vehicle usually parked overnight?",
+      "why": "Parking context changes the usefulness of movement alerts, parking recording, power continuity, and cellular coverage.",
+      "domains": ["vehicle"],
+      "concerns": ["dashcam", "theft"],
+      "allowUnknown": true,
+      "allowSkip": true,
+      "effectAreas": ["priority", "power", "privacy", "explanation"],
+      "options": [
+        {"id": "private", "label": "Private garage or driveway", "effects": ["private-parking"]},
+        {"id": "shared", "label": "Shared garage or lot", "effects": ["shared-parking"]},
+        {"id": "street", "label": "Street", "effects": ["public-parking", "remote-awareness"]},
+        {"id": "unknown", "label": "It varies / I’m not sure", "effects": ["unknown-parking"]}
+      ]
+    },
+    {
+      "id": "V-POWER",
+      "prompt": "Which power approach can the vehicle support?",
+      "why": "Plug-in, hardwired, battery, and phone-assisted options behave differently when the vehicle is off.",
+      "domains": ["vehicle"],
+      "allowUnknown": true,
+      "allowSkip": true,
+      "effectAreas": ["filtering", "compatibility", "setup", "maintenance"],
+      "options": [
+        {"id": "obd", "label": "An available OBD port", "effects": ["obd-power"]},
+        {"id": "hardwire", "label": "Hardwiring is acceptable", "effects": ["hardwire-power", "professional-install-ok"]},
+        {"id": "portable", "label": "Portable or battery only", "effects": ["portable-power"]},
+        {"id": "unknown", "label": "I’m not sure", "effects": ["unknown-power"]}
+      ]
+    },
+    {
+      "id": "V-MODEL-YEAR",
+      "prompt": "Which broad model-year range describes the vehicle?",
+      "why": "A broad range can surface likely port or integration questions without collecting a VIN or plate.",
+      "domains": ["vehicle"],
+      "concerns": ["theft", "teen-driver", "diagnostics"],
+      "allowUnknown": true,
+      "allowSkip": true,
+      "effectAreas": ["compatibility", "explanation"],
+      "options": [
+        {"id": "pre-1996", "label": "Before 1996", "effects": ["obd-compatibility-risk"]},
+        {"id": "1996-2014", "label": "1996–2014", "effects": ["verify-obd-fit"]},
+        {"id": "2015-plus", "label": "2015 or newer", "effects": ["verify-obd-fit"]},
+        {"id": "unknown", "label": "I’m not sure", "effects": ["unknown-model-year"]}
+      ]
+    },
+    {
+      "id": "V-CONSENT",
+      "prompt": "Will other people regularly drive this vehicle?",
+      "why": "Trip, speed, location, and driving alerts should be configured with clear household consent.",
+      "domains": ["vehicle"],
+      "concerns": ["theft", "teen-driver"],
+      "allowUnknown": true,
+      "allowSkip": false,
+      "effectAreas": ["privacy", "explanation"],
+      "options": [
+        {"id": "no", "label": "No", "effects": ["single-driver"]},
+        {"id": "yes-consent", "label": "Yes, with a shared understanding", "effects": ["shared-driver", "consent-addressed"]},
+        {"id": "yes-review", "label": "Yes, we need to discuss the settings", "effects": ["shared-driver", "consent-needed"]},
+        {"id": "unknown", "label": "I’m not sure", "effects": ["unknown-driver-consent"]}
+      ]
+    }
+  ]
+}

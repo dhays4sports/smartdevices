@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "carriers": [
+    {
+      "id": "farmers",
+      "slug": "farmers",
+      "name": "Farmers",
+      "publicationStatus": "published",
+      "supportedJurisdictions": ["CA"],
+      "canonicalPath": "/farmers",
+      "disclosure": "SmartDevices is independent and is not owned, operated, endorsed, certified, or controlled by Farmers. Carrier guidance is informational and requires confirmation for the consumer's policy and property."
+    }
+  ]
+}
