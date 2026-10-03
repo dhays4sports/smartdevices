@@ -1,3 +1,5 @@
+import { BuilderAccount } from "@/app/components/BuilderAccount";
+export const dynamic = "force-dynamic";
 import type { Metadata } from "next";
 import { DeviceBuilder } from "@/app/components/DeviceBuilder";
 import { SiteFooter } from "@/app/components/SiteFooter";
@@ -16,5 +18,5 @@ export default async function BuildPage({ searchParams }: Props) {
   const params = await searchParams;
   const sourceContext: DeviceProject["sourceContext"] = params.source === "farmers" ? "farmers" : params.source === "protection" ? "protection" : "direct";
   const bundle = await getPublishedEvidenceBundle();
-  return <><SiteHeader /><main><DeviceBuilder publishedDevices={bundle.catalog} sourceContext={sourceContext} /></main><SiteFooter /></>;
+  return <><SiteHeader /><main><BuilderAccount /><DeviceBuilder publishedDevices={bundle.catalog} sourceContext={sourceContext} /></main><SiteFooter /></>;
 }

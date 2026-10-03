@@ -1,0 +1,42 @@
+{
+  "environment": "local production build; NOT hosted authentication",
+  "results": [
+    {
+      "width": 375,
+      "routes": 7,
+      "interactions": [
+        "capability filter",
+        "builder intake/workspace",
+        "signed-out save fails truthfully",
+        "real reload",
+        "Connect sample/reset",
+        "farmers Builder handoff"
+      ]
+    },
+    {
+      "width": 768,
+      "routes": 7,
+      "interactions": [
+        "capability filter",
+        "builder intake/workspace",
+        "signed-out save fails truthfully",
+        "real reload",
+        "Connect sample/reset",
+        "farmers Builder handoff"
+      ]
+    },
+    {
+      "width": 1440,
+      "routes": 7,
+      "interactions": [
+        "capability filter",
+        "builder intake/workspace",
+        "signed-out save fails truthfully",
+        "real reload",
+        "Connect sample/reset",
+        "farmers Builder handoff"
+      ]
+    }
+  ],
+  "pageErrors": []
+}

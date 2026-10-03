@@ -9,6 +9,7 @@ const researchRoute = fs.readFileSync("app/api/builder/research/route.ts", "utf8
 const sourceRoute = fs.readFileSync("app/api/builder/source/route.ts", "utf8");
 const executeRoute = fs.readFileSync("app/api/builder/execute/route.ts", "utf8");
 const aiServer = fs.readFileSync("app/lib/builder-ai-server.ts", "utf8");
+const boundary = fs.readFileSync("app/lib/builder-route.ts", "utf8") + fs.readFileSync("app/lib/builder-http.ts", "utf8");
 const store = fs.readFileSync("app/lib/builder-store.ts", "utf8");
 
  test("v5.2 workspace exposes live research, sourcing, execution and hosted revision actions", () => {
@@ -20,12 +21,14 @@ const store = fs.readFileSync("app/lib/builder-store.ts", "utf8");
 });
 
 test("hosted Builder projects require an authenticated owner", () => {
-  assert.match(projectRoute, /getChatGPTUser/);
-  assert.match(projectRoute, /AUTHENTICATION_REQUIRED/);
-  assert.match(projectIdRoute, /project\.id !== id/);
+  assert.match(projectRoute, /handleBuilderRequest/);
+  assert.match(boundary, /getChatGPTUser/);
+  assert.match(boundary, /AUTHENTICATION_REQUIRED/);
+  assert.match(projectIdRoute, /handleBuilderRequest/);
+  assert.match(boundary, /project\.id !== id/);
   assert.match(store, /ownerSubject/);
-  assert.match(store, /manifestJson/);
-  assert.match(store, /builderRevisions/);
+  assert.match(store, /manifest_json/);
+  assert.match(store, /builder_revisions/);
 });
 
 test("external execution and sourcing are explicitly opt-in and unavailable by default", () => {

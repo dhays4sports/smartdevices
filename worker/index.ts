@@ -1,5 +1,6 @@
 /** Cloudflare Worker entry point for the vinext-starter template. */
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
+import { hostingBoundary, PRIVATE_HEADERS } from "../app/lib/hosting-policy";
 import handler from "vinext/server/app-router-entry";
 
 interface Env {
@@ -22,7 +23,8 @@ interface ExecutionContext {
 function withSecurityHeaders(response: Response, allowSameOriginFrame = false): Response {
   const headers = new Headers(response.headers);
   const frameAncestors = allowSameOriginFrame ? "'self'" : "'none'";
-  headers.set("Content-Security-Policy", `default-src 'self'; base-uri 'self'; frame-ancestors ${frameAncestors}; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' ws: wss:`);
+  headers.set("Content-Security-Policy", `default-src 'self'; base-uri 'self'; frame-ancestors ${frameAncestors}; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'`);
+  for (const [key, value] of Object.entries(PRIVATE_HEADERS)) headers.set(key, value);
   headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   headers.set("X-Content-Type-Options", "nosniff");
   headers.set("X-Frame-Options", allowSameOriginFrame ? "SAMEORIGIN" : "DENY");
@@ -40,6 +42,8 @@ function withSecurityHeaders(response: Response, allowSameOriginFrame = false): 
 
 const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    const denied = hostingBoundary(request);
+    if (denied) return withSecurityHeaders(denied);
     const url = new URL(request.url);
 
     if (url.pathname === "/_vinext/image") {

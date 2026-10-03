@@ -1,8 +1,10 @@
+import { PrivateNavigationGuard } from "./components/PrivateNavigationGuard";
 import type { Metadata } from "next";
 import "./globals.css";
 import "./components/builder.css";
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: false },
   metadataBase: new URL("https://smartdevices.com"),
   title: {
     default: "SmartDevices.com — Protect it. Build it.",
@@ -30,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body><PrivateNavigationGuard /><aside className="hosting-test-banner"><strong>Isolated persistence test</strong> · Use synthetic project data only. Builder saves are enabled; live devices, payments and external services are disabled.</aside>{children}</body>
     </html>
   );
 }

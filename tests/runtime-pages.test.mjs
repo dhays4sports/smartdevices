@@ -71,17 +71,11 @@ test("carrier discovery, Farmers direct context, and permanent alias work in bui
   assert.match(alias.headers.get("location") ?? "", /\/farmers\?intent=requirement&category=water$/);
 });
 
-test("Evidence Autopilot renders and exercises the bounded local demo refresh", async () => {
-  const page = await html("/admin/evidence");
-  assert.equal(page.response.status, 200);
-  assert.match(page.body, /Keep the facts current without babysitting the catalog/);
-  const response = await fetch(`${origin}/api/admin/evidence`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "refresh" }) });
-  assert.equal(response.status, 200);
-  const payload = await response.json();
-  assert.equal(payload.mode, "demo");
-  assert.equal(payload.summary.total, 8);
-  assert.equal(payload.summary.baseline, 8);
-  assert.equal(payload.summary.autoRenewable, 0);
+test("isolated hosting blocks evidence admin and refresh even in demo mode", async () => {
+  assert.equal((await html("/admin/evidence")).response.status,403);
+  const response=await fetch(`${origin}/api/admin/evidence`,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({action:"refresh"})});
+  assert.equal(response.status,403);
+  assert.equal((await response.json()).error.code,"TEST_ENVIRONMENT_BLOCKED");
 });
 
 test("invalid and unavailable plan input fails honestly", async () => {
@@ -97,9 +91,9 @@ test("connected task route loads while inactive and mutations fail closed", asyn
   assert.match(body, /noindex/);
   const payload = JSON.stringify({ operation: "read", token: "a".repeat(43) });
   const disabled = await fetch(`${origin}/api/coveragefit-device`, { method: "POST", headers: { origin, "content-type": "application/json" }, body: payload });
-  assert.equal(disabled.status, 503);
-  assert.equal((await disabled.json()).error.code, "CONNECTION_NOT_CONFIGURED");
-  assert.equal(disabled.headers.get("cache-control"), "no-store");
+  assert.equal(disabled.status, 403);
+  assert.equal((await disabled.json()).error.code, "TEST_ENVIRONMENT_BLOCKED");
+  assert.match(disabled.headers.get("cache-control"), /private, no-store/);
   const foreign = await fetch(`${origin}/api/coveragefit-device`, { method: "POST", headers: { origin: "https://foreign.test", "content-type": "application/json" }, body: payload });
   assert.equal(foreign.status, 403);
 });
@@ -108,13 +102,13 @@ test("external handoff endpoint rejects unauthenticated callers", async () => {
   const handoff = { schemaVersion: 1, handoffId: "hof_test", sourceSystem: "smartdevices", destinationSystem: "coveragefit", issuedAt: new Date().toISOString(), expiresAt: new Date(Date.now() + 60_000).toISOString(), consent: { purpose: "protection-plan", capturedAt: new Date().toISOString(), policyVersion: "test" }, context: { domain: "home", concernIds: ["water"] } };
   const response = await fetch(`${origin}/api/integrations/handoff`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(handoff) });
   assert.equal(response.status, 403);
-  assert.equal((await response.json()).error.code, "AUTHORIZATION_REQUIRED");
+  assert.equal((await response.json()).error.code, "TEST_ENVIRONMENT_BLOCKED");
 });
 
-test("missing hosted storage fails explicitly without breaking public value", async () => {
+test("test environment disables plan storage without breaking public value", async () => {
   const response = await fetch(`${origin}/api/plans/pln_00000000000000000000000000000000`);
-  assert.equal(response.status, 503);
-  assert.equal((await response.json()).error.code, "STORAGE_UNAVAILABLE");
+  assert.equal(response.status, 403);
+  assert.equal((await response.json()).error.code, "TEST_ENVIRONMENT_BLOCKED");
   const publicRoute = await html("/protect/home?concern=water");
   assert.equal(publicRoute.response.status, 200);
   assert.match(publicRoute.body, /What should your water protection do/);
@@ -141,7 +135,7 @@ test("ecosystem surfaces and public device API preserve independent trust", asyn
   for (const query of ["capability=constructor", "owner=private", "capability=shutoff.water&capability=record.video"]) assert.equal((await fetch(`${origin}/api/devices?${query}`)).status, 400);
   for (const method of ["GET", "POST"]) {
     const result = await fetch(`${origin}/api/devices/register`, { method, ...(method === "POST" ? { headers: { "content-type": "application/json", origin }, body: "{}" } : {}) });
-    assert.equal(result.status, 401);
+    assert.equal(result.status, 403);
     assert.match(result.headers.get("cache-control"), /no-store/);
   }
   const detail = await fetch(`${origin}/api/devices/moen-flo-smart-water-shutoff`);
