@@ -50,3 +50,7 @@ The two current Farmers-controlled public sources, five carrier rules, four tech
 # v4.2 full seed-catalog revalidation — 2026-08-26
 
 All 15 published catalog records and every v4.2 carrier/safety claim were rechecked against the primary sources listed in `PRIMARY_SOURCE_REVALIDATION_2026-08-26.md`. The Ring product URL and California DGS page were unavailable to the checker; Ring is governed by alternate current Ring-controlled system/support pages, while gas stays class-only and has an explicit cutover recheck. No unsupported positive designation was introduced.
+
+# v4.3 Evidence Autopilot implementation entry — 2026-08-28
+
+The existing 15 catalog records, eight public evidence sources, five carrier rules, and four device-fit overlays remain the protected publication baseline. v4.3 adds retrieval/fingerprint automation and does not represent a new primary-source revalidation by itself. The first activated run captures review-gated fingerprints. Identical later observations may renew freshness; changed, unavailable, invalid, or first-observation sources cannot create a stronger designation. Live retrieval was not activated during local implementation.

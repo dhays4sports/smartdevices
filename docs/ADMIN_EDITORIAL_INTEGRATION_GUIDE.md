@@ -8,6 +8,8 @@
 4. Run `npm run test:focused`. A stale or archived record is excluded from recommendations.
 5. Append the research result and reviewer to `CONTENT_AND_INSURANCE_EVIDENCE_LEDGER.md`.
 
+In v4.3, an authorized evidence administrator may start the same lifecycle from `/admin/evidence`. Evidence Autopilot retrieves only allowlisted HTTPS primary sources, records normalized-content fingerprints, automatically renews identical observations, and creates a review queue for baselines, changes, failures, or invalid responses. New or stronger product/carrier claims remain approval-gated. See `V4.3_EVIDENCE_AUTOPILOT.md` and `EVIDENCE_AUTOPILOT_ACTIVATION_GUIDE.md`.
+
 Question/rule edits follow the same append-only discipline: update `content/scan-questions.json`, increment the schema/question-set version when compatibility changes, document the effect of every option, preserve unknown/skip behavior, rerun all scan and language tests, and append `SCAN_QUESTION_AND_RULE_PROVENANCE.md`. A question with no result effect must be removed.
 
 ## Professional administration

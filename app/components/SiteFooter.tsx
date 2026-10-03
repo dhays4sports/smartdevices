@@ -1,11 +1,14 @@
 import Link from "next/link";
+import { SmartDevicesLogo } from "./SmartDevicesLogo";
 
 export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div>
         <p className="footer-kicker">The Future Has An Address.</p>
-        <p className="footer-domain">SmartDevices.com</p>
+        <Link className="footer-brand" href="/" aria-label="SmartDevices.com home">
+          <SmartDevicesLogo className="brand-lockup-footer" />
+        </Link>
       </div>
       <div className="footer-links" aria-label="Footer navigation">
         <Link href="/index">Index</Link>
@@ -19,4 +22,3 @@ export function SiteFooter() {
     </footer>
   );
 }
-

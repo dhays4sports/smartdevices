@@ -31,3 +31,5 @@ Generated v4 visual assets are new and not protected baseline files: Home scene 
 | 2026-08-26 | v4.2 intake `public/legacy/intelligence-globe.svg` | `e9bb37fddbf44591364fec2485b8163e34cefebf10765b36f18546293b03f026` | Protected preservation reverified; unchanged |
 | 2026-08-26 | v4.2 clean-room `public/legacy/device-museum.svg` | `ece176a9df80ba2d6f05b9552fc6e249272020b3ee810c38e20c447382606052` | SD42-CERT-10.3 clean extraction preservation reverified; unchanged |
 | 2026-08-26 | v4.2 clean-room `public/legacy/intelligence-globe.svg` | `e9bb37fddbf44591364fec2485b8163e34cefebf10765b36f18546293b03f026` | SD42-CERT-10.3 clean extraction preservation reverified; unchanged |
+| 2026-08-28 | v4.2.2 daily utility `public/legacy/device-museum.svg` | `ece176a9df80ba2d6f05b9552fc6e249272020b3ee810c38e20c447382606052` | Final prepackage preservation reverified; unchanged |
+| 2026-08-28 | v4.2.2 daily utility `public/legacy/intelligence-globe.svg` | `e9bb37fddbf44591364fec2485b8163e34cefebf10765b36f18546293b03f026` | Final prepackage preservation reverified; unchanged |

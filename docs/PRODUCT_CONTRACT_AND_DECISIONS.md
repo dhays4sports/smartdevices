@@ -53,3 +53,34 @@
 | PD-034 | Use a full-page plan transition after carrier-plan generation | The completed result has no unsaved follow-on state, and a direct URL transition avoids insecure-local Web Crypto/RSC limitations while remaining robust on production HTTPS | Accepted after SD42-QA-9.2 correction |
 
 Carrier means a governed insurance organization record. Program means a jurisdiction-scoped public or restricted guidance collection. Rule means a versioned carrier statement linked to evidence. Device class means a technical capability definition. Device fit means a separate technical relationship between a catalog record and a class. Requirement assertion means a literal consumer- or professional-supplied statement, never carrier verification. Potential discount category means a current carrier source names the class but does not establish case eligibility or savings. Public offer means a current carrier-controlled source names an offering in the shown scope. SmartDevices recommendation means independent editorial guidance. Confirmation needed means evidence, scope, currency, or client context is incomplete or conflicting.
+
+
+## v5 Business Builder conformance decisions
+
+| ID | Decision | Reason | Status |
+|---|---|---|---|
+| PD-035 | Treat SmartDevices as a first-party Business Builder dogfood business with no privileged semantics | The Business Builder constitution explicitly requires first-party products to prove the same architecture intended for external users | Accepted · SD-BB-0 |
+| PD-036 | SD-BB-0 outcome is REDESIGN — continue, not unconditional GO | Core capability is credible, but customer wedge, paid unit, distribution, intervention economics and business sequencing require proof | Accepted · SD-BB-0 |
+| PD-037 | Use bounded commercial/property monitoring buyers as the first paying Builder wedge | Higher-value measurable problems and later fleet/interoperability needs provide a stronger initial business than generic hobby gadget generation | Accepted as MVB hypothesis · validate with customers |
+| PD-038 | Make the Validated Build Pack the first paid unit | It matches the naturally project-based need and avoids inventing subscription recurrence before recurring customer value exists | Accepted as offer hypothesis · validate price/willingness to pay |
+| PD-039 | Define the SmartDevices Build Evidence Graph as the durable asset | Generic code/CAD/PCB generation is rapidly commoditizing; physical build/field outcomes and lineage compound from SmartDevices usage | Accepted · SD-BB-0 |
+| PD-040 | Classify SD-001 as BB7 Build & Verify, not MVB | A founder-built internal prototype proves technical delivery but not an external revenue loop | Accepted · SD-BB-0 |
+| PD-041 | Require SD-MVB-001 and at least one external paid or contractually committed supported Build Pack before declaring MVB | Prevents technical progress from being mislabeled as business validation | Accepted · SD-BB-0 |
+| PD-042 | MESH-DEVICE-001 does not block MVB | Mesh is strategically useful but business validation should precede optional infrastructure expansion on the critical path | Accepted · SD-BB-0 |
+| PD-043 | Track Owner Intervention Hours, Intervention Rate, Autonomous Gross Profit Efficiency and per-build economics from SD-001 onward | The constitutional target is an owner-light trustworthy business, not merely revenue or feature count | Accepted · SD-BB-0 |
+| PD-044 | Integrate specialist hardware/EDA/sourcing/manufacturing systems rather than treating their primitive capabilities as the moat | Current market tools already automate PCB, schematic, firmware/device configuration and sourcing layers | Accepted · SD-BB-0 |
+
+## v5.3 ecosystem reconciliation decisions
+
+| ID | Decision | Reason | Status |
+|---|---|---|---|
+| PD-045 | Treat the v5.2 SD-BB-0 source artifact as the canonical implementation baseline rather than old GitHub main | It contains materially newer Builder, evidence, protection and business-governance work | Accepted · ECOSYSTEM-RECONCILIATION-1.0 |
+| PD-046 | Preserve DISCOVER/Protect/Builder/Farmers and generalize underneath them | The North Star is additive; mature truth/safety boundaries should not be rewritten | Accepted |
+| PD-047 | Make normalized capabilities a core interoperability layer while retaining categories for human navigation | Third-party devices should add value without forcing users to think in protocol jargon | Accepted |
+| PD-048 | Keep catalog editorial verification distinct from device trust state | Source review of a model does not prove instance ownership, identity or authorization | Accepted |
+| PD-049 | Require sequential explicit evidence for upward trust-state transitions | Registration, connectivity and identity must never silently grant stronger authority | Accepted |
+| PD-050 | Store registration attribution as registrant, not owner | Account association is not proof of physical ownership/control | Accepted |
+| PD-051 | Keep Mesh participation optional at baseline | SmartDevices must create independent value while Mesh adds identity/authorization/execution capabilities | Accepted |
+| PD-052 | Implement Connect as bounded registration + adapter contracts before broad integrations | Establishes durable normalization without fabricating manufacturer/device connectivity | Accepted |
+| PD-053 | Defer consequential Operate and transactional activation | Network reachability is not permission; mature Mesh authorization should be reused when operation is justified | Accepted |
+| PD-054 | Keep device.eth and deviceregistry.org as explicit identity/registry boundaries, not proof mechanisms | Namespace/registry presence cannot prove ownership, safety, authenticity or authorization | Accepted |

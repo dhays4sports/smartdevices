@@ -1,0 +1,14 @@
+/* SD-MKT-0.5 preview-only sponsored fulfillment */
+.commercial-options-preview { margin-top: 24px; padding: 22px; border: 1px solid rgba(26,120,108,.24); border-radius: var(--radius); background: rgba(245,252,250,.96); color: var(--ink); }
+.commercial-options-kicker { color: var(--teal); font-size: 10px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+.commercial-options-header { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; margin-top: 8px; }
+.commercial-options-header h3 { margin: 0; font-size: 22px; letter-spacing: -.03em; }
+.commercial-options-header p { max-width: 720px; margin: 8px 0 0; color: var(--muted); line-height: 1.55; }
+.sponsored-pill { flex: 0 0 auto; border: 1px solid rgba(26,120,108,.28); border-radius: 999px; padding: 7px 10px; color: var(--teal); background: #fff; font-size: 11px; font-weight: 800; }
+.commercial-offer-row { display: flex; justify-content: space-between; gap: 18px; align-items: center; margin-top: 18px; padding: 18px; border-radius: 16px; background: #fff; box-shadow: 0 10px 28px rgba(0,0,0,.05); }
+.commercial-offer-row strong, .commercial-offer-row span { display: block; }
+.commercial-offer-row span { margin-top: 4px; color: var(--muted); }
+.market-disclosure { margin-top: 14px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+.market-disclosure summary { cursor: pointer; color: var(--teal); font-weight: 760; }
+.market-disclosure p { margin: 8px 0 0; }
+@media (max-width: 720px) { .commercial-options-header, .commercial-offer-row { flex-direction: column; align-items: stretch; } .sponsored-pill { align-self: flex-start; } }

@@ -99,7 +99,7 @@ function isProfessional(device: Device): boolean {
   return /professional|plumb|hardwir/i.test(device.installation);
 }
 
-export function buildScanResult(domainId: DomainId, concernId: string, answers: ScanAnswer[]): ScanResult {
+export function buildScanResult(domainId: DomainId, concernId: string, answers: ScanAnswer[], publishedDevices: Device[] = devices): ScanResult {
   const map = answerMap(answers);
   const questions = questionsFor(domainId, concernId);
   const unknowns = questions
@@ -107,7 +107,7 @@ export function buildScanResult(domainId: DomainId, concernId: string, answers: 
     .map((question) => `${question.prompt} remains unknown.`);
   const assumptions: string[] = [];
   const exclusions: string[] = [];
-  const candidates = devices.filter((device) => device.status === "active" && device.domains.includes(domainId) && device.concerns.includes(concernId));
+  const candidates = publishedDevices.filter((device) => device.status === "active" && device.domains.includes(domainId) && device.concerns.includes(concernId));
 
   if (!answers.length) assumptions.push("No scan answers were available; results use only the selected concern and published catalog facts.");
 

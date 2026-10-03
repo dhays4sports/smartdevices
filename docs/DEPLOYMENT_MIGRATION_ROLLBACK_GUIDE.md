@@ -38,3 +38,15 @@ Both final ZIPs have `package.json` at archive root and no wrapper directory. Th
 ## Local rehearsal evidence
 
 See `CLEAN_EXTRACTION_DEPLOYMENT_REHEARSAL.md` and the two append-only transcripts under `docs/evidence/`. No deploy command was run.
+
+## v5.3 / migration 0007 rollback
+
+`0007_device_registry_foundation.sql` is additive. If the Connect foundation must be rolled back:
+
+1. stop routing users to `/connect` and disable device-registration writes;
+2. roll application code back to the prior compatible release;
+3. leave the additive registry tables in place during the rollback/retention window;
+4. do not reinterpret `registered` records as ownership/control claims during rollback;
+5. only drop registry tables under a separately approved data-retention/destructive-migration procedure.
+
+No earlier migration is modified by v5.3.

@@ -3,13 +3,15 @@ import Link from "next/link";
 import { ProtectionExplorer } from "./components/ProtectionExplorer";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
+import { getPublishedEvidenceBundle } from "./lib/evidence-store";
 
-export default function Home() {
+export default async function Home() {
+  const bundle = await getPublishedEvidenceBundle();
   return (
     <>
       <SiteHeader />
       <main>
-        <ProtectionExplorer />
+        <ProtectionExplorer publishedDevices={bundle.catalog} />
         <section className="institutional-strip" aria-labelledby="intelligence-title">
           <div className="institutional-visual">
             <Image src="/legacy/intelligence-globe.svg" alt="Abstract network globe from the SmartDevices archive" width={720} height={720} unoptimized />

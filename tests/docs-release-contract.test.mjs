@@ -15,6 +15,10 @@ const requiredDocs = [
   "docs/CARRIER_BRAND_GUIDE.md", "docs/CARRIER_INTEGRATION_GUIDE.md",
   "docs/SAMPLE_CALIFORNIA_FARMERS_WATER_PLAN.md", "docs/SAMPLE_CALIFORNIA_FARMERS_MONITORED_SECURITY_PLAN.md",
   "docs/KNOWN_LIMITATIONS_AND_CUTOVER_READINESS.md",
+  "docs/SD-BB-0_BUSINESS_BUILDER_CONFORMANCE.md",
+  "docs/SMARTDEVICES_BUSINESS_BLUEPRINT.md",
+  "docs/SMARTDEVICES_MVB_MAB_AUTONOMY.md",
+  "docs/SD-BB-0_CONFORMANCE_RECORD.json",
 ];
 
 test("every v4.2 release document exists at the documented root-relative path", async () => {
