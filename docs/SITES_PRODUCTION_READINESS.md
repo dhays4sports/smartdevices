@@ -1,12 +1,12 @@
 # Sites adoption evidence and production gates
 
-Verdict pending final deployment evidence; no production-domain cutover authorized. The central hosted two-account acceptance journey remains a release gate.
+Verdict: **NOT READY** for primary-hosting adoption certification until the central hosted journey is proved. The private test runtime is deployed and usable for continued validation; no production-domain cutover authorized. The central hosted two-account acceptance journey remains a release gate.
 
 | Gate | Current evidence |
 |---|---|
 | GitHub canonical source | Continuation branch from unchanged PR #2 |
 | Existing safe preview preserved | Confirmed native Site version and source SHA |
-| Test environment separate | New Site ID and managed DB binding; no production credentials |
+| Test environment separate | Native deployment succeeded; managed DB has all 28 expected tables; no production credentials |
 | Local persistence/account isolation/IDOR | Real SQLite + shared HTTP handlers; actual Miniflare D1 batch/restart test also passes |
 | Local export/restore | Fresh database recovery rehearsal |
 | Hosted browser sign-in/save/reload/reopen | NOT VERIFIED |
@@ -28,3 +28,5 @@ Secrets and migrations are hosting responsibilities even when Sites manages Clou
 
 ## Acceptance handoff
 Use the step-by-step worksheet in SITES_TEST_ENVIRONMENT.md. Record A's ID privately, B denial outcomes and A's returned revision after redeploy. Production decision must be based on completed observations, not the existence of this worksheet.
+
+Executed counts and evidence are consolidated in SITES_HOSTING_VERIFICATION.md. Hosted forged-identity-header probes return 401; service access does not grant user authority.

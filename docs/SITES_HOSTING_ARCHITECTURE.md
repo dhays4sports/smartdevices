@@ -25,7 +25,7 @@ All test responses are private/no-store/noindex. Canonical content metadata rema
 ## Authentication and authorization
 Sites dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, and callback routes. We did not create a password provider or synthetic-login backdoor. The app reads the stable `oai-authenticated-user-id` supplied by dispatch. Email is display/professional-grant context, not Builder ownership. Builder requires `sites:<id>`; email-only headers fail closed. User IDs are stable within one Site and differ across Sites.
 
-This trust boundary is valid only behind the authenticating dispatcher. A directly exposed Worker must strip untrusted forwarded identity and verify an equivalent provider assertion. Service-access credentials are NOT user identity and cannot save/read user projects. Hosted spoofed-header resistance still requires platform-boundary verification.
+This trust boundary is valid only behind the authenticating dispatcher. A directly exposed Worker must strip untrusted forwarded identity and verify an equivalent provider assertion. Service-access credentials are NOT user identity and cannot save/read user projects. Hosted probe with a valid service credential plus forged synthetic identity headers returned 401; this confirms that probe cannot create a user identity. A live cross-user browser check remains required.
 
 Old email-owned Builder records are not silently reassigned. The new test DB is empty. Any future migration of old data requires a verified owner mapping, separately backed up and reviewed.
 
