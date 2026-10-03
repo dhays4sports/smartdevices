@@ -11,3 +11,5 @@ Outstanding REQUIRED adoption gates: real hosted synthetic A/B sign-in/save/relo
 Custom domain: plan exists; Cloudflare DNS/mail dependencies recorded in CUSTOM_DOMAIN_CUTOVER_PLAN.md. Future exact Sites record/TLS values require hostname registration. Never modify DNS under this mandate. Preview remains noindex; public live indexing/canonical performance not certified.
 
 Production cutover: NOT READY and NOT AUTHORIZED. Current active Pilot is sufficient for engineering validation only. Primary hosting can be reconsidered after the central acceptance journey and recovery gates, not merely a successful render.
+
+Continuation release: SmartDevices PR #4 deploys successfully with14 migrations/29 tables. Hosted14 boundary probes and3 metric HTTP probes pass; native read confirms one synthetic counter. This improves operational evidence but does not satisfy authenticated owned-project persistence/isolation/recovery gates. Verdict unchanged.

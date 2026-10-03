@@ -1,0 +1,147 @@
+[
+  {
+    "path": "/api/version",
+    "method": "GET",
+    "forgedHeaders": false,
+    "status": 200,
+    "expected": 200,
+    "cache": "private, no-store, max-age=0",
+    "robots": "noindex, nofollow",
+    "version": {
+      "repository": "dhays4sports/smartdevices",
+      "sha": "4f5f42134842741779b182125b20b5a4f148c25c",
+      "environment": "isolated-sites-test"
+    },
+    "pass": true
+  },
+  {
+    "path": "/build",
+    "method": "GET",
+    "forgedHeaders": false,
+    "status": 200,
+    "expected": 200,
+    "cache": "private, no-store, max-age=0",
+    "robots": "noindex, nofollow",
+    "pass": true
+  },
+  {
+    "path": "/devices",
+    "method": "GET",
+    "forgedHeaders": false,
+    "status": 200,
+    "expected": 200,
+    "cache": "private, no-store, max-age=0",
+    "robots": "noindex, nofollow",
+    "pass": true
+  },
+  {
+    "path": "/farmers",
+    "method": "GET",
+    "forgedHeaders": false,
+    "status": 200,
+    "expected": 200,
+    "cache": "private, no-store, max-age=0",
+    "robots": "noindex, nofollow",
+    "pass": true
+  },
+  {
+    "path": "/connect",
+    "method": "GET",
+    "forgedHeaders": false,
+    "status": 200,
+    "expected": 200,
+    "cache": "private, no-store, max-age=0",
+    "robots": "noindex, nofollow",
+    "pass": true
+  },
+  {
+    "path": "/operate",
+    "method": "GET",
+    "forgedHeaders": false,
+    "status": 200,
+    "expected": 200,
+    "cache": "private, no-store, max-age=0",
+    "robots": "noindex, nofollow",
+    "pass": true
+  },
+  {
+    "path": "/api/builder/projects",
+    "method": "GET",
+    "forgedHeaders": false,
+    "status": 401,
+    "expected": 401,
+    "cache": "private, no-store, max-age=0",
+    "robots": "noindex, nofollow",
+    "pass": true
+  },
+  {
+    "path": "/api/builder/projects",
+    "method": "POST",
+    "forgedHeaders": false,
+    "status": 401,
+    "expected": 401,
+    "cache": "private, no-store, max-age=0",
+    "robots": "noindex, nofollow",
+    "pass": true
+  },
+  {
+    "path": "/api/builder/projects",
+    "method": "GET",
+    "forgedHeaders": true,
+    "status": 401,
+    "expected": 401,
+    "cache": "private, no-store, max-age=0",
+    "robots": "noindex, nofollow",
+    "pass": true
+  },
+  {
+    "path": "/api/builder/export?id=sd-synthetic-missing",
+    "method": "GET",
+    "forgedHeaders": false,
+    "status": 401,
+    "expected": 401,
+    "cache": "private, no-store, max-age=0",
+    "robots": "noindex, nofollow",
+    "pass": true
+  },
+  {
+    "path": "/api/builder/restore",
+    "method": "POST",
+    "forgedHeaders": false,
+    "status": 401,
+    "expected": 401,
+    "cache": "private, no-store, max-age=0",
+    "robots": "noindex, nofollow",
+    "pass": true
+  },
+  {
+    "path": "/api/builder/execute",
+    "method": "POST",
+    "forgedHeaders": false,
+    "status": 403,
+    "expected": 403,
+    "cache": "private, no-store, max-age=0",
+    "robots": "noindex, nofollow",
+    "pass": true
+  },
+  {
+    "path": "/api/devices/register",
+    "method": "POST",
+    "forgedHeaders": false,
+    "status": 403,
+    "expected": 403,
+    "cache": "private, no-store, max-age=0",
+    "robots": "noindex, nofollow",
+    "pass": true
+  },
+  {
+    "path": "/api/integrations/handoff",
+    "method": "POST",
+    "forgedHeaders": false,
+    "status": 403,
+    "expected": 403,
+    "cache": "private, no-store, max-age=0",
+    "robots": "noindex, nofollow",
+    "pass": true
+  }
+]

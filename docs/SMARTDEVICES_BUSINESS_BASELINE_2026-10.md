@@ -21,3 +21,5 @@ Recorded 2026-10-03; preserve unknowns rather than infer demand from synthetic Q
 | Owner recurring minutes / data-update burden | UNKNOWN | Begin ledger; targets are not measured results |
 
 Dogfood evidence: reused the 15-device catalog, existing home planner, comparison, Builder, authentication/store and Sites deployment. No replacement app, second project database or new agent chatbot. One additive counter table. Sites avoided provisioning an independent app runtime; hours saved UNKNOWN. Time to ABE/archetype/measurement: delivered in this continuation, elapsed work time not reliably measured. First real monetization signal: NOT OBSERVED. Owner interventions during hosted auth acceptance remain required; count not inferred from chat messages.
+
+Post-implementation engineering observation: isolated daily metrics table contains one deliberately submitted synthetic outbound_product_click (2026-10-03). This is collection/persistence proof only; real-user events and revenue remain UNKNOWN.
