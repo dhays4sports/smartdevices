@@ -66,3 +66,7 @@ A clean locked install was attempted. `npm ci --offline` failed because `zod-val
 - generated-dist runtime/direct-load checks.
 
 These remain PR/CI or externally connected environment gates.
+
+## Hosted preview status
+
+GitHub publication triggered the repository's existing Cloudflare integration for draft PR #2. Cloudflare reported **deployment failed** for implementation commit `41e92ea4b638ddd706e182247bdacd106b9c0635`. The dashboard build log is not accessible from this environment, so this is recorded as a failed hosted gate with cause unresolved. No preview or production deployment is claimed.

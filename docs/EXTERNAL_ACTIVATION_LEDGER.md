@@ -40,3 +40,12 @@ No external deployment, account, message, purchase, enrollment, or live partner 
 | deviceregistry.org external service | Not activated | Separate deployment/domain/infrastructure approval |
 | Agent device operation | Not activated | Governed Mesh permission/mandate/execution integration and safety review |
 | Transactional device action | Not activated | Separate financial authorization/settlement certification |
+
+## 2026-10-02 — Ecosystem reconciliation PR #2
+
+- GitHub branch: `smartdevices-ecosystem-reconciliation-1.0`
+- Draft PR: #2
+- Cloudflare Git integration: attempted automatically after branch publication; **failed** on implementation commit `41e92ea4b638ddd706e182247bdacd106b9c0635`.
+- Successful preview URL: none observed.
+- Production activation: **not authorized / not performed**.
+- Next external step: inspect Cloudflare build logs or run the full locked install/typecheck/lint/build in a connected CI environment before retrying preview deployment.

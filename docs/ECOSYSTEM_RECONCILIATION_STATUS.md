@@ -37,3 +37,9 @@ Local source implementation and local test evidence do not imply public deployme
 ## Assumption audit
 
 Material legacy assumptions and their dispositions are recorded in `ECOSYSTEM_ASSUMPTION_AUDIT.md`. No audited conflict required a rebuild.
+
+## GitHub / hosting status
+
+The reconciliation is published on `smartdevices-ecosystem-reconciliation-1.0` as draft PR #2. Nothing has been merged to `main`. PR #1 is preserved as governance provenance but superseded by PR #2 for implementation reconciliation.
+
+Cloudflare automatically attempted a branch deployment after publication and reported a failed deployment. No hosted reconciliation preview is claimed. The failure requires Cloudflare build-log access or a connected CI environment to diagnose; do not infer a cause from the failure badge alone.

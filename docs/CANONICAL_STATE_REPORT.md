@@ -72,3 +72,14 @@ No runtime `device.eth` or `deviceregistry.org` implementation was found in the 
 ## Outstanding ambiguity
 
 The canonical implementation candidate is an immutable source archive rather than an existing GitHub commit. This reconciliation branch therefore imports/reconstructs that source state and documents the source archive hash as its pre-GitHub immutable identifier. No evidence of a newer SmartDevices implementation state was found in the accessible repository branches or newer SmartDevices Library artifacts reviewed for this mandate.
+
+## Reconciliation publication status
+
+A clean reconciliation branch was published from the recovered implementation plus the reconciled North Star:
+
+- branch: `smartdevices-ecosystem-reconciliation-1.0`;
+- draft PR: `#2 — SMARTDEVICES-ECOSYSTEM-RECONCILIATION-1.0: canonical recovery + device foundation`;
+- implementation-tree commit before the final status-only documentation update: `41e92ea4b638ddd706e182247bdacd106b9c0635`;
+- PR #1 remains unmerged and is explicitly marked as superseded for implementation purposes.
+
+Cloudflare's Git integration attempted a branch deployment for PR #2 and reported **deployment failed**. No successful reconciliation preview URL was issued. The Cloudflare dashboard log requires external account access not available in this execution environment, so no cause is invented here. The failed preview does not alter the local verification results and is recorded as an external/manual blocker.
