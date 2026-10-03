@@ -6,11 +6,12 @@ import { DeviceCard } from "./DeviceCard";
 import { domains, type Device, type DomainId } from "@/app/lib/data";
 import { createLocalPlan, encodePlanSelection } from "@/app/lib/plan";
 import { persistLocalPlan } from "@/app/lib/local-plan-store";
-import { canonicalCapabilitiesForDevice } from "@/app/lib/device-capabilities";
+import { canonicalCapabilitiesForDevice, deviceCapabilities } from "@/app/lib/device-capabilities";
 
 type Props = { initialDomain?: string; initialConcern?: string; publishedDevices: Device[] };
 
 export function DeviceLibrary({ initialDomain = "all", initialConcern = "", publishedDevices }: Props) {
+  const [capability, setCapability] = useState("");
   const [query, setQuery] = useState("");
   const [domain, setDomain] = useState(initialDomain);
   const [concern, setConcern] = useState(initialConcern);
@@ -25,6 +26,7 @@ export function DeviceLibrary({ initialDomain = "all", initialConcern = "", publ
   const filtered = useMemo(() => {
     const needle = query.trim().toLowerCase();
     return publishedDevices.filter((device) => {
+      if (capability && !canonicalCapabilitiesForDevice(device).some((item) => item.id === capability)) return false;
       if (domain !== "all" && !device.domains.includes(domain as DomainId)) return false;
       if (concern && !device.concerns.includes(concern)) return false;
       if (!needle) return true;
@@ -33,7 +35,7 @@ export function DeviceLibrary({ initialDomain = "all", initialConcern = "", publ
         .toLowerCase()
         .includes(needle);
     });
-  }, [query, domain, concern, publishedDevices]);
+  }, [query, domain, concern, capability, publishedDevices]);
 
   function toggleCompare(device: Device) {
     setCompare((items) =>
@@ -60,8 +62,9 @@ export function DeviceLibrary({ initialDomain = "all", initialConcern = "", publ
   return (
     <section className="library-shell">
       <div className="library-controls">
+        <label><span>Capability</span><select aria-label="Capability" value={capability} onChange={(event) => setCapability(event.target.value)}><option value="">All capabilities</option>{deviceCapabilities.filter((item) => publishedDevices.some((device) => canonicalCapabilitiesForDevice(device).some((binding) => binding.id === item.id))).map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}</select></label>
         <label className="search-field">
-          <span>Search verified device information</span>
+          <span>Search source-linked device information</span>
           <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Try water shutoff, temperature, or measure.temperature" />
         </label>
         <label>
@@ -95,7 +98,7 @@ export function DeviceLibrary({ initialDomain = "all", initialConcern = "", publ
           />
         ))}
       </div>
-      {!filtered.length ? <div className="empty-state"><p>No verified record matches those filters.</p><button type="button" onClick={() => { setQuery(""); setDomain("all"); setConcern(""); }}>Clear filters</button></div> : null}
+      {!filtered.length ? <div className="empty-state"><p>No source-linked record matches those filters.</p><button type="button" onClick={() => { setQuery(""); setDomain("all"); setConcern(""); setCapability(""); }}>Clear filters</button></div> : null}
       <aside className={compare.length || plan.length ? "library-dock has-items" : "library-dock"}>
         <div><strong>{compare.length} comparing</strong><span> · </span><strong>{plan.length} in plan</strong></div>
         <div>

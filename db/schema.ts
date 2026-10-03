@@ -272,3 +272,138 @@ export const deviceIntegrations = sqliteTable("device_integrations", {
   createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
   updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 }, (table) => [index("device_integrations_device_idx").on(table.deviceId), index("device_integrations_adapter_idx").on(table.adapterId)]);
+
+export const marketShadowRuns = sqliteTable("market_shadow_runs", {
+  id: text("id").primaryKey(),
+  intentId: text("intent_id").notNull(),
+  opportunityId: text("opportunity_id"),
+  allocationId: text("allocation_id"),
+  allocationReceiptId: text("allocation_receipt_id"),
+  status: text("status", { enum: ["filled", "no-market", "error"] }).notNull(),
+  domain: text("domain").notNull(),
+  concernId: text("concern_id").notNull(),
+  jurisdiction: text("jurisdiction"),
+  recommendedDeviceIdsJson: text("recommended_device_ids_json").notNull().default("[]"),
+  sponsoredProviderId: text("sponsored_provider_id"),
+  sponsoredDeviceId: text("sponsored_device_id"),
+  clearingAmountMicros: integer("clearing_amount_micros"),
+  currency: text("currency"),
+  evaluatedJson: text("evaluated_json").notNull().default("[]"),
+  errorCode: text("error_code"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  uniqueIndex("market_shadow_intent_unique").on(table.intentId),
+  index("market_shadow_status_idx").on(table.status, table.createdAt),
+  index("market_shadow_provider_idx").on(table.sponsoredProviderId, table.createdAt),
+]);
+
+
+export const marketOfferIdentityReceipts = sqliteTable("market_offer_identity_receipts", {
+  id: text("id").primaryKey(),
+  shadowRunId: text("shadow_run_id").notNull(),
+  intentId: text("intent_id").notNull(),
+  status: text("status", { enum: ["mapped", "unmapped", "rejected"] }).notNull(),
+  reason: text("reason"),
+  opportunityId: text("opportunity_id"),
+  allocationId: text("allocation_id"),
+  allocationReceiptId: text("allocation_receipt_id"),
+  bidId: text("bid_id"),
+  providerId: text("provider_id"),
+  providerName: text("provider_name"),
+  offerId: text("offer_id"),
+  deviceId: text("device_id"),
+  fulfillmentType: text("fulfillment_type", { enum: ["manufacturer-direct", "retailer", "installer", "marketplace", "carrier-program"] }),
+  destinationUrl: text("destination_url"),
+  offerPayloadHash: text("offer_payload_hash"),
+  bindingHash: text("binding_hash").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  uniqueIndex("market_offer_identity_allocation_unique").on(table.allocationId),
+  index("market_offer_identity_status_idx").on(table.status, table.createdAt),
+  index("market_offer_identity_device_idx").on(table.deviceId, table.createdAt),
+]);
+
+
+export const marketProviderVerificationReceipts = sqliteTable("market_provider_verification_receipts", {
+  id: text("id").primaryKey(),
+  shadowRunId: text("shadow_run_id").notNull(),
+  intentId: text("intent_id").notNull(),
+  allocationId: text("allocation_id"),
+  providerId: text("provider_id").notNull(),
+  deviceId: text("device_id").notNull(),
+  status: text("status", { enum: ["verified", "stale", "unavailable", "missing", "rejected"] }).notNull(),
+  reason: text("reason"),
+  verificationId: text("verification_id"),
+  sourceUrl: text("source_url"),
+  checkedAt: text("checked_at"),
+  ageHoursMillis: integer("age_hours_millis"),
+  availability: text("availability", { enum: ["available", "unavailable", "unknown"] }),
+  priceMicros: integer("price_micros"),
+  currency: text("currency"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  uniqueIndex("market_provider_verification_allocation_unique").on(table.allocationId),
+  index("market_provider_verification_status_idx").on(table.status, table.createdAt),
+  index("market_provider_verification_provider_idx").on(table.providerId, table.createdAt),
+]);
+
+export const marketOutcomeAttributions = sqliteTable("market_outcome_attributions", {
+  id: text("id").primaryKey(),
+  transactionId: text("transaction_id").notNull(),
+  event: text("event", { enum: ["sponsored-offer-viewed", "sponsored-offer-opened", "provider-selected"] }).notNull(),
+  occurredAt: text("occurred_at").notNull(),
+  intentId: text("intent_id").notNull(),
+  opportunityId: text("opportunity_id").notNull(),
+  allocationId: text("allocation_id").notNull(),
+  allocationReceiptId: text("allocation_receipt_id"),
+  offerIdentityReceiptId: text("offer_identity_receipt_id").notNull(),
+  providerVerificationReceiptId: text("provider_verification_receipt_id").notNull(),
+  offerId: text("offer_id").notNull(),
+  providerId: text("provider_id").notNull(),
+  deviceId: text("device_id").notNull(),
+  destinationUrl: text("destination_url").notNull(),
+  source: text("source", { enum: ["preview"] }).notNull().default("preview"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  uniqueIndex("market_outcome_transaction_event_unique").on(table.transactionId, table.event),
+  index("market_outcome_allocation_idx").on(table.allocationId, table.createdAt),
+  index("market_outcome_provider_idx").on(table.providerId, table.createdAt),
+]);
+
+export const marketProviderCallbackNonces = sqliteTable("market_provider_callback_nonces", {
+  id: text("id").primaryKey(),
+  providerId: text("provider_id").notNull(),
+  nonce: text("nonce").notNull(),
+  timestamp: text("timestamp").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  uniqueIndex("market_provider_callback_nonce_unique").on(table.providerId, table.nonce),
+  index("market_provider_callback_provider_idx").on(table.providerId, table.createdAt),
+]);
+
+export const marketConversionReceipts = sqliteTable("market_conversion_receipts", {
+  id: text("id").primaryKey(),
+  transactionId: text("transaction_id").notNull(),
+  event: text("event", { enum: ["purchase", "installation"] }).notNull(),
+  source: text("source", { enum: ["user-confirmed", "provider-callback"] }).notNull(),
+  confidence: text("confidence", { enum: ["self-reported", "provider-verified"] }).notNull(),
+  occurredAt: text("occurred_at").notNull(),
+  intentId: text("intent_id").notNull(),
+  opportunityId: text("opportunity_id").notNull(),
+  allocationId: text("allocation_id").notNull(),
+  allocationReceiptId: text("allocation_receipt_id"),
+  offerIdentityReceiptId: text("offer_identity_receipt_id").notNull(),
+  providerVerificationReceiptId: text("provider_verification_receipt_id").notNull(),
+  offerId: text("offer_id").notNull(),
+  providerId: text("provider_id").notNull(),
+  deviceId: text("device_id").notNull(),
+  providerReferenceHash: text("provider_reference_hash"),
+  callbackNonce: text("callback_nonce"),
+  bindingHash: text("binding_hash").notNull(),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  uniqueIndex("market_conversion_transaction_event_source_unique").on(table.transactionId, table.event, table.source),
+  index("market_conversion_allocation_idx").on(table.allocationId, table.createdAt),
+  index("market_conversion_provider_idx").on(table.providerId, table.createdAt),
+  index("market_conversion_confidence_idx").on(table.confidence, table.createdAt),
+]);

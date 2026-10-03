@@ -17,6 +17,7 @@ export function buildPackFiles(project: DeviceProject): Record<string, string> {
   const readme = `# SmartDevices Build Pack\n\nThis pack is portable project documentation for ${project.title}.\n\nGenerated files do not claim physical verification, certification, carrier acceptance, manufacturing readiness, successful firmware compilation, successful CAD generation, or live supplier availability unless the corresponding execution/research/sourcing record explicitly says so.\n\nFiles:\n- Project_Brief.md\n- Requirements_Orchestration.md\n- Research_Decision.md\n- Intelligence_Architecture.md\n- Capability_Requirements.md\n- BOM.csv\n- Firmware/device.ino\n- Firmware/libraries.txt\n- CAD/enclosure.py\n- Build_Execution.md\n- Assembly_Guide.md\n- Test_Procedure.md\n- Validation.md\n- Project_Manifest.json\n`;
   return {
     "README.md": readme,
+    "Device_Capabilities.json": JSON.stringify({ schemaVersion: 1, projectId: project.id, status: "design-only", capabilityIds: project.requiredCapabilities.map((item) => item.id), meshRequired: project.intelligence.mode === "mesh-native", authorization: "not-granted", execution: "disabled" }, null, 2),
     "Project_Brief.md": brief,
     "Requirements_Orchestration.md": orchestration,
     "Research_Decision.md": research,

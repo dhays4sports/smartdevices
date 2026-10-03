@@ -57,6 +57,41 @@
       "when": 1790980000000,
       "tag": "0007_device_registry_foundation",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1791005848019,
+      "tag": "0007_market_shadow_observability",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "6",
+      "when": 1791005848020,
+      "tag": "0008_market_offer_identity",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "6",
+      "when": 1791005848021,
+      "tag": "0009_market_provider_verification",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "6",
+      "when": 1791005848022,
+      "tag": "0010_market_outcome_attribution",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "6",
+      "when": 1791005848023,
+      "tag": "0011_market_conversion_proof",
+      "breakpoints": true
     }
   ]
 }

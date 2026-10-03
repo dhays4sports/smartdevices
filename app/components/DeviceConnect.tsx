@@ -47,7 +47,7 @@ export function DeviceConnect({ authenticated }: Props) {
         body: JSON.stringify({ manufacturer, model, category, capabilityIds, connection: { protocols: protocols.split(",").map((item) => item.trim()).filter(Boolean), locality: "unknown" }, meshReadiness }),
       });
       const body = await response.json();
-      if (!response.ok) throw new Error(body?.message ?? body?.error ?? "Registration failed");
+      if (!response.ok) throw new Error(body?.error?.message ?? body?.message ?? "Registration failed");
       setRegistered((current) => [body.device, ...current]);
       setNotice("Registered. This does not verify ownership, identity, permission, reachability, or agent control.");
       setManufacturer(""); setModel(""); setCapabilityIds([]);
@@ -73,7 +73,7 @@ export function DeviceConnect({ authenticated }: Props) {
       </form>
       {notice ? <p className="builder-notice" role="status">{notice}</p> : null}
     </section>
-    <aside className={styles.trustCard}><p className="eyebrow">Trust ladder</p><h2>One state at a time.</h2><ol>{["Discovered", "Registered", "Claimed", "Verified", "Identified", "Permissioned", "Agent-operable", "Transactional"].map((item) => <li key={item}>{item}</li>)}</ol><p>A weaker state never silently grants the next one. Device credentials remain outside public discovery records.</p></aside>
+    <aside className={styles.trustCard}><p className="eyebrow">Trust ladder</p><h2>Separate evidence for each state.</h2><ol>{["Discovered", "Registered", "Claimed", "Verified", "Identified", "Permissioned", "Agent-operable", "Transactional"].map((item) => <li key={item}>{item}</li>)}</ol><p>A weaker state never silently grants the next one. Device credentials remain outside public discovery records.</p></aside>
     {authenticated && registered.length ? <section className={styles.registered}><p className="eyebrow">Your registered records</p><div>{registered.map((device) => <article key={device.recordId}><strong>{device.manufacturer} {device.model}</strong><span>{device.trust.state}</span><p>{device.capabilities.map((item) => item.id).join(" · ")}</p></article>)}</div></section> : null}
   </div>;
 }

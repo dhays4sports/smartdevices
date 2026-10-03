@@ -83,3 +83,7 @@ A clean reconciliation branch was published from the recovered implementation pl
 - PR #1 remains unmerged and is explicitly marked as superseded for implementation purposes.
 
 Cloudflare's Git integration attempted a branch deployment for PR #2 and reported **deployment failed**. No successful reconciliation preview URL was issued. The Cloudflare dashboard log requires external account access not available in this execution environment, so no cause is invented here. The failed preview does not alter the local verification results and is recorded as an external/manual blocker.
+
+## Superseding recovery audit — reconciliation 1.1
+
+The original report above is historical. A later accessible workspace exposed the independent SD-MKT-0.9 archive recovery at `71f59e3b591d4db00648eed962a4d42b667b7f81`, absent from the v5.3 archive/PR #2. The true coherent review candidate is now the continuation of PR #2 starting at `2c0c8692d6a5f3e44934fe0f425503bfe0540729`, with both the published registration/Builder v4 implementation and recovered market work preserved. Main remains `7556775e3d2dbdfb7d83732b308abaaec0a151e5`. The 369-file v5.3 archive matches the starting PR tree exactly. See `ECOSYSTEM_RECOVERY_LEDGER_1_1.md` for recovery classification and provenance. Nothing is merged or deployed.

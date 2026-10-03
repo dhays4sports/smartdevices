@@ -265,7 +265,7 @@ img { max-width: 100%; }
 .page-hero .button-primary { margin-top: 18px; }
 .narrow-page { max-width: 820px; margin: auto; }
 .library-shell { width: min(1400px,100%); margin: auto; }
-.library-controls { display: grid; grid-template-columns: 1.8fr 1fr 1fr; gap: 12px; padding: 18px; border: 1px solid var(--line); border-radius: 22px; background: white; }
+.library-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 18px; border: 1px solid var(--line); border-radius: 22px; background: white; }
 .library-controls label, .builder-fields label, .workspace-sidebar label, .full-field, .contact-form label { display: grid; gap: 7px; color: var(--muted); font-size: 11px; font-weight: 760; }
 .library-controls input, .library-controls select, .builder-fields input, .builder-fields select, .workspace-sidebar input, textarea, .contact-form input, .contact-form select { width: 100%; min-height: 46px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); color: var(--ink); font-size: 14px; }
 textarea { resize: vertical; }

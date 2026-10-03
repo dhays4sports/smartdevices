@@ -9,7 +9,7 @@ export const MAX_BUILDER_PROJECT_BYTES = 256_000;
 
 export function validateDeviceProject(value: unknown): DeviceProject {
   if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("INVALID_PROJECT");
-  const project = value as Partial<DeviceProject> & { schemaVersion?: number; requiredCapabilities?: unknown };
+  const project = value as Omit<Partial<DeviceProject>, "schemaVersion" | "requiredCapabilities"> & { schemaVersion?: number; requiredCapabilities?: unknown };
   if (![3, 4].includes(Number(project.schemaVersion)) || typeof project.id !== "string" || !/^sd-[a-z0-9-]{6,80}$/i.test(project.id)) throw new Error("INVALID_PROJECT_ID");
   if (typeof project.title !== "string" || project.title.length < 1 || project.title.length > 120) throw new Error("INVALID_PROJECT_TITLE");
   if (typeof project.idea !== "string" || project.idea.length < 8 || project.idea.length > 3000) throw new Error("INVALID_PROJECT_IDEA");

@@ -96,3 +96,7 @@ The revised critical path is `Preview → SD-INTEROP-0.1 → SD-001/BB7 → SD-M
 | `SmartDevices_v5.3.0_rc1_ECOSYSTEM_RECONCILIATION_SOURCE_ROOT.zip` | Recovered v5.2 canonical source plus capability/trust/Connect foundations, migration `0007`, reconciliation docs/tests; no generated `dist/`, dependencies, caches or local env | Source/local gates recorded in `ECOSYSTEM_RECONCILIATION_VERIFICATION.md`; clean npm/type/lint/build/runtime gate pending |
 
 Do not relabel the source candidate as a production-certified/root-deployable build.
+
+### Reconciliation 1.1 continuation of v5.3.0-rc.1
+
+Same release candidate, same draft PR #2, preserved ancestry. Restored market checkpoint and independent trust facts; repaired type/lint/build and registration boundaries; no new product-release or production-certification claim. Validation: 336 tests, 3 migration paths, 24 browser route/viewport checks, 3 interactions. Full evidence in ECOSYSTEM_RECONCILIATION_VERIFICATION.md.

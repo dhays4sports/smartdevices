@@ -55,3 +55,7 @@ Public go-live status: not ready and not authorized
 - `device.eth` and `deviceregistry.org` are architectural boundaries only in this candidate; no external namespace/registry activation is claimed.
 - Consequential device operation and transactional actions remain disabled/deferred.
 - The local source gate cannot replace the pending clean dependency-aware install/type/lint/build/runtime verification because npm registry DNS is unavailable in this environment.
+
+## 1.1 superseding verification status
+
+The earlier missing-dependency limitation is resolved: locked install, full typecheck/lint/build, 336 tests and local browser checks pass. This does not resolve hosted authentication/D1/provider activation or physical hardware proof. Evidence freshness now evaluates the current date and reports two overdue sources (Farmers leak-detection California and Moen Flo product, both dated August 26); no dates were silently refreshed. Review these sources before relying on current carrier/product eligibility claims. Historical vulnerability totals above are historical, not a fresh vulnerability audit in this run.

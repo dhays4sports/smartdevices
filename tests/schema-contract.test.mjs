@@ -56,5 +56,6 @@ test("Builder persistence is additive and keeps insurance qualification explicit
   assert.match(registryMigration, /CREATE TABLE `device_registry_records`/);
   assert.match(registryMigration, /CREATE TABLE `device_control_claims`/);
   assert.match(registryMigration, /CREATE TABLE `device_integrations`/);
-  assert.equal(journal.entries.at(-1)?.tag, "0007_device_registry_foundation");
+  assert.ok(journal.entries.some((item) => item.tag === "0007_device_registry_foundation"));
+  assert.equal(journal.entries.at(-1)?.tag, "0011_market_conversion_proof");
 });

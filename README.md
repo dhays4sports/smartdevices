@@ -112,3 +112,9 @@ Start with:
 ## Current v5.3 reconciliation packaging
 
 The v5.3 reconciliation artifact is a **source-root release candidate**: `package.json` is at archive root and generated build output, dependencies, caches, local environment files and prior ZIP packages are excluded. The inherited v5.1 `dist/` is intentionally not included because a clean locked dependency install/full production build could not be completed in this environment. Run the release commands in `docs/BUILDER_LOCAL_VERIFICATION.md` before treating a prebuilt production artifact as certified.
+
+## Ecosystem reconciliation 1.1 — recovered continuation
+
+Continue draft PR #2 on `smartdevices-ecosystem-reconciliation-1.0`; retain the existing registration UI/API and Builder v4. The previously separate SD-MKT-0.9 checkpoint is now reconciled, still inactive by default. Discover has normalized public APIs and a capability filter; Connect registers metadata only; Create retains the complete builder and build packs; Operate clearly marks live actions as unavailable.
+
+Current audit: [Recovery ledger](docs/ECOSYSTEM_RECOVERY_LEDGER_1_1.md), [reconciliation matrix](docs/ECOSYSTEM_RECONCILIATION_MATRIX.md), [verification](docs/ECOSYSTEM_RECONCILIATION_VERIFICATION.md). Original North Star remains intact. No merge, public deployment, hardware operation or money movement is part of this continuation.

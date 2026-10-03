@@ -28,3 +28,13 @@ Registration uses `registrant_subject`, not `owner_subject`, because account ass
 Local fresh-database rehearsal through `0007`: **22 tables, 0 foreign-key violations**.
 
 Rollback is application-first. Older application code may ignore the additive tables. Do not destructively remove registry data until retention/rollback requirements are separately approved.
+
+## 1.1 cross-session reconciliation
+
+Both historical `0007_device_registry_foundation.sql` and `0007_market_shadow_observability.sql` are retained byte-for-byte. The former belongs to published PR #2; the latter and market 0008–0011 belong to the recovered SD-MKT-0.9 checkpoint. No historical file was renamed or renumbered.
+
+The journal now appends the five market migrations after its original eight entries, retaining the original entry metadata. `0012_snapshot.json` is the reconciled 28-table schema snapshot, generated from current Drizzle types; a temporary generated duplicate market SQL file was discarded before commit. The snapshot index follows the journal index, not a renaming of SQL files. A subsequent `npm run db:generate` reports no schema changes.
+
+`python3 scripts/verify-migrations.py` checks journal completeness, sequence, all table/column/index definitions, foreign keys, integrity and existing suppression/registry rows across fresh, registry-first and market-first upgrade paths. This is an offline rehearsal, not proof of remote application. Before hosted activation, back up D1 and inspect the target runner's actual applied full filenames. Apply only missing migrations. For a database with market files already applied through another runner, reconcile that runner's metadata explicitly; do not replay CREATE TABLE statements or rely on numeric prefix alone.
+
+Rollback means reverting application code while retaining additive tables/data; do not delete registry, consent/suppression or market records as a rollback shortcut. No remote migration was executed in this run.

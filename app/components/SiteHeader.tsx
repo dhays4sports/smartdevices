@@ -8,6 +8,7 @@ const links = [
   { href: "/devices", label: "Discover" },
   { href: "/connect", label: "Connect" },
   { href: "/build", label: "Create" },
+  { href: "/operate", label: "Operate" },
   { href: "/#protection-entry", label: "Protect" },
   { href: "/insurance", label: "Insurance" },
   { href: "/my-plan", label: "My Plan" },

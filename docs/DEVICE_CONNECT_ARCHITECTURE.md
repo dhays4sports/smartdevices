@@ -45,3 +45,9 @@ Device credentials can be highly sensitive. Public/registry records store no raw
 registration → separate control claim → evidence/verification → optional identity → optional permission → authorized operation.
 
 Each step is independently revocable and auditable.
+
+## 1.1 validation and activation boundary
+
+Known fields only, bounded strings/lists, strict descriptive protocol identifiers, no URLs in connection declarations, recursive secret-key rejection and explicit self-declared Mesh posture. Browser POST requires same Origin and a streamed 32 KiB maximum. Public errors never contain database exception messages. Reads are scoped to the authenticated registrant; records never enter the public catalog automatically.
+
+The existing hosting authentication contract assumes the upstream platform strips/overwrites authenticated-user headers. This run does not certify a direct untrusted origin. Hosted activation requires that boundary, a configured D1 binding, applied migrations, and tenant-isolation verification. No remote migration or deployment was performed.

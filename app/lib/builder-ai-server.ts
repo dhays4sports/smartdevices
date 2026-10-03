@@ -92,7 +92,6 @@ export async function orchestrateWithModel(idea: string, capability: BuildCapabi
 }
 
 function validDecision(value: unknown): value is ResearchDecision { return ["buy", "adapt", "build", "research-more"].includes(String(value)); }
-function validMode(value: unknown): value is DeviceIntelligenceMode { return ["standalone", "connected", "mesh-ready", "mesh-native"].includes(String(value)); }
 
 export async function researchWithModel(input: { idea: string; requirements: string[]; intelligenceMode: DeviceIntelligenceMode; planningCostUsd: number }): Promise<BuilderResearch> {
   const now = new Date().toISOString();

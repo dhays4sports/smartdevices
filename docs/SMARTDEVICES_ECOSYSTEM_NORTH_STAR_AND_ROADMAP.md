@@ -1,227 +1,528 @@
 # SMARTDEVICES-ECOSYSTEM-NORTH-STAR-1.0
 
-Status: Governing strategic direction, implemented as v5.3 ecosystem foundation source candidate  
-Adopted: 2026-10-02  
-Reconciled by: SMARTDEVICES-ECOSYSTEM-RECONCILIATION-1.0
+Status: Governing strategic direction
+Adopted: 2026-10-02
+Scope: SmartDevices.com product, architecture, roadmap, registry, device identity, Mesh integration, and future ecosystem work
+Implementation note: This document defines direction and constraints. It does **not** claim that every capability described below is already implemented.
 
-## North Star
+## 1. North Star
 
 > **SmartDevices.com becomes the open interface for intelligent devices: where humans and agents discover, understand, connect, create, authorize, and operate devices.**
 >
-> SmartDevices must become more valuable as more intelligent devices are created in the world, regardless of who manufactures them, what hardware they use, or whether they were originally built for the Mesh.
+> SmartDevices must become **more valuable as more intelligent devices are created in the world, regardless of who manufactures them, what hardware they use, or whether they were originally built for the Mesh.**
+>
+> Third-party device growth should expand the SmartDevices ecosystem rather than compete with it.
 >
 > **The Mesh is a capability multiplier, not a prerequisite for participation.**
 
-SmartDevices should not compete with intelligent-device growth. It should compound from it.
+The strategic objective is not to win every hardware category. The objective is to become more useful as the intelligent-device category expands.
 
-## Ecosystem Accretion Principle
+## 2. Ecosystem Accretion Principle
 
-Prefer architectures in which a new third-party device creates additional SmartDevices value through one or more of:
+SmartDevices should prefer architectures in which external innovation compounds platform value.
+
+A new third-party device should create an opportunity to add one or more of:
 
 - discoverability;
-- normalized capabilities;
-- compatibility;
-- provenance and trust evidence;
-- registration and control claims;
-- identity;
+- structured capability metadata;
+- compatibility data;
+- device identity;
+- ownership or control claims;
+- trust and verification evidence;
 - permissions;
 - agent-readable interfaces;
 - execution paths;
-- economic authorization and receipts.
+- economic transactions;
+- receipts and provenance.
 
-For every material product decision ask:
+A feature should be questioned when its value depends on SmartDevices manufacturing, owning, or replacing the underlying device ecosystem.
 
-> **Would SmartDevices become more valuable if 10,000 more intelligent devices launched tomorrow?**
+### Architectural test
 
-## Permanent product surfaces
+For major product decisions, ask:
+
+> **Does this make SmartDevices more valuable when someone else creates another intelligent device?**
+
+If yes, it likely reinforces the North Star.
+
+## 3. Permanent product surfaces
+
+SmartDevices should converge around four durable product surfaces.
 
 ### DISCOVER
 
-Find and understand intelligent devices. Existing catalog, search, comparison, evidence and device pages remain first-class. Categories remain a human/editorial navigation layer. Normalized capabilities become the interoperability layer.
+Answer:
+
+- What intelligent devices exist?
+- What can they actually do?
+- What do they connect to?
+- What requirements or constraints apply?
+- What evidence supports those claims?
+- Are they agent-ready or Mesh-ready?
+
+Discovery is not merely ecommerce or affiliate cataloging. It is structured device intelligence.
 
 ### CONNECT
 
-Bring in a device a person or organization already owns, operates, manufactures, or builds. Normalize its metadata and declared capabilities without treating registration as proof of ownership, verification, identity, permission, reachability or control.
+Answer:
+
+- How can a device someone already owns, operates, manufactures, or builds be brought into SmartDevices?
+- How are its interfaces and capabilities normalized?
+- Who controls it?
+- What trust state has been established?
+
+Future connection paths may include manufacturer integrations, APIs, local/network protocols, developer SDKs, custom hardware, and manual registration.
 
 ### CREATE
 
-Start from desired outcome where useful, map intent to required capabilities, compare existing device/integration options, then build only when justified. Preserve category-first paths when they improve usability. Preserve the existing Builder and Build Pack architecture.
+Answer:
+
+- What does the user want a device or device system to do?
+- What capabilities are required?
+- What hardware, software, integrations, permissions, and deployment steps satisfy that intent?
+
+The existing SmartDevices builder should be generalized rather than discarded.
+
+Long-term, creation should increasingly begin from **desired capability or outcome**, not merely device category.
 
 ### OPERATE
 
-Resolve requester → represented principal → target device → requested capability → authorization → constraints → execution → result → receipt. Deeper execution belongs on governed Mesh rails rather than being reimplemented casually inside SmartDevices.
+Answer:
 
-## Progressive device trust ladder
+- Who is requesting an action?
+- For whom?
+- Against which device?
+- Using what capability?
+- Under what permission or mandate?
+- Within what constraints?
+- With what revocation, provenance, execution evidence, and receipt?
 
-1. `DISCOVERED`
-2. `REGISTERED`
-3. `CLAIMED`
-4. `VERIFIED`
-5. `IDENTIFIED`
-6. `PERMISSIONED`
-7. `AGENT_OPERABLE`
-8. `TRANSACTIONAL`
+Operation is where deeper Mesh primitives become most valuable.
 
-Hard invariants:
+## 4. Progressive device trust ladder
 
-- discovered ≠ registered;
-- registered ≠ claimed;
-- claimed ≠ verified;
-- verified ≠ identified;
-- identified ≠ permissioned;
-- permissioned ≠ agent-operable;
-- agent-operable ≠ transactional.
+SmartDevices must not collapse discovery, registration, identity, verification, trust, or authority into one state.
 
-No weaker state may silently grant a stronger one.
+Canonical progression:
 
-## Canonical Smart Device Object
+1. **Discovered** — SmartDevices knows the device/model exists.
+2. **Registered** — a normalized device record exists.
+3. **Claimed** — a person or organization has asserted control/ownership.
+4. **Verified** — relevant claims have supporting evidence or attestation.
+5. **Identified** — the device has a durable identity/namespace relationship.
+6. **Permissioned** — authorized principals and allowed capabilities are bounded.
+7. **Agent-operable** — authorized agents can invoke supported capabilities.
+8. **Transactional** — economic actions can be authorized, settled, and receipted.
 
-The v1 canonical object is defined in `app/lib/device-domain.ts` and documented in `SMART_DEVICE_OBJECT_AND_TRUST_MODEL.md`. It represents model or instance identity, normalized capability bindings, connectivity metadata, compatibility, provenance, trust, control, operational readiness and optional Mesh posture.
+These states are intentionally non-equivalent.
 
-Public catalog records are model records and remain `discovered` even when their editorial facts are source-reviewed. Editorial review is not physical-instance verification.
+A device being present in the registry does not mean SmartDevices has verified it.
+A device having identity does not mean an actor is authorized to control it.
+Agent accessibility does not imply unrestricted autonomy.
 
-## Capability-first model
+## 5. Capability-first device model
 
-The current normalized registry is `content/device-capabilities.json`. It intentionally begins with capability classes grounded in the existing SmartDevices catalog and Builder benchmark paths rather than synthetic breadth.
+Device categories remain useful for navigation, editorial organization, compatibility, and human comprehension, but core interoperability should increasingly model devices by capabilities.
 
-Examples include:
+A canonical Smart Device Object should be able to represent, over time:
 
-- `measure.temperature`
-- `detect.water_leak`
-- `shutoff.water`
-- `detect.open_close`
-- `detect.smoke`
-- `track.location`
-- `read.vehicle_diagnostics`
-- `notify.remote`
+- device identity;
+- manufacturer;
+- model;
+- class/category;
+- ownership/control claim;
+- interfaces;
+- capabilities;
+- current state where appropriate;
+- connectivity;
+- compatibility;
+- trust state;
+- verification/attestation provenance;
+- permissions;
+- endpoints;
+- Mesh readiness;
+- economic capability where applicable.
 
-Human-readable source labels remain preserved. Unknown/ambiguous source labels remain unnormalized rather than being forced into a false mapping.
+Capabilities should be separable from a specific piece of hardware whenever practical.
 
-## SmartDevices and the Mesh
+This enables humans and agents to ask for **what needs to be done** rather than requiring prior knowledge of which device category performs it.
+
+## 6. SmartDevices and the Mesh
+
+### Rule
 
 **SmartDevices must be useful without the Mesh and materially more capable with the Mesh.**
 
-Baseline SmartDevices value may include discovery, cataloging, compatibility, connection contracts, local workflows, Builder projects and non-Mesh device registration.
+The Mesh is not an admission requirement.
 
-Mesh may progressively add:
+SmartDevices may provide discovery, device intelligence, cataloging, compatibility, connection, local workflows, and creation experiences without Mesh participation.
+
+Mesh integration can progressively add:
 
 - durable identity;
 - mandates;
 - fine-grained permissions;
-- principal delegation;
+- agent authorization;
+- execution boundaries;
 - ephemeral credentials;
-- capability authorization;
-- execution;
+- settlement;
+- receipts;
 - provenance;
 - revocation;
-- settlement and receipts.
+- economic coordination.
 
-No current SmartDevices registry entry or Builder mode is evidence that a live Mesh runtime, domain binding or production permission service exists.
+The preferred relationship is:
 
-## device.eth and deviceregistry.org
+```
+SmartDevices
+  -> Device Registry
+  -> Device Identity
+  -> Capabilities
+  -> Permissions / Mandates
+  -> Execution
+  -> Settlement / Receipts
+```
+
+This is a progressive stack, not an all-or-nothing dependency.
+
+## 7. device.eth and deviceregistry.org role
+
+The device edge should remain distinct from human, organization, agent, or bot identity.
 
 ### deviceregistry.org
 
-Target role: registry/infrastructure boundary for normalized device records, capabilities, compatibility, provenance, trust state, discovery and registration contracts.
+Target role:
 
-The current implementation provides the local SmartDevices registry foundation; it does not claim that `deviceregistry.org` is deployed or authoritative in production.
+- registry/infrastructure boundary;
+- normalized device records;
+- capability metadata;
+- provenance;
+- trust state;
+- compatibility;
+- discoverability.
 
 ### device.eth
 
-Target role: optional portable device identity/namespace edge where appropriate.
+Target role:
 
-A `device.eth` association must never itself prove physical ownership, device control, authenticity, safety, verification or authorization. Device identity remains distinct from human, agent, bot and organization identity.
+- portable device identity/namespace edge where appropriate;
+- durable addressing or identity association;
+- linkage into wider identity and authorization architecture.
 
-## No-rebuild rule
+Neither should imply that devices, humans, agents, organizations, and bots are identical actors.
 
-The recovered SmartDevices v5.2 implementation contains significant mature work beyond GitHub main. v5.3 reconciliation is additive and preserves that work.
+## 8. Physical-world execution principle
 
-Keep or generalize rather than replace:
+SmartDevices should become a bridge from AI knowing and suggesting into **authorized physical-world action**.
 
-- visual identity and shell;
-- public device intelligence/catalog;
-- comparison and evidence/provenance;
-- protection/safety experiences;
-- `/farmers` and insurance boundaries;
-- Pro boundaries and deterministic rules;
-- Builder v5.2, hosted projects and Build Packs;
-- disabled-by-default external adapters;
-- safety/privacy/accessibility/SEO work;
-- Business Builder conformance and physical-proof roadmap.
+Potential capability classes include:
 
-## Strategic boundaries
+- sense;
+- measure;
+- detect;
+- monitor;
+- communicate;
+- record;
+- unlock;
+- shut off;
+- charge;
+- dispense;
+- move;
+- manufacture;
+- deliver;
+- meter;
+- replenish.
 
-Do not become:
+Physical-world actions may carry safety, financial, privacy, property, or regulatory consequences.
 
-- a generic gadget ecommerce store;
-- a generic AI hardware generator;
-- a mandatory Mesh gateway;
-- a registry that equates presence with verification;
-- an identity layer that equates identity with authority;
-- a platform that assumes endpoint reachability is permission;
-- a premature marketplace;
-- a system that activates consequential physical actions or payments without governed authorization.
+Accordingly, operation must preserve human authority, bounded permissions, revocation, provenance, explicit execution semantics, and fail-closed behavior where required.
 
-## Reconciled roadmap
+## 9. Strategic boundaries
 
-### Phase 0 — Reconciliation — **implemented in this branch**
+### No generic gadget-store trap
 
-Canonical state recovery, KEEP/ELEVATE/GENERALIZE/DEPRECATE/MISSING classification, North Star merge and additive architecture correction.
+SmartDevices should not collapse into an Amazon-style product catalog.
 
-### Phase 1 — Device Foundation — **newly implemented foundation**
+Commerce may exist, but discovery should serve device intelligence, interoperability, creation, connection, and operation.
 
-Canonical Smart Device Object, normalized capability registry, explicit trust ladder and additive registry schema.
+### No premature hardware-company trap
 
-### Phase 2 — Discover — **substantially existing; elevated here**
+SmartDevices does not need to manufacture the devices it indexes or enables.
 
-Existing catalog/search/filter/compare/evidence/device detail remain. Device detail now exposes normalized capability IDs and a machine-readable canonical API record. Continue improving high-quality device coverage without mass-generating thin pages.
+Build hardware only when a specific proof, vertical, reference implementation, or strategic wedge justifies it.
 
-### Phase 3 — Connect — **minimum durable foundation newly implemented**
+### No Mesh-only trap
 
-Authenticated registration API, bounded `/connect` experience, registration schema, adapter contract, registry tables and secret-rejection boundary. No manufacturer integration, live reachability or ownership verification is fabricated.
+Do not require third-party devices to become Mesh-native before they can be useful on SmartDevices.
 
-### Phase 4 — Create — **existing Builder generalized here**
+### No trust-state collapse
 
-Builder preserves its current workflow but now stores normalized required capability IDs before architecture/BOM generation and uses them when comparing catalog options. DeviceProject schema v4 reads legacy v3 manifests through an additive normalization path.
+Do not equate registered, claimed, verified, identified, permissioned, agent-operable, or transactional states.
 
-### Phase 5 — Device Identity — **contract defined / deferred runtime**
+### No autonomy-by-default
 
-Registry and identity roles documented. `device.eth` remains optional. Claim/verification/identity remain separate. No live namespace activation claimed.
+A device or agent gaining technical reachability does not create authority to act.
 
-### Phase 6 — Agent-ready devices — **foundation only**
+## 10. Existing work to preserve
 
-Machine-readable capability discovery exists for catalog records. Live authorized agent invocation remains deferred.
+The ecosystem direction is additive.
 
-### Phase 7 — Permissioned Operation — **deferred to governed Mesh integration**
+Preserve and reconcile, rather than discard:
 
-Do not duplicate mature Mesh primitives. No new consequential device execution is activated by this reconciliation.
+- existing SmartDevices builder work;
+- `/farmers` and its specialized vertical flow;
+- device templates;
+- capability definitions;
+- device projects/build packs;
+- existing device intelligence/catalog work;
+- protection and safety experiences;
+- Mesh integrations;
+- permission/mandate work;
+- receipts/settlement concepts;
+- device identity work;
+- `device.eth`;
+- `deviceregistry.org`;
+- institutional/research/Index positioning;
+- existing security, provenance, evidence, and fail-closed boundaries.
 
-### Phase 8 — Transactional Devices — **deferred**
+Specialized vertical experiences should become evidence that the generalized platform can produce purpose-built device workflows.
 
-Preserve architectural path to authorization → execution → settlement → receipt; no real money is activated.
+## 11. NO REBUILD rule
 
-### Phase 9 — Ecosystem — **deferred**
+> **Do not restart SmartDevices from the ground up merely because the strategic abstraction has improved.**
 
-Manufacturers, developers, fleets, templates, agents and marketplace dynamics follow only after registry/capability/trust/permission foundations prove useful.
+Before architectural implementation of this North Star:
 
-## Long-term compounding asset
+1. audit the actual current canonical repository/source state;
+2. classify existing implementation as:
+   - **KEEP**
+   - **ELEVATE**
+   - **GENERALIZE**
+   - **DEPRECATE**
+   - **MISSING**
+3. identify assumptions that conflict with the North Star;
+4. preserve working systems;
+5. generalize incrementally;
+6. add new primitives only where they are genuinely missing;
+7. run regressions after every meaningful reconciliation step.
 
-The device capability graph:
+Do not discard mature work merely to produce a cleaner conceptual rewrite.
+
+## 12. Reconciliation audit requirements
+
+The first implementation mandate after adoption must inspect for assumptions that:
+
+- every device must be Mesh-native;
+- SmartDevices manufactures or owns devices;
+- the builder is the entire product;
+- smart-home devices are the primary device universe;
+- categories define capabilities;
+- registration implies verification;
+- identity implies authorization;
+- reachability implies permission;
+- agent access implies unrestricted execution;
+- a marketplace must precede underlying capability/identity infrastructure.
+
+The audit must also identify current implementations that already satisfy the new direction.
+
+## 13. Roadmap
+
+### Phase 0 — Reconciliation
+
+Audit current canonical state.
+
+Produce a KEEP / ELEVATE / GENERALIZE / DEPRECATE / MISSING map.
+
+Do not begin with a rewrite.
+
+### Phase 1 — Device Foundation
+
+Define the canonical Smart Device Object and capability model.
+
+Separate:
+
+- discovery;
+- registration;
+- claim;
+- verification;
+- identity;
+- permission;
+- operation;
+- transaction.
+
+### Phase 2 — Discover
+
+Build toward a structured intelligent-device index.
+
+Device records should increasingly expose:
+
+- capabilities;
+- connectivity;
+- compatibility;
+- evidence/provenance;
+- trust state;
+- agent readiness;
+- Mesh readiness.
+
+The system should gain value whenever third parties release useful devices.
+
+### Phase 3 — Connect
+
+Create a durable Add/Connect Device path.
+
+Normalize external devices and custom hardware into the canonical device/capability model.
+
+Begin with the integration paths most useful to actual product proofs; avoid speculative breadth.
+
+### Phase 4 — Create
+
+Generalize the current builder.
+
+Move progressively from:
+
+> Choose a device.
+
+toward:
+
+> What do you want something to do?
+
+Translate desired outcome into:
+
+- capabilities;
+- compatible hardware/software;
+- integrations;
+- permissions;
+- deployment requirements.
+
+Preserve specialized vertical templates, including `/farmers`.
+
+### Phase 5 — Device Identity
+
+Integrate the device registry and identity model.
+
+Maintain explicit separation among:
+
+discovered -> registered -> claimed -> verified -> identified.
+
+Do not let identity silently imply authorization.
+
+### Phase 6 — Agent-Ready Devices
+
+Expose normalized machine-readable capabilities.
+
+Enable authorized agents to discover devices by capability and constraints rather than only by brand/category.
+
+Examples:
+
+- find a charger compatible with a vehicle and allowed payment method;
+- find all freezer sensors an operator is authorized to inspect;
+- locate devices that can perform a required action within a defined mandate.
+
+### Phase 7 — Permissioned Operation
+
+Introduce deeper Mesh authorization/execution primitives where valuable.
+
+Before execution, resolve:
+
+- requester;
+- represented principal;
+- target device;
+- requested capability;
+- mandate/permission;
+- constraints;
+- revocation state;
+- execution semantics.
+
+### Phase 8 — Transactional Devices
+
+For economically meaningful actions, support a path such as:
+
+```
+Mandate
+  -> Capability
+  -> Authorization
+  -> Execution
+  -> Settlement
+  -> Receipt
+```
+
+Potential examples include charging, dispensing, renting, metering, selling, delivering, or replenishing.
+
+No real-money or autonomous production execution is implied by this roadmap phase.
+
+### Phase 9 — Ecosystem
+
+Only after the underlying primitives are sound should SmartDevices expand deeply into ecosystem/marketplace dynamics.
+
+Possible participants:
+
+- manufacturers publishing devices;
+- developers publishing integrations/capabilities;
+- builders publishing templates;
+- businesses operating fleets;
+- agents consuming authorized capabilities;
+- SmartDevices aggregating structured discovery and operational intelligence.
+
+Marketplace behavior should emerge from infrastructure usefulness rather than become the product's premature center.
+
+## 14. Long-term compounding asset
+
+The strategic moat to accumulate is not merely traffic, a domain, a builder, or a product catalog.
+
+SmartDevices should progressively build a device capability graph:
 
 > **Devices × Identities × Capabilities × Integrations × Permissions × Agents × Executions × Receipts**
 
-This is a relationship model, not a requirement to introduce a graph database. Continue using the current storage model until query/scale evidence justifies something else.
+The graph should become more useful as intelligent-device diversity and adoption increase.
 
-## Implementation status vocabulary
+## 15. Product decision test
 
-Every document/UI claim must distinguish:
+Major roadmap proposals should be tested against these questions:
 
-- North Star / planned;
-- contract defined;
-- prototype;
-- locally verified;
-- hosted;
-- production active;
-- externally verified/certified.
+1. Does this increase ecosystem accretion?
+2. Does it preserve usefulness without requiring Mesh adoption?
+3. Does Mesh integration add real capability rather than branding?
+4. Does it separate identity, trust, permission, and execution?
+5. Does it make third-party devices easier to understand, connect, create around, or operate?
+6. Does it preserve human authority for consequential actions?
+7. Does it reuse existing SmartDevices work where possible?
+8. Does it avoid prematurely becoming a hardware company or generic marketplace?
+9. Does it strengthen the device capability graph?
+10. Would SmartDevices become more valuable if 10,000 more intelligent devices launched tomorrow?
 
-Roadmap existence never upgrades runtime status.
+## 16. Implementation status convention
+
+Future documentation and UI must distinguish:
+
+- **North Star / planned**
+- **contract defined**
+- **prototype**
+- **locally verified**
+- **hosted**
+- **production active**
+- **externally verified/certified**
+
+No roadmap statement in this document should be treated as evidence that a capability is live.
+
+---
+
+## Canonical summary
+
+**SmartDevices should not compete with the growth of intelligent devices. It should compound from it.**
+
+The builder remains important.
+The device intelligence layer remains important.
+Verticals such as `/farmers` remain important.
+The Mesh remains important.
+
+But they now fit inside a larger structure:
+
+**DISCOVER -> CONNECT -> CREATE -> OPERATE**
+
+with progressive device identity, trust, permissions, execution, settlement, and receipts underneath.
+
+That is the governing direction for SmartDevices ecosystem work.
+
+## Reconciliation 1.1 implementation pointer
+
+The original strategic mandate above is retained in full. Current implementation and recovery evidence are in `ECOSYSTEM_RECOVERY_LEDGER_1_1.md`, `ECOSYSTEM_RECONCILIATION_MATRIX.md`, and `ECOSYSTEM_RECONCILIATION_VERIFICATION.md`. A roadmap phase is not a claim of runtime activation. Connect metadata registration exists; claim verification, identity activation, device operation and settlement remain separate future work.

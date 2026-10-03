@@ -120,3 +120,31 @@ test("missing hosted storage fails explicitly without breaking public value", as
   assert.match(publicRoute.body, /What should your water protection do/);
   assert.match(publicRoute.body, /A detection-only sensor is not a substitute/);
 });
+
+test("ecosystem surfaces and public device API preserve independent trust", async () => {
+  for (const path of ["/connect", "/operate", "/devices/moen-flo-smart-water-shutoff"]) {
+    const { response, body } = await html(path);
+    assert.equal(response.status, 200, path);
+    if (!path.startsWith("/devices")) assert.match(body, /noindex/);
+  }
+  const response = await fetch(`${origin}/api/devices?capability=shutoff.water`);
+  assert.equal(response.status, 200);
+  const result = await response.json();
+  assert.ok(result.devices.length > 0);
+  for (const record of result.devices) {
+    assert.equal(record.recordKind, "model");
+    assert.equal(record.trust.facts.permissioned.state, "not-established");
+    assert.equal(record.trust.facts.verified.state, "not-established");
+    assert.deepEqual(record.control.permissionRefs, []);
+    assert.equal(record.operationalReadiness.connectable, false);
+  }
+  for (const query of ["capability=constructor", "owner=private", "capability=shutoff.water&capability=record.video"]) assert.equal((await fetch(`${origin}/api/devices?${query}`)).status, 400);
+  for (const method of ["GET", "POST"]) {
+    const result = await fetch(`${origin}/api/devices/register`, { method, ...(method === "POST" ? { headers: { "content-type": "application/json", origin }, body: "{}" } : {}) });
+    assert.equal(result.status, 401);
+    assert.match(result.headers.get("cache-control"), /no-store/);
+  }
+  const detail = await fetch(`${origin}/api/devices/moen-flo-smart-water-shutoff`);
+  assert.equal(detail.status, 200);
+  assert.equal((await detail.json()).device.recordKind, "model");
+});

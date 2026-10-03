@@ -49,3 +49,11 @@ Capability IDs are independent from categories. Each capability has:
 - source aliases.
 
 The registry is intentionally small. Ambiguous source labels stay unnormalized instead of being forced into inaccurate IDs.
+
+## 1.1 semantic clarification
+
+`trust.facts` contains independent evidence states for all eight concepts. Catalog normalization establishes only `discovered`; successful registration establishes only `registered`. The existing `trust.state` remains a compatibility summary. There is no highest-stage inference or production trust-transition service.
+
+`canAdvanceDeviceTrust` checks only the *shape* of a proposed legacy adjacent transition. Its boolean evidence argument is not verified evidence and must never be used as a permission decision. No registration route calls it to promote authority. Real claim/attestation/identity/grant verification remains deferred. `requestDeviceOperation` always returns blocked, including for forged identity, mandate and permission references.
+
+All physical and economic readiness booleans remain false. Adding self-declared Mesh or namespace metadata cannot change these booleans or independent facts. Future services must check issuer, subject, scope, validity and revocation at action time rather than trusting client-populated records.

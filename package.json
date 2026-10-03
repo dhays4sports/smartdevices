@@ -37,11 +37,12 @@
     "eslint-config-next": "16.2.6",
     "react-server-dom-webpack": "19.2.6",
     "tailwindcss": "4.2.1",
+    "tsx": "4.22.1",
     "typescript": "5.9.3",
     "vinext": "0.0.50",
     "vite": "8.0.13",
     "wrangler": "4.92.0"
   },
   "type": "module",
-  "displayName": "SmartDevices Platform \u2014 Ecosystem Foundation"
+  "displayName": "SmartDevices Platform — Ecosystem Foundation"
 }

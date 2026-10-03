@@ -1,5 +1,5 @@
 import { getDeviceCapability } from "./device-capabilities";
-import type { DeviceMeshReadiness, SmartDeviceObject } from "./device-domain";
+import { initialDeviceTrustFacts, type DeviceMeshReadiness, type SmartDeviceObject } from "./device-domain";
 
 export type DeviceConnectionLocality = "local" | "cloud" | "hybrid" | "unknown";
 export type DeviceRegistrationInput = {
@@ -32,11 +32,15 @@ const OBVIOUS_SECRET_VALUE = /^(?:bearer\s+|basic\s+|sk-[a-z0-9_-]{12,}|gh[pousr
 const SAFE_ID = /^[a-z0-9][a-z0-9._:-]{1,95}$/i;
 
 function text(value: unknown, max: number) {
-  return typeof value === "string" ? value.trim().slice(0, max) : "";
+  if (value === undefined || value === null) return "";
+  if (typeof value !== "string" || value.length > max || /[\x00-\x1f\x7f]/.test(value)) throw new Error("INVALID_DEVICE_TEXT");
+  if (OBVIOUS_SECRET_VALUE.test(value.trim())) throw new Error("DEVICE_SECRET_NOT_ALLOWED");
+  return value.trim();
 }
 
 function rejectSensitiveKeys(value: unknown, depth = 0) {
-  if (depth > 8 || value === null || typeof value !== "object") return;
+  if (depth > 8) throw new Error("INVALID_DEVICE_REGISTRATION");
+  if (value === null || typeof value !== "object") return;
   for (const [key, child] of Object.entries(value as Record<string, unknown>)) {
     if (SENSITIVE_KEY.test(key)) throw new Error("DEVICE_SECRET_NOT_ALLOWED");
     rejectSensitiveKeys(child, depth + 1);
@@ -46,7 +50,17 @@ function rejectSensitiveKeys(value: unknown, depth = 0) {
 export function validateDeviceRegistration(input: unknown): NormalizedDeviceRegistration {
   rejectSensitiveKeys(input);
   if (!input || typeof input !== "object" || Array.isArray(input)) throw new Error("INVALID_DEVICE_REGISTRATION");
+  const allowed = ["manufacturer", "model", "variant", "category", "capabilityIds", "externalIdentifiers", "connection", "meshReadiness"];
+  if (Object.keys(input).some((key) => !allowed.includes(key))) throw new Error("UNSUPPORTED_REGISTRATION_FIELD");
   const value = input as Partial<DeviceRegistrationInput>;
+  if (value.externalIdentifiers !== undefined && (!Array.isArray(value.externalIdentifiers) || value.externalIdentifiers.length > 12)) throw new Error("INVALID_EXTERNAL_IDENTIFIERS");
+  for (const item of value.externalIdentifiers ?? []) {
+    if (!item || typeof item !== "object" || Array.isArray(item) || Object.keys(item).some((key) => !["scheme", "value"].includes(key))) throw new Error("INVALID_EXTERNAL_IDENTIFIERS");
+  }
+  if (value.connection !== undefined && (!value.connection || typeof value.connection !== "object" || Array.isArray(value.connection) || Object.keys(value.connection).some((key) => !["adapterId", "protocols", "locality", "endpointKind"].includes(key)))) throw new Error("INVALID_DEVICE_CONNECTION");
+  if (value.connection?.locality !== undefined && !["local", "cloud", "hybrid", "unknown"].includes(value.connection.locality)) throw new Error("INVALID_CONNECTION_LOCALITY");
+  if (value.meshReadiness !== undefined && !["not-evaluated", "compatible", "ready"].includes(value.meshReadiness)) throw new Error("INVALID_MESH_READINESS");
+  if (value.connection?.protocols !== undefined && (!Array.isArray(value.connection.protocols) || value.connection.protocols.length > 12)) throw new Error("INVALID_DEVICE_PROTOCOLS");
   const manufacturer = text(value.manufacturer, 120);
   const model = text(value.model, 160);
   const variant = text(value.variant, 120) || null;
@@ -63,6 +77,7 @@ export function validateDeviceRegistration(input: unknown): NormalizedDeviceRegi
   const locality: DeviceConnectionLocality = ["local", "cloud", "hybrid", "unknown"].includes(String(connection.locality)) ? connection.locality as DeviceConnectionLocality : "unknown";
   const adapterId = text(connection.adapterId, 96) || null;
   const endpointKind = text(connection.endpointKind, 80) || null;
+  if ([...protocols, ...(adapterId ? [adapterId] : []), ...(endpointKind ? [endpointKind] : [])].some((item) => !/^[a-z0-9][a-z0-9._-]{0,95}$/i.test(item))) throw new Error("INVALID_DEVICE_CONNECTION");
   const meshReadiness = ["not-evaluated", "compatible", "ready"].includes(String(value.meshReadiness)) ? value.meshReadiness as Exclude<DeviceMeshReadiness, "active"> : "not-evaluated";
 
   return { schemaVersion: 1, manufacturer, model, variant, category, capabilityIds, externalIdentifiers, connection: { adapterId, protocols, locality, endpointKind }, trustState: "registered", claimState: "unclaimed", meshReadiness };
@@ -106,7 +121,7 @@ export function registrationToSmartDeviceObject(recordId: string, registration: 
     connectivity: { summary: registration.connection.protocols.length ? `Declared protocols: ${registration.connection.protocols.join(", ")}` : "Connection requirements declared; live reachability not verified.", interfaces: registration.connection.protocols.map((protocol) => ({ protocol, locality: registration.connection.locality, ...(registration.connection.adapterId ? { adapterRef: registration.connection.adapterId } : {}) })) },
     compatibility: { domains: [], requirements: [], constraints: [] },
     provenance: { sources: [], lastReviewed: null, editorialAssurance: "user-declared" },
-    trust: { state: "registered", claimState: "unclaimed", attestations: [] },
+    trust: { state: "registered", facts: initialDeviceTrustFacts("registered", `registration:${recordId}`), claimState: "unclaimed", attestations: [] },
     control: { principalRefs: [], permissionRefs: [], revocationState: "not-applicable" },
     operationalReadiness: { discoverable: false, connectable: false, identified: false, permissioned: false, agentOperable: false, transactional: false },
     mesh: { participation: "optional", readiness: registration.meshReadiness, identityRef: null },

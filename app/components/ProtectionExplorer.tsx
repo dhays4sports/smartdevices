@@ -12,6 +12,9 @@ import type { ScanResult } from "@/app/lib/scan";
 import { createLocalPlan, encodePlanSelection } from "@/app/lib/plan";
 import { demonstrationFor } from "@/app/lib/demo";
 import { persistLocalPlan } from "@/app/lib/local-plan-store";
+import { submitWaterShutoffShadow } from "@/app/lib/market/shadow-pilot";
+import type { SponsoredFulfillmentPreview } from "@/app/lib/market/preview";
+import { CommercialOptions } from "./CommercialOptions";
 
 type Props = {
   initialDomain?: DomainId;
@@ -32,6 +35,7 @@ export function ProtectionExplorer({ initialDomain, initialConcern, compact = fa
   const [copied, setCopied] = useState(false);
   const [scanResult, setScanResult] = useState<ScanResult | null>(null);
   const [selectionNotice, setSelectionNotice] = useState("");
+  const [marketPreview, setMarketPreview] = useState<SponsoredFulfillmentPreview | null>(null);
   const workspaceRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -66,6 +70,7 @@ export function ProtectionExplorer({ initialDomain, initialConcern, compact = fa
     if (domainId === "home") { window.location.assign("/protect/home"); return; }
     setPlanIds([]);
     setScanResult(null);
+    setMarketPreview(null);
     dispatch({ type: "SELECT_DOMAIN", domainId });
     window.history.pushState({}, "", `/protect/${domainId}`);
   }
@@ -73,6 +78,7 @@ export function ProtectionExplorer({ initialDomain, initialConcern, compact = fa
   function chooseConcern(concernId: string) {
     setPlanIds([]);
     setScanResult(null);
+    setMarketPreview(null);
     dispatch({ type: "SELECT_CONCERN", concernId });
     if (journey.domainId) window.history.pushState({}, "", `/protect/${journey.domainId}?concern=${encodeURIComponent(concernId)}`);
   }
@@ -80,6 +86,7 @@ export function ProtectionExplorer({ initialDomain, initialConcern, compact = fa
   function restart() {
     setPlanIds([]);
     setScanResult(null);
+    setMarketPreview(null);
     dispatch({ type: "RESTART" });
     window.history.pushState({}, "", "/");
   }
@@ -204,12 +211,18 @@ export function ProtectionExplorer({ initialDomain, initialConcern, compact = fa
 
           {demonstration ? <CausalDemo key={`${demonstration.id}-${journey.revision}`} config={demonstration} /> : null}
 
-          {journey.stage === "scan-in-progress" ? <IntelligentScan domainId={domain.id} concernId={concern.id} publishedDevices={publishedDevices} onBack={() => dispatch({ type: "BACK" })} onComplete={(result) => { setScanResult(result); dispatch({ type: "SHOW_RESULTS" }); }} /> : null}
+          {journey.stage === "scan-in-progress" ? <IntelligentScan domainId={domain.id} concernId={concern.id} publishedDevices={publishedDevices} onBack={() => dispatch({ type: "BACK" })} onComplete={(result) => {
+            setScanResult(result);
+            const previewRequested = new URLSearchParams(window.location.search).get("marketPreview") === "1";
+            void submitWaterShutoffShadow(result, { previewRequested }).then((preview) => { if (previewRequested) setMarketPreview(preview); });
+            dispatch({ type: "SHOW_RESULTS" });
+          }} /> : null}
 
           {journey.stage === "results-ready" && scanResult ? <section className="recommendation-section" aria-labelledby="matched-heading">
             <div className="section-heading"><div><p className="eyebrow">Your Protection Map</p><h2 id="matched-heading">{recommendations.length ? "A small, source-linked starting set." : "The category guidance is ready; verified products are still being curated."}</h2><p>Priority bands explain sequence, not a safety score. Nothing below is preselected.</p></div><Link className="text-action" href={`/devices?domain=${domain.id}&concern=${concern.id}`}>Open full library</Link></div>
             {scanResult.unknowns.length ? <div className="result-unknowns"><strong>Still unknown</strong><ul>{scanResult.unknowns.map((item) => <li key={item}>{item}</li>)}</ul></div> : null}
             <DeviceUniverse result={scanResult} selectedIds={planIds} onTogglePlan={togglePlan} />
+            <CommercialOptions preview={marketPreview} qualifiedDevices={scanResult.recommendations.map((item) => item.device)} />
           </section> : null}
         </>
       ) : null}

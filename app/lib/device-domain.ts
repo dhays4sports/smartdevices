@@ -13,6 +13,12 @@ export const DEVICE_TRUST_LADDER = [
 ] as const;
 
 export type DeviceTrustState = (typeof DEVICE_TRUST_LADDER)[number];
+export type DeviceTrustFact = { state: "not-established" | "established" | "revoked"; evidenceRefs: string[] };
+export type DeviceTrustFacts = Record<DeviceTrustState, DeviceTrustFact>;
+export function initialDeviceTrustFacts(stage: "discovered" | "registered", evidenceRef: string): DeviceTrustFacts {
+  return Object.fromEntries(DEVICE_TRUST_LADDER.map((name) => [name, { state: name === stage ? "established" : "not-established", evidenceRefs: name === stage ? [evidenceRef] : [] }])) as DeviceTrustFacts;
+}
+
 export type DeviceRecordKind = "model" | "instance";
 export type DeviceClaimState = "unclaimed" | "asserted" | "verified" | "revoked";
 export type DeviceMeshReadiness = "not-evaluated" | "compatible" | "ready" | "active";
@@ -47,7 +53,8 @@ export type SmartDeviceObject = {
     editorialAssurance: "source-reviewed" | "review-required" | "retired" | "user-declared";
   };
   trust: {
-    state: DeviceTrustState;
+    state: DeviceTrustState; // compatibility summary only, never an authority rank
+    facts: DeviceTrustFacts;
     claimState: DeviceClaimState;
     attestations: Array<{ type: string; issuer: string; reference: string }>;
   };
@@ -76,7 +83,9 @@ export function trustRank(state: DeviceTrustState): number {
 }
 
 export function canAdvanceDeviceTrust(from: DeviceTrustState, to: DeviceTrustState, explicitEvidence: boolean): boolean {
+  if (trustRank(from) < 0 || trustRank(to) < 0) return false;
   if (from === to) return true;
+  // Legacy transition-shape predicate only. A boolean is not attestation or authorization.
   if (!explicitEvidence) return false;
   return trustRank(to) === trustRank(from) + 1;
 }
@@ -114,9 +123,21 @@ export function catalogDeviceToSmartDeviceObject(device: Device): SmartDeviceObj
     },
     // A reviewed catalog/model record is still only DISCOVERED in the device trust ladder.
     // Editorial fact review is not a claim of physical ownership, instance identity, or permission.
-    trust: { state: "discovered", claimState: "unclaimed", attestations: [] },
+    trust: { state: "discovered", facts: initialDeviceTrustFacts("discovered", `catalog:${device.id}`), claimState: "unclaimed", attestations: [] },
     control: { principalRefs: [], permissionRefs: [], revocationState: "not-applicable" },
     operationalReadiness: { discoverable: true, connectable: false, identified: false, permissioned: false, agentOperable: false, transactional: false },
     mesh: { participation: "optional", readiness: "not-evaluated", identityRef: null },
   };
+}
+
+/** Explicit Mesh integration boundary; no local authority/execution engine is installed. */
+export type DeviceOperationRequest = {
+  requester: { kind: "human" | "organization" | "agent"; id: string };
+  representedPrincipal: string; deviceId: string; capabilityId: string;
+  mandateRef: string; permissionRef: string; expiresAt: string; nonce: string;
+  constraints: { humanApprovalRef: string; maxExecutions: 1 };
+};
+export async function requestDeviceOperation(request: DeviceOperationRequest) {
+  void request;
+  return { status: "blocked", reason: "AUTHORIZATION_AND_EXECUTION_NOT_ACTIVATED", receiptRef: null } as const;
 }

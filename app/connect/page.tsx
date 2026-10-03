@@ -6,6 +6,7 @@ import { getChatGPTUser } from "@/app/chatgpt-auth";
 
 export const metadata: Metadata = {
   title: "Connect a device",
+  robots: { index: false, follow: false },
   description: "Register a device and declare normalized capabilities without treating registration as verification or authorization.",
 };
 

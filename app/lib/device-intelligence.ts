@@ -40,7 +40,7 @@ export function inferDeviceIntelligence(idea: string, answers: BuilderAnswers): 
   const fleetSignal = includesAny(value, FLEET_TERMS) || answers.quantity >= 10;
   const remoteSignal = includesAny(value, REMOTE_TERMS) || answers.connectivity === "wifi" || answers.connectivity === "bluetooth";
 
-  if (explicitMesh || (agentInteraction && fleetSignal)) {
+  if (explicitMesh) {
     return profileFor("mesh-native", "auto", [
       explicitMesh ? "The idea explicitly calls for Mesh/domain-bound behavior." : "The project combines agent interaction with fleet-scale coordination.",
       "Persistent identity, capability discovery, permissions and agent access are architectural requirements rather than optional add-ons.",

@@ -49,3 +49,7 @@ No public production deployment is manually authorized by this release. Existing
 ## Non-claims
 
 No live manufacturer connection, physical hardware test, device ownership verification, `device.eth` activation, `deviceregistry.org` production service, Mesh operation, device command, payment execution or external certification is claimed.
+
+## Reconciliation 1.1 recovered market checkpoint
+
+The SD-MKT-0.9 branch of the v5.2 archive history was missing from the previous v5.3 review tree. Its inactive market runtime, tests, evidence images, catalog source metadata, and historical migrations are restored alongside—not in place of—the existing registry and Builder v4 work. See ECOSYSTEM_RECOVERY_LEDGER_1_1.md for exact recovery IDs and ECOSYSTEM_RECONCILIATION_VERIFICATION.md for current gates.
