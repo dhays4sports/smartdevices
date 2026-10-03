@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "currentOwnerMinutesPerWeek": null,
+  "MVBTargetMinutesPerWeek": 120,
+  "MABTargetMinutesPerWeek": 30,
+  "note": "Per-task targets total 120, not measured current labor. No automated recurring data acquisition claimed.",
+  "tasks": [
+    {
+      "task": "discover new devices",
+      "state": "SUPERVISED",
+      "frequency": "monthly",
+      "provider": "official product sources",
+      "failureMode": "irrelevant/unsupported records",
+      "currentOwnerMinutes": null,
+      "MVBTargetMinutes": 15,
+      "targetState": "EXCEPTION_ONLY",
+      "nextAutomationStep": "Measure actual time and bounded failure/recovery evidence before removing supervision"
+    },
+    {
+      "task": "retrieve specs / verify claims",
+      "state": "SUPERVISED",
+      "frequency": "weekly",
+      "provider": "manufacturer documentation",
+      "failureMode": "stale/conflicting facts",
+      "currentOwnerMinutes": null,
+      "MVBTargetMinutes": 30,
+      "targetState": "EXCEPTION_ONLY",
+      "nextAutomationStep": "Measure actual time and bounded failure/recovery evidence before removing supervision"
+    },
+    {
+      "task": "normalize capabilities / compatibility",
+      "state": "SUPERVISED",
+      "frequency": "per source change",
+      "provider": "GitHub mappings",
+      "failureMode": "false fit assertion",
+      "currentOwnerMinutes": null,
+      "MVBTargetMinutes": 15,
+      "targetState": "EXCEPTION_ONLY",
+      "nextAutomationStep": "Measure actual time and bounded failure/recovery evidence before removing supervision"
+    },
+    {
+      "task": "publish / index",
+      "state": "SUPERVISED",
+      "frequency": "per reviewed change",
+      "provider": "GitHub + Sites",
+      "failureMode": "failed build/index leakage",
+      "currentOwnerMinutes": null,
+      "MVBTargetMinutes": 10,
+      "targetState": "EXCEPTION_ONLY",
+      "nextAutomationStep": "Measure actual time and bounded failure/recovery evidence before removing supervision"
+    },
+    {
+      "task": "builder recommendation / local plans",
+      "state": "AUTONOMOUS",
+      "frequency": "on demand",
+      "provider": "existing deterministic engine",
+      "failureMode": "unmatched capability",
+      "currentOwnerMinutes": null,
+      "MVBTargetMinutes": 0,
+      "targetState": "EXCEPTION_ONLY",
+      "nextAutomationStep": "Measure actual time and bounded failure/recovery evidence before removing supervision"
+    },
+    {
+      "task": "hosted project handling",
+      "state": "EXCEPTION_ONLY",
+      "frequency": "on demand",
+      "provider": "Sites D1/auth",
+      "failureMode": "failed save/ownership denial",
+      "currentOwnerMinutes": null,
+      "MVBTargetMinutes": 5,
+      "targetState": "EXCEPTION_ONLY",
+      "nextAutomationStep": "Measure actual time and bounded failure/recovery evidence before removing supervision"
+    },
+    {
+      "task": "SEO / growth review",
+      "state": "SUPERVISED",
+      "frequency": "weekly",
+      "provider": "Search Console not connected",
+      "failureMode": "no qualified acquisition",
+      "currentOwnerMinutes": null,
+      "MVBTargetMinutes": 15,
+      "targetState": "EXCEPTION_ONLY",
+      "nextAutomationStep": "Measure actual time and bounded failure/recovery evidence before removing supervision"
+    },
+    {
+      "task": "affiliate link health",
+      "state": "SUPERVISED",
+      "frequency": "weekly once active",
+      "provider": "none active",
+      "failureMode": "dead or misleading link",
+      "currentOwnerMinutes": null,
+      "MVBTargetMinutes": 5,
+      "targetState": "EXCEPTION_ONLY",
+      "nextAutomationStep": "Measure actual time and bounded failure/recovery evidence before removing supervision"
+    },
+    {
+      "task": "support / incident recovery",
+      "state": "EXCEPTION_ONLY",
+      "frequency": "as needed",
+      "provider": "GitHub/Sites logs",
+      "failureMode": "sensitive-data exposure or outage",
+      "currentOwnerMinutes": null,
+      "MVBTargetMinutes": 10,
+      "targetState": "EXCEPTION_ONLY",
+      "nextAutomationStep": "Measure actual time and bounded failure/recovery evidence before removing supervision"
+    },
+    {
+      "task": "billing / agreements",
+      "state": "OWNER_REQUIRED",
+      "frequency": "before activation",
+      "provider": "no commerce provider active",
+      "failureMode": "unauthorized spending/commitment",
+      "currentOwnerMinutes": null,
+      "MVBTargetMinutes": 5,
+      "targetState": "OWNER_REQUIRED",
+      "nextAutomationStep": "Measure actual time and bounded failure/recovery evidence before removing supervision"
+    },
+    {
+      "task": "metrics / attention review",
+      "state": "SUPERVISED",
+      "frequency": "weekly",
+      "provider": "counter table + ledger",
+      "failureMode": "synthetic misclassified as demand",
+      "currentOwnerMinutes": null,
+      "MVBTargetMinutes": 10,
+      "targetState": "EXCEPTION_ONLY",
+      "nextAutomationStep": "Measure actual time and bounded failure/recovery evidence before removing supervision"
+    }
+  ]
+}

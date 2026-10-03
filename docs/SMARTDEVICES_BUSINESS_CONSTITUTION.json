@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "mandate": "SMARTDEVICES-BUSINESS-BUILDER-2.0-DOGFOOD-1.0",
+  "businessIdentity": "SmartDevices",
+  "domain": "smartdevices.com",
+  "accountablePrincipal": "dhays4sports (repository owner; legal entity unverified)",
+  "doctrineRef": "dhays4sports/the-mesh@78f4d658c110bd2f0a26d876c688822b9d9c947b",
+  "abe": "ABE_PASS_WITH_REDESIGN",
+  "noveltyClass": "CLASS_B",
+  "decision": "REDESIGN",
+  "stage": "PRE_MVB",
+  "primaryArchetype": "database_directory",
+  "secondaryArchetypes": [
+    "comparison_engine",
+    "calculator_decision_tool",
+    "affiliate_referral"
+  ],
+  "targetCustomer": "Homeowners researching water-leak protection before purchase",
+  "primaryJobs": [
+    "Distinguish detection from shutoff",
+    "Compare requirements and unknown fit",
+    "Keep and revisit a source-linked shortlist"
+  ],
+  "freeValue": "Source-linked comparison and local decision plan",
+  "paidValue": "Unvalidated referral commission hypothesis; no paid service active",
+  "canonicalCapability": "Capability-first requirements and evidence-backed device comparison",
+  "canonicalPrimitive": "Sourced device-capability/requirement claim",
+  "durableAsset": "Device compatibility and requirements records with provenance, history, user plans and aggregate behavior",
+  "businessOwnedState": [
+    "constitution",
+    "catalog",
+    "source records",
+    "capability mappings",
+    "compatibility rules",
+    "projects/revisions",
+    "operating metrics"
+  ],
+  "acquisition": [
+    "problem/capability search",
+    "device comparison search"
+  ],
+  "retention": [
+    "saved plan revisit hypothesis"
+  ],
+  "monetization": "affiliate_referral hypothesis",
+  "billingUnit": "Qualifying attributed purchase, subject to a future approved program; none active",
+  "growthOperations": "SMARTDEVICES_GROWTH_OPERATIONS_PLAN.md",
+  "ownerAttentionBudget": {
+    "unit": "minutes/week",
+    "MVB": 120,
+    "MAB": 30,
+    "current": null,
+    "measured": false
+  },
+  "autonomyBurdenLedger": "SMARTDEVICES_AUTONOMY_BURDEN_LEDGER.json",
+  "authorityBoundaries": [
+    "No real device control",
+    "No production payments",
+    "No manufacturer production credentials",
+    "No domain cutover",
+    "No merge",
+    "No external outreach or affiliate agreements",
+    "No insurance eligibility determinations"
+  ],
+  "hostingProviders": [
+    "GitHub canonical source",
+    "ChatGPT Sites isolated runtime",
+    "Sites-managed D1 test DB"
+  ],
+  "sitesRole": "SITES_CONTINUE_PILOT",
+  "meshRelationship": "Useful without Mesh; more capable with explicitly authorized Mesh integrations",
+  "identityBoundary": "Identity is not authorization",
+  "MVB": "Real user discovery/planning/referral behavior plus maintained data, monitoring and measured <=120 owner minutes/week; currently unmet",
+  "MAB": "Repeatable supervised-exception operations and recovery with measured <=30 owner minutes/week; currently unmet",
+  "nonGoals": [
+    "marketplace",
+    "live device control",
+    "device blockchain",
+    "hardware lab",
+    "custom integrations",
+    "generic chatbot"
+  ]
+}

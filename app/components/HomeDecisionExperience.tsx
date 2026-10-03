@@ -1,12 +1,14 @@
 "use client";
 
+import { compatibilityDimensions } from "@/app/lib/compatibility-dimensions";
+import { recordMetric } from "@/app/lib/metrics-client";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { getDomain, type Device } from "@/app/lib/data";
 import { homeOptions, sanitizeHomeContext, waterGoals, type HomeEntry, type WaterGoal } from "@/app/lib/home-decision";
 import { createLocalPlan, encodePlanSelection, type SafetyPlan } from "@/app/lib/plan";
-import { persistLocalPlan } from "@/app/lib/local-plan-store";
+import { persistLocalPlan, readLocalPlan } from "@/app/lib/local-plan-store";
 import { HomePlanActions } from "./HomePlanActions";
 import "./home-decision.css";
 
@@ -34,7 +36,8 @@ export function HomeDecisionExperience({ publishedDevices, initialConcern = "wat
   const selectedDevices = options.filter((device) => selected.includes(device.id));
 
   useEffect(() => {
-    if (planId) return;
+    if (planId) { if(readLocalPlan(planId))recordMetric("plan_reopen_local"); return; }
+    recordMetric("builder_start");
     function restore() {
       const context = sanitizeHomeContext(new URLSearchParams(window.location.search));
       setConcernId(context.concern); setEntry(context.entry); setGoal(context.goal); setSelected([]); setNotice(""); setOpenedPlan(null); setShowHow(false);
@@ -44,11 +47,13 @@ export function HomeDecisionExperience({ publishedDevices, initialConcern = "wat
   }, [planId]);
 
   function navigate(nextConcern: string, nextEntry = entry, nextGoal = goal) {
+    recordMetric("builder_step");
     setConcernId(nextConcern); setEntry(nextEntry); setGoal(nextGoal); setSelected([]); setNotice(""); setOpenedPlan(null); setShowHow(false);
     if (!planId) window.history.pushState({}, "", `/protect/home?${new URLSearchParams({ concern: nextConcern, entry: nextEntry, goal: nextGoal })}`);
   }
 
   function toggle(device: Device) {
+    if (!selected.includes(device.id)) recordMetric("compare_start");
     setOpenedPlan(null);
     setSelected((current) => current.includes(device.id) ? current.filter((id) => id !== device.id) : [...current, device.id].slice(0, 3));
     setNotice(`${device.manufacturer} ${device.model} ${selected.includes(device.id) ? "removed from" : "added to"} your comparison plan. No purchase or installation is recorded.`);
@@ -59,6 +64,8 @@ export function HomeDecisionExperience({ publishedDevices, initialConcern = "wat
     const plan = createLocalPlan("home", concern.id, selectedDevices.map((device) => device.id));
     plan.homeContext = { goal, permission, connection };
     const mode = persistLocalPlan(plan);
+    recordMetric("builder_complete");
+    if(mode === "local-storage") recordMetric("plan_save_local");
     if (mode === "memory") {
       setOpenedPlan(plan.id); setNotice("Browser storage is unavailable. Your plan is open below for this visit; download the summary before leaving.");
       return;
@@ -96,12 +103,12 @@ export function HomeDecisionExperience({ publishedDevices, initialConcern = "wat
       <div className="hd-checks"><strong>Before you commit</strong><ul>{effectivePermission !== "yes" ? <li>{effectivePermission === "no" ? "Obtain owner or HOA permission before arranging property changes." : "Confirm that you can authorize the installation or obtain permission."}</li> : null}{effectiveConnection !== "yes" ? <li>{effectiveConnection === "no" ? "Ask about power and network requirements, outage behavior and alternatives before choosing a connected device." : "Check the exact device’s power, internet and outage requirements."}</li> : null}<li>Installation cost, site compatibility and any insurer acceptance remain unconfirmed.</li></ul></div>
       {options.length ? <div className="hd-option-grid" data-count={Math.min(options.length, 3)}>{options.map((device) => <article className={selected.includes(device.id) ? "hd-option is-selected" : "hd-option"} key={device.id}><div className="hd-option-head"><p className="eyebrow">{device.manufacturer}</p><span className="hd-record-date">Record checked {device.lastReviewed}</span></div><h3>{device.model}</h3><p className="hd-solution">{device.solution}</p><p className="hd-availability">{device.status !== "active" ? "Evidence needs review — do not rely on this as current guidance." : device.availability === "unavailable" ? "Unavailable when last checked. Confirm stock before making plans." : device.availability === "available" ? "Available when last checked; reconfirm current stock." : "Current availability needs confirmation."}</p>
         <dl><div><dt>Why it appears</dt><dd>{device.bestFor}</dd></div><div><dt>Equipment cost · dated context</dt><dd>{device.priceBand}</dd></div><div><dt>Installation · separate cost</dt><dd>{device.installation}. Site-specific quote not supplied.</dd></div><div><dt>Subscription / monitoring</dt><dd>{device.subscription}</dd></div></dl>
-        <details><summary>Compatibility, limitations & sources</summary><p>{device.connectivity}</p><ul>{device.limitations.map((item) => <li key={item}>{item}</li>)}</ul><p>Review account access, household consent and current privacy terms before activation.</p><ul>{device.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} (opens a new tab)</a></li>)}</ul><p>{device.commercialStatus === "none" ? "No affiliate or sponsored placement recorded." : `Commercial status: ${device.commercialStatus}.`}</p></details>
-        <div className="hd-option-actions"><Link className="hd-text-link" href={`/devices/${device.slug}`}>Full device record</Link>{!planId ? <button className="button-subtle" type="button" disabled={device.status !== "active"} aria-pressed={selected.includes(device.id)} onClick={() => toggle(device)}>{selected.includes(device.id) ? "Remove from plan" : "Add to comparison plan"}</button> : null}</div>
+        <details><summary>Compatibility, limitations & sources</summary><dl>{compatibilityDimensions(device).map(item=><div key={item.dimension}><dt>{item.dimension}</dt><dd>{item.statement} <strong>{item.status}.</strong></dd></div>)}</dl><ul>{device.limitations.map((item) => <li key={item}>{item}</li>)}</ul><p>Review account access, household consent and current privacy terms before activation.</p><ul>{device.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} (opens a new tab)</a></li>)}</ul><p>{device.commercialStatus === "none" ? "No affiliate or sponsored placement recorded." : `Commercial status: ${device.commercialStatus}.`}</p></details>
+        <div className="hd-option-actions">{device.sources[0] ? <a className="hd-text-link" href={device.sources[0].url} target="_blank" rel="noopener noreferrer" onClick={()=>recordMetric("outbound_product_click")}>Check manufacturer details ↗</a> : null}<Link className="hd-text-link" href={`/devices/${device.slug}`}>Full device record</Link>{!planId ? <button className="button-subtle" type="button" disabled={device.status !== "active"} aria-pressed={selected.includes(device.id)} onClick={() => toggle(device)}>{selected.includes(device.id) ? "Remove from plan" : "Add to comparison plan"}</button> : null}</div>
       </article>)}</div> : <div className="hd-empty"><h3>No current reviewed device match for this selection.</h3><p>You can still confirm the required capability, ask a qualified professional about installation, or explore a different type of protection. We won’t substitute an unsupported product.</p><Link className="button-subtle" href="/insurance">Check insurance guidance</Link></div>}
     </section>
 
-    {planId ? <HomePlanActions planId={planId} options={options} concernId={concern.id} /> : <section className="hd-plan-bar" aria-label="Your comparison plan"><div><strong>{selected.length ? `${selected.length} option${selected.length === 1 ? "" : "s"} in your plan` : "Keep your next steps in one place."}</strong><p>{selected.length ? "Saving a comparison is not a purchase or installation claim." : "Add an option above, then save a plan you can return to."}</p></div><button className="button-primary" type="button" disabled={!selected.length} onClick={savePlan}>Save & open my plan</button></section>}
+    {planId ? <HomePlanActions planId={planId} options={options} concernId={concern.id} /> : <section className="hd-plan-bar" aria-label="Your comparison plan"><div><strong>{selected.length ? `${selected.length} option${selected.length === 1 ? "" : "s"} in your plan` : "Keep your next steps in one place."}</strong><p>{selected.length ? "Saved on this device only. Not an online account backup, purchase or installation claim." : "Add an option above, then save a plan you can return to."}</p></div><button className="button-primary" type="button" disabled={!selected.length} onClick={savePlan}>Save on this device & open</button></section>}
     <p className="hd-notice" role="status">{notice}</p>
     {openedPlan ? <HomePlanActions planId={openedPlan} options={selectedDevices} concernId={concern.id} /> : null}
     <footer className="hd-footer"><p>SmartDevices is independent. Technical capability is not insurer approval, policy compliance or a discount determination.</p><Link href="/insurance">Insurance guidance</Link><Link href="/my-plan">My plans</Link><details><summary>Looking for automatic gas shutoff?</summary><p>Ask a qualified gas professional about the appropriate system, local requirements and installation. Do not attempt gas work yourself. Confirm any insurance requirement separately with your agent.</p><Link href="/farmers?category=gas">California Farmers class guidance</Link></details></footer>
