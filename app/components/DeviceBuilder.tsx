@@ -34,7 +34,17 @@ export function DeviceBuilder({ publishedDevices, sourceContext = "direct", init
   const [busy, setBusy] = useState<"orchestrate" | "research" | "source" | "execute" | "save" | null>(null);
   const preliminary = useMemo(() => idea.trim().length >= 12 ? { capability: inferCapability(idea), safety: classifyBuilderSafety(idea, answers), intelligence: inferDeviceIntelligence(idea, answers) } : null, [idea, answers]);
 
-  useEffect(() => { if (project) saveLocalProject(project); }, [project]);
+  useEffect(() => { if (project && !project.hosted) saveLocalProject(project); }, [project]);
+
+  useEffect(() => {
+    if (project?.hosted) {
+      try {
+        const previous = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "[]") as DeviceProject[];
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(previous.filter(item => item.id !== project.id)));
+      } catch { /* local storage may be unavailable */ }
+    }
+  }, [project]);
+
 
   async function analyzeIdea() {
     if (idea.trim().length < 12) { setNotice("Give Builder a little more detail about what the device should do."); return; }

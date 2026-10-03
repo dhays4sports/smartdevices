@@ -42,3 +42,5 @@ next-env.d.ts
 /.sites-runtime/
 /outputs/
 /work/
+
+/app/generated/source-version.json

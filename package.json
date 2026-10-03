@@ -14,7 +14,7 @@
     "test:focused": "node --test tests/checkpoint-contract.test.mjs tests/content-contract.test.mjs tests/schema-contract.test.mjs && node --import tsx --test tests/*.test.ts",
     "test:carrier": "node --test tests/v42-checkpoint-contract.test.mjs && node --import tsx --test tests/carrier-*.test.ts",
     "validate:evidence": "node scripts/validate-carrier-evidence.mjs",
-    "typecheck": "bash scripts/sites-env.sh -- tsc --noEmit",
+    "typecheck": "node scripts/write-source-version.mjs && bash scripts/sites-env.sh -- tsc --noEmit",
     "lint": "bash scripts/sites-env.sh -- eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "bash scripts/sites-env.sh -- drizzle-kit generate"
   },
@@ -44,5 +44,5 @@
     "wrangler": "4.92.0"
   },
   "type": "module",
-  "displayName": "SmartDevices Platform — Ecosystem Foundation"
+  "displayName": "SmartDevices Platform \u2014 Ecosystem Foundation"
 }
