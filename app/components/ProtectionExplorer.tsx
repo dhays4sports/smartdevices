@@ -6,22 +6,24 @@ import { IntelligentScan } from "./IntelligentScan";
 import { InteractiveScene } from "./InteractiveScene";
 import { CausalDemo } from "./CausalDemo";
 import { DeviceUniverse } from "./DeviceUniverse";
-import { devicesForConcern, domains, getDomain, type Device, type DomainId } from "@/app/lib/data";
+import { devices, devicesForConcern, domains, getDomain, type Device, type DomainId } from "@/app/lib/data";
 import { initialJourney, journeyReducer } from "@/app/lib/experience";
 import type { ScanResult } from "@/app/lib/scan";
 import { createLocalPlan, encodePlanSelection } from "@/app/lib/plan";
 import { demonstrationFor } from "@/app/lib/demo";
+import { persistLocalPlan } from "@/app/lib/local-plan-store";
 
 type Props = {
   initialDomain?: DomainId;
   initialConcern?: string;
   compact?: boolean;
+  publishedDevices?: Device[];
 };
 
 const STORAGE_KEY = "smartdevices-plan-device-ids-v1";
 const stageLabels = ["Choose", "Explore", "Personalize", "Results", "Plan"];
 
-export function ProtectionExplorer({ initialDomain, initialConcern, compact = false }: Props) {
+export function ProtectionExplorer({ initialDomain, initialConcern, compact = false, publishedDevices = devices }: Props) {
   const defaultConcern = initialDomain ? getDomain(initialDomain)?.concerns[0]?.id : undefined;
   const [journey, dispatch] = useReducer(journeyReducer, initialJourney(initialDomain, initialConcern ?? (compact ? defaultConcern : undefined)));
   const domain = journey.domainId ? getDomain(journey.domainId) : undefined;
@@ -56,11 +58,12 @@ export function ProtectionExplorer({ initialDomain, initialConcern, compact = fa
   }, [planIds]);
 
   const recommendations = journey.domainId && concern
-    ? devicesForConcern(journey.domainId, concern.id)
+    ? devicesForConcern(journey.domainId, concern.id, publishedDevices)
     : [];
   const demonstration = journey.domainId && concern ? demonstrationFor(journey.domainId, concern.id) : null;
 
   function chooseDomain(domainId: DomainId) {
+    if (domainId === "home") { window.location.assign("/protect/home"); return; }
     setPlanIds([]);
     setScanResult(null);
     dispatch({ type: "SELECT_DOMAIN", domainId });
@@ -99,11 +102,7 @@ export function ProtectionExplorer({ initialDomain, initialConcern, compact = fa
   function createPlanHref() {
     if (!journey.domainId || !concern || !planIds.length) return null;
     const plan = createLocalPlan(journey.domainId, concern.id, planIds, "consumer-explorer", scanResult ?? undefined);
-    try {
-      localStorage.setItem(`smartdevices-safety-plan-v2-${plan.id}`, JSON.stringify(plan));
-    } catch {
-      // The sanitized URL remains usable when local draft storage is unavailable.
-    }
+    persistLocalPlan(plan);
     return `/plans/${plan.id}?${encodePlanSelection(plan)}`;
   }
 
@@ -133,15 +132,22 @@ export function ProtectionExplorer({ initialDomain, initialConcern, compact = fa
     <section className={compact ? "explorer explorer-compact" : "explorer"} aria-labelledby="explorer-title">
       <div className="experience-entry" id="protection-entry" tabIndex={-1}>
         <p className="eyebrow">Smart Protection Explorer</p>
-        <h1 id="explorer-title">Make the things you own smarter about protecting themselves.</h1>
-        <p className="hero-lede">Explore the risk, see how the response works, and build a plan before we ever ask who you are.</p>
+        <h1 id="explorer-title">Make the things around you smarter.</h1>
+        <p className="hero-lede">Choose a concern, understand what can help, and leave with a small, source-linked plan—or build the device you wish existed.</p>
         <div className="hero-entry-actions">
           <a className="button-primary hero-action" href="#domain-chooser">Show us what you’re protecting.</a>
+          <Link className="button-subtle hero-build-action" href="/build">Build a smart device →</Link>
           <div className="hero-domain-shortcuts" aria-label="Choose what you are protecting">
             {domains.map((item) => <button key={item.id} type="button" onClick={() => chooseDomain(item.id)}>{item.label}</button>)}
           </div>
         </div>
-        <Link className="carrier-entry-link" href="/insurance">My insurer mentioned a device <span aria-hidden="true">→</span></Link>
+        <nav className="hero-utility-links" aria-label="Quick access">
+          <Link href="/insurance">My insurer mentioned a device <span aria-hidden="true">→</span></Link>
+          <Link href="/build">I have a device idea</Link>
+          <Link href="/devices">Research a device</Link>
+          <Link href="/my-plan">Return to my plan</Link>
+        </nav>
+        <p className="hero-trust-line"><span>Source-linked</span><span>Dated guidance</span><span>Unknowns stay visible</span></p>
       </div>
 
       <nav className="journey-progress" aria-label="Protection journey">
@@ -198,7 +204,7 @@ export function ProtectionExplorer({ initialDomain, initialConcern, compact = fa
 
           {demonstration ? <CausalDemo key={`${demonstration.id}-${journey.revision}`} config={demonstration} /> : null}
 
-          {journey.stage === "scan-in-progress" ? <IntelligentScan domainId={domain.id} concernId={concern.id} onBack={() => dispatch({ type: "BACK" })} onComplete={(result) => { setScanResult(result); dispatch({ type: "SHOW_RESULTS" }); }} /> : null}
+          {journey.stage === "scan-in-progress" ? <IntelligentScan domainId={domain.id} concernId={concern.id} publishedDevices={publishedDevices} onBack={() => dispatch({ type: "BACK" })} onComplete={(result) => { setScanResult(result); dispatch({ type: "SHOW_RESULTS" }); }} /> : null}
 
           {journey.stage === "results-ready" && scanResult ? <section className="recommendation-section" aria-labelledby="matched-heading">
             <div className="section-heading"><div><p className="eyebrow">Your Protection Map</p><h2 id="matched-heading">{recommendations.length ? "A small, source-linked starting set." : "The category guidance is ready; verified products are still being curated."}</h2><p>Priority bands explain sequence, not a safety score. Nothing below is preselected.</p></div><Link className="text-action" href={`/devices?domain=${domain.id}&concern=${concern.id}`}>Open full library</Link></div>

@@ -1,59 +1,75 @@
-# SmartDevices v4 Release and Version Ledger
+# SmartDevices v5.3.0-rc.1 — Ecosystem Reconciliation 1.0
 
-## v4.2.0-rc.1 — 2026-08-26
+This release reconciles the materially newer SmartDevices v5.2 SD-BB-0 source with the ecosystem North Star without rebuilding mature product surfaces.
 
-Designation: California carrier-intelligence local production candidate after final package gate; root deployable; no public deployment or external carrier certification authorized.
+## Added / generalized
 
-Adds the permanent carrier-neutral `/insurance` directory, canonical California Farmers pilot at `/farmers`, optional homepage/result/device/plan discovery, governed carrier/evidence/rule/class/fit/question contracts, a four-question carrier scan, ordered Carrier Protection Map, fully realized whole-home water path, class-level gas/monitored-security/connected-home guidance, plan v3 carrier provenance, normalized verification events, carrier-aware Pro, and zero-repeat handoff v3. Plan/handoff v1 and v2 remain readable; a test-only second carrier proves generic architecture without publishing a thin carrier page.
+- canonical Smart Device Object and progressive trust ladder;
+- normalized capability registry and machine-readable capability/device endpoints;
+- capability-aware Discover search/detail records;
+- bounded authenticated `/connect` device registration;
+- explicit claim/integration persistence separated from registration;
+- fail-closed device adapter contract and secret-key rejection;
+- DeviceProject schema v4 with normalized required capabilities and schema-v3 read compatibility;
+- additive migration `0007_device_registry_foundation.sql`;
+- reconciled device.eth/deviceregistry.org contracts and ecosystem roadmap.
 
-| Version | Roadmap range | Outcome |
-|---|---|---|
-| v4.2.0-a.1 | SD42-FND-0.1–SD42-DISC-1.5 | Protected intake, additive architecture, neutral directory and discoverability |
-| v4.2.0-a.2 | SD42-EVID-2.1–SD42-FARM-3.6 | Governed evidence/applicability and complete Farmers journey shell |
-| v4.2.0-b.1 | SD42-WATER-4.1–SD42-GUIDE-5.5 | Water pilot plus honest class-level carrier guidance |
-| v4.2.0-b.2 | SD42-PLAN-6.1–SD42-PRO-7.6 | Plan v3, verification events, carrier-aware Pro, handoff v3, generic fixture |
-| v4.2.0-b.3 | SD42-CONTENT-8.1–SD42-CONTENT-8.5 | Primary-source, language, identity, SEO, and operator-content gates |
-| v4.2.0-rc.0 | SD42-QA-9.1–SD42-QA-9.6 | Local functional, visual, accessibility, resilience, security/privacy, and evidence/content certification |
-| v4.2.0-rc.1 | SD42-CERT-10.1–SD42-CERT-10.5 | Cross-platform boundaries, cross-system contracts, clean room/rollback, documentation, immutable packages |
+## Preserved
 
-The 58 genuine source checkpoints are recorded in `docs/V4.2_CHECKPOINT_LEDGER.md`. Unavailable external browsers/devices/AT, representative CWV, hosted D1/identity/providers, live partner certification, penetration testing, brand authorization, and legal/operations approval remain explicit cutover items.
+`/farmers`, insurance evidence boundaries, Protect, plans, Pro, Builder v5.2 research/sourcing/execution architecture, accessibility, responsive behavior, SEO, security/privacy and disabled-by-default external adapters remain in place.
 
-## v4.1.0-rc.1 — 2026-08-22
+## Deliberately deferred
 
-Designation: focused interactive local production candidate; root deployable; no external deployment authorized.
+No manufacturer integration, live device reachability/control, device ownership verification, Mesh runtime activation, device.eth activation, deviceregistry.org production deployment, physical hardware certification or real-money transaction is claimed or enabled by this release.
 
-Adds the complete Home water and Vehicle theft guided journeys, Home smoke/heat awareness, governed three-to-five-question scans, explainable deterministic matching, Device Universe visual/list parity, plan-v2 provenance with v1 readability, scan-aware SmartDevices Pro, and zero-repeat handoff v2. Family and Business remain honest starter guides. New local certifications cover 64 automated tests, fixed-desktop visual baselines, accessibility contracts, degraded modes, security/privacy, clean extraction, migration, and protected-v4.0 rollback.
+For verification and exact status see `docs/ECOSYSTEM_RECONCILIATION_RELEASE_NOTES.md` and `docs/ECOSYSTEM_RECONCILIATION_VERIFICATION.md`.
 
-| Version | Roadmap range | Outcome |
-|---|---|---|
-| v4.1.0-a.1 | SD41-FND-0.1–SD41-UX-1.3 | Protected intake, additive architecture, first-viewport guided entry |
-| v4.1.0-a.2 | SD41-SCAN-2.1–2.5 | Governed Home/Vehicle scans and explainable matching |
-| v4.1.0-b.1 | SD41-SCENE-3.1–SD41-DEMO-4.4 | Interactive scenes and exactly three causal demonstrations |
-| v4.1.0-b.2 | SD41-UNIV-5.1–SD41-PLAN-6.4 | Device Universe and provenance-aware plans |
-| v4.1.0-b.3 | SD41-PRO-7.1–SD41-CONTENT-8.3 | Pro/handoff v2 and current evidence/language review |
-| v4.1.0-rc.1 | SD41-QA-9.1–SD41-CERT-10.4 | Local certification and final root packages |
+---
 
-The v4.1 sprint checkpoints are reproducible Git commits recorded in `docs/CHECKPOINT_LEDGER.md`. They are not falsely duplicated copies of the final ZIP.
+## Historical v5.2 release notes
 
-## v4.0.0-rc.1 — 2026-08-22
+This release advances the v5.1 Intelligent Device Platform from deterministic planning toward a real device-project execution loop while preserving `/farmers` as a separate carrier-specific truth surface.
 
-Designation: local production candidate; root deployable; no external deployment authorized.
+## Added
 
-Delivered the interactive Protection Explorer, 15-record Device Intelligence Library, honest comparison, three-to-five-item Smart Safety Plan contract, and SmartDevices Pro demo/secure activation boundary. Added Home/Vehicle full guides, Family/Business starter guides, explanatory and reduced motion, protected institutional assets, D1 schema/migrations, plan capabilities, consent/audit/suppression/rate-limit tables, HMAC/replay handoff contract, tests, guides, sample plans, and certification records.
+- DeviceProject schema v3 with orchestrator, research, sourcing, execution and hosted-state records.
+- Optional model-assisted requirements orchestration with deterministic fallback.
+- Optional live web research and explicit buy/adapt/build decision records.
+- Authenticated hosted Builder projects using existing D1 `builder_projects` / `builder_revisions` tables.
+- `/project/<id>` hosted workspace URLs.
+- Optional live sourcing adapter.
+- Sandboxed Build Executor contract for actual firmware compilation and CadQuery generation.
+- Validation states that only become `pass` from recorded execution results.
+- Expanded Build Pack with requirements, research, sourcing and execution evidence.
+- Connected Freezer Guardian and Mesh-native Restaurant Freezer Fleet reference paths.
 
-## Cumulative internal checkpoints
+## Unchanged boundary
 
-| Version | Roadmap range | Outcome |
-|---|---|---|
-| v4.0.0-a.1 | SD-FND-0.1–0.4 | Baseline verified; contract, architecture, quality harness |
-| v4.0.0-a.2 | SD-PLT-1.1–1.4 | Shell, routes, tokens, motion, schemas |
-| v4.0.0-a.3 | SD-EXP-2.1–2.5 | Cinematic Protection World and trust architecture |
-| v4.0.0-a.4 | SD-HOME-3.1–3.4 | Home zones and concern experiences |
-| v4.0.0-a.5 | SD-AUTO-4.1–4.4 | Vehicle zones and concern experiences |
-| v4.0.0-b.1 | SD-DI-5.1–5.5 | Recommendation engine, catalog, compare, disclosures |
-| v4.0.0-b.2 | SD-PLAN-6.1–6.5 | Plan lifecycle, map, intent, local save/share/print/export |
-| v4.0.0-b.3 | SD-PRO-7.1–7.5 | Secure Pro boundary, profile, templates, builder, literal engagement states |
-| v4.0.0-b.4 | SD-EXT-8.1–SD-INT-9.4 | Expansion guides, persistence, handoff, CRM/admin contracts |
-| v4.0.0-rc.1 | SD-CERT-10.1–10.5 | Local certifications and root-deployable release |
+A SmartDevices custom build — including a Mesh-native one — does not establish insurer acceptance or satisfy a Farmers requirement unless that qualification is supported by separate authoritative carrier evidence.
 
-These are logical cumulative checkpoints from one continuous authorized program, not claims that independent external deployments occurred at each boundary.
+## 2026-09-17 documentation addendum — SD-001 physical proof program
+
+The accepted next execution program is now part of the repository documentation:
+
+- `SD-001 — First Physical Proof`: build a real Connected Freezer Guardian from SmartDevices-generated artifacts and capture predicted-versus-actual build evidence.
+- `MESH-DEVICE-001 — First Physical Node`: derive a multi-device restaurant freezer fleet from the proven design and exercise persistent identity/capabilities/authorized agent interaction through the Mesh runtime when available.
+- Scope expansion into marketplace, generalized manufacturing and speculative network features is intentionally sequenced after those proof gates.
+
+This addendum changes roadmap/documentation only; it does not claim additional runtime capability beyond v5.2.0-rc.1.
+
+## 2026-10-02 documentation addendum — SD-BB-0 Business Builder conformance
+
+SmartDevices has now been evaluated as a first-party business under the Mesh Business Builder constitution. The result is **REDESIGN — continue** rather than unconditional GO or NO-GO.
+
+The addendum:
+
+- narrows the first paying wedge to bounded monitoring/sensing needs for small commercial/property operators and technically capable solution buyers without in-house hardware engineering;
+- defines the first paid unit as a **Validated Build Pack** rather than a mandatory subscription or marketplace transaction;
+- defines the **SmartDevices Build Evidence Graph** as the durable asset rather than generic AI-generated code/CAD/PCB output;
+- makes owner intervention, intervention rate, autonomous gross-profit efficiency and per-build economics required business metrics;
+- reclassifies `SD-001` as the **BB7 Build & Verify technical proof**, not MVB revenue;
+- inserts `SD-MVB-001` and a real external paid/committed customer loop before MVB;
+- moves `MESH-DEVICE-001` out of the MVB-blocking critical path;
+- retains Mesh as optional at the device level and as governed infrastructure where identity, permissions, capability discovery, routing, receipts, monitoring or recovery create real value.
+
+This addendum changes business sequencing/documentation only. It does not add runtime capability or change the v5.2.0-rc.1 version.

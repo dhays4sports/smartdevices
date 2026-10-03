@@ -2,13 +2,15 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { SmartDevicesLogo } from "./SmartDevicesLogo";
 
 const links = [
-  { href: "/devices", label: "Devices" },
-  { href: "/insurance", label: "Insurance guidance" },
-  { href: "/plans/demo?domain=home&concern=water&items=moen-flo-shutoff,ting-sensor-service", label: "Example plan" },
-  { href: "/pro", label: "For agents" },
-  { href: "/about", label: "About" },
+  { href: "/devices", label: "Discover" },
+  { href: "/connect", label: "Connect" },
+  { href: "/build", label: "Create" },
+  { href: "/#protection-entry", label: "Protect" },
+  { href: "/insurance", label: "Insurance" },
+  { href: "/my-plan", label: "My Plan" },
 ];
 
 export function SiteHeader() {
@@ -16,8 +18,7 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <Link className="brand" href="/" aria-label="SmartDevices.com home">
-        <span className="brand-mark" aria-hidden="true">SD</span>
-        <span>SmartDevices.com</span>
+        <SmartDevicesLogo />
       </Link>
       <button
         className="nav-toggle"
@@ -34,7 +35,7 @@ export function SiteHeader() {
             {link.label}
           </Link>
         ))}
-        <Link className="nav-pro" href="/pro/workspace" onClick={() => setOpen(false)}>Open Pro</Link>
+        <Link className="nav-pro" href="/pro" onClick={() => setOpen(false)}>Agent tools</Link>
       </nav>
     </header>
   );

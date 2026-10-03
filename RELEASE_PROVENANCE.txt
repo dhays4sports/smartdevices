@@ -1,10 +1,56 @@
-SmartDevices v4.2.0-rc.1 release provenance
-Gate: SD42-CERT-10.5
-Release date UTC: 2026-08-26
-Final source commit: 7233344d7b8455628a001c45ccb02bac689f1535
+SmartDevices v5.3.0-rc.1 Ecosystem Reconciliation 1.0 source candidate provenance
+Release date: 2026-10-02
+Canonical implementation baseline artifact: SmartDevices_v5.2.0_rc1_SD-BB-0_BUSINESS_BUILDER_CONFORMANCE_SOURCE_ROOT.zip
+Canonical baseline SHA-256: 637624ca1386b3d9f576f7e6e0adda35e797622a74cd50bb77dd3b6620eded4a
+GitHub historical main at audit: 7556775e3d2dbdfb7d83732b308abaaec0a151e5
+Governance PR #1 head at audit: ad3043351ec49d2ab8b04458775be7dd1091bb76
+Scope: no-rebuild reconciliation; canonical Smart Device Object; normalized capabilities; progressive trust ladder; capability-aware Discover; bounded Connect registration and adapter contracts; DeviceProject schema v4 capability requirements; additive migration 0007; identity/registry/Mesh boundary documentation.
+Preserved: /farmers carrier truth boundaries, insurance evidence, Protect, plans, Pro, v5.2 Live Device Engine, safety/privacy/accessibility/SEO and disabled-by-default external adapters.
+Verification in this environment: source MJS contracts pass; pure device/capability/Builder core strict TypeScript semantic check passes; changed/new TS/TSX syntax gate passes at recorded checkpoints; carrier evidence validation passes; migrations 0000-0007 -> 22 tables / 0 FK violations.
+Environment limitation: registry.npmjs.org cannot be resolved, so clean npm ci, full dependency-aware typecheck/lint, Vinext build and generated-dist runtime gate remain pending.
+Non-claims: no manual public deployment, manufacturer integration, physical hardware test, ownership verification, device.eth activation, deviceregistry.org production service, Mesh runtime operation, live device command, payment execution or external certification.
+Packaging: source-root release candidate excludes generated dist, node_modules, caches, local env and nested archives. Sibling SHA-256 manifest is authoritative for the final archive hash.
+
+--- Inherited release provenance follows for history ---
+SmartDevices v4.5.0-rc.1 CoverageFit Closing Bridge release provenance
+Baseline source commit: 3acccab1cf152c3c73288b70845aecc182e4b259
+Paired CoverageFit baseline: v3.20.227 CF-CLIENT-REVIEW-1.1
+Scope: authenticated task-only comparison and explicit updates to CoverageFit; insurance decisions remain in CoverageFit.
+No deployment or service activation. See CF_SMARTDEVICES_CLOSING_ACTIVATION.md in the paired release.
+Exact release commit and immutable package hashes are recorded in the sibling release checksum file.
+
+--- Inherited v4.4 provenance follows unchanged ---
+SmartDevices v4.4.0-rc.1 Home Decision release provenance
+Release date UTC: 2026-09-05
+Restored v4.3 SOURCE archive SHA-256: 9de1b4856bc741b7c3bf904bfb872879cc85ec5dae52910ce9e7a3c9cbaf7ff4
+Historical v4.3 source commit: f03e674c4db544af4558051ba2d510c7d124865a
+Restoration checkpoint: dd45118 (original Git history unavailable; historical ledgers preserved)
+Scope: capability-first Home decisions, optional house navigation, local progress and manual summary export.
+Exact v4.4 source commit: recorded in the sibling Home Decision SHA-256 manifest after source freeze.
+v4.4 package model: SOURCE from git archive; ROOT_DEPLOYABLE contains identical source files plus the verified production dist built from the same source state. Site save uses only the deployment build artifact.
+Deployment: saved local candidate only; no deployment, new integration activation or live delivery.
+
+--- Inherited v4.3 provenance (historical; unchanged below) ---
+SmartDevices v4.3.0-rc.1 Evidence Autopilot release provenance
+Gate: SD43-CERT-2.0
+Release date UTC: 2026-08-28
+Inherited v4.2.3 source commit: 32878c74a4940520819e40639e2d87dbfe02b097
+Inherited v4.2.1 source commit: 100c66ea0b56c3ea98dd6d95c2e247893c243fb2
 Mutable v4.1 baseline SHA-256: 1fc5e83892789298ab6369d04748e561ad3a0606ad6bc1634b8746740d90f6c2
 Protected v3 historical baseline SHA-256: 08aad9341d0545821493800dd2ffb7e874afed1b3f613b91c903bfd5bfeffa8d
 Package model: Git archive of the exact final source commit plus this root provenance record.
 Root-deployable model: fresh exact SOURCE extraction plus only the production dist emitted by that extraction's passed build.
-Checksum authority: sibling SmartDevices_v4.2.0_rc1_SHA256SUMS.txt, generated after both ZIPs became immutable.
+Baseline: SmartDevices v4.2.3-rc.1, source commit 32878c74a4940520819e40639e2d87dbfe02b097.
+Scope: authenticated one-button evidence refresh, scheduled refresh ingress, allowlisted source retrieval, normalized fingerprints, append-only observations and decisions, conservative staleness, versioned public snapshots, rollback, and active-snapshot public rendering.
+Confidence policy: automation may renew unchanged evidence or make guidance more conservative; it cannot publish a stronger claim from a changed source without an authorized human decision.
+Brand asset policy: repository-native SVG assets only; no third-party logo, trade dress, or carrier endorsement is implied.
+Checksum authority: sibling Evidence Autopilot SHA-256 manifest, generated after both ZIPs became immutable and recording the exact package source commit.
 Deployment: local production candidate only; no public deployment, live carrier/partner call, message, upload, account, or external certification occurred.
+
+2026-09-06 paired protection recommendation release
+Current package: SmartDevices 4.6.0-rc.1 / PROTECTION-CHECKLIST-1.0
+Baseline commits: CoverageFit 66cb15bdb95fe600e8eecde2311470c4f4e4f4bb; SmartDevices 96836085d7436bf8b5837fcaece983c95af95da7.
+Scope: four producer-selected protection categories, reusable official-provider setups, bounded link checks, and the category-specific version-2 closing bridge.
+Migration: CoverageFit 0010 adds five tables; SmartDevices has no new migration. Prior migrations and protected visual assets unchanged.
+See PROTECTION_RECOMMENDATIONS_SETUP.md and PROTECTION_SOURCE_REVIEW.md. Exact final source commits and archive hashes are in the sibling release manifest.
+Local only. No deployment, live handoff, message delivery, contractor booking or insurer verification performed.

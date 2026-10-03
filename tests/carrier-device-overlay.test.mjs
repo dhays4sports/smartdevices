@@ -8,9 +8,10 @@ const card = fs.readFileSync("app/components/DeviceCard.tsx", "utf8");
 
 test("carrier device options expose fit and commercial status separately", () => {
   assert.match(options, /explicitly-named-public-offer/);
-  assert.match(options, /Meets the published capability description/);
-  assert.match(options, /Editorial · no paid placement/);
-  assert.match(options, /do not force three products/i);
+  assert.match(options, /Matches the published capability/);
+  assert.match(options, /No paid placement/);
+  assert.match(options, /One well-supported place to start/);
+  assert.match(options, /Carrier eligibility still requires confirmation/);
 });
 
 test("generic Device Card remains carrier neutral unless scoped context is supplied elsewhere", () => {

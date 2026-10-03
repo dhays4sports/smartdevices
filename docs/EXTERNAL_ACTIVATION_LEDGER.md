@@ -19,6 +19,7 @@ No external deployment, account, message, purchase, enrollment, or live partner 
 | Affiliate commerce | Commercial status model and disclosure page | Approve program, tracking/privacy review, add visible per-action disclosure | Intentionally absent |
 | Carrier programs | California Farmers public-source pilot with governed category/offer evidence and independent SmartDevices guidance | Assign named carrier-content and legal reviewers, approve change monitoring, recheck every source at cutover, and obtain any required relationship/brand authorization | Local candidate only; no carrier verification, endorsement, or private-program activation claimed |
 | Public deployment | Root-deployable build and guides | Separate owner authorization, final domain/config, secrets, browser/device matrix, legal owner details | Not authorized |
+| Evidence Autopilot | Authenticated console, allowlisted retrieval, fingerprints, D1 snapshots, conservative suppression, decisions, rollback and scheduled endpoint | Bind migrated D1, configure evidence-admin grant, scheduler token, rate-limit salt, activate outbound retrieval, complete first-baseline/failure/rollback staging rehearsal and assign second carrier reviewer | Implemented locally; retrieval and scheduler disabled |
 # v4.2 carrier pilot additions — 2026-08-26
 
 - Farmers trademark/logo or co-brand assets: disabled; requires written brand authorization and approved files.
@@ -26,3 +27,16 @@ No external deployment, account, message, purchase, enrollment, or live partner 
 - Four-eyes carrier claim review: local workflow documented; named second reviewer/approval service remains operational.
 - Hosted CMS/editor identity/scheduling: not claimed; static validated local editorial mode is active.
 - Development dependency advisories: production audit is clear; the current build/test tree has 46 transitive advisories (3 low, 7 moderate, 36 high). Re-evaluate compatible Vinext/Next/Cloudflare/toolchain upgrades in an isolated branch, rerun the complete normalized suite, and do not force breaking transitive resolutions.
+
+
+## v5.3 device ecosystem activation boundaries
+
+| Capability | Current state | Activation requirement |
+|---|---|---|
+| Manual private device registration | Contract/runtime implemented; persistence depends on configured D1 | Authenticated user + D1 + migration 0007 |
+| Manufacturer/device adapter | Disabled / contract only | Separate adapter implementation, server-side credential handling, validation and authorization review |
+| Ownership/control verification | Not activated | Evidence/attestation policy and explicit claim workflow |
+| device.eth identity | Not activated | Separate namespace integration and proof/authorization mapping |
+| deviceregistry.org external service | Not activated | Separate deployment/domain/infrastructure approval |
+| Agent device operation | Not activated | Governed Mesh permission/mandate/execution integration and safety review |
+| Transactional device action | Not activated | Separate financial authorization/settlement certification |

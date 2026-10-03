@@ -1,17 +1,19 @@
 # SmartDevices Protection Intelligence Program Ledger
 
-## Strategic governance overlay — 2026-10-02
 
-| Program item | Status | Governing effect |
+## Ecosystem reconciliation — 2026-10-02
+
+| Program item | Status | Evidence / boundary |
 |---|---|---|
-| SMARTDEVICES-ECOSYSTEM-NORTH-STAR-1.0 | Adopted as strategic direction; implementation reconciliation pending | SmartDevices converges on **DISCOVER → CONNECT → CREATE → OPERATE**; ecosystem accretion becomes a product/architecture test; Mesh becomes an optional capability multiplier |
-| NO-REBUILD reconciliation rule | Required before next architecture implementation | Audit the actual current canonical source and classify implementation **KEEP / ELEVATE / GENERALIZE / DEPRECATE / MISSING** before changing architecture |
-| Progressive device trust ladder | Governing contract direction | Preserve separation among discovered, registered, claimed, verified, identified, permissioned, agent-operable, and transactional states |
-| Capability-first device model | Governing contract direction | Generalize from device categories toward machine-readable capabilities without discarding existing category/editorial UX |
+| SMARTDEVICES-ECOSYSTEM-RECONCILIATION-1.0 | Locally implemented source candidate | Canonical baseline recovered from v5.2 SD-BB-0 archive; GitHub main documented as older historical state |
+| DISCOVER capability foundation | Locally implemented | Canonical capability registry + public device/capability projections; catalog editorial review remains distinct from device trust |
+| CONNECT minimum foundation | Locally implemented; hosted D1 binding required for persistence | Authenticated registration contract/UI + additive registry/claim/integration tables; no live manufacturer connection or ownership verification |
+| CREATE capability generalization | Locally implemented | DeviceProject v4 required capabilities; schema-v3 read compatibility; existing v5.2 Builder retained |
+| OPERATE | Deferred | Consequential action remains behind future governed Mesh authorization/execution; no live device control |
+| Device identity / device.eth | Contract defined | Optional namespace edge only; no ownership/permission inference and no live activation |
+| deviceregistry.org | Contract defined / deployment deferred | Registry role documented; local SmartDevices registry is not represented as production deviceregistry.org |
 
-**Status discipline:** adoption of this strategic overlay does not mark future roadmap phases as implemented, hosted, production-active, or externally verified. Existing v4.x evidence remains scoped to the implementation actually verified in those releases.
-
-Canonical strategy document: `docs/SMARTDEVICES_ECOSYSTEM_NORTH_STAR_AND_ROADMAP.md`.
+Canonical reconciliation docs: `CANONICAL_STATE_REPORT.md`, `ECOSYSTEM_RECONCILIATION_MATRIX.md`, `SMART_DEVICE_OBJECT_AND_TRUST_MODEL.md`, `DEVICE_CONNECT_ARCHITECTURE.md`, `DEVICE_IDENTITY_AND_REGISTRY.md`, and `ECOSYSTEM_RECONCILIATION_VERIFICATION.md`.
 
 Continuous program execution date: 2026-08-22 UTC. “Local pass” means implemented and evidenced in this repository/build. It does not imply an external deployment or third-party certification.
 

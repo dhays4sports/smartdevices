@@ -1,6 +1,6 @@
-import { getDeviceById, type DomainId } from "./data";
+import { getDeviceById, type Device, type DomainId } from "./data";
 import type { ScanResult } from "./scan";
-import { carrierRegistry, carrierRules, deviceCarrierFits, deviceClasses, evidenceSources, evaluateCarrierGuidance, type CarrierContext } from "./carrier";
+import { carrierRegistry, carrierRules, deviceCarrierFits, deviceClasses, evidenceSources, evaluateCarrierGuidance, type CarrierContext, type ProCarrierData } from "./carrier";
 import type { CarrierAssertionSource, CarrierIntent } from "./carrier-contract";
 
 export type RecommendationOrigin = "consumer-explorer" | "agent" | "coveragefit" | "template";
@@ -23,6 +23,7 @@ type SafetyPlanBase = {
   concernId: string;
   createdAt: string;
   recommendations: PlanRecommendation[];
+  homeContext?: { goal: "all" | "alerts" | "monitoring" | "shutoff"; permission: "yes" | "no" | "unknown"; connection: "yes" | "no" | "unknown" };
   agent?: {
     displayName: string;
     agencyName?: string;
@@ -109,10 +110,11 @@ export function createLocalPlan(
   };
 }
 
-export function createCarrierPlan(context: CarrierContext, deviceIds: string[]): SafetyPlanV3 {
-  const cleanIds = [...new Set(deviceIds)].filter((id) => Boolean(getDeviceById(id))).slice(0, 5);
+export function createCarrierPlan(context: CarrierContext, deviceIds: string[], published?: { carrierData: ProCarrierData; devices: Device[]; reviewDate: string }): SafetyPlanV3 {
+  const validDevice = (id: string) => published ? published.devices.some((device) => device.id === id) : Boolean(getDeviceById(id));
+  const cleanIds = [...new Set(deviceIds)].filter(validDevice).slice(0, 5);
   const id = globalThis.crypto?.randomUUID?.() ?? `local-${Date.now()}`;
-  const guidance = evaluateCarrierGuidance(context);
+  const guidance = published ? evaluateCarrierGuidance(context, published.reviewDate, { carriers: published.carrierData.carriers, rules: published.carrierData.rules, fits: published.carrierData.fits }) : evaluateCarrierGuidance(context);
   const ruleIds = [...new Set(guidance.map((item) => item.ruleId).filter((item): item is string => Boolean(item)))];
   const sourceIds = [...new Set(guidance.flatMap((item) => item.sourceIds))];
   return {
@@ -132,7 +134,7 @@ export function createCarrierPlan(context: CarrierContext, deviceIds: string[]):
       assertionStatus: context.assertionSource === "professional-stated" ? "professional-unverified" : context.assertionSource === "consumer-stated" ? "consumer-unverified" : "none",
       assertion: context.assertionSource === "professional-stated" ? { actor: "professional", assertedAt: new Date().toISOString(), source: "smartdevices-pro", statementStatus: "professional-supplied-unverified" } : undefined,
       ruleIds,
-      sourceVersions: sourceIds.map((sourceId) => evidenceSources.sources.find((source) => source.id === sourceId)).filter((source) => Boolean(source) && source?.visibility === "public").map((source) => ({ sourceId: source!.id, version: source!.version, checkedDate: source!.checkedDate })),
+      sourceVersions: sourceIds.map((sourceId) => (published?.carrierData.sources ?? evidenceSources.sources).find((source) => source.id === sourceId)).filter((source) => Boolean(source) && source?.visibility === "public").map((source) => ({ sourceId: source!.id, version: source!.version, checkedDate: source!.checkedDate })),
       deviceFitIds: [...new Set(guidance.flatMap((item) => item.deviceFitIds))].slice(0, 10),
       unknowns: [...new Set(context.unknowns)].slice(0, 10),
     },
@@ -160,25 +162,26 @@ export function encodePlanSelection(plan: SafetyPlan): string {
 
 export type DecodedPlanSelection = Pick<SafetyPlan, "domain" | "concernId" | "recommendations"> & { schemaVersion: 1 | 2 | 3; carrierProvenance?: SafetyPlanV3["carrierProvenance"] };
 
-export function decodePlanSelection(search: URLSearchParams): DecodedPlanSelection | null {
+export function decodePlanSelection(search: URLSearchParams, published?: { devices: Device[]; carrierData: ProCarrierData }): DecodedPlanSelection | null {
   const domain = search.get("domain") as DomainId | null;
   const concernId = search.get("concern");
   const items = search.get("items")?.split(",").filter(Boolean) ?? [];
   if (!domain || !concernId || items.length === 0) return null;
-  const valid = items.filter((id) => Boolean(getDeviceById(id))).slice(0, 5);
+  const valid = items.filter((id) => published ? published.devices.some((device) => device.id === id) : Boolean(getDeviceById(id))).slice(0, 5);
   if (valid.length === 0) return null;
   const schemaVersion = search.get("v") === "3" ? 3 : search.get("v") === "2" ? 2 : 1;
   let carrierProvenance: SafetyPlanV3["carrierProvenance"] | undefined;
   if (schemaVersion === 3) {
     const carrierId = search.get("carrier") ?? "";
-    const carrier = carrierRegistry.carriers.find((item) => item.id === carrierId && item.publicationStatus === "published");
+    const data = published?.carrierData;
+    const carrier = (data?.carriers ?? carrierRegistry.carriers).find((item) => item.id === carrierId && item.publicationStatus === "published");
     const jurisdiction = search.get("jurisdiction") ?? "";
     const entryIntent = search.get("entry");
     const assertion = search.get("assertion");
-    const capabilityIds = (search.get("capabilities") ?? "").split(",").filter((id) => deviceClasses.classes.some((item) => item.id === id)).slice(0, 10);
-    const ruleIds = (search.get("rules") ?? "").split(",").filter((id) => carrierRules.rules.some((item) => item.id === id && item.carrierId === carrierId)).slice(0, 10);
-    const sourceVersions = (search.get("sources") ?? "").split(",").map((value) => value.split("~")).filter(([sourceId, version, checkedDate]) => evidenceSources.sources.some((source) => source.id === sourceId && source.version === Number(version) && source.checkedDate === checkedDate && source.visibility === "public")).slice(0, 10).map(([sourceId, version, checkedDate]) => ({ sourceId, version: Number(version), checkedDate }));
-    const deviceFitIds = (search.get("fits") ?? "").split(",").filter((id) => deviceCarrierFits.fits.some((fit) => fit.id === id && fit.carrierId === carrierId)).slice(0, 10);
+    const capabilityIds = (search.get("capabilities") ?? "").split(",").filter((id) => (data?.classes ?? deviceClasses.classes).some((item) => item.id === id)).slice(0, 10);
+    const ruleIds = (search.get("rules") ?? "").split(",").filter((id) => (data?.rules ?? carrierRules.rules).some((item) => item.id === id && item.carrierId === carrierId)).slice(0, 10);
+    const sourceVersions = (search.get("sources") ?? "").split(",").map((value) => value.split("~")).filter(([sourceId, version, checkedDate]) => (data?.sources ?? evidenceSources.sources).some((source) => source.id === sourceId && source.version === Number(version) && source.checkedDate === checkedDate && source.visibility === "public")).slice(0, 10).map(([sourceId, version, checkedDate]) => ({ sourceId, version: Number(version), checkedDate }));
+    const deviceFitIds = (search.get("fits") ?? "").split(",").filter((id) => (data?.fits ?? deviceCarrierFits.fits).some((fit) => fit.id === id && fit.carrierId === carrierId)).slice(0, 10);
     if (carrier && carrier.supportedJurisdictions.includes(jurisdiction) && (entryIntent === "requirement" || entryIntent === "discounts" || entryIntent === "recommendations") && (assertion === "consumer-unverified" || assertion === "professional-unverified" || assertion === "none")) {
       carrierProvenance = {
         carrierId,

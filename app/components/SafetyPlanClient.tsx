@@ -2,20 +2,21 @@
 
 import Link from "next/link";
 import { useMemo, useState, useSyncExternalStore } from "react";
-import { getConcern, getDeviceById, getDomain, intentOptions } from "@/app/lib/data";
+import { getConcern, getDomain, intentOptions, type Device } from "@/app/lib/data";
 import { decodePlanSelection, type SafetyPlan } from "@/app/lib/plan";
-import { getCarrier, historicCarrierWarning } from "@/app/lib/carrier";
+import { evidenceDisplayState, type ProCarrierData } from "@/app/lib/carrier";
 import { WaterInstallationChecklist } from "./WaterInstallationChecklist";
-import { localPlanStorageMode, readLocalPlan } from "@/app/lib/local-plan-store";
+import { localPlanStorageMode, readLocalPlan, persistLocalPlan } from "@/app/lib/local-plan-store";
+import { HomeDecisionExperience } from "./HomeDecisionExperience";
 
-type Props = { planId: string; selectionQuery: string };
+type Props = { planId: string; selectionQuery: string; publishedDevices: Device[]; carrierData: ProCarrierData; reviewDate: string };
 
 function subscribeToPlanStorage(onChange: () => void) {
   window.addEventListener("storage", onChange);
   return () => window.removeEventListener("storage", onChange);
 }
 
-export function SafetyPlanClient({ planId, selectionQuery }: Props) {
+export function SafetyPlanClient({ planId, selectionQuery, publishedDevices, carrierData, reviewDate }: Props) {
   const [intent, setIntent] = useState<Record<string, string>>({});
   const [saved, setSaved] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -40,20 +41,20 @@ export function SafetyPlanClient({ planId, selectionQuery }: Props) {
 
   const selection = useMemo(() => {
     if (localPlan?.status === "expired" || localPlan?.status === "revoked") return null;
-    return localPlan ?? decodePlanSelection(new URLSearchParams(selectionQuery));
-  }, [localPlan, selectionQuery]);
+    return localPlan ?? decodePlanSelection(new URLSearchParams(selectionQuery), { devices: publishedDevices, carrierData });
+  }, [localPlan, selectionQuery, publishedDevices, carrierData]);
 
   const domain = selection ? getDomain(selection.domain) : undefined;
   const concern = selection ? getConcern(selection.domain, selection.concernId) : undefined;
   const recommendations = selection?.recommendations
-    .map((item) => ({ ...item, device: getDeviceById(item.deviceId) }))
+    .map((item) => ({ ...item, device: publishedDevices.find((device) => device.id === item.deviceId) }))
     .filter((item) => Boolean(item.device)) ?? [];
   const provenance = localPlan?.schemaVersion === 2 ? localPlan.provenance : null;
   const carrierProvenance = selection?.schemaVersion === 3 ? selection.carrierProvenance ?? null : null;
-  const carrierName = carrierProvenance ? getCarrier(carrierProvenance.carrierId)?.name ?? "the selected carrier" : "the selected carrier";
+  const carrierName = carrierProvenance ? carrierData.carriers.find((carrier) => carrier.id === carrierProvenance.carrierId)?.name ?? "the selected carrier" : "the selected carrier";
   const confirmAgentLabel = carrierProvenance ? `Confirm with my ${carrierName} agent` : "Confirm with my insurance agent";
   const planStorageMode = localPlan ? localPlanStorageMode(planId) : null;
-  const carrierWarnings = carrierProvenance?.ruleIds.map((id) => historicCarrierWarning(id)).filter((warning): warning is string => Boolean(warning)) ?? [];
+  const historicCarrierWarnings = carrierProvenance?.ruleIds.map((id) => { const rule = carrierData.rules.find((item) => item.id === id); if (!rule) return "The carrier rule used by this plan is unavailable. Confirm current guidance before acting."; const state = evidenceDisplayState(rule, reviewDate); return state === "current" ? null : `This plan references ${state} carrier evidence. Historic context is preserved, but current applicability needs confirmation.`; }).filter((warning): warning is string => Boolean(warning)) ?? [];
   const nonDeviceActions = domain?.id === "home"
     ? ["Review shutoff locations and household emergency steps.", "Address plumbing, electrical, alarm-placement, or building-condition concerns with a qualified professional."]
     : ["Review keys, parking habits, and a safe theft-reporting plan.", "Use manufacturer maintenance guidance and a qualified technician for warning lights or installation questions."];
@@ -71,6 +72,16 @@ export function SafetyPlanClient({ planId, selectionQuery }: Props) {
   }
 
   function savePlan() {
+    if (localPlan) { setSaved(persistLocalPlan(localPlan) === "local-storage"); return; }
+    if (selection) {
+      const base = { ...selection, id: planId, status: "generated" as const, createdAt: new Date().toISOString() };
+      // Sanitized links lack raw scan answers. Preserve v3 public context, but do
+      // not fabricate missing v2 scan provenance or a professional identity.
+      const restored: SafetyPlan = selection.schemaVersion === 3 && selection.carrierProvenance
+        ? { ...base, schemaVersion: 3, carrierProvenance: selection.carrierProvenance }
+        : { ...base, schemaVersion: 1 };
+      setSaved(persistLocalPlan(restored) === "local-storage"); return;
+    }
     try {
       localStorage.setItem(`smartdevices-safety-plan-${planId}`, JSON.stringify({ selection, intent, savedAt: new Date().toISOString() }));
       setSaved(true);
@@ -158,13 +169,18 @@ export function SafetyPlanClient({ planId, selectionQuery }: Props) {
   }
 
   return (
-    <main className="plan-page">
+    <main className={domain.id === "home" ? "home-plan" : "plan-page"}>
+      {domain.id === "home" ? <HomeDecisionExperience key={planId} planId={planId} initialConcern={concern.id} initialEntry="known" publishedDevices={publishedDevices} planOptions={recommendations.map((item) => item.device!)} carrierContext={Boolean(carrierProvenance)} localContext={localPlan?.homeContext} /> : null}
+      {domain.id === "home" ? <div className="home-plan-details"><button className="button-subtle" type="button" onClick={savePlan}>{saved ? "Saved on this device" : "Save this shared plan to My Plans"}</button></div> : null}
+      <details className={domain.id === "home" ? "home-plan-details" : "standard-plan-details"} open={domain.id === "home" ? undefined : true}>
+      <summary hidden={domain.id !== "home"}>Full plan, insurance context & source history</summary>
+      <div className={domain.id === "home" ? "plan-page" : undefined}>
       <section className="plan-hero">
         <div>
           <p className="eyebrow">Smart Safety Plan · {domain.label}</p>
           <h1>{concern.prompt}</h1>
           <p>{concern.why}</p>
-          <div className="plan-meta"><span>{recommendations.length} prioritized options</span><span>Plan {planId.slice(0, 8)}</span><span>Catalog reviewed Aug. 22, 2026</span></div>
+          <div className="plan-meta"><span>{recommendations.length} prioritized options</span><span>Plan {planId.slice(0, 8)}</span><span>Check each device’s dated source record</span></div>
         </div>
         <div className="plan-hero-actions">
           <button className="button-subtle" type="button" onClick={sharePlan}>{copied ? "Link copied" : "Share"}</button>
@@ -186,11 +202,11 @@ export function SafetyPlanClient({ planId, selectionQuery }: Props) {
         <div><p className="eyebrow">Carrier-aware plan · version 3</p><h2 id="carrier-plan-context-heading">Known, asserted, evidenced, and unknown context remain separate.</h2><p>SmartDevices is independent. This is decision guidance, not a {carrierName} requirement, approval, discount, eligibility, or policy determination.</p></div>
         <div className="carrier-plan-context-grid">
           {carrierProvenance.assertionStatus === "consumer-unverified" ? <article><h3>What you told us</h3><p>You stated that an insurance conversation mentioned this capability. SmartDevices has not verified the statement.</p></article> : null}
-          {carrierProvenance.assertionStatus === "professional-unverified" ? <article><h3>What your professional supplied</h3><p>A professional supplied the requirement assertion. It is not SmartDevices- or carrier-verified evidence.</p></article> : null}
-          {carrierProvenance.sourceVersions.length ? <article><h3>What current {carrierName} public evidence says</h3><p>The governed public sources below supported the category when this plan was created; policy applicability still requires confirmation.</p><ul>{carrierProvenance.sourceVersions.map((source) => <li key={`${source.sourceId}-${source.version}`}>{source.sourceId} · version {source.version} · checked {source.checkedDate}</li>)}</ul>{carrierWarnings.map((warning) => <p className="stale-warning" key={warning}>{warning}</p>)}</article> : null}
+          {carrierProvenance.assertionStatus === "professional-unverified" ? <article><h3>What your professional supplied</h3><p>This plan carries a professional-stated requirement label. The shared link does not authenticate the sender or establish the requirement. Confirm it directly; it is not SmartDevices- or carrier-verified evidence.</p></article> : null}
+          {carrierProvenance.sourceVersions.length ? <article><h3>What current {carrierName} public evidence says</h3><p>The governed public sources below supported the category when this plan was created; policy applicability still requires confirmation.</p><ul>{carrierProvenance.sourceVersions.map((source) => <li key={`${source.sourceId}-${source.version}`}>{source.sourceId} · version {source.version} · checked {source.checkedDate}</li>)}</ul>{historicCarrierWarnings.map((warning) => <p className="stale-warning" key={warning}>{warning}</p>)}</article> : null}
           {carrierProvenance.requestedCapabilityIds.length ? <article><h3>Capability before product</h3><ul>{carrierProvenance.requestedCapabilityIds.map((id) => <li key={id}>{id}</li>)}</ul></article> : null}
           {recommendations.length ? <article><h3>What SmartDevices recommends</h3><p>{recommendations.length} independently presented option{recommendations.length === 1 ? "" : "s"}; no client decision is preselected.</p></article> : null}
-          {carrierProvenance.unknowns.length || carrierWarnings.length ? <article><h3>What still needs confirmation</h3><ul>{carrierProvenance.unknowns.map((item) => <li key={item}>{item}</li>)}{carrierWarnings.map((item) => <li key={item}>{item}</li>)}</ul></article> : null}
+          {carrierProvenance.unknowns.length || historicCarrierWarnings.length ? <article><h3>What still needs confirmation</h3><ul>{carrierProvenance.unknowns.map((item) => <li key={item}>{item}</li>)}{historicCarrierWarnings.map((item) => <li key={item}>{item}</li>)}</ul></article> : null}
         </div>
       </section> : null}
       {carrierProvenance && concern.id === "water" ? <WaterInstallationChecklist carrierName={carrierName} /> : null}
@@ -292,7 +308,7 @@ export function SafetyPlanClient({ planId, selectionQuery }: Props) {
           <div className="local-recorded"><strong>Saved only in this browser.</strong><p>No message was sent. Activate a reviewed communication adapter before using this as a delivered request.</p><button className="button-subtle" type="button" onClick={removeLocalRequest}>Remove local request</button></div>
         ) : !contactOpen && (helpAction === "confirm-agent" || helpAction === "help-choose" || helpAction === "installation-help") ? (
           <button className="button-primary" type="button" onClick={() => setContactOpen(true)}>Continue to optional contact</button>
-        ) : (
+        ) : contactOpen ? (
           <form className="contact-form" onSubmit={recordLocalRequest}>
             <label><span>Name</span><input name="name" autoComplete="name" required /></label>
             <label><span>Mobile or email</span><input name="contact" required /></label>
@@ -301,8 +317,10 @@ export function SafetyPlanClient({ planId, selectionQuery }: Props) {
             <button className="button-primary" type="submit">Record follow-up request locally</button>
             <p className="form-note">External delivery is not activated in this build. No message will be sent until a communication adapter is configured.</p>
           </form>
-        )}
+        ) : null}
       </section>
+      </div>
+      </details>
     </main>
   );
 }

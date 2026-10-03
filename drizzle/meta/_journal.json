@@ -29,6 +29,34 @@
       "when": 1787726769018,
       "tag": "0003_supreme_stepford_cuckoos",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1787897903706,
+      "tag": "0004_colorful_misty_knight",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1789600743712,
+      "tag": "0005_builder_foundation",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1789615193594,
+      "tag": "0006_intelligent_device_modes",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1790980000000,
+      "tag": "0007_device_registry_foundation",
+      "breakpoints": true
     }
   ]
 }

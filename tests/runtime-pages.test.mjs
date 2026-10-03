@@ -7,7 +7,7 @@ const origin = `http://127.0.0.1:${port}`;
 let output = "";
 const server = spawn("./node_modules/.bin/vinext", ["start", "--port", String(port), "--hostname", "127.0.0.1"], {
   cwd: new URL("..", import.meta.url),
-  env: { ...process.env, SMARTDEVICES_DEMO_MODE: "true", RATE_LIMIT_HASH_SALT: "local-runtime-test-only-not-a-secret", WRANGLER_LOG_PATH: ".wrangler/test.log" },
+  env: { ...process.env, SMARTDEVICES_DEMO_MODE: "true", COVERAGEFIT_DEVICE_BRIDGE_ENABLED: "false", RATE_LIMIT_HASH_SALT: "local-runtime-test-only-not-a-secret", WRANGLER_LOG_PATH: ".wrangler/test.log" },
   stdio: ["ignore", "pipe", "pipe"],
 });
 server.stdout.on("data", (chunk) => { output += chunk.toString(); });
@@ -57,9 +57,10 @@ test("direct routes load for vehicle, catalog, plan, and Pro demo", async () => 
 
 test("carrier discovery, Farmers direct context, and permanent alias work in built runtime", async () => {
   for (const [path, pattern] of [
-    ["/insurance", /Your insurer mentioned a device/],
-    ["/farmers", /Understand the device conversation/],
-    ["/farmers?intent=requirement&category=water", /I received a requirement/],
+    ["/insurance", /Did your insurer mention a smart device/],
+    ["/build", /Describe the device you wish existed/],
+    ["/farmers", /Find the right device for what Farmers mentioned/],
+    ["/farmers?intent=requirement&category=water", /What kind of device did they mention/],
   ]) {
     const { response, body } = await html(path);
     assert.equal(response.status, 200, path);
@@ -70,10 +71,37 @@ test("carrier discovery, Farmers direct context, and permanent alias work in bui
   assert.match(alias.headers.get("location") ?? "", /\/farmers\?intent=requirement&category=water$/);
 });
 
+test("Evidence Autopilot renders and exercises the bounded local demo refresh", async () => {
+  const page = await html("/admin/evidence");
+  assert.equal(page.response.status, 200);
+  assert.match(page.body, /Keep the facts current without babysitting the catalog/);
+  const response = await fetch(`${origin}/api/admin/evidence`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ action: "refresh" }) });
+  assert.equal(response.status, 200);
+  const payload = await response.json();
+  assert.equal(payload.mode, "demo");
+  assert.equal(payload.summary.total, 8);
+  assert.equal(payload.summary.baseline, 8);
+  assert.equal(payload.summary.autoRenewable, 0);
+});
+
 test("invalid and unavailable plan input fails honestly", async () => {
   const { response, body } = await html("/plans/missing");
   assert.equal(response.status, 200);
   assert.match(body, /incomplete or no longer available/);
+});
+
+test("connected task route loads while inactive and mutations fail closed", async () => {
+  const { response, body } = await html("/insurance-task");
+  assert.equal(response.status, 200);
+  assert.match(body, /Your home protection next steps/);
+  assert.match(body, /noindex/);
+  const payload = JSON.stringify({ operation: "read", token: "a".repeat(43) });
+  const disabled = await fetch(`${origin}/api/coveragefit-device`, { method: "POST", headers: { origin, "content-type": "application/json" }, body: payload });
+  assert.equal(disabled.status, 503);
+  assert.equal((await disabled.json()).error.code, "CONNECTION_NOT_CONFIGURED");
+  assert.equal(disabled.headers.get("cache-control"), "no-store");
+  const foreign = await fetch(`${origin}/api/coveragefit-device`, { method: "POST", headers: { origin: "https://foreign.test", "content-type": "application/json" }, body: payload });
+  assert.equal(foreign.status, 403);
 });
 
 test("external handoff endpoint rejects unauthenticated callers", async () => {
@@ -89,5 +117,6 @@ test("missing hosted storage fails explicitly without breaking public value", as
   assert.equal((await response.json()).error.code, "STORAGE_UNAVAILABLE");
   const publicRoute = await html("/protect/home?concern=water");
   assert.equal(publicRoute.response.status, 200);
-  assert.match(publicRoute.body, /Water leak and shutoff/);
+  assert.match(publicRoute.body, /What should your water protection do/);
+  assert.match(publicRoute.body, /A detection-only sensor is not a substitute/);
 });

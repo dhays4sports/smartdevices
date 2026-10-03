@@ -17,8 +17,9 @@ The architecture was retained after verifying the exact v4.0 RC1 source. It favo
 | Plans | `/plans/[id]` | Public non-sensitive local selection or opaque hosted ID; no PII in URL |
 | Carrier guidance | `/insurance`, `/farmers`, `/insurance/farmers` | Public directory/canonical pilot/permanent sanitized alias; no identity required |
 | Pro | `/pro`, `/pro/workspace` | Marketing public; workspace requires hosted identity unless explicit local demo flag |
+| Evidence administration | `/admin/evidence` | Authenticated evidence-admin grant; dynamic, no-index, server-authorized |
 | Institutional | `/about`, `/index`, `/research`, `/partners`, `/privacy`, `/terms`, `/disclosures`, `/accessibility` | Public |
-| API | `/api/plans`, `/api/plans/[id]`, `/api/integrations/handoff` | Size/schema validation, rate-limit contract, capability/identity checks, no-store responses |
+| API | `/api/plans`, `/api/plans/[id]`, `/api/integrations/handoff`, `/api/admin/evidence`, `/api/internal/evidence-refresh` | Size/schema validation, rate-limit contract, capability/identity or scheduler checks, no-store responses |
 
 ## State contract
 
@@ -30,7 +31,13 @@ Plan transitions are allow-listed in `app/lib/api.ts`; revoked is terminal. Host
 
 ## Persistence
 
-Thirteen D1 tables cover plans, recommendations, responses, scan sessions/responses, professional profiles, PII-free templates, consent events, audit events, handoff replay receipts, suppression, rate limiting, and normalized plan-verification events. Migrations `0000` through additive `0003` are append-only. Database binding name remains `DB`.
+Seventeen D1 tables cover the inherited plan, scan, professional, consent, audit, handoff, suppression and rate-limit state plus append-only evidence refresh runs, source observations, publication snapshots, and administrator decisions. Migrations `0000` through additive `0004` are append-only. Database binding name remains `DB`.
+
+## v4.3 evidence publication
+
+The bundled public JSON is the fail-safe baseline. A validated active D1 snapshot may replace catalog/source/rule/fit data at request time for the Device Library, device detail and California Farmers entry journey. Every snapshot has a content hash, sequence, publishing actor, optional source run and immutable payload. Publication supersedes rather than mutates the prior snapshot. Rollback republishes an earlier valid payload as a new active snapshot and records the relationship in audit evidence.
+
+Source retrieval is bounded to allowlisted HTTPS domains, a 12-second timeout and a 1 MB response. Redirect destinations and content types are revalidated. Normalized HTML excludes scripts, styles, comments and markup before SHA-256 comparison. Unchanged sources may renew; changed, baseline, unavailable or invalid observations cannot produce stronger guidance automatically.
 
 ## Authorization
 
@@ -65,42 +72,43 @@ Plan routes alone permit same-origin framing so SmartDevices Pro can render the 
 
 Provider-specific communications, CRM, evidence storage, carrier feeds, and identity remain behind disabled-by-default adapters. Static public data supports the local pilot without inventing hosted services.
 
+# v5.2 Builder additive architecture
 
-## Strategic ecosystem overlay — 2026-10-02
+`/build` is a second first-class public job beside Protect. It shares the published device catalog but does not import carrier rules into engineering logic. The Builder project model is structured rather than conversational: idea, requirements, answers, capability, safety class, architecture/revision, BOM, firmware source, CAD source, validations, unknowns and portable manifest.
 
-`SMARTDEVICES-ECOSYSTEM-NORTH-STAR-1.0` is the governing direction for future ecosystem evolution. It is additive to the verified v4.1/v4.2 architecture and does not retroactively claim implementation.
+The shared `solution-contract.ts` intentionally separates physical solution type from insurance status. Builder emits `smartdevices-build` + `informational-only`. Carrier-aware statuses remain governed by the carrier evidence pipeline and cannot be inferred from technical capability alone.
 
-### Four-surface architecture
+Builder remains local/private by default for anonymous use. Authenticated hosted save is now implemented against the additive D1 `builder_projects`/`builder_revisions` boundary, with complete DeviceProject v3 state stored in immutable revision manifests. Live research, sourcing and firmware/CAD execution are separately activated adapters; unavailable services remain explicit rather than simulated. Custom PCB/EDA, manufacturing ordering, compliance and Mesh runtime activation remain later specialist stages.
 
-Future reconciliation should organize SmartDevices around four durable surfaces:
+# v5.3 ecosystem-foundation additive architecture
 
-- **DISCOVER** — structured device intelligence and capability discovery;
-- **CONNECT** — normalize existing third-party or custom devices into a canonical device/capability model;
-- **CREATE** — generalize the existing builder toward capability/outcome-first creation;
-- **OPERATE** — permissioned human/agent execution with bounded authority, provenance, revocation, and receipts where appropriate.
+`SMARTDEVICES-ECOSYSTEM-RECONCILIATION-1.0` generalizes the latest v5.2 source without replacing mature protection, carrier, evidence or Builder systems.
 
-### Ecosystem accretion constraint
+## Four surfaces
 
-Architecture should prefer designs in which new third-party intelligent devices add value to SmartDevices rather than compete with it. Device participation must not require Mesh-native origin.
+- **Discover** uses the existing catalog/device pages and adds canonical capability IDs plus a public Smart Device Object projection.
+- **Connect** adds a bounded authenticated registration path and adapter contract. Registration records metadata; it does not prove ownership, verification, identity, reachability, permission or agent control.
+- **Create** preserves Builder v5.2 and evolves DeviceProject to schema v4 with normalized required capabilities. Schema-v3 manifests remain readable and are normalized on read.
+- **Operate** is intentionally not activated here. Consequential operation will bind to governed authorization/execution primitives instead of treating network reachability as authority.
 
-### Trust-state separation
+## Canonical device-domain boundaries
 
-Future device-domain data contracts must preserve explicit separation among:
+The trust ladder is explicit and sequential:
 
-`discovered -> registered -> claimed -> verified -> identified -> permissioned -> agent-operable -> transactional`.
+`discovered → registered → claimed → verified → identified → permissioned → agent-operable → transactional`
 
-Registration does not imply verification. Identity does not imply authorization. Reachability does not imply permission.
+The implementation prohibits implicit upward trust transitions. Catalog editorial/source review remains provenance assurance for a model record and does not upgrade the device trust state beyond `discovered`.
 
-### Capability-first direction
+Device categories remain a human navigation layer. Normalized capability IDs are the interoperability layer. Unknown catalog labels remain unmapped until a truthful normalized definition is approved.
 
-Human-facing categories remain useful, but interoperability should increasingly model device capabilities independently from specific hardware. A future canonical Smart Device Object should be able to represent identity, manufacturer/model, ownership/control claim, interfaces, capabilities, state, connectivity, compatibility, trust, provenance, permissions, endpoints, Mesh readiness, and economic capability where applicable.
+Mesh participation is optional. A baseline device can be discovered, registered, compared, connected or created without a Mesh identity. Mesh metadata is additive and cannot silently grant permission or execution.
 
-### Mesh relationship
+## Device registry persistence
 
-SmartDevices must remain useful without the Mesh. Mesh primitives may progressively add durable identity, mandates, fine-grained permissions, agent authorization, execution boundaries, ephemeral credentials, settlement, receipts, provenance, and revocation.
+Migration `0007_device_registry_foundation.sql` adds:
 
-### Reconciliation rule
+- `device_registry_records`
+- `device_control_claims`
+- `device_integrations`
 
-**NO REBUILD.** Before implementing this overlay, audit the actual current canonical source and classify relevant implementation as **KEEP / ELEVATE / GENERALIZE / DEPRECATE / MISSING**. Preserve working systems, including specialized verticals such as `/farmers`, and generalize incrementally.
-
-See `docs/SMARTDEVICES_ECOSYSTEM_NORTH_STAR_AND_ROADMAP.md` for the complete North Star, trust ladder, boundaries, implementation status convention, and phased roadmap.
+The registrant/account association is stored as `registrant_subject`; it is intentionally not named as owner. Ownership/control claims live in a separate table with independent status/evidence/revocation fields. Integration credential material is represented only by an optional server-side reference; raw secrets are rejected from the public registration contract.

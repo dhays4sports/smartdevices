@@ -3,11 +3,14 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { DeviceCard } from "./DeviceCard";
-import { devices, domains, type Device, type DomainId } from "@/app/lib/data";
+import { domains, type Device, type DomainId } from "@/app/lib/data";
+import { createLocalPlan, encodePlanSelection } from "@/app/lib/plan";
+import { persistLocalPlan } from "@/app/lib/local-plan-store";
+import { canonicalCapabilitiesForDevice } from "@/app/lib/device-capabilities";
 
-type Props = { initialDomain?: string; initialConcern?: string };
+type Props = { initialDomain?: string; initialConcern?: string; publishedDevices: Device[] };
 
-export function DeviceLibrary({ initialDomain = "all", initialConcern = "" }: Props) {
+export function DeviceLibrary({ initialDomain = "all", initialConcern = "", publishedDevices }: Props) {
   const [query, setQuery] = useState("");
   const [domain, setDomain] = useState(initialDomain);
   const [concern, setConcern] = useState(initialConcern);
@@ -21,16 +24,16 @@ export function DeviceLibrary({ initialDomain = "all", initialConcern = "" }: Pr
 
   const filtered = useMemo(() => {
     const needle = query.trim().toLowerCase();
-    return devices.filter((device) => {
+    return publishedDevices.filter((device) => {
       if (domain !== "all" && !device.domains.includes(domain as DomainId)) return false;
       if (concern && !device.concerns.includes(concern)) return false;
       if (!needle) return true;
-      return [device.manufacturer, device.model, device.solution, device.summary, ...device.capabilities]
+      return [device.manufacturer, device.model, device.solution, device.summary, ...device.capabilities, ...canonicalCapabilitiesForDevice(device).map((item) => item.id)]
         .join(" ")
         .toLowerCase()
         .includes(needle);
     });
-  }, [query, domain, concern]);
+  }, [query, domain, concern, publishedDevices]);
 
   function toggleCompare(device: Device) {
     setCompare((items) =>
@@ -45,16 +48,21 @@ export function DeviceLibrary({ initialDomain = "all", initialConcern = "" }: Pr
   }
 
   const compareHref = `/compare?items=${compare.join(",")}`;
-  const planDomain = domain === "all" ? devices.find((device) => plan.includes(device.id))?.domains[0] ?? "home" : domain;
-  const planConcern = concern || devices.find((device) => plan.includes(device.id))?.concerns[0] || "water";
-  const planHref = `/plans/library?domain=${planDomain}&concern=${planConcern}&items=${plan.join(",")}`;
+  const planDomain = domain === "all" ? publishedDevices.find((device) => plan.includes(device.id))?.domains[0] ?? "home" : domain;
+  const planConcern = concern || publishedDevices.find((device) => plan.includes(device.id))?.concerns[0] || "water";
+  function openPlan() {
+    if (!plan.length) return;
+    const safetyPlan = createLocalPlan(planDomain as DomainId, planConcern, plan);
+    persistLocalPlan(safetyPlan);
+    window.location.assign(`/plans/${safetyPlan.id}?${encodePlanSelection(safetyPlan)}`);
+  }
 
   return (
     <section className="library-shell">
       <div className="library-controls">
         <label className="search-field">
           <span>Search verified device information</span>
-          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Try water shutoff, dash camera, or temperature" />
+          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Try water shutoff, temperature, or measure.temperature" />
         </label>
         <label>
           <span>Environment</span>
@@ -92,10 +100,9 @@ export function DeviceLibrary({ initialDomain = "all", initialConcern = "" }: Pr
         <div><strong>{compare.length} comparing</strong><span> · </span><strong>{plan.length} in plan</strong></div>
         <div>
           <Link className={compare.length >= 2 ? "button-subtle" : "button-subtle is-disabled"} aria-disabled={compare.length < 2} href={compare.length >= 2 ? compareHref : "#"}>Compare</Link>
-          <Link className={plan.length ? "button-primary" : "button-primary is-disabled"} aria-disabled={!plan.length} href={plan.length ? planHref : "#"}>Build plan</Link>
+          <button className="button-primary" type="button" disabled={!plan.length} onClick={openPlan}>Build plan</button>
         </div>
       </aside>
     </section>
   );
 }
-
