@@ -1,5 +1,6 @@
 "use client";
 
+import { recordMetric } from "@/app/lib/metrics-client";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { DeviceCard } from "./DeviceCard";
@@ -38,6 +39,7 @@ export function DeviceLibrary({ initialDomain = "all", initialConcern = "", publ
   }, [query, domain, concern, capability, publishedDevices]);
 
   function toggleCompare(device: Device) {
+    recordMetric("compare_start");
     setCompare((items) =>
       items.includes(device.id) ? items.filter((id) => id !== device.id) : [...items, device.id].slice(-3),
     );
@@ -62,10 +64,10 @@ export function DeviceLibrary({ initialDomain = "all", initialConcern = "", publ
   return (
     <section className="library-shell">
       <div className="library-controls">
-        <label><span>Capability</span><select aria-label="Capability" value={capability} onChange={(event) => setCapability(event.target.value)}><option value="">All capabilities</option>{deviceCapabilities.filter((item) => publishedDevices.some((device) => canonicalCapabilitiesForDevice(device).some((binding) => binding.id === item.id))).map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}</select></label>
+        <label><span>Capability</span><select aria-label="Capability" value={capability} onChange={(event) => {setCapability(event.target.value);recordMetric("capability_filter");}}><option value="">All capabilities</option>{deviceCapabilities.filter((item) => publishedDevices.some((device) => canonicalCapabilitiesForDevice(device).some((binding) => binding.id === item.id))).map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}</select></label>
         <label className="search-field">
           <span>Search source-linked device information</span>
-          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Try water shutoff, temperature, or measure.temperature" />
+          <input onBlur={()=>{if(query.trim())recordMetric("discover_search");}} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Try water shutoff, temperature, or measure.temperature" />
         </label>
         <label>
           <span>Environment</span>

@@ -407,3 +407,8 @@ export const marketConversionReceipts = sqliteTable("market_conversion_receipts"
   index("market_conversion_provider_idx").on(table.providerId, table.createdAt),
   index("market_conversion_confidence_idx").on(table.confidence, table.createdAt),
 ]);
+
+/** Aggregate pilot counters: no visitor, account, project or search payload. */
+export const businessMetricDaily = sqliteTable("business_metric_daily", {
+ day:text("day").notNull(), cohort:text("cohort").notNull(), event:text("event").notNull(), count:integer("count").notNull().default(0),
+}, table=>[uniqueIndex("business_metric_daily_unique").on(table.day,table.cohort,table.event)]);

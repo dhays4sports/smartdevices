@@ -27,6 +27,29 @@ try {
   await page.goto(origin+'/farmers');assert.match(await page.locator('body').innerText(),/California/i);const builderLink=page.locator('a[href="/build?source=farmers"]').first();await builderLink.click();await page.waitForURL('**/build?source=farmers');assert.match(await page.locator('body').innerText(),/custom build does not replace or satisfy/);
   results.push({width,routes:7,interactions:['capability filter','builder intake/workspace','signed-out save fails truthfully','real reload','Connect sample/reset','farmers Builder handoff']});
  }
+ // Business continuation: real product interaction; intercepted transport checks payload, not DB persistence.
+ const captured=[];await page.route('**/api/metrics',async route=>{captured.push(route.request().postDataJSON());await route.fulfill({status:204});});
+ for(const width of [375,768,1440]) {
+  await page.setViewportSize({width,height:900});await page.goto(origin+'/');
+  await page.getByRole('checkbox',{name:/Help test SmartDevices/}).uncheck();
+  await page.getByRole('link',{name:'Compare water-protection options',exact:true}).click();
+  await page.getByRole('button',{name:'Add to comparison plan'}).first().waitFor();
+  await page.waitForTimeout(100);const before=captured.length;await page.getByRole('button',{name:'Add to comparison plan'}).first().click();await page.waitForTimeout(100);assert.equal(captured.length,before,'no metrics before opt-in');
+  await page.getByRole('checkbox',{name:/Help test SmartDevices/}).check();
+  await page.getByRole('button',{name:'Save on this device & open',exact:true}).click();await page.waitForURL('**/plans/**');
+  await page.reload();await page.getByRole('heading',{name:'Your next step, made clearer.',exact:true}).waitFor();
+  await page.getByLabel('Which option are you considering?').selectOption({index:1});
+  await page.getByRole('button',{name:'Download my next-step summary'}).click();
+  // Count intent without navigating to external provider or making a purchase.
+  await page.locator('a').filter({hasText:'Check manufacturer details'}).first().evaluate(el=>el.addEventListener('click',e=>e.preventDefault()));
+  await page.locator('a').filter({hasText:'Check manufacturer details'}).first().click();
+  await page.waitForTimeout(100);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
+ }
+ assert.ok(captured.some(x=>x.event==='plan_save_local'));assert.ok(captured.some(x=>x.event==='plan_reopen_local'));assert.ok(captured.some(x=>x.event==='outbound_product_click'));
+ assert.ok(captured.every(x=>Object.keys(x).join(',')==='event'));
+ const beforePrivacy=captured.length;await page.evaluate(()=>Object.defineProperty(navigator,'globalPrivacyControl',{value:true,configurable:true}));
+ await page.getByRole('button',{name:'Download my next-step summary'}).click();await page.waitForTimeout(100);assert.equal(captured.length,beforePrivacy,'GPC suppresses telemetry');
+ console.log('PASS business flow at 375/768/1440: opt-in boundary, local save/reload/reopen, export, manufacturer intent, GPC; payload contains only event. Transport intercepted; not hosted DB proof.');
  const denied=await page.request.get(origin+'/api/builder/projects');assert.equal(denied.status(),401);assert.match(denied.headers()['cache-control'],/private, no-store/);
  assert.deepEqual(errors,[]);fs.mkdirSync('outputs/qa',{recursive:true});fs.writeFileSync('outputs/qa/sites-local-browser.json',JSON.stringify({environment:'local production build; NOT hosted authentication',results,pageErrors:errors},null,2));
  console.log('PASS 21 route/viewport checks; 18 interactions at 375/768/1440; signed-out private API denied; 0 page errors. Hosted sign-in/persistence not tested.');

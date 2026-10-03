@@ -1,4 +1,5 @@
 "use client";
+import { recordMetric } from "@/app/lib/metrics-client";
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
@@ -25,6 +26,7 @@ function saveLocalProject(project: DeviceProject) {
 }
 
 export function DeviceBuilder({ publishedDevices, sourceContext = "direct", initialProject = null }: { publishedDevices: Device[]; sourceContext?: DeviceProject["sourceContext"]; initialProject?: DeviceProject | null }) {
+  useEffect(()=>{if(initialProject?.hosted)recordMetric("plan_reopen_hosted");},[initialProject]);
   const [idea, setIdea] = useState(initialProject?.idea ?? "");
   const [stage, setStage] = useState<"idea" | "requirements" | "workspace">(initialProject ? "workspace" : "idea");
   const [answers, setAnswers] = useState<BuilderAnswers>(initialProject?.answers ?? DEFAULT_ANSWERS);
@@ -48,7 +50,7 @@ export function DeviceBuilder({ publishedDevices, sourceContext = "direct", init
 
   async function analyzeIdea() {
     if (idea.trim().length < 12) { setNotice("Give Builder a little more detail about what the device should do."); return; }
-    setNotice(""); setBusy("orchestrate");
+    recordMetric("builder_start"); setNotice(""); setBusy("orchestrate");
     try {
       const response = await fetch("/api/builder/orchestrate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ idea, answers }) });
       if (response.ok) {
@@ -62,7 +64,7 @@ export function DeviceBuilder({ publishedDevices, sourceContext = "direct", init
   function buildProject() {
     let next = createDeviceProject(idea, answers, publishedDevices, sourceContext);
     if (orchestratorPreview) next = applyOrchestrator(next, orchestratorPreview);
-    setProject(next); setStage("workspace"); setNotice("");
+    recordMetric("builder_complete"); setProject(next); setStage("workspace"); setNotice("");
     window.requestAnimationFrame(() => document.getElementById("builder-workspace")?.scrollIntoView({ block: "start" }));
   }
 
@@ -110,7 +112,7 @@ export function DeviceBuilder({ publishedDevices, sourceContext = "direct", init
       const response = await fetch(project.hosted ? `/api/builder/projects/${project.id}` : "/api/builder/projects", { method: project.hosted ? "PUT" : "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(project) });
       const data = await response.json() as { project?: DeviceProject; url?: string; error?: { message?: string } };
       if (!response.ok || !data.project) throw new Error(response.status === 401 ? "Sign in with ChatGPT to save this project to SmartDevices." : data.error?.message || "Hosted save failed.");
-      setProject(data.project); setNotice(`Hosted revision saved. ${data.url ?? ""}`.trim());
+      recordMetric("plan_save_hosted"); setProject(data.project); setNotice(`Hosted revision saved. ${data.url ?? ""}`.trim());
     } catch (error) { setNotice(error instanceof Error ? error.message : "Hosted save is unavailable."); }
     finally { setBusy(null); }
   }

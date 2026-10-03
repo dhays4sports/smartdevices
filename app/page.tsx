@@ -11,7 +11,7 @@ export default async function Home() {
     <>
       <SiteHeader />
       <main>
-        <ProtectionExplorer publishedDevices={bundle.catalog} />
+        <section className="page-hero"><p className="eyebrow">Discover → Plan → Act</p><h1>Plan water-leak protection for your home.</h1><p>Compare detection, monitoring and automatic shutoff. Check installation needs, keep a local plan, and review the manufacturer’s details before buying.</p><Link className="button-primary" href="/protect/home?concern=water">Compare water-protection options</Link> <Link className="button-subtle" href="/devices">Browse all devices</Link><p>No account needed to compare. Plans from this guide are saved on this device; online prototype projects remain a separate Builder feature.</p></section><ProtectionExplorer publishedDevices={bundle.catalog} />
         <section className="institutional-strip" aria-labelledby="intelligence-title">
           <div className="institutional-visual">
             <Image src="/legacy/intelligence-globe.svg" alt="Abstract network globe from the SmartDevices archive" width={720} height={720} unoptimized />
@@ -33,8 +33,8 @@ export default async function Home() {
           </div>
         </section>
         <section className="partnership-cta">
-          <div><p className="eyebrow">Strategic partnerships</p><h2>Bring trusted device intelligence into a protection conversation.</h2></div>
-          <Link className="button-primary" href="/partners">Partnership access</Link>
+          <div><p className="eyebrow">Make a practical plan</p><h2>Start with the problem your device needs to solve.</h2></div>
+          <Link className="button-primary" href="/protect/home?concern=water">Plan water protection</Link>
         </section>
       </main>
       <SiteFooter />

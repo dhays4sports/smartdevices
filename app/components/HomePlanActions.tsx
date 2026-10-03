@@ -1,5 +1,6 @@
 "use client";
 
+import { recordMetric } from "@/app/lib/metrics-client";
 import { useEffect, useState } from "react";
 import type { Device } from "@/app/lib/data";
 import { homeProgressStates, parseHomeProgress, type HomeProgress } from "@/app/lib/home-decision";
@@ -30,6 +31,7 @@ export function HomePlanActions({ planId, options, concernId }: { planId: string
   }
 
   function exportSummary() {
+    recordMetric("plan_export");
     const device = options.find((item) => item.id === progress?.deviceId);
     const summary = {
       schemaVersion: 1, planId, concernId,

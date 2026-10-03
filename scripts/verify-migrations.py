@@ -13,7 +13,7 @@ ordered = [files[entry["tag"]] for entry in journal]
 registry = files["0007_device_registry_foundation"]
 market = [p for p in ordered if "market" in p.name]
 base = [p for p in ordered if p != registry and p not in market]
-snapshot = json.loads((root / "drizzle/meta/0012_snapshot.json").read_text())
+snapshot = json.loads((root / "drizzle/meta/0013_snapshot.json").read_text())
 for label, migrations in [("fresh journal", ordered), ("registry-first upgrade", base + [registry] + market), ("market-first upgrade", base + market + [registry])]:
     db = sqlite3.connect(":memory:")
     db.execute("PRAGMA foreign_keys=ON")

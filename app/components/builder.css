@@ -22,3 +22,5 @@
 .builder-account { display:flex; gap:1rem; flex-wrap:wrap; padding:1rem; align-items:center; }
 .saved-project-list { display:grid; gap:1rem; padding:0; list-style:none; }
 .saved-project-list li { padding:1rem; border:1px solid #cbd5e1; border-radius:12px; overflow-wrap:anywhere; }
+
+.metrics-choice{margin:2rem auto;padding:1rem;max-width:70rem;border-top:1px solid #ccc}.metrics-choice small{display:block;margin-top:.5rem}.metrics-choice input{margin-right:.5rem}
