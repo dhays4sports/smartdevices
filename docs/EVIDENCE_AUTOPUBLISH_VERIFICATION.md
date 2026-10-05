@@ -23,3 +23,5 @@ After implementation:
 The new tests cover signature forgery, wrong/modified/resealed batches, changed selections, stale evidence, manufactured freshness dates, partial approval, dependencies, unchanged/concurrent source and repository state, supersession, unresolved conflicts, suppression, replay/idempotency, arbitrary paths, Git/validation/deployment failure, concurrent advancement during validation, exact-SHA/private-target checks, synthetic rollback/receipt ordering, and D1 snapshot mismatch.
 
 No synthetic test is represented as real browser, real operator approval, Sites publication or live rollback proof. No production credential was provisioned. The private pilot remains at its known-good version. All real proposals remain outside runtime content in `editorial/batches`; public data and carrier claims were not applied.
+
+Batch 02 synthetic readiness rehearsal: all twelve proposals reconciled SAFE_TO_APPLY in memory against the exact committed implementation. It used an ephemeral fixture key, wrote no catalog/evidence records, and is not operator approval. See `editorial/research/batch-02-synthetic-readiness.json`.

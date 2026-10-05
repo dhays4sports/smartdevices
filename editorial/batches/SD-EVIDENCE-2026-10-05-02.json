@@ -11,7 +11,7 @@
         "productId": "moen-flo-shutoff",
         "context": "retail",
         "status": "active",
-        "title": "Moen retail \u2014 model 900-001",
+        "title": "Moen retail — model 900-001",
         "value": "$623.99; selected 3/4-inch model shown sold out on October 5, 2026.",
         "observedOn": "2026-10-05",
         "reviewDueDate": "2026-10-12",
@@ -43,18 +43,21 @@
       "reads": [
         {
           "collection": "sources",
-          "recordId": "farmers-leak-detection-ca-2026-08-26"
+          "recordId": "farmers-leak-detection-ca-2026-08-26",
+          "digest": "6a276c00f8c440645176fcea2e329d6dfc26e5ccd3af0a096634223eba197b77"
         },
         {
           "collection": "sources",
-          "recordId": "moen-flo-product-2026-08-26"
+          "recordId": "moen-flo-product-2026-08-26",
+          "digest": "41aca1043696c782e9c00afb5c636f684749555a619e1cda36b6e38a2f913012"
         }
       ],
       "impacts": [
         "/devices/moen-flo-smart-water-shutoff",
         "/farmers"
       ],
-      "publicationBehavior": "Publish dated configuration observation; no carrier eligibility inference."
+      "publicationBehavior": "Publish dated configuration observation; no carrier eligibility inference.",
+      "before": null
     },
     {
       "id": "P02",
@@ -98,18 +101,21 @@
       "reads": [
         {
           "collection": "sources",
-          "recordId": "farmers-leak-detection-ca-2026-08-26"
+          "recordId": "farmers-leak-detection-ca-2026-08-26",
+          "digest": "6a276c00f8c440645176fcea2e329d6dfc26e5ccd3af0a096634223eba197b77"
         },
         {
           "collection": "sources",
-          "recordId": "moen-flo-product-2026-08-26"
+          "recordId": "moen-flo-product-2026-08-26",
+          "digest": "41aca1043696c782e9c00afb5c636f684749555a619e1cda36b6e38a2f913012"
         }
       ],
       "impacts": [
         "/devices/moen-flo-smart-water-shutoff",
         "/farmers"
       ],
-      "publicationBehavior": "Publish dated configuration observation; no carrier eligibility inference."
+      "publicationBehavior": "Publish dated configuration observation; no carrier eligibility inference.",
+      "before": null
     },
     {
       "id": "P03",
@@ -191,11 +197,13 @@
       "reads": [
         {
           "collection": "sources",
-          "recordId": "farmers-leak-detection-ca-2026-08-26"
+          "recordId": "farmers-leak-detection-ca-2026-08-26",
+          "digest": "6a276c00f8c440645176fcea2e329d6dfc26e5ccd3af0a096634223eba197b77"
         },
         {
           "collection": "sources",
-          "recordId": "moen-flo-product-2026-08-26"
+          "recordId": "moen-flo-product-2026-08-26",
+          "digest": "41aca1043696c782e9c00afb5c636f684749555a619e1cda36b6e38a2f913012"
         }
       ],
       "impacts": [
@@ -204,7 +212,54 @@
         "/farmers",
         "catalog APIs"
       ],
-      "publicationBehavior": "Publish dated configuration observation; no carrier eligibility inference."
+      "publicationBehavior": "Publish dated configuration observation; no carrier eligibility inference.",
+      "before": {
+        "id": "moen-flo-shutoff",
+        "slug": "moen-flo-smart-water-shutoff",
+        "manufacturer": "Moen",
+        "model": "Flo Smart Water Monitor and Shutoff",
+        "domains": [
+          "home"
+        ],
+        "concerns": [
+          "water",
+          "vacant-monitoring"
+        ],
+        "solution": "Whole-home water monitoring + automatic shutoff",
+        "summary": "Installed on the main water line to monitor water activity, send alerts, and support automatic shutoff for certain abnormal-use events.",
+        "bestFor": "Homeowners who want whole-home monitoring and automatic intervention.",
+        "priceBand": "$623.99 was listed for a reviewed configuration on Aug. 26, 2026; the product page displayed sold out. Size, stock, bundle, price, and installation cost require a fresh check.",
+        "installation": "Professional plumbing installation",
+        "subscription": "Moen support stated no monthly fee for core product and app operation when reviewed; optional bundle or service terms require confirmation.",
+        "connectivity": "2.4 GHz Wi-Fi, nearby AC power, and mobile app",
+        "monitoring": "Flow and pressure monitoring with remote alerts",
+        "capabilities": [
+          "Flow monitoring",
+          "Leak alerts",
+          "Remote shutoff",
+          "Automatic shutoff"
+        ],
+        "limitations": [
+          "Compatibility depends on main-line pipe size and installation conditions; reviewed sizes included 3/4 inch, 1 inch, and 1 1/4 inch options",
+          "Moen recommends plumbing-professional in-line installation and a nearby AC outlet",
+          "Offline, power, configuration, and learning-mode conditions may affect connected or automatic behavior",
+          "Manufacturer support stated a one-year limited warranty when reviewed; confirm current model and bundle terms"
+        ],
+        "insuranceNote": "May be relevant to some carrier loss-prevention requirements. Confirm the exact eligible model and installation documentation with the carrier.",
+        "status": "active",
+        "availability": "unavailable",
+        "lastReviewed": "2026-08-26",
+        "sources": [
+          {
+            "title": "Flo Smart Water Monitor and Shutoff",
+            "url": "https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff"
+          },
+          {
+            "title": "Installing the Moen Flo Shutoff",
+            "url": "https://solutions.moen.com/Smart_Water_Security_Products/Help_Center/Setup/Installing_the_Moen_Flo_Shutoff"
+          }
+        ]
+      }
     },
     {
       "id": "P04",
@@ -215,7 +270,7 @@
         "productId": "ring-alarm-pro",
         "context": "subscription",
         "status": "conflict",
-        "title": "Ring smoke/CO subscription \u2014 unresolved",
+        "title": "Ring smoke/CO subscription — unresolved",
         "value": null,
         "observedOn": "2026-10-05",
         "reviewDueDate": "2026-10-12",
@@ -252,7 +307,8 @@
         "/devices/ring-alarm-pro",
         "/farmers"
       ],
-      "publicationBehavior": "Keep truth unresolved; show qualification only."
+      "publicationBehavior": "Keep truth unresolved; show qualification only.",
+      "before": null
     },
     {
       "id": "P05",
@@ -263,7 +319,7 @@
         "productId": "fixd-sensor",
         "context": "subscription",
         "status": "conflict",
-        "title": "FIXD Premium trial \u2014 unresolved",
+        "title": "FIXD Premium trial — unresolved",
         "value": null,
         "observedOn": "2026-10-05",
         "reviewDueDate": "2026-10-12",
@@ -300,7 +356,8 @@
         "/devices/fixd-obd2-sensor",
         "/farmers"
       ],
-      "publicationBehavior": "Keep truth unresolved; show qualification only."
+      "publicationBehavior": "Keep truth unresolved; show qualification only.",
+      "before": null
     },
     {
       "id": "P06",
@@ -311,7 +368,7 @@
         "productId": "moen-flo-shutoff",
         "context": "accessory-safety",
         "status": "unresolved",
-        "title": "Accessory safety review \u2014 source recheck incomplete",
+        "title": "Accessory safety review — source recheck incomplete",
         "value": null,
         "observedOn": "2026-10-05",
         "reviewDueDate": "2026-10-12",
@@ -345,7 +402,8 @@
         "/devices/moen-flo-smart-water-shutoff",
         "/farmers"
       ],
-      "publicationBehavior": "Withhold unsupported positive claim; do not renew dates."
+      "publicationBehavior": "Withhold unsupported positive claim; do not renew dates.",
+      "before": null
     },
     {
       "id": "P07",
@@ -387,11 +445,13 @@
       "reads": [
         {
           "collection": "sources",
-          "recordId": "farmers-leak-detection-ca-2026-08-26"
+          "recordId": "farmers-leak-detection-ca-2026-08-26",
+          "digest": "6a276c00f8c440645176fcea2e329d6dfc26e5ccd3af0a096634223eba197b77"
         },
         {
           "collection": "sources",
-          "recordId": "moen-flo-product-2026-08-26"
+          "recordId": "moen-flo-product-2026-08-26",
+          "digest": "41aca1043696c782e9c00afb5c636f684749555a619e1cda36b6e38a2f913012"
         }
       ],
       "impacts": [
@@ -400,7 +460,26 @@
         "/farmers",
         "catalog APIs"
       ],
-      "publicationBehavior": "Publish dated configuration observation; no carrier eligibility inference."
+      "publicationBehavior": "Publish dated configuration observation; no carrier eligibility inference.",
+      "before": {
+        "id": "moen-flo-product-2026-08-26",
+        "version": 1,
+        "owner": "Moen",
+        "domain": "shop.moen.com",
+        "title": "Moen Flo Shutoff",
+        "url": "https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff",
+        "jurisdictions": [
+          "US"
+        ],
+        "checkedDate": "2026-08-26",
+        "reviewDueDate": "2026-09-25",
+        "status": "active",
+        "visibility": "public",
+        "limitations": [
+          "The reviewed product page listed $623.99 for a configuration and displayed sold out on 2026-08-26; price and stock are point-in-time observations.",
+          "Reviewed size choices included 3/4 inch, 1 inch, and 1 1/4 inch; bundles, sizes, warranty, and service terms must be confirmed for the selected model before purchase."
+        ]
+      }
     },
     {
       "id": "P08",
@@ -442,11 +521,13 @@
       "reads": [
         {
           "collection": "sources",
-          "recordId": "farmers-leak-detection-ca-2026-08-26"
+          "recordId": "farmers-leak-detection-ca-2026-08-26",
+          "digest": "6a276c00f8c440645176fcea2e329d6dfc26e5ccd3af0a096634223eba197b77"
         },
         {
           "collection": "sources",
-          "recordId": "moen-flo-product-2026-08-26"
+          "recordId": "moen-flo-product-2026-08-26",
+          "digest": "41aca1043696c782e9c00afb5c636f684749555a619e1cda36b6e38a2f913012"
         }
       ],
       "impacts": [
@@ -455,7 +536,26 @@
         "/farmers",
         "catalog APIs"
       ],
-      "publicationBehavior": "Withhold unsupported positive claim; do not renew dates."
+      "publicationBehavior": "Withhold unsupported positive claim; do not renew dates.",
+      "before": {
+        "id": "farmers-leak-detection-ca-2026-08-26",
+        "version": 1,
+        "owner": "Farmers Insurance",
+        "domain": "farmers.com",
+        "title": "Home Leak Detection and Shutoff",
+        "url": "https://www.farmers.com/leak-detection/",
+        "jurisdictions": [
+          "CA"
+        ],
+        "checkedDate": "2026-08-26",
+        "reviewDueDate": "2026-09-25",
+        "status": "active",
+        "visibility": "public",
+        "limitations": [
+          "The California Moen presentation is a public offer, not universal availability or policy eligibility.",
+          "The page says requirements and discount treatment vary by location; a Farmers agent must confirm the consumer's case."
+        ]
+      }
     },
     {
       "id": "P09",
@@ -500,11 +600,13 @@
       "reads": [
         {
           "collection": "sources",
-          "recordId": "farmers-leak-detection-ca-2026-08-26"
+          "recordId": "farmers-leak-detection-ca-2026-08-26",
+          "digest": "6a276c00f8c440645176fcea2e329d6dfc26e5ccd3af0a096634223eba197b77"
         },
         {
           "collection": "sources",
-          "recordId": "moen-flo-product-2026-08-26"
+          "recordId": "moen-flo-product-2026-08-26",
+          "digest": "41aca1043696c782e9c00afb5c636f684749555a619e1cda36b6e38a2f913012"
         }
       ],
       "impacts": [
@@ -513,7 +615,29 @@
         "/farmers",
         "catalog APIs"
       ],
-      "publicationBehavior": "Withhold unsupported positive claim; do not renew dates."
+      "publicationBehavior": "Withhold unsupported positive claim; do not renew dates.",
+      "before": {
+        "id": "farmers-ca-home-public-guidance-v1",
+        "version": 1,
+        "carrierId": "farmers",
+        "name": "California Home device guidance pilot",
+        "jurisdiction": "CA",
+        "line": "homeowners",
+        "policyScope": "unknown",
+        "status": "active",
+        "visibility": "public",
+        "effectiveDate": null,
+        "expiryDate": null,
+        "checkedDate": "2026-08-26",
+        "reviewDueDate": "2026-09-25",
+        "sourceIds": [
+          "farmers-home-discounts-2026-08-26",
+          "farmers-leak-detection-ca-2026-08-26"
+        ],
+        "limitations": [
+          "Public category guidance cannot determine an individual policy requirement, eligibility, savings, or documentation acceptance."
+        ]
+      }
     },
     {
       "id": "P10",
@@ -563,11 +687,13 @@
       "reads": [
         {
           "collection": "sources",
-          "recordId": "farmers-leak-detection-ca-2026-08-26"
+          "recordId": "farmers-leak-detection-ca-2026-08-26",
+          "digest": "6a276c00f8c440645176fcea2e329d6dfc26e5ccd3af0a096634223eba197b77"
         },
         {
           "collection": "sources",
-          "recordId": "moen-flo-product-2026-08-26"
+          "recordId": "moen-flo-product-2026-08-26",
+          "digest": "41aca1043696c782e9c00afb5c636f684749555a619e1cda36b6e38a2f913012"
         }
       ],
       "impacts": [
@@ -576,7 +702,34 @@
         "/farmers",
         "catalog APIs"
       ],
-      "publicationBehavior": "Withhold unsupported positive claim; do not renew dates."
+      "publicationBehavior": "Withhold unsupported positive claim; do not renew dates.",
+      "before": {
+        "id": "farmers-ca-water-category-v1",
+        "version": 1,
+        "programId": "farmers-ca-home-public-guidance-v1",
+        "carrierId": "farmers",
+        "jurisdiction": "CA",
+        "line": "homeowners",
+        "policyScope": "unknown",
+        "classification": "potential-discount-category",
+        "capabilityClassIds": [
+          "whole-home-flow-monitoring",
+          "automatic-main-water-shutoff"
+        ],
+        "sourceIds": [
+          "farmers-home-discounts-2026-08-26",
+          "farmers-leak-detection-ca-2026-08-26"
+        ],
+        "checkedDate": "2026-08-26",
+        "reviewDueDate": "2026-09-25",
+        "reviewer": "SmartDevices editorial review",
+        "reviewStatus": "reviewed",
+        "status": "active",
+        "visibility": "public",
+        "limitations": [
+          "Category presence does not establish an individual policy requirement, eligibility, savings, model acceptance, or documentation acceptance."
+        ]
+      }
     },
     {
       "id": "P11",
@@ -627,11 +780,13 @@
       "reads": [
         {
           "collection": "sources",
-          "recordId": "farmers-leak-detection-ca-2026-08-26"
+          "recordId": "farmers-leak-detection-ca-2026-08-26",
+          "digest": "6a276c00f8c440645176fcea2e329d6dfc26e5ccd3af0a096634223eba197b77"
         },
         {
           "collection": "sources",
-          "recordId": "moen-flo-product-2026-08-26"
+          "recordId": "moen-flo-product-2026-08-26",
+          "digest": "41aca1043696c782e9c00afb5c636f684749555a619e1cda36b6e38a2f913012"
         }
       ],
       "impacts": [
@@ -640,7 +795,35 @@
         "/farmers",
         "catalog APIs"
       ],
-      "publicationBehavior": "Withhold unsupported positive claim; do not renew dates."
+      "publicationBehavior": "Withhold unsupported positive claim; do not renew dates.",
+      "before": {
+        "id": "farmers-ca-moen-public-offer-v1",
+        "version": 1,
+        "programId": "farmers-ca-home-public-guidance-v1",
+        "carrierId": "farmers",
+        "jurisdiction": "CA",
+        "line": "homeowners",
+        "policyScope": "unknown",
+        "classification": "public-offer",
+        "capabilityClassIds": [
+          "whole-home-flow-monitoring",
+          "automatic-main-water-shutoff"
+        ],
+        "sourceIds": [
+          "farmers-leak-detection-ca-2026-08-26",
+          "moen-flo-product-2026-08-26",
+          "moen-flo-support-2026-08-26"
+        ],
+        "checkedDate": "2026-08-26",
+        "reviewDueDate": "2026-09-25",
+        "reviewer": "SmartDevices editorial review",
+        "reviewStatus": "reviewed",
+        "status": "active",
+        "visibility": "public",
+        "limitations": [
+          "Public-offer status is not product approval, policy eligibility, guaranteed availability, a discount decision, or a universal Farmers requirement."
+        ]
+      }
     },
     {
       "id": "P12",
@@ -685,11 +868,13 @@
       "reads": [
         {
           "collection": "sources",
-          "recordId": "farmers-leak-detection-ca-2026-08-26"
+          "recordId": "farmers-leak-detection-ca-2026-08-26",
+          "digest": "6a276c00f8c440645176fcea2e329d6dfc26e5ccd3af0a096634223eba197b77"
         },
         {
           "collection": "sources",
-          "recordId": "moen-flo-product-2026-08-26"
+          "recordId": "moen-flo-product-2026-08-26",
+          "digest": "41aca1043696c782e9c00afb5c636f684749555a619e1cda36b6e38a2f913012"
         }
       ],
       "impacts": [
@@ -698,7 +883,29 @@
         "/farmers",
         "catalog APIs"
       ],
-      "publicationBehavior": "Withhold unsupported positive claim; do not renew dates."
+      "publicationBehavior": "Withhold unsupported positive claim; do not renew dates.",
+      "before": {
+        "id": "fit-farmers-moen-flo-v1",
+        "carrierId": "farmers",
+        "jurisdiction": "CA",
+        "deviceId": "moen-flo-shutoff",
+        "classIds": [
+          "whole-home-flow-monitoring",
+          "automatic-main-water-shutoff"
+        ],
+        "fit": "explicitly-named-public-offer",
+        "sourceIds": [
+          "farmers-leak-detection-ca-2026-08-26",
+          "moen-flo-product-2026-08-26",
+          "moen-flo-support-2026-08-26"
+        ],
+        "status": "active",
+        "checkedDate": "2026-08-26",
+        "reviewDueDate": "2026-09-25",
+        "limitations": [
+          "This describes a public offer and technical capability, not individual eligibility, model acceptance, installation acceptance, savings, or policy compliance."
+        ]
+      }
     }
   ],
   "unresolved": [
@@ -719,5 +926,12 @@
     "affected routes",
     "negative assertions"
   ],
-  "catalogCoverage": "editorial/research/2026-10-05-current-source-review.json"
+  "catalogCoverage": "editorial/research/2026-10-05-current-source-review.json",
+  "baseSha": "98f64009d1d555d4c0924a5c14aae444aa7f74db",
+  "policyDigest": "726e3e759b2721b922f20dda7c3eab6a809ef02582aeddbfd28cc5bd6693d188",
+  "evidenceSnapshot": "cee0b4ca40d6300dc9a082cbbfdf5f2fc7344c9bf2ea7a4899c0cd5f572243b5",
+  "catalogSnapshot": "157a419b2e7ea65f9ea00027dea26d82112454157abdf693cef0bbc397d31234",
+  "createdAt": "2026-10-05T17:08:31.554Z",
+  "schemaVersion": 1,
+  "digest": "02c1f79c0a8b01a9346a72f3d041ab43d11bae42bebf2d75f4d1e795d28ed49c"
 }
