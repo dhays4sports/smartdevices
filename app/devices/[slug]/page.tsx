@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/app/components/SiteFooter";
+import { EditorialObservations } from "@/app/components/EditorialObservations";
 import { SiteHeader } from "@/app/components/SiteHeader";
 import { formatReviewed } from "@/app/lib/data";
 import { evidenceIsCurrent } from "@/app/lib/carrier";
@@ -33,6 +34,7 @@ export default async function DevicePage({ params }: Props) {
       <article><h2>Primary sources</h2><p>These links support product facts, not an endorsement or a promise that every detail remains current.</p><ul className="source-list">{device.sources.map((source) => <li key={source.url}><a href={source.url} rel="noreferrer" target="_blank">{source.title}<span>↗</span></a></li>)}</ul></article>
       <article><h2>Machine-readable capability record</h2><p>Categories help people browse; normalized capabilities help devices and agents interoperate.</p><div className="device-capability-list">{canonical.capabilities.length ? canonical.capabilities.map((capability) => <div key={capability.id}><code>{capability.id}</code><span>{capability.label}</span></div>) : <p>No normalized capability has been assigned yet.</p>}</div><p className="safety-note">Trust state: <strong>{canonical.trust.state}</strong>. Source review does not imply ownership, instance verification, identity, permission, or control.</p><a className="text-action" href={`/api/devices/${device.slug}`}>View machine-readable record →</a></article>
     </section>
+    <EditorialObservations productId={device.id} />
     {carrierFits.length ? <aside className="device-insurance-module"><div><p className="eyebrow">Insurance relevance · separate evidence</p><h2>Current California Farmers guidance references this capability.</h2><p>{carrierFits[0].fit === "explicitly-named-public-offer" ? "A current Farmers-controlled California page names a public offer involving this product." : "Manufacturer evidence supports a technical capability match. This is not Farmers product approval or an eligibility decision."}</p><small>Checked {carrierFits[0].checkedDate}. {carrierFits[0].limitations[0]}</small></div><Link className="button-subtle" href={`/farmers?intent=recommendations&category=${device.concerns.includes("water") ? "water" : "security"}`}>Review scoped guidance</Link></aside> : null}
     <div className="detail-actions"><Link className="button-subtle" href="/devices">Back to library</Link><Link className="button-primary" href={`/plans/device?domain=${device.domains[0]}&concern=${device.concerns[0]}&items=${device.id}`}>Start a plan with this device</Link></div>
   </main><SiteFooter /></>;

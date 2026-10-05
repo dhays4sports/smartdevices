@@ -1,0 +1,483 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Research coverage only; registration does not renew evidence or approve source substitution.",
+  "sources": [
+    {
+      "url": "https://shop.moen.com/pages/insurance-partner/farmers-insurance",
+      "title": "Farmers-specific Moen offer",
+      "productIds": [
+        "moen-flo-shutoff"
+      ],
+      "topics": [
+        "offer",
+        "price",
+        "installation",
+        "privacy"
+      ]
+    },
+    {
+      "url": "https://www.cpsc.gov/Recalls/2023/Moen-Recalls-Flo-Battery-Back-Ups-for-Flo-Smart-Water-Monitors-Due-to-Fire-Hazard",
+      "title": "CPSC accessory recall",
+      "productIds": [
+        "moen-flo-shutoff"
+      ],
+      "topics": [
+        "safety",
+        "recall"
+      ]
+    },
+    {
+      "url": "https://ring.com/carbon-monoxide-smoke-monitoring",
+      "title": "Ring smoke/CO monitoring",
+      "productIds": [
+        "ring-alarm-pro"
+      ],
+      "topics": [
+        "subscription",
+        "conflict"
+      ]
+    },
+    {
+      "url": "https://ring.com/professional-monitoring",
+      "title": "Ring professional monitoring",
+      "productIds": [
+        "ring-alarm-pro"
+      ],
+      "topics": [
+        "subscription"
+      ]
+    },
+    {
+      "url": "https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff",
+      "title": "Flo Smart Water Monitor and Shutoff",
+      "productIds": [
+        "moen-flo-shutoff"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://solutions.moen.com/Smart_Water_Security_Products/Help_Center/Setup/Installing_the_Moen_Flo_Shutoff",
+      "title": "Installing the Moen Flo Shutoff",
+      "productIds": [
+        "moen-flo-shutoff"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://phyn.com/products/phyn-plus-smart-water-assistant-shutoff-v2",
+      "title": "Phyn Plus Smart Water Assistant + Shutoff (2nd Gen)",
+      "productIds": [
+        "phyn-plus-v2"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://phyn.com/collections/shop",
+      "title": "Phyn Plus product collection / current shop availability",
+      "productIds": [
+        "phyn-plus-v2"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://helpcenter.phyn.com/help/phyn-plus-1st-2nd-gen",
+      "title": "Phyn Plus support",
+      "productIds": [
+        "phyn-plus-v2"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://www.kidde.com/products/smart/water-leak-freeze-alarm",
+      "title": "Kidde Water Leak + Freeze Detector",
+      "productIds": [
+        "kidde-water-freeze"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://www.tingfire.com/how-it-works/",
+      "title": "How Ting Works",
+      "productIds": [
+        "ting-sensor-service"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://www.tingfire.com/get-ting/",
+      "title": "Ting Sensor and Service",
+      "productIds": [
+        "ting-sensor-service"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://www.tingfire.com/blog/6-things-ting-doesnt-do/",
+      "title": "Six things Ting does not do",
+      "productIds": [
+        "ting-sensor-service"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://www.kidde.com/products/smart/smoke-and-carbon-monoxide-alarm-with-smart-features",
+      "title": "Kidde Smoke + Carbon Monoxide Alarm with smart features",
+      "productIds": [
+        "kidde-smart-smoke-co"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://simplisafe.com/home-security-shop",
+      "title": "SimpliSafe Home Security System",
+      "productIds": [
+        "simplisafe-system"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://support.simplisafe.com/articles/alarm-event-monitoring/what-are-the-service-plan-options",
+      "title": "Residential Monitoring Plan Options",
+      "productIds": [
+        "simplisafe-system"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://ring.com/products/alarm-pro-base-station",
+      "title": "Ring Alarm Pro Base Station",
+      "productIds": [
+        "ring-alarm-pro"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://ring.com/support/articles/46blt/Understanding-Professional-Monitoring-and-Self-Monitoring",
+      "title": "Understanding Professional Monitoring",
+      "productIds": [
+        "ring-alarm-pro"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://www.airthings.com/products/indoor-air-quality/view-plus",
+      "title": "Airthings View Plus",
+      "productIds": [
+        "airthings-view-plus"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://www.garmin.com/en-US/p/1391409/",
+      "title": "Garmin Dash Cam X310",
+      "productIds": [
+        "garmin-x310"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://www8.garmin.com/manuals/webhelp/GUID-D9E2A866-74A8-4380-BE21-F1522E0149BC/EN-US/GUID-6F7727DB-5D64-4DFF-928B-32F4253F9823.html",
+      "title": "Parking Guard manual",
+      "productIds": [
+        "garmin-x310"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://www.garmin.com/en-US/p/1223369/",
+      "title": "Garmin Dash Cam Mini 3",
+      "productIds": [
+        "garmin-mini-3"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://www.bouncie.com/gps-tracker-for-vehicles",
+      "title": "Bouncie GPS Tracker for Vehicles",
+      "productIds": [
+        "bouncie-tracker"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://www.carlock.co/",
+      "title": "CarLock GPS car tracker",
+      "productIds": [
+        "carlock-tracker"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://www.carlock.co/gps-car-tracker/features-device/",
+      "title": "CarLock device features",
+      "productIds": [
+        "carlock-tracker"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://www.fixd.com/",
+      "title": "FIXD Sensor",
+      "productIds": [
+        "fixd-sensor"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://www.fixd.com/resources/about-us",
+      "title": "About FIXD",
+      "productIds": [
+        "fixd-sensor"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://www.monnit.com/products/sensors/temperature/",
+      "title": "Monnit Wireless Temperature Sensors",
+      "productIds": [
+        "monnit-temperature"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://www.monnit.com/products/sensors/temperature/wireless-digital-temperature/",
+      "title": "ALTA Digital Temperature Sensor",
+      "productIds": [
+        "monnit-temperature"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://www.monnit.com/products/sensors/water-detection/",
+      "title": "Monnit Water Detection Sensors",
+      "productIds": [
+        "monnit-water-detect"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    },
+    {
+      "url": "https://www.monnit.com/products/sensors/water-detection/water-detect/",
+      "title": "How Water Detect Sensors Work",
+      "productIds": [
+        "monnit-water-detect"
+      ],
+      "topics": [
+        "specifications",
+        "price",
+        "availability",
+        "installation",
+        "compatibility",
+        "subscription",
+        "product-status"
+      ]
+    }
+  ]
+}

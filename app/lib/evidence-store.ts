@@ -4,7 +4,6 @@ import { auditEvents, evidenceDecisions, evidencePublicationSnapshots, evidenceR
 import { safeId } from "./api";
 import { carrierPrograms, carrierRegistry, deviceClasses, evidenceIsCurrent, publishedCarriers, type ProCarrierData } from "./carrier";
 import {
-  applySafeRefresh,
   checkEvidenceSource,
   createSeedEvidenceBundle,
   hashEvidenceText,
@@ -100,11 +99,9 @@ export async function runEvidenceRefresh({ trigger, actor, fetcher = fetch, now 
       }));
       await db.batch([inserts[0], ...inserts.slice(1)]);
     }
-    const reviewDate = now.toISOString().slice(0, 10);
-    const refreshed = applySafeRefresh(current, checks, reviewDate);
-    const changed = await hashEvidenceText(JSON.stringify(refreshed)) !== await hashEvidenceText(JSON.stringify(current));
-    let snapshotId: string | null = null;
-    if (changed) snapshotId = await publishEvidenceSnapshot(refreshed, runId, actor, now);
+    // Research writes checks only. Neither an unchanged hash nor a refresh run
+    // authorizes a publication or extends an evidence deadline.
+    const snapshotId: string | null = null;
     await db.batch([
       db.update(evidenceRefreshRuns).set({ status: "completed", summaryJson: JSON.stringify(summary), completedAt: new Date().toISOString() }).where(eq(evidenceRefreshRuns.id, runId)),
       db.insert(auditEvents).values({ id: safeId("aud"), actorType: trigger === "scheduled" ? "system" : "agent", actorRef: actor, action: "evidence.refresh.completed", objectType: "evidence-refresh-run", objectId: runId, metadataJson: JSON.stringify({ ...summary, snapshotId }), occurredAt: new Date().toISOString() }),
@@ -118,22 +115,12 @@ export async function runEvidenceRefresh({ trigger, actor, fetcher = fetch, now 
 }
 
 export async function decideEvidenceCheck(input: { runId: string; sourceId: string; decision: "confirm-unchanged" | "mark-stale" | "reject"; actor: string; rationale?: string; now?: Date }) {
+  if (input.decision !== "reject") throw new Error("EXACT_APPROVED_BATCH_REQUIRED");
   const now = input.now ?? new Date();
   const db = await getDb();
   const [checkRow] = await db.select().from(evidenceSourceChecks).where(and(eq(evidenceSourceChecks.runId, input.runId), eq(evidenceSourceChecks.sourceId, input.sourceId))).limit(1);
   if (!checkRow) throw new Error("EVIDENCE_CHECK_NOT_FOUND");
-  if (input.decision === "confirm-unchanged" && !["baseline", "changed"].includes(checkRow.outcome)) throw new Error("EVIDENCE_DECISION_NOT_ALLOWED");
-  const current = await getPublishedEvidenceBundle();
-  let snapshotId: string | null = null;
-  if (input.decision === "confirm-unchanged") {
-    const confirmed = { ...rowToCheck(checkRow), outcome: "confirmed" as const, changeClass: "none" as const, nextAction: "renew" as const };
-    snapshotId = await publishEvidenceSnapshot(applySafeRefresh(current, [confirmed], now.toISOString().slice(0, 10)), input.runId, input.actor, now);
-  } else if (input.decision === "mark-stale") {
-    const sources = current.sources.map((source) => source.id === input.sourceId ? { ...source, status: "stale" as const } : source);
-    const rules = current.rules.map((rule) => rule.sourceIds.includes(input.sourceId) ? { ...rule, status: "stale" as const } : rule);
-    const fits = current.fits.map((fit) => fit.sourceIds.includes(input.sourceId) ? { ...fit, status: "stale" as const } : fit);
-    snapshotId = await publishEvidenceSnapshot({ ...current, publishedAt: now.toISOString(), sources, rules, fits }, input.runId, input.actor, now);
-  }
+  const snapshotId: string | null = null;
   await db.batch([
     db.insert(evidenceDecisions).values({ id: safeId("evd"), runId: input.runId, sourceId: input.sourceId, decision: input.decision, actorRef: input.actor, rationale: input.rationale?.slice(0, 500) ?? null, createdAt: now.toISOString() }),
     db.insert(auditEvents).values({ id: safeId("aud"), actorType: "agent", actorRef: input.actor, action: `evidence.${input.decision}`, objectType: "evidence-source", objectId: input.sourceId, metadataJson: JSON.stringify({ runId: input.runId, snapshotId }), occurredAt: now.toISOString() }),

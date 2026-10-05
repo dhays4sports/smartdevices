@@ -1,3 +1,4 @@
+import { EditorialObservations } from "@/app/components/EditorialObservations";
 import type { Metadata } from "next";
 import { CarrierIntentSelector } from "@/app/components/CarrierIntentSelector";
 import { SiteFooter } from "@/app/components/SiteFooter";
@@ -27,6 +28,7 @@ export default async function FarmersPage({ searchParams }: Props) {
       <div className="carrier-truth-strip" aria-label="What this guidance provides"><span>Tell us why</span><i aria-hidden="true">→</i><span>See where to start</span><i aria-hidden="true">→</i><span>Know what to confirm</span></div>
     </header>
     <CarrierIntentSelector initialIntent={context.intent} initialCategory={context.category} carrierId="farmers" carrierName="Farmers" canonicalPath="/farmers" carrierData={carrierData} publishedDevices={bundle.catalog} reviewDate={reviewDate} />
+    <EditorialObservations productId="moen-flo-shutoff" />
     <aside className="carrier-builder-boundary"><div><p className="eyebrow">Separate custom-build path</p><h2>Need a device for a different problem?</h2><p>SmartDevices Builder can plan a low-voltage custom prototype when an existing product does not fit. A custom build is informational only and does not replace or satisfy a Farmers requirement.</p></div><a className="button-subtle" href="/build?source=farmers">Open Builder</a></aside>
     <aside className="independence-panel"><strong>SmartDevices is independent.</strong><p>This is not an official Farmers site or an insurance determination. Confirm requirements, eligibility, installation and documentation with your Farmers agent.</p></aside>
   </main><SiteFooter /></>;

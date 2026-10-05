@@ -1,5 +1,7 @@
 # Evidence Autopilot Activation Guide
 
+> Historical v4.3 instructions below are superseded for the private pilot by `EVIDENCE_AUTOPUBLISH_ARCHITECTURE.md` and `SITES_EDITORIAL_PUBLICATION_RUNBOOK.md`. Do not activate the scheduler or automatic renewals. Research no longer publishes; exact-batch approval is required.
+
 ## Prerequisites
 
 1. Keep the Site private while staging the workflow.
