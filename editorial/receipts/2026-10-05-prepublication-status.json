@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "status": "NOT_PUBLISHED",
+  "recordType": "prepublication-status-not-a-publication-receipt",
+  "operatorApproval": null,
+  "appliedProposals": [],
+  "publicationSha": null,
+  "deployment": null,
+  "hostedVerification": "NOT_RUN",
+  "rollbackRehearsal": "NOT_RUN",
+  "knownGood": {
+    "sha": "e718f3ed42836198f50d7322b99b94748a4ca959",
+    "versionId": "appgprj_6ac1324d62f08191a6fbecaa261e619f~appgver_08dfa08292d881918bc21d30fe9adca8",
+    "deploymentId": "appgdep_6ac145873e348191a3ad6312fbc82c5b",
+    "publicationSnapshot": "Git seed; D1 evidence_publication_snapshots empty at audit",
+    "databaseImpact": "none"
+  },
+  "blockers": [
+    "Locked install network timeout; offline caches lack required locked packages",
+    "Full build/typecheck/lint/TypeScript/runtime-route suite cannot run without dependencies",
+    "Authenticated production approval signer and native live publisher adapters are not connected",
+    "Real immutable batch has not received operator approval"
+  ],
+  "syntheticProof": "28 dependency-free unit/orchestration tests; simulated deployment and rollback only"
+}

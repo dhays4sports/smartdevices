@@ -16,7 +16,10 @@
     "validate:evidence": "node scripts/validate-carrier-evidence.mjs",
     "typecheck": "node scripts/write-source-version.mjs && bash scripts/sites-env.sh -- tsc --noEmit",
     "lint": "bash scripts/sites-env.sh -- eslint . --ignore-pattern dist --ignore-pattern .next",
-    "db:generate": "bash scripts/sites-env.sh -- drizzle-kit generate"
+    "db:generate": "bash scripts/sites-env.sh -- drizzle-kit generate",
+    "evidence:research": "node --import tsx scripts/research-evidence.ts",
+    "evidence:batch": "node scripts/evidence-batch.mjs",
+    "test:publication": "node --test tests/evidence-publication.test.mjs"
   },
   "dependencies": {
     "drizzle-orm": "0.45.2",

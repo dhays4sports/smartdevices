@@ -109,7 +109,7 @@ export async function checkEvidenceSource(source: EvidenceSource, previousHash: 
   try {
     const response = await fetcher(sourceUrl, {
       method: "GET",
-      redirect: "follow",
+      redirect: "manual",
       headers: { Accept: "text/html,application/xhtml+xml,application/json,text/plain;q=0.8", "User-Agent": "SmartDevices-Evidence-Refresh/1.0" },
       signal: AbortSignal.timeout(12_000),
     });
@@ -119,7 +119,27 @@ export async function checkEvidenceSource(source: EvidenceSource, previousHash: 
     if (!ACCEPTED_TYPES.includes(contentType)) return invalidCheck(source, previousHash, checkedAt, "SOURCE_CONTENT_TYPE", response.status);
     const declaredLength = Number(response.headers.get("content-length") ?? "0");
     if (declaredLength > MAX_SOURCE_BYTES) return invalidCheck(source, previousHash, checkedAt, "SOURCE_TOO_LARGE", response.status);
-    const body = await response.text();
+    // Refuse redirects before contacting another host. Stream-bounded reads
+    // prevent an untrusted source from exhausting memory despite its headers.
+    const reader = response.body?.getReader();
+    const chunks: Uint8Array[] = [];
+    let size = 0;
+    if (reader) {
+      while (true) {
+        const part = await reader.read();
+        if (part.done) break;
+        size += part.value.byteLength;
+        if (size > MAX_SOURCE_BYTES) {
+          await reader.cancel();
+          return invalidCheck(source, previousHash, checkedAt, "SOURCE_TOO_LARGE", response.status);
+        }
+        chunks.push(part.value);
+      }
+    }
+    const combined = new Uint8Array(size);
+    let offset = 0;
+    for (const chunk of chunks) { combined.set(chunk, offset); offset += chunk.byteLength; }
+    const body = new TextDecoder().decode(combined);
     if (new TextEncoder().encode(body).byteLength > MAX_SOURCE_BYTES) return invalidCheck(source, previousHash, checkedAt, "SOURCE_TOO_LARGE", response.status);
     const normalized = normalizeSourceText(body);
     if (normalized.length < 80) return unavailableCheck(source, previousHash, checkedAt, "SOURCE_CONTENT_INSUFFICIENT", response.status);

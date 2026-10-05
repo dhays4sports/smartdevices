@@ -1,0 +1,432 @@
+{
+  "schemaVersion": 1,
+  "baseSha": "e718f3ed42836198f50d7322b99b94748a4ca959",
+  "reportDate": "2026-10-05",
+  "priorReportBase": "fcb95454c8876123c4cb6219dd6585030129e200",
+  "catalogCount": 15,
+  "legacyGovernedProductCount": 4,
+  "researchCoverageCount": 15,
+  "factsPublished": 0,
+  "products": [
+    {
+      "productId": "moen-flo-shutoff",
+      "product": "Moen Flo Smart Water Monitor and Shutoff",
+      "sourceUrls": [
+        "https://shop.moen.com/pages/insurance-partner/farmers-insurance",
+        "https://www.cpsc.gov/Recalls/2023/Moen-Recalls-Flo-Battery-Back-Ups-for-Flo-Smart-Water-Monitors-Due-to-Fire-Hazard",
+        "https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff",
+        "https://solutions.moen.com/Smart_Water_Security_Products/Help_Center/Setup/Installing_the_Moen_Flo_Shutoff"
+      ],
+      "legacyGovernedSourceIds": [
+        "moen-flo-product-2026-08-26"
+      ],
+      "checkedAt": "2026-10-05",
+      "method": "web research retrieval, not raw HTTP fingerprint",
+      "rawFingerprint": null,
+      "priorCatalogReviewed": "2026-08-26",
+      "evidenceReviewDue": [
+        "2026-09-25"
+      ],
+      "researchNextDue": "2026-10-12",
+      "outcome": "MATERIAL_PROPOSAL",
+      "finding": "Retail observation supports model-specific stock and a separate Farmers offer; accessory recall retrieval failed, so safety warning remains unresolved.",
+      "publishableNewClaims": false,
+      "priceSource": "https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff",
+      "availabilitySource": "https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff",
+      "specificationSources": [
+        "https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff",
+        "https://solutions.moen.com/Smart_Water_Security_Products/Help_Center/Setup/Installing_the_Moen_Flo_Shutoff"
+      ],
+      "safetyStatus": "Unresolved model-920-001 recall refresh",
+      "unsupportedClaims": "Unreviewed field-level commercial, compatibility and safety claims remain unapproved."
+    },
+    {
+      "productId": "phyn-plus-v2",
+      "product": "Phyn Phyn Plus Smart Water Assistant + Shutoff (2nd Gen)",
+      "sourceUrls": [
+        "https://phyn.com/products/phyn-plus-smart-water-assistant-shutoff-v2",
+        "https://phyn.com/collections/shop",
+        "https://helpcenter.phyn.com/help/phyn-plus-1st-2nd-gen"
+      ],
+      "legacyGovernedSourceIds": [
+        "phyn-plus-product-2026-08-26"
+      ],
+      "checkedAt": "2026-10-05",
+      "method": "web research retrieval, not raw HTTP fingerprint",
+      "rawFingerprint": null,
+      "priorCatalogReviewed": "2026-09-22",
+      "evidenceReviewDue": [
+        "2026-11-24"
+      ],
+      "researchNextDue": "2026-10-12",
+      "outcome": "ALREADY_FIXED",
+      "finding": "PR4 already records $579.99 on September 22. October 5 manufacturer retrieval agrees; adapters/unions excluded. No price overwrite or wholesale review-date renewal.",
+      "publishableNewClaims": false,
+      "priceSource": "https://phyn.com/products/phyn-plus-smart-water-assistant-shutoff-v2",
+      "availabilitySource": "https://phyn.com/products/phyn-plus-smart-water-assistant-shutoff-v2",
+      "specificationSources": [
+        "https://phyn.com/products/phyn-plus-smart-water-assistant-shutoff-v2",
+        "https://phyn.com/collections/shop",
+        "https://helpcenter.phyn.com/help/phyn-plus-1st-2nd-gen"
+      ],
+      "safetyStatus": "Not comprehensively checked; no recall clearance claimed",
+      "unsupportedClaims": "Unreviewed field-level commercial, compatibility and safety claims remain unapproved."
+    },
+    {
+      "productId": "kidde-water-freeze",
+      "product": "Kidde Water Leak + Freeze Detector",
+      "sourceUrls": [
+        "https://www.kidde.com/products/smart/water-leak-freeze-alarm"
+      ],
+      "legacyGovernedSourceIds": [
+        "kidde-water-product-2026-08-26"
+      ],
+      "checkedAt": "2026-10-05",
+      "method": "web research retrieval, not raw HTTP fingerprint",
+      "rawFingerprint": null,
+      "priorCatalogReviewed": "2026-08-26",
+      "evidenceReviewDue": [
+        "2026-11-24"
+      ],
+      "researchNextDue": "2026-10-12",
+      "outcome": "PARTIAL",
+      "finding": "Official model page retrieved. Detection-only class retained. Commercial terms not certified by this run.",
+      "publishableNewClaims": false,
+      "priceSource": "https://www.kidde.com/products/smart/water-leak-freeze-alarm",
+      "availabilitySource": "https://www.kidde.com/products/smart/water-leak-freeze-alarm",
+      "specificationSources": [
+        "https://www.kidde.com/products/smart/water-leak-freeze-alarm"
+      ],
+      "safetyStatus": "Not comprehensively checked; no recall clearance claimed",
+      "unsupportedClaims": "Unreviewed field-level commercial, compatibility and safety claims remain unapproved."
+    },
+    {
+      "productId": "ting-sensor-service",
+      "product": "Whisker Labs Ting Sensor + Service",
+      "sourceUrls": [
+        "https://www.tingfire.com/how-it-works/",
+        "https://www.tingfire.com/get-ting/",
+        "https://www.tingfire.com/blog/6-things-ting-doesnt-do/"
+      ],
+      "legacyGovernedSourceIds": [],
+      "checkedAt": "2026-10-05",
+      "method": "web research retrieval, not raw HTTP fingerprint",
+      "rawFingerprint": null,
+      "priorCatalogReviewed": "2026-08-26",
+      "evidenceReviewDue": [],
+      "researchNextDue": "2026-10-12",
+      "outcome": "MATERIAL_CANDIDATE",
+      "finding": "Official direct offer shows $99 with first-year service. Further field-level review required before editing renewal/service claims.",
+      "publishableNewClaims": false,
+      "priceSource": "https://www.tingfire.com/how-it-works/",
+      "availabilitySource": "https://www.tingfire.com/how-it-works/",
+      "specificationSources": [
+        "https://www.tingfire.com/how-it-works/",
+        "https://www.tingfire.com/get-ting/",
+        "https://www.tingfire.com/blog/6-things-ting-doesnt-do/"
+      ],
+      "safetyStatus": "Not comprehensively checked; no recall clearance claimed",
+      "unsupportedClaims": "Unreviewed field-level commercial, compatibility and safety claims remain unapproved."
+    },
+    {
+      "productId": "kidde-smart-smoke-co",
+      "product": "Kidde Smart Smoke + Carbon Monoxide Alarm",
+      "sourceUrls": [
+        "https://www.kidde.com/products/smart/smoke-and-carbon-monoxide-alarm-with-smart-features"
+      ],
+      "legacyGovernedSourceIds": [],
+      "checkedAt": "2026-10-05",
+      "method": "web research retrieval, not raw HTTP fingerprint",
+      "rawFingerprint": null,
+      "priorCatalogReviewed": "2026-08-26",
+      "evidenceReviewDue": [],
+      "researchNextDue": "2026-10-12",
+      "outcome": "PARTIAL",
+      "finding": "Official exact model page retrieved. Ring eligibility for this SKU is not established.",
+      "publishableNewClaims": false,
+      "priceSource": "https://www.kidde.com/products/smart/smoke-and-carbon-monoxide-alarm-with-smart-features",
+      "availabilitySource": "https://www.kidde.com/products/smart/smoke-and-carbon-monoxide-alarm-with-smart-features",
+      "specificationSources": [
+        "https://www.kidde.com/products/smart/smoke-and-carbon-monoxide-alarm-with-smart-features"
+      ],
+      "safetyStatus": "Not comprehensively checked; no recall clearance claimed",
+      "unsupportedClaims": "Unreviewed field-level commercial, compatibility and safety claims remain unapproved."
+    },
+    {
+      "productId": "simplisafe-system",
+      "product": "SimpliSafe Home Security System",
+      "sourceUrls": [
+        "https://simplisafe.com/home-security-shop",
+        "https://support.simplisafe.com/articles/alarm-event-monitoring/what-are-the-service-plan-options"
+      ],
+      "legacyGovernedSourceIds": [
+        "simplisafe-monitoring-2026-08-26"
+      ],
+      "checkedAt": "2026-10-05",
+      "method": "web research retrieval, not raw HTTP fingerprint",
+      "rawFingerprint": null,
+      "priorCatalogReviewed": "2026-08-26",
+      "evidenceReviewDue": [
+        "2026-11-24"
+      ],
+      "researchNextDue": "2026-10-12",
+      "outcome": "MATERIAL_CANDIDATE",
+      "finding": "Official monitoring-plan page retrieved. Plan-dependent monitoring must remain distinct from insurance acceptance; no new prices published.",
+      "publishableNewClaims": false,
+      "priceSource": "https://simplisafe.com/home-security-shop",
+      "availabilitySource": "https://simplisafe.com/home-security-shop",
+      "specificationSources": [
+        "https://simplisafe.com/home-security-shop",
+        "https://support.simplisafe.com/articles/alarm-event-monitoring/what-are-the-service-plan-options"
+      ],
+      "safetyStatus": "Not comprehensively checked; no recall clearance claimed",
+      "unsupportedClaims": "Unreviewed field-level commercial, compatibility and safety claims remain unapproved."
+    },
+    {
+      "productId": "ring-alarm-pro",
+      "product": "Ring Alarm Pro",
+      "sourceUrls": [
+        "https://ring.com/carbon-monoxide-smoke-monitoring",
+        "https://ring.com/professional-monitoring",
+        "https://ring.com/products/alarm-pro-base-station",
+        "https://ring.com/support/articles/46blt/Understanding-Professional-Monitoring-and-Self-Monitoring"
+      ],
+      "legacyGovernedSourceIds": [],
+      "checkedAt": "2026-10-05",
+      "method": "web research retrieval, not raw HTTP fingerprint",
+      "rawFingerprint": null,
+      "priorCatalogReviewed": "2026-08-26",
+      "evidenceReviewDue": [],
+      "researchNextDue": "2026-10-12",
+      "outcome": "CONFLICT",
+      "finding": "Smoke/CO FAQ and footnote differ on subscription prerequisite. No definitive prerequisite selected.",
+      "publishableNewClaims": false,
+      "priceSource": "https://ring.com/products/alarm-pro-base-station",
+      "availabilitySource": "https://ring.com/products/alarm-pro-base-station",
+      "specificationSources": [
+        "https://ring.com/products/alarm-pro-base-station",
+        "https://ring.com/support/articles/46blt/Understanding-Professional-Monitoring-and-Self-Monitoring"
+      ],
+      "safetyStatus": "Not comprehensively checked; no recall clearance claimed",
+      "unsupportedClaims": "Unreviewed field-level commercial, compatibility and safety claims remain unapproved."
+    },
+    {
+      "productId": "airthings-view-plus",
+      "product": "Airthings View Plus",
+      "sourceUrls": [
+        "https://www.airthings.com/products/indoor-air-quality/view-plus"
+      ],
+      "legacyGovernedSourceIds": [],
+      "checkedAt": "2026-10-05",
+      "method": "web research retrieval, not raw HTTP fingerprint",
+      "rawFingerprint": null,
+      "priorCatalogReviewed": "2026-08-26",
+      "evidenceReviewDue": [],
+      "researchNextDue": "2026-10-12",
+      "outcome": "PARTIAL",
+      "finding": "Official page retrieved; HomeKit exclusion and conditional warranty observed. No reliable unit price certified.",
+      "publishableNewClaims": false,
+      "priceSource": "https://www.airthings.com/products/indoor-air-quality/view-plus",
+      "availabilitySource": "https://www.airthings.com/products/indoor-air-quality/view-plus",
+      "specificationSources": [
+        "https://www.airthings.com/products/indoor-air-quality/view-plus"
+      ],
+      "safetyStatus": "Not comprehensively checked; no recall clearance claimed",
+      "unsupportedClaims": "Unreviewed field-level commercial, compatibility and safety claims remain unapproved."
+    },
+    {
+      "productId": "garmin-x310",
+      "product": "Garmin Dash Cam X310",
+      "sourceUrls": [
+        "https://www.garmin.com/en-US/p/1391409/",
+        "https://www8.garmin.com/manuals/webhelp/GUID-D9E2A866-74A8-4380-BE21-F1522E0149BC/EN-US/GUID-6F7727DB-5D64-4DFF-928B-32F4253F9823.html"
+      ],
+      "legacyGovernedSourceIds": [],
+      "checkedAt": "2026-10-05",
+      "method": "web research retrieval, not raw HTTP fingerprint",
+      "rawFingerprint": null,
+      "priorCatalogReviewed": "2026-08-26",
+      "evidenceReviewDue": [],
+      "researchNextDue": "2026-10-12",
+      "outcome": "UNAVAILABLE",
+      "finding": "Only a minimal page shell retrieved. No stock, price, or connected-service renewal.",
+      "publishableNewClaims": false,
+      "priceSource": "https://www.garmin.com/en-US/p/1391409/",
+      "availabilitySource": "https://www.garmin.com/en-US/p/1391409/",
+      "specificationSources": [
+        "https://www.garmin.com/en-US/p/1391409/",
+        "https://www8.garmin.com/manuals/webhelp/GUID-D9E2A866-74A8-4380-BE21-F1522E0149BC/EN-US/GUID-6F7727DB-5D64-4DFF-928B-32F4253F9823.html"
+      ],
+      "safetyStatus": "Not comprehensively checked; no recall clearance claimed",
+      "unsupportedClaims": "Unreviewed field-level commercial, compatibility and safety claims remain unapproved."
+    },
+    {
+      "productId": "garmin-mini-3",
+      "product": "Garmin Dash Cam Mini 3",
+      "sourceUrls": [
+        "https://www.garmin.com/en-US/p/1223369/"
+      ],
+      "legacyGovernedSourceIds": [],
+      "checkedAt": "2026-10-05",
+      "method": "web research retrieval, not raw HTTP fingerprint",
+      "rawFingerprint": null,
+      "priorCatalogReviewed": "2026-08-26",
+      "evidenceReviewDue": [],
+      "researchNextDue": "2026-10-12",
+      "outcome": "UNAVAILABLE",
+      "finding": "Only a minimal page shell retrieved. No stock, price, or connected-service renewal.",
+      "publishableNewClaims": false,
+      "priceSource": "https://www.garmin.com/en-US/p/1223369/",
+      "availabilitySource": "https://www.garmin.com/en-US/p/1223369/",
+      "specificationSources": [
+        "https://www.garmin.com/en-US/p/1223369/"
+      ],
+      "safetyStatus": "Not comprehensively checked; no recall clearance claimed",
+      "unsupportedClaims": "Unreviewed field-level commercial, compatibility and safety claims remain unapproved."
+    },
+    {
+      "productId": "bouncie-tracker",
+      "product": "Bouncie GPS Tracker for Vehicles",
+      "sourceUrls": [
+        "https://www.bouncie.com/gps-tracker-for-vehicles"
+      ],
+      "legacyGovernedSourceIds": [],
+      "checkedAt": "2026-10-05",
+      "method": "web research retrieval, not raw HTTP fingerprint",
+      "rawFingerprint": null,
+      "priorCatalogReviewed": "2026-08-26",
+      "evidenceReviewDue": [],
+      "researchNextDue": "2026-10-12",
+      "outcome": "CONFLICT",
+      "finding": "Page contains unusable 0.00 pricing placeholder. No price ingested.",
+      "publishableNewClaims": false,
+      "priceSource": "https://www.bouncie.com/gps-tracker-for-vehicles",
+      "availabilitySource": "https://www.bouncie.com/gps-tracker-for-vehicles",
+      "specificationSources": [
+        "https://www.bouncie.com/gps-tracker-for-vehicles"
+      ],
+      "safetyStatus": "Not comprehensively checked; no recall clearance claimed",
+      "unsupportedClaims": "Unreviewed field-level commercial, compatibility and safety claims remain unapproved."
+    },
+    {
+      "productId": "carlock-tracker",
+      "product": "CarLock GPS Car Tracker",
+      "sourceUrls": [
+        "https://www.carlock.co/",
+        "https://www.carlock.co/gps-car-tracker/features-device/"
+      ],
+      "legacyGovernedSourceIds": [],
+      "checkedAt": "2026-10-05",
+      "method": "web research retrieval, not raw HTTP fingerprint",
+      "rawFingerprint": null,
+      "priorCatalogReviewed": "2026-08-26",
+      "evidenceReviewDue": [],
+      "researchNextDue": "2026-10-12",
+      "outcome": "PARTIAL",
+      "finding": "Product-family page retrieved. Exact commercial configuration not resolved.",
+      "publishableNewClaims": false,
+      "priceSource": "https://www.carlock.co/",
+      "availabilitySource": "https://www.carlock.co/",
+      "specificationSources": [
+        "https://www.carlock.co/",
+        "https://www.carlock.co/gps-car-tracker/features-device/"
+      ],
+      "safetyStatus": "Not comprehensively checked; no recall clearance claimed",
+      "unsupportedClaims": "Unreviewed field-level commercial, compatibility and safety claims remain unapproved."
+    },
+    {
+      "productId": "fixd-sensor",
+      "product": "FIXD OBD2 Sensor",
+      "sourceUrls": [
+        "https://www.fixd.com/",
+        "https://www.fixd.com/resources/about-us"
+      ],
+      "legacyGovernedSourceIds": [],
+      "checkedAt": "2026-10-05",
+      "method": "web research retrieval, not raw HTTP fingerprint",
+      "rawFingerprint": null,
+      "priorCatalogReviewed": "2026-08-26",
+      "evidenceReviewDue": [],
+      "researchNextDue": "2026-10-12",
+      "outcome": "CONFLICT",
+      "finding": "Official page contains one-week and two-week Premium trial statements. Neither selected.",
+      "publishableNewClaims": false,
+      "priceSource": "https://www.fixd.com/",
+      "availabilitySource": "https://www.fixd.com/",
+      "specificationSources": [
+        "https://www.fixd.com/",
+        "https://www.fixd.com/resources/about-us"
+      ],
+      "safetyStatus": "Not comprehensively checked; no recall clearance claimed",
+      "unsupportedClaims": "Unreviewed field-level commercial, compatibility and safety claims remain unapproved."
+    },
+    {
+      "productId": "monnit-temperature",
+      "product": "Monnit ALTA Wireless Temperature Sensor",
+      "sourceUrls": [
+        "https://www.monnit.com/products/sensors/temperature/",
+        "https://www.monnit.com/products/sensors/temperature/wireless-digital-temperature/"
+      ],
+      "legacyGovernedSourceIds": [],
+      "checkedAt": "2026-10-05",
+      "method": "web research retrieval, not raw HTTP fingerprint",
+      "rawFingerprint": null,
+      "priorCatalogReviewed": "2026-08-26",
+      "evidenceReviewDue": [],
+      "researchNextDue": "2026-10-12",
+      "outcome": "PARTIAL",
+      "finding": "Official family page retrieved. Exact SKU/radio/gateway/power/environment required for fit.",
+      "publishableNewClaims": false,
+      "priceSource": "https://www.monnit.com/products/sensors/temperature/",
+      "availabilitySource": "https://www.monnit.com/products/sensors/temperature/",
+      "specificationSources": [
+        "https://www.monnit.com/products/sensors/temperature/",
+        "https://www.monnit.com/products/sensors/temperature/wireless-digital-temperature/"
+      ],
+      "safetyStatus": "Not comprehensively checked; no recall clearance claimed",
+      "unsupportedClaims": "Unreviewed field-level commercial, compatibility and safety claims remain unapproved."
+    },
+    {
+      "productId": "monnit-water-detect",
+      "product": "Monnit Wireless Water Detection Sensor",
+      "sourceUrls": [
+        "https://www.monnit.com/products/sensors/water-detection/",
+        "https://www.monnit.com/products/sensors/water-detection/water-detect/"
+      ],
+      "legacyGovernedSourceIds": [],
+      "checkedAt": "2026-10-05",
+      "method": "web research retrieval, not raw HTTP fingerprint",
+      "rawFingerprint": null,
+      "priorCatalogReviewed": "2026-08-26",
+      "evidenceReviewDue": [],
+      "researchNextDue": "2026-10-12",
+      "outcome": "PARTIAL",
+      "finding": "Official family page retrieved. Exact SKU/sensing method/gateway/power/environment required for fit.",
+      "publishableNewClaims": false,
+      "priceSource": "https://www.monnit.com/products/sensors/water-detection/",
+      "availabilitySource": "https://www.monnit.com/products/sensors/water-detection/",
+      "specificationSources": [
+        "https://www.monnit.com/products/sensors/water-detection/",
+        "https://www.monnit.com/products/sensors/water-detection/water-detect/"
+      ],
+      "safetyStatus": "Not comprehensively checked; no recall clearance claimed",
+      "unsupportedClaims": "Unreviewed field-level commercial, compatibility and safety claims remain unapproved."
+    }
+  ],
+  "carrier": {
+    "outcome": "UNAVAILABLE",
+    "url": "https://www.farmers.com/leak-detection/",
+    "finding": "Direct open returned page unavailable; search excerpt alone does not justify renewal. Retain September 25 suppression."
+  },
+  "recall": {
+    "outcome": "UNRESOLVED",
+    "url": "https://www.cpsc.gov/Recalls/2023/Moen-Recalls-Flo-Battery-Back-Ups-for-Flo-Smart-Water-Monitors-Due-to-Fire-Hazard",
+    "finding": "CPSC search result identifies recall, but full body returns 403 and manufacturer recall page is restricted. Do not promote the historical report into a newly verified warning."
+  },
+  "limitations": [
+    "No complete unchanged-source hash comparison was possible from web retrievals.",
+    "All-catalog research coverage is not all-catalog factual freshness.",
+    "CoverageFit runtime provider facts remain independently unverified.",
+    "Other historical report commercial recommendations are research candidates, not approved updates."
+  ]
+}

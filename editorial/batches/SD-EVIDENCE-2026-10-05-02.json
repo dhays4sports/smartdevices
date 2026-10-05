@@ -1,0 +1,937 @@
+{
+  "id": "SD-EVIDENCE-2026-10-05-02",
+  "purpose": "First real batch reconciled from the October 5 PR2 report against PR4 and the reviewed workflow continuation.",
+  "proposals": [
+    {
+      "id": "P01",
+      "collection": "observations",
+      "recordId": "moen-retail-900-001-oct05",
+      "after": {
+        "id": "moen-retail-900-001-oct05",
+        "productId": "moen-flo-shutoff",
+        "context": "retail",
+        "status": "active",
+        "title": "Moen retail — model 900-001",
+        "value": "$623.99; selected 3/4-inch model shown sold out on October 5, 2026.",
+        "observedOn": "2026-10-05",
+        "reviewDueDate": "2026-10-12",
+        "limitations": [
+          "Other sizes/configurations may differ.",
+          "This retail observation does not establish Farmers program fit."
+        ],
+        "sources": [
+          {
+            "title": "Moen retail",
+            "url": "https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff"
+          }
+        ]
+      },
+      "kind": "fact",
+      "reason": "Separate model-specific retail observation from partner offer.",
+      "evidence": [
+        {
+          "id": "moen-retail-oct05",
+          "url": "https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff",
+          "classification": "primary",
+          "observedOn": "2026-10-05",
+          "reviewDue": "2026-10-12",
+          "status": "observed",
+          "finding": "Selected model 900-001 shows $623.99 and sold out. Other variants are separate; no blanket stock conclusion."
+        }
+      ],
+      "dependencies": [],
+      "reads": [
+        {
+          "collection": "sources",
+          "recordId": "farmers-leak-detection-ca-2026-08-26",
+          "digest": "6a276c00f8c440645176fcea2e329d6dfc26e5ccd3af0a096634223eba197b77"
+        },
+        {
+          "collection": "sources",
+          "recordId": "moen-flo-product-2026-08-26",
+          "digest": "41aca1043696c782e9c00afb5c636f684749555a619e1cda36b6e38a2f913012"
+        }
+      ],
+      "impacts": [
+        "/devices/moen-flo-smart-water-shutoff",
+        "/farmers"
+      ],
+      "publicationBehavior": "Publish dated configuration observation; no carrier eligibility inference.",
+      "before": null
+    },
+    {
+      "id": "P02",
+      "collection": "observations",
+      "recordId": "moen-farmers-bundle-oct05",
+      "after": {
+        "id": "moen-farmers-bundle-oct05",
+        "productId": "moen-flo-shutoff",
+        "context": "farmers-bundle",
+        "status": "active",
+        "title": "Separate Farmers partner bundle",
+        "value": "$745 advertised partner configuration: 1-inch shutoff, transition fittings, extension cable, shipping and conditional five-year warranty.",
+        "observedOn": "2026-10-05",
+        "reviewDueDate": "2026-10-12",
+        "limitations": [
+          "Installation choice, property and regional terms require confirmation; do not assume universal included installation.",
+          "Purchase includes consent to share contact, activation, leak and water-use information with Farmers; withdrawing consent may affect benefits.",
+          "Policy/state conditions apply. This is not an eligibility, discount or underwriting determination."
+        ],
+        "sources": [
+          {
+            "title": "Moen Farmers partner offer",
+            "url": "https://shop.moen.com/pages/insurance-partner/farmers-insurance"
+          }
+        ]
+      },
+      "kind": "fact",
+      "reason": "Do not transfer retail terms into a different partner configuration.",
+      "evidence": [
+        {
+          "id": "moen-farmers-oct05",
+          "url": "https://shop.moen.com/pages/insurance-partner/farmers-insurance",
+          "classification": "primary",
+          "observedOn": "2026-10-05",
+          "reviewDue": "2026-10-12",
+          "status": "observed",
+          "finding": "Partner storefront lists a $745 configuration with distinct bundle, warranty, installation and consent terms; case eligibility is not established."
+        }
+      ],
+      "dependencies": [],
+      "reads": [
+        {
+          "collection": "sources",
+          "recordId": "farmers-leak-detection-ca-2026-08-26",
+          "digest": "6a276c00f8c440645176fcea2e329d6dfc26e5ccd3af0a096634223eba197b77"
+        },
+        {
+          "collection": "sources",
+          "recordId": "moen-flo-product-2026-08-26",
+          "digest": "41aca1043696c782e9c00afb5c636f684749555a619e1cda36b6e38a2f913012"
+        }
+      ],
+      "impacts": [
+        "/devices/moen-flo-smart-water-shutoff",
+        "/farmers"
+      ],
+      "publicationBehavior": "Publish dated configuration observation; no carrier eligibility inference.",
+      "before": null
+    },
+    {
+      "id": "P03",
+      "collection": "catalog",
+      "recordId": "moen-flo-shutoff",
+      "after": {
+        "id": "moen-flo-shutoff",
+        "slug": "moen-flo-smart-water-shutoff",
+        "manufacturer": "Moen",
+        "model": "Flo Smart Water Monitor and Shutoff",
+        "domains": [
+          "home"
+        ],
+        "concerns": [
+          "water",
+          "vacant-monitoring"
+        ],
+        "solution": "Whole-home water monitoring + automatic shutoff",
+        "summary": "Installed on the main water line to monitor water activity, send alerts, and support automatic shutoff for certain abnormal-use events.",
+        "bestFor": "Homeowners who want whole-home monitoring and automatic intervention.",
+        "priceBand": "$623.99 observed October 5, 2026 for retail model 900-001, shown sold out. The separate Farmers partner configuration was advertised at $745 with different terms. Confirm selected size, offer, installation and checkout price.",
+        "installation": "Professional plumbing installation",
+        "subscription": "Moen support stated no monthly fee for core product and app operation when reviewed; optional bundle or service terms require confirmation.",
+        "connectivity": "2.4 GHz Wi-Fi, nearby AC power, and mobile app",
+        "monitoring": "Flow and pressure monitoring with remote alerts",
+        "capabilities": [
+          "Flow monitoring",
+          "Leak alerts",
+          "Remote shutoff",
+          "Automatic shutoff"
+        ],
+        "limitations": [
+          "Compatibility depends on main-line pipe size and installation conditions; reviewed sizes included 3/4 inch, 1 inch, and 1 1/4 inch options",
+          "Moen recommends plumbing-professional in-line installation and a nearby AC outlet",
+          "Offline, power, configuration, and learning-mode conditions may affect connected or automatic behavior",
+          "Manufacturer support stated a one-year limited warranty when reviewed; confirm current model and bundle terms"
+        ],
+        "insuranceNote": "May be relevant to some carrier loss-prevention requirements. Confirm the exact eligible model and installation documentation with the carrier.",
+        "status": "active",
+        "availability": "unknown",
+        "lastReviewed": "2026-08-26",
+        "sources": [
+          {
+            "title": "Flo Smart Water Monitor and Shutoff",
+            "url": "https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff"
+          },
+          {
+            "title": "Installing the Moen Flo Shutoff",
+            "url": "https://solutions.moen.com/Smart_Water_Security_Products/Help_Center/Setup/Installing_the_Moen_Flo_Shutoff"
+          }
+        ]
+      },
+      "kind": "fact",
+      "reason": "Replace misleading family-wide unavailability with model-scoped dated pricing; preserve existing technical review date.",
+      "evidence": [
+        {
+          "id": "moen-retail-oct05",
+          "url": "https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff",
+          "classification": "primary",
+          "observedOn": "2026-10-05",
+          "reviewDue": "2026-10-12",
+          "status": "observed",
+          "finding": "Selected model 900-001 shows $623.99 and sold out. Other variants are separate; no blanket stock conclusion."
+        },
+        {
+          "id": "moen-farmers-oct05",
+          "url": "https://shop.moen.com/pages/insurance-partner/farmers-insurance",
+          "classification": "primary",
+          "observedOn": "2026-10-05",
+          "reviewDue": "2026-10-12",
+          "status": "observed",
+          "finding": "Partner storefront lists a $745 configuration with distinct bundle, warranty, installation and consent terms; case eligibility is not established."
+        }
+      ],
+      "dependencies": [
+        "P01",
+        "P02"
+      ],
+      "reads": [
+        {
+          "collection": "sources",
+          "recordId": "farmers-leak-detection-ca-2026-08-26",
+          "digest": "6a276c00f8c440645176fcea2e329d6dfc26e5ccd3af0a096634223eba197b77"
+        },
+        {
+          "collection": "sources",
+          "recordId": "moen-flo-product-2026-08-26",
+          "digest": "41aca1043696c782e9c00afb5c636f684749555a619e1cda36b6e38a2f913012"
+        }
+      ],
+      "impacts": [
+        "/devices",
+        "/compare",
+        "/farmers",
+        "catalog APIs"
+      ],
+      "publicationBehavior": "Publish dated configuration observation; no carrier eligibility inference.",
+      "before": {
+        "id": "moen-flo-shutoff",
+        "slug": "moen-flo-smart-water-shutoff",
+        "manufacturer": "Moen",
+        "model": "Flo Smart Water Monitor and Shutoff",
+        "domains": [
+          "home"
+        ],
+        "concerns": [
+          "water",
+          "vacant-monitoring"
+        ],
+        "solution": "Whole-home water monitoring + automatic shutoff",
+        "summary": "Installed on the main water line to monitor water activity, send alerts, and support automatic shutoff for certain abnormal-use events.",
+        "bestFor": "Homeowners who want whole-home monitoring and automatic intervention.",
+        "priceBand": "$623.99 was listed for a reviewed configuration on Aug. 26, 2026; the product page displayed sold out. Size, stock, bundle, price, and installation cost require a fresh check.",
+        "installation": "Professional plumbing installation",
+        "subscription": "Moen support stated no monthly fee for core product and app operation when reviewed; optional bundle or service terms require confirmation.",
+        "connectivity": "2.4 GHz Wi-Fi, nearby AC power, and mobile app",
+        "monitoring": "Flow and pressure monitoring with remote alerts",
+        "capabilities": [
+          "Flow monitoring",
+          "Leak alerts",
+          "Remote shutoff",
+          "Automatic shutoff"
+        ],
+        "limitations": [
+          "Compatibility depends on main-line pipe size and installation conditions; reviewed sizes included 3/4 inch, 1 inch, and 1 1/4 inch options",
+          "Moen recommends plumbing-professional in-line installation and a nearby AC outlet",
+          "Offline, power, configuration, and learning-mode conditions may affect connected or automatic behavior",
+          "Manufacturer support stated a one-year limited warranty when reviewed; confirm current model and bundle terms"
+        ],
+        "insuranceNote": "May be relevant to some carrier loss-prevention requirements. Confirm the exact eligible model and installation documentation with the carrier.",
+        "status": "active",
+        "availability": "unavailable",
+        "lastReviewed": "2026-08-26",
+        "sources": [
+          {
+            "title": "Flo Smart Water Monitor and Shutoff",
+            "url": "https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff"
+          },
+          {
+            "title": "Installing the Moen Flo Shutoff",
+            "url": "https://solutions.moen.com/Smart_Water_Security_Products/Help_Center/Setup/Installing_the_Moen_Flo_Shutoff"
+          }
+        ]
+      }
+    },
+    {
+      "id": "P04",
+      "collection": "observations",
+      "recordId": "ring-smoke-co-subscription-conflict-oct05",
+      "after": {
+        "id": "ring-smoke-co-subscription-conflict-oct05",
+        "productId": "ring-alarm-pro",
+        "context": "subscription",
+        "status": "conflict",
+        "title": "Ring smoke/CO subscription — unresolved",
+        "value": null,
+        "observedOn": "2026-10-05",
+        "reviewDueDate": "2026-10-12",
+        "limitations": [
+          "Do not infer eligibility for an exact Kidde SKU from a generic product name."
+        ],
+        "sources": [
+          {
+            "title": "Ring smoke/CO service",
+            "url": "https://ring.com/carbon-monoxide-smoke-monitoring"
+          }
+        ],
+        "alternatives": [
+          "FAQ says an additional Ring subscription is not required.",
+          "Footnote says a compatible Ring subscription is required."
+        ]
+      },
+      "kind": "conflict",
+      "reason": "The current official page still contains conflicting prerequisite language.",
+      "evidence": [
+        {
+          "id": "ring-oct05",
+          "url": "https://ring.com/carbon-monoxide-smoke-monitoring",
+          "classification": "primary",
+          "observedOn": "2026-10-05",
+          "reviewDue": "2026-10-12",
+          "status": "conflict",
+          "finding": "FAQ and footnote differ; interpretation not resolved."
+        }
+      ],
+      "dependencies": [],
+      "reads": [],
+      "impacts": [
+        "/devices/ring-alarm-pro",
+        "/farmers"
+      ],
+      "publicationBehavior": "Keep truth unresolved; show qualification only.",
+      "before": null
+    },
+    {
+      "id": "P05",
+      "collection": "observations",
+      "recordId": "fixd-premium-trial-conflict-oct05",
+      "after": {
+        "id": "fixd-premium-trial-conflict-oct05",
+        "productId": "fixd-sensor",
+        "context": "subscription",
+        "status": "conflict",
+        "title": "FIXD Premium trial — unresolved",
+        "value": null,
+        "observedOn": "2026-10-05",
+        "reviewDueDate": "2026-10-12",
+        "limitations": [
+          "Confirm current checkout terms. Neither duration is published as definitive."
+        ],
+        "sources": [
+          {
+            "title": "FIXD official offer",
+            "url": "https://www.fixd.com/"
+          }
+        ],
+        "alternatives": [
+          "Marketing section describes a two-week Premium trial.",
+          "Purchase section describes a one-week Premium trial."
+        ]
+      },
+      "kind": "conflict",
+      "reason": "Retain both conflicting values without choosing one.",
+      "evidence": [
+        {
+          "id": "fixd-oct05",
+          "url": "https://www.fixd.com/",
+          "classification": "primary",
+          "observedOn": "2026-10-05",
+          "reviewDue": "2026-10-12",
+          "status": "conflict",
+          "finding": "Same page contains one-week and two-week statements."
+        }
+      ],
+      "dependencies": [],
+      "reads": [],
+      "impacts": [
+        "/devices/fixd-obd2-sensor",
+        "/farmers"
+      ],
+      "publicationBehavior": "Keep truth unresolved; show qualification only.",
+      "before": null
+    },
+    {
+      "id": "P06",
+      "collection": "observations",
+      "recordId": "moen-accessory-recall-review-oct05",
+      "after": {
+        "id": "moen-accessory-recall-review-oct05",
+        "productId": "moen-flo-shutoff",
+        "context": "accessory-safety",
+        "status": "unresolved",
+        "title": "Accessory safety review — source recheck incomplete",
+        "value": null,
+        "observedOn": "2026-10-05",
+        "reviewDueDate": "2026-10-12",
+        "limitations": [
+          "An accessory-specific historical recall finding awaits full authoritative-source recheck.",
+          "No currently sold battery kit or unrelated Flo shutoff is labeled recalled by this proposal."
+        ],
+        "sources": [
+          {
+            "title": "CPSC recall reference",
+            "url": "https://www.cpsc.gov/Recalls/2023/Moen-Recalls-Flo-Battery-Back-Ups-for-Flo-Smart-Water-Monitors-Due-to-Fire-Hazard"
+          }
+        ]
+      },
+      "kind": "suppression",
+      "reason": "Historical report identifies model 920-001; direct regulator retrieval now fails. Do not publish an unverified new warning.",
+      "evidence": [
+        {
+          "id": "cpsc-oct05",
+          "url": "https://www.cpsc.gov/Recalls/2023/Moen-Recalls-Flo-Battery-Back-Ups-for-Flo-Smart-Water-Monitors-Due-to-Fire-Hazard",
+          "classification": "regulator",
+          "observedOn": "2026-10-05",
+          "reviewDue": "2026-10-12",
+          "status": "unavailable",
+          "finding": "Full recall body returned HTTP 403; manufacturer recall page also unavailable to this research."
+        }
+      ],
+      "dependencies": [],
+      "reads": [],
+      "impacts": [
+        "/devices/moen-flo-smart-water-shutoff",
+        "/farmers"
+      ],
+      "publicationBehavior": "Withhold unsupported positive claim; do not renew dates.",
+      "before": null
+    },
+    {
+      "id": "P07",
+      "collection": "sources",
+      "recordId": "moen-flo-product-2026-08-26",
+      "after": {
+        "id": "moen-flo-product-2026-08-26",
+        "version": 2,
+        "owner": "Moen",
+        "domain": "shop.moen.com",
+        "title": "Moen Flo Shutoff",
+        "url": "https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff",
+        "jurisdictions": [
+          "US"
+        ],
+        "checkedDate": "2026-10-05",
+        "reviewDueDate": "2026-10-12",
+        "status": "active",
+        "visibility": "public",
+        "limitations": [
+          "Selected retail model 900-001 showed $623.99 and sold out on October 5, 2026. Other variants and bundles require separate confirmation.",
+          "Retail source does not establish Farmers bundle terms, program eligibility or current accessory recall status."
+        ]
+      },
+      "kind": "fact",
+      "reason": "Renew only the newly inspected retail observation for seven days, not its carrier dependencies.",
+      "evidence": [
+        {
+          "id": "moen-retail-oct05",
+          "url": "https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff",
+          "classification": "primary",
+          "observedOn": "2026-10-05",
+          "reviewDue": "2026-10-12",
+          "status": "observed",
+          "finding": "Selected model 900-001 shows $623.99 and sold out. Other variants are separate; no blanket stock conclusion."
+        }
+      ],
+      "dependencies": [],
+      "reads": [
+        {
+          "collection": "sources",
+          "recordId": "farmers-leak-detection-ca-2026-08-26",
+          "digest": "6a276c00f8c440645176fcea2e329d6dfc26e5ccd3af0a096634223eba197b77"
+        },
+        {
+          "collection": "sources",
+          "recordId": "moen-flo-product-2026-08-26",
+          "digest": "41aca1043696c782e9c00afb5c636f684749555a619e1cda36b6e38a2f913012"
+        }
+      ],
+      "impacts": [
+        "/devices",
+        "/compare",
+        "/farmers",
+        "catalog APIs"
+      ],
+      "publicationBehavior": "Publish dated configuration observation; no carrier eligibility inference.",
+      "before": {
+        "id": "moen-flo-product-2026-08-26",
+        "version": 1,
+        "owner": "Moen",
+        "domain": "shop.moen.com",
+        "title": "Moen Flo Shutoff",
+        "url": "https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff",
+        "jurisdictions": [
+          "US"
+        ],
+        "checkedDate": "2026-08-26",
+        "reviewDueDate": "2026-09-25",
+        "status": "active",
+        "visibility": "public",
+        "limitations": [
+          "The reviewed product page listed $623.99 for a configuration and displayed sold out on 2026-08-26; price and stock are point-in-time observations.",
+          "Reviewed size choices included 3/4 inch, 1 inch, and 1 1/4 inch; bundles, sizes, warranty, and service terms must be confirmed for the selected model before purchase."
+        ]
+      }
+    },
+    {
+      "id": "P08",
+      "collection": "sources",
+      "recordId": "farmers-leak-detection-ca-2026-08-26",
+      "after": {
+        "id": "farmers-leak-detection-ca-2026-08-26",
+        "version": 1,
+        "owner": "Farmers Insurance",
+        "domain": "farmers.com",
+        "title": "Home Leak Detection and Shutoff",
+        "url": "https://www.farmers.com/leak-detection/",
+        "jurisdictions": [
+          "CA"
+        ],
+        "checkedDate": "2026-08-26",
+        "reviewDueDate": "2026-09-25",
+        "status": "stale",
+        "visibility": "public",
+        "limitations": [
+          "The California Moen presentation is a public offer, not universal availability or policy eligibility.",
+          "The page says requirements and discount treatment vary by location; a Farmers agent must confirm the consumer's case."
+        ]
+      },
+      "kind": "suppression",
+      "reason": "September 25 deadline has passed. Current Farmers source retrieval did not support renewal; public suppression already applies.",
+      "evidence": [
+        {
+          "id": "farmers-oct05",
+          "url": "https://www.farmers.com/leak-detection/",
+          "classification": "primary",
+          "observedOn": "2026-10-05",
+          "reviewDue": "2026-10-12",
+          "status": "unavailable",
+          "finding": "Direct retrieval returned page unavailable; search excerpt is insufficient to renew."
+        }
+      ],
+      "dependencies": [],
+      "reads": [
+        {
+          "collection": "sources",
+          "recordId": "farmers-leak-detection-ca-2026-08-26",
+          "digest": "6a276c00f8c440645176fcea2e329d6dfc26e5ccd3af0a096634223eba197b77"
+        },
+        {
+          "collection": "sources",
+          "recordId": "moen-flo-product-2026-08-26",
+          "digest": "41aca1043696c782e9c00afb5c636f684749555a619e1cda36b6e38a2f913012"
+        }
+      ],
+      "impacts": [
+        "/devices",
+        "/compare",
+        "/farmers",
+        "catalog APIs"
+      ],
+      "publicationBehavior": "Withhold unsupported positive claim; do not renew dates.",
+      "before": {
+        "id": "farmers-leak-detection-ca-2026-08-26",
+        "version": 1,
+        "owner": "Farmers Insurance",
+        "domain": "farmers.com",
+        "title": "Home Leak Detection and Shutoff",
+        "url": "https://www.farmers.com/leak-detection/",
+        "jurisdictions": [
+          "CA"
+        ],
+        "checkedDate": "2026-08-26",
+        "reviewDueDate": "2026-09-25",
+        "status": "active",
+        "visibility": "public",
+        "limitations": [
+          "The California Moen presentation is a public offer, not universal availability or policy eligibility.",
+          "The page says requirements and discount treatment vary by location; a Farmers agent must confirm the consumer's case."
+        ]
+      }
+    },
+    {
+      "id": "P09",
+      "collection": "programs",
+      "recordId": "farmers-ca-home-public-guidance-v1",
+      "after": {
+        "id": "farmers-ca-home-public-guidance-v1",
+        "version": 1,
+        "carrierId": "farmers",
+        "name": "California Home device guidance pilot",
+        "jurisdiction": "CA",
+        "line": "homeowners",
+        "policyScope": "unknown",
+        "status": "stale",
+        "visibility": "public",
+        "effectiveDate": null,
+        "expiryDate": null,
+        "checkedDate": "2026-08-26",
+        "reviewDueDate": "2026-09-25",
+        "sourceIds": [
+          "farmers-home-discounts-2026-08-26",
+          "farmers-leak-detection-ca-2026-08-26"
+        ],
+        "limitations": [
+          "Public category guidance cannot determine an individual policy requirement, eligibility, savings, or documentation acceptance."
+        ]
+      },
+      "kind": "suppression",
+      "reason": "September 25 deadline has passed. Current Farmers source retrieval did not support renewal; public suppression already applies.",
+      "evidence": [
+        {
+          "id": "farmers-oct05",
+          "url": "https://www.farmers.com/leak-detection/",
+          "classification": "primary",
+          "observedOn": "2026-10-05",
+          "reviewDue": "2026-10-12",
+          "status": "unavailable",
+          "finding": "Direct retrieval returned page unavailable; search excerpt is insufficient to renew."
+        }
+      ],
+      "dependencies": [],
+      "reads": [
+        {
+          "collection": "sources",
+          "recordId": "farmers-leak-detection-ca-2026-08-26",
+          "digest": "6a276c00f8c440645176fcea2e329d6dfc26e5ccd3af0a096634223eba197b77"
+        },
+        {
+          "collection": "sources",
+          "recordId": "moen-flo-product-2026-08-26",
+          "digest": "41aca1043696c782e9c00afb5c636f684749555a619e1cda36b6e38a2f913012"
+        }
+      ],
+      "impacts": [
+        "/devices",
+        "/compare",
+        "/farmers",
+        "catalog APIs"
+      ],
+      "publicationBehavior": "Withhold unsupported positive claim; do not renew dates.",
+      "before": {
+        "id": "farmers-ca-home-public-guidance-v1",
+        "version": 1,
+        "carrierId": "farmers",
+        "name": "California Home device guidance pilot",
+        "jurisdiction": "CA",
+        "line": "homeowners",
+        "policyScope": "unknown",
+        "status": "active",
+        "visibility": "public",
+        "effectiveDate": null,
+        "expiryDate": null,
+        "checkedDate": "2026-08-26",
+        "reviewDueDate": "2026-09-25",
+        "sourceIds": [
+          "farmers-home-discounts-2026-08-26",
+          "farmers-leak-detection-ca-2026-08-26"
+        ],
+        "limitations": [
+          "Public category guidance cannot determine an individual policy requirement, eligibility, savings, or documentation acceptance."
+        ]
+      }
+    },
+    {
+      "id": "P10",
+      "collection": "rules",
+      "recordId": "farmers-ca-water-category-v1",
+      "after": {
+        "id": "farmers-ca-water-category-v1",
+        "version": 1,
+        "programId": "farmers-ca-home-public-guidance-v1",
+        "carrierId": "farmers",
+        "jurisdiction": "CA",
+        "line": "homeowners",
+        "policyScope": "unknown",
+        "classification": "potential-discount-category",
+        "capabilityClassIds": [
+          "whole-home-flow-monitoring",
+          "automatic-main-water-shutoff"
+        ],
+        "sourceIds": [
+          "farmers-home-discounts-2026-08-26",
+          "farmers-leak-detection-ca-2026-08-26"
+        ],
+        "checkedDate": "2026-08-26",
+        "reviewDueDate": "2026-09-25",
+        "reviewer": "SmartDevices editorial review",
+        "reviewStatus": "reviewed",
+        "status": "stale",
+        "visibility": "public",
+        "limitations": [
+          "Category presence does not establish an individual policy requirement, eligibility, savings, model acceptance, or documentation acceptance."
+        ]
+      },
+      "kind": "suppression",
+      "reason": "September 25 deadline has passed. Current Farmers source retrieval did not support renewal; public suppression already applies.",
+      "evidence": [
+        {
+          "id": "farmers-oct05",
+          "url": "https://www.farmers.com/leak-detection/",
+          "classification": "primary",
+          "observedOn": "2026-10-05",
+          "reviewDue": "2026-10-12",
+          "status": "unavailable",
+          "finding": "Direct retrieval returned page unavailable; search excerpt is insufficient to renew."
+        }
+      ],
+      "dependencies": [],
+      "reads": [
+        {
+          "collection": "sources",
+          "recordId": "farmers-leak-detection-ca-2026-08-26",
+          "digest": "6a276c00f8c440645176fcea2e329d6dfc26e5ccd3af0a096634223eba197b77"
+        },
+        {
+          "collection": "sources",
+          "recordId": "moen-flo-product-2026-08-26",
+          "digest": "41aca1043696c782e9c00afb5c636f684749555a619e1cda36b6e38a2f913012"
+        }
+      ],
+      "impacts": [
+        "/devices",
+        "/compare",
+        "/farmers",
+        "catalog APIs"
+      ],
+      "publicationBehavior": "Withhold unsupported positive claim; do not renew dates.",
+      "before": {
+        "id": "farmers-ca-water-category-v1",
+        "version": 1,
+        "programId": "farmers-ca-home-public-guidance-v1",
+        "carrierId": "farmers",
+        "jurisdiction": "CA",
+        "line": "homeowners",
+        "policyScope": "unknown",
+        "classification": "potential-discount-category",
+        "capabilityClassIds": [
+          "whole-home-flow-monitoring",
+          "automatic-main-water-shutoff"
+        ],
+        "sourceIds": [
+          "farmers-home-discounts-2026-08-26",
+          "farmers-leak-detection-ca-2026-08-26"
+        ],
+        "checkedDate": "2026-08-26",
+        "reviewDueDate": "2026-09-25",
+        "reviewer": "SmartDevices editorial review",
+        "reviewStatus": "reviewed",
+        "status": "active",
+        "visibility": "public",
+        "limitations": [
+          "Category presence does not establish an individual policy requirement, eligibility, savings, model acceptance, or documentation acceptance."
+        ]
+      }
+    },
+    {
+      "id": "P11",
+      "collection": "rules",
+      "recordId": "farmers-ca-moen-public-offer-v1",
+      "after": {
+        "id": "farmers-ca-moen-public-offer-v1",
+        "version": 1,
+        "programId": "farmers-ca-home-public-guidance-v1",
+        "carrierId": "farmers",
+        "jurisdiction": "CA",
+        "line": "homeowners",
+        "policyScope": "unknown",
+        "classification": "public-offer",
+        "capabilityClassIds": [
+          "whole-home-flow-monitoring",
+          "automatic-main-water-shutoff"
+        ],
+        "sourceIds": [
+          "farmers-leak-detection-ca-2026-08-26",
+          "moen-flo-product-2026-08-26",
+          "moen-flo-support-2026-08-26"
+        ],
+        "checkedDate": "2026-08-26",
+        "reviewDueDate": "2026-09-25",
+        "reviewer": "SmartDevices editorial review",
+        "reviewStatus": "reviewed",
+        "status": "stale",
+        "visibility": "public",
+        "limitations": [
+          "Public-offer status is not product approval, policy eligibility, guaranteed availability, a discount decision, or a universal Farmers requirement."
+        ]
+      },
+      "kind": "suppression",
+      "reason": "September 25 deadline has passed. Current Farmers source retrieval did not support renewal; public suppression already applies.",
+      "evidence": [
+        {
+          "id": "farmers-oct05",
+          "url": "https://www.farmers.com/leak-detection/",
+          "classification": "primary",
+          "observedOn": "2026-10-05",
+          "reviewDue": "2026-10-12",
+          "status": "unavailable",
+          "finding": "Direct retrieval returned page unavailable; search excerpt is insufficient to renew."
+        }
+      ],
+      "dependencies": [],
+      "reads": [
+        {
+          "collection": "sources",
+          "recordId": "farmers-leak-detection-ca-2026-08-26",
+          "digest": "6a276c00f8c440645176fcea2e329d6dfc26e5ccd3af0a096634223eba197b77"
+        },
+        {
+          "collection": "sources",
+          "recordId": "moen-flo-product-2026-08-26",
+          "digest": "41aca1043696c782e9c00afb5c636f684749555a619e1cda36b6e38a2f913012"
+        }
+      ],
+      "impacts": [
+        "/devices",
+        "/compare",
+        "/farmers",
+        "catalog APIs"
+      ],
+      "publicationBehavior": "Withhold unsupported positive claim; do not renew dates.",
+      "before": {
+        "id": "farmers-ca-moen-public-offer-v1",
+        "version": 1,
+        "programId": "farmers-ca-home-public-guidance-v1",
+        "carrierId": "farmers",
+        "jurisdiction": "CA",
+        "line": "homeowners",
+        "policyScope": "unknown",
+        "classification": "public-offer",
+        "capabilityClassIds": [
+          "whole-home-flow-monitoring",
+          "automatic-main-water-shutoff"
+        ],
+        "sourceIds": [
+          "farmers-leak-detection-ca-2026-08-26",
+          "moen-flo-product-2026-08-26",
+          "moen-flo-support-2026-08-26"
+        ],
+        "checkedDate": "2026-08-26",
+        "reviewDueDate": "2026-09-25",
+        "reviewer": "SmartDevices editorial review",
+        "reviewStatus": "reviewed",
+        "status": "active",
+        "visibility": "public",
+        "limitations": [
+          "Public-offer status is not product approval, policy eligibility, guaranteed availability, a discount decision, or a universal Farmers requirement."
+        ]
+      }
+    },
+    {
+      "id": "P12",
+      "collection": "fits",
+      "recordId": "fit-farmers-moen-flo-v1",
+      "after": {
+        "id": "fit-farmers-moen-flo-v1",
+        "carrierId": "farmers",
+        "jurisdiction": "CA",
+        "deviceId": "moen-flo-shutoff",
+        "classIds": [
+          "whole-home-flow-monitoring",
+          "automatic-main-water-shutoff"
+        ],
+        "fit": "explicitly-named-public-offer",
+        "sourceIds": [
+          "farmers-leak-detection-ca-2026-08-26",
+          "moen-flo-product-2026-08-26",
+          "moen-flo-support-2026-08-26"
+        ],
+        "status": "stale",
+        "checkedDate": "2026-08-26",
+        "reviewDueDate": "2026-09-25",
+        "limitations": [
+          "This describes a public offer and technical capability, not individual eligibility, model acceptance, installation acceptance, savings, or policy compliance."
+        ]
+      },
+      "kind": "suppression",
+      "reason": "September 25 deadline has passed. Current Farmers source retrieval did not support renewal; public suppression already applies.",
+      "evidence": [
+        {
+          "id": "farmers-oct05",
+          "url": "https://www.farmers.com/leak-detection/",
+          "classification": "primary",
+          "observedOn": "2026-10-05",
+          "reviewDue": "2026-10-12",
+          "status": "unavailable",
+          "finding": "Direct retrieval returned page unavailable; search excerpt is insufficient to renew."
+        }
+      ],
+      "dependencies": [],
+      "reads": [
+        {
+          "collection": "sources",
+          "recordId": "farmers-leak-detection-ca-2026-08-26",
+          "digest": "6a276c00f8c440645176fcea2e329d6dfc26e5ccd3af0a096634223eba197b77"
+        },
+        {
+          "collection": "sources",
+          "recordId": "moen-flo-product-2026-08-26",
+          "digest": "41aca1043696c782e9c00afb5c636f684749555a619e1cda36b6e38a2f913012"
+        }
+      ],
+      "impacts": [
+        "/devices",
+        "/compare",
+        "/farmers",
+        "catalog APIs"
+      ],
+      "publicationBehavior": "Withhold unsupported positive claim; do not renew dates.",
+      "before": {
+        "id": "fit-farmers-moen-flo-v1",
+        "carrierId": "farmers",
+        "jurisdiction": "CA",
+        "deviceId": "moen-flo-shutoff",
+        "classIds": [
+          "whole-home-flow-monitoring",
+          "automatic-main-water-shutoff"
+        ],
+        "fit": "explicitly-named-public-offer",
+        "sourceIds": [
+          "farmers-leak-detection-ca-2026-08-26",
+          "moen-flo-product-2026-08-26",
+          "moen-flo-support-2026-08-26"
+        ],
+        "status": "active",
+        "checkedDate": "2026-08-26",
+        "reviewDueDate": "2026-09-25",
+        "limitations": [
+          "This describes a public offer and technical capability, not individual eligibility, model acceptance, installation acceptance, savings, or policy compliance."
+        ]
+      }
+    }
+  ],
+  "unresolved": [
+    "Ring prerequisite",
+    "FIXD trial duration",
+    "Moen accessory recall body retrieval",
+    "Farmers carrier renewal"
+  ],
+  "validationExpectations": [
+    "typecheck",
+    "lint",
+    "build",
+    "full tests",
+    "evidence and catalog schemas",
+    "source references",
+    "expired suppression",
+    "secret scan",
+    "affected routes",
+    "negative assertions"
+  ],
+  "catalogCoverage": "editorial/research/2026-10-05-current-source-review.json",
+  "baseSha": "98f64009d1d555d4c0924a5c14aae444aa7f74db",
+  "policyDigest": "726e3e759b2721b922f20dda7c3eab6a809ef02582aeddbfd28cc5bd6693d188",
+  "evidenceSnapshot": "cee0b4ca40d6300dc9a082cbbfdf5f2fc7344c9bf2ea7a4899c0cd5f572243b5",
+  "catalogSnapshot": "157a419b2e7ea65f9ea00027dea26d82112454157abdf693cef0bbc397d31234",
+  "createdAt": "2026-10-05T17:08:31.554Z",
+  "schemaVersion": 1,
+  "digest": "02c1f79c0a8b01a9346a72f3d041ab43d11bae42bebf2d75f4d1e795d28ed49c"
+}
