@@ -64,3 +64,43 @@ D1 remains the durable boundary for hosted plan, consent, replay, audit, and rev
 Plan routes alone permit same-origin framing so SmartDevices Pro can render the exact client view. Their CSP uses `frame-ancestors 'self'` and `X-Frame-Options: SAMEORIGIN`; every other route retains `frame-ancestors 'none'` and `DENY`. Cross-origin framing remains blocked.
 
 Provider-specific communications, CRM, evidence storage, carrier feeds, and identity remain behind disabled-by-default adapters. Static public data supports the local pilot without inventing hosted services.
+
+
+## Strategic ecosystem overlay — 2026-10-02
+
+`SMARTDEVICES-ECOSYSTEM-NORTH-STAR-1.0` is the governing direction for future ecosystem evolution. It is additive to the verified v4.1/v4.2 architecture and does not retroactively claim implementation.
+
+### Four-surface architecture
+
+Future reconciliation should organize SmartDevices around four durable surfaces:
+
+- **DISCOVER** — structured device intelligence and capability discovery;
+- **CONNECT** — normalize existing third-party or custom devices into a canonical device/capability model;
+- **CREATE** — generalize the existing builder toward capability/outcome-first creation;
+- **OPERATE** — permissioned human/agent execution with bounded authority, provenance, revocation, and receipts where appropriate.
+
+### Ecosystem accretion constraint
+
+Architecture should prefer designs in which new third-party intelligent devices add value to SmartDevices rather than compete with it. Device participation must not require Mesh-native origin.
+
+### Trust-state separation
+
+Future device-domain data contracts must preserve explicit separation among:
+
+`discovered -> registered -> claimed -> verified -> identified -> permissioned -> agent-operable -> transactional`.
+
+Registration does not imply verification. Identity does not imply authorization. Reachability does not imply permission.
+
+### Capability-first direction
+
+Human-facing categories remain useful, but interoperability should increasingly model device capabilities independently from specific hardware. A future canonical Smart Device Object should be able to represent identity, manufacturer/model, ownership/control claim, interfaces, capabilities, state, connectivity, compatibility, trust, provenance, permissions, endpoints, Mesh readiness, and economic capability where applicable.
+
+### Mesh relationship
+
+SmartDevices must remain useful without the Mesh. Mesh primitives may progressively add durable identity, mandates, fine-grained permissions, agent authorization, execution boundaries, ephemeral credentials, settlement, receipts, provenance, and revocation.
+
+### Reconciliation rule
+
+**NO REBUILD.** Before implementing this overlay, audit the actual current canonical source and classify relevant implementation as **KEEP / ELEVATE / GENERALIZE / DEPRECATE / MISSING**. Preserve working systems, including specialized verticals such as `/farmers`, and generalize incrementally.
+
+See `docs/SMARTDEVICES_ECOSYSTEM_NORTH_STAR_AND_ROADMAP.md` for the complete North Star, trust ladder, boundaries, implementation status convention, and phased roadmap.

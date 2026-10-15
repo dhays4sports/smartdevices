@@ -4,6 +4,14 @@ SmartDevices.com is an independent, carrier-neutral, insurance-aware device inte
 
 This repository is the v4.2 local release-candidate source. Home and Vehicle have full interactive depth; Family and Business are clearly labeled starter guides. The release contains exactly three causal demonstrations: water leak/shutoff, smoke-or-heat awareness, and vehicle theft tracking. `/insurance` is the permanent neutral directory; `/farmers` is the canonical California Farmers pilot. No carrier relationship, approval, eligibility, or discount is implied.
 
+## Strategic direction — ecosystem North Star
+
+As of 2026-10-02, the governing direction for future SmartDevices ecosystem work is documented in `docs/SMARTDEVICES_ECOSYSTEM_NORTH_STAR_AND_ROADMAP.md`.
+
+The product should converge around **DISCOVER → CONNECT → CREATE → OPERATE** and become more valuable as third parties create more intelligent devices. Mesh integration is a capability multiplier, not a prerequisite for participation. The current implementation must be reconciled incrementally against that direction; **do not rebuild from scratch** merely because the abstraction has improved.
+
+This strategic overlay does not claim that every roadmap capability is implemented in this v4.2 source state.
+
 ## Requirements
 
 - Node.js 22.13 or newer
@@ -42,6 +50,7 @@ npm test
 
 Start with:
 
+- `docs/SMARTDEVICES_ECOSYSTEM_NORTH_STAR_AND_ROADMAP.md`
 - `docs/PROGRAM_LEDGER.md`
 - `docs/ARCHITECTURE_AND_DATA_CONTRACTS.md`
 - `docs/CARRIER_DATA_CONTRACTS.md`
