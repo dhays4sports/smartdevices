@@ -1,0 +1,91 @@
+[
+  {
+    "verificationId": "mpv_phyn_plus_v2_20260922",
+    "providerId": "phyn-direct",
+    "deviceId": "phyn-plus-v2",
+    "sourceAuthority": "manufacturer",
+    "sourceUrl": "https://phyn.com/products/phyn-plus-smart-water-assistant-shutoff-v2",
+    "sourceHost": "phyn.com",
+    "checkedAt": "2026-09-22T17:45:00Z",
+    "availability": "available",
+    "price": {
+      "amount": 579.99,
+      "currency": "USD"
+    },
+    "purchaseSignal": "add-to-cart",
+    "evidence": [
+      "Manufacturer product page lists Phyn Plus Smart Water Assistant + Shutoff (2nd Gen).",
+      "Manufacturer product page displays $579.99 and an Add to cart action.",
+      "Manufacturer product page describes built-in automatic shutoff capability."
+    ]
+  },
+  {
+    "verificationId": "mpv_moen_flo_20260922",
+    "providerId": "moen-direct",
+    "deviceId": "moen-flo-shutoff",
+    "sourceAuthority": "manufacturer",
+    "sourceUrl": "https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff",
+    "sourceHost": "shop.moen.com",
+    "checkedAt": "2026-09-22T17:45:00Z",
+    "availability": "unavailable",
+    "price": {
+      "amount": 623.99,
+      "currency": "USD"
+    },
+    "purchaseSignal": "sold-out",
+    "evidence": [
+      "Manufacturer store lists the Moen Flo Shutoff at $623.99.",
+      "The reviewed manufacturer product page currently displays Sold out for the shown configuration."
+    ]
+  },
+  {
+    "verificationId": "mpv_moen_farmers_device_20260922",
+    "providerId": "moen-farmers-program",
+    "deviceId": "moen-flo-shutoff",
+    "offerId": "offer-moen-farmers-device-only",
+    "carrierId": "farmers",
+    "programId": "farmers-ca-flo-water-shutoff",
+    "programJurisdiction": "US-CA",
+    "channelVariantId": "device-only",
+    "sourceAuthority": "manufacturer",
+    "sourceUrl": "https://www.moen.com/farmers",
+    "sourceHost": "www.moen.com",
+    "checkedAt": "2026-09-22T18:49:42Z",
+    "availability": "available",
+    "price": {
+      "amount": 445.0,
+      "currency": "USD"
+    },
+    "purchaseSignal": "buy",
+    "evidence": [
+      "User-supplied screenshot of the official Moen/Farmers program page shows Flo Smart Water Monitor & Shutoff priced at $445.00 with SHOP NOW.",
+      "The same page shows free shipping, a five-year limited warranty, and an option for the customer to use their own plumber.",
+      "Evidence artifact: docs/evidence/market/moen-farmers-device-only-2026-09-22.png"
+    ]
+  },
+  {
+    "verificationId": "mpv_moen_farmers_installed_20260922",
+    "providerId": "moen-farmers-program",
+    "deviceId": "moen-flo-shutoff",
+    "offerId": "offer-moen-farmers-installed",
+    "carrierId": "farmers",
+    "programId": "farmers-ca-flo-water-shutoff",
+    "programJurisdiction": "US-CA",
+    "channelVariantId": "standard-installation",
+    "sourceAuthority": "manufacturer",
+    "sourceUrl": "https://www.moen.com/farmers",
+    "sourceHost": "www.moen.com",
+    "checkedAt": "2026-09-22T18:49:34Z",
+    "availability": "available",
+    "price": {
+      "amount": 745.0,
+      "currency": "USD"
+    },
+    "purchaseSignal": "buy",
+    "evidence": [
+      "User-supplied screenshot of the official Moen/Farmers program page shows an Installation option priced at $745.00.",
+      "The page states Standard Installation Included, free shipping, and a five-year limited warranty.",
+      "Evidence artifact: docs/evidence/market/moen-farmers-installed-2026-09-22.png"
+    ]
+  }
+]

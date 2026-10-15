@@ -1,0 +1,17 @@
+# Protection setup source review — 2026-09-06
+
+Scope: the new producer-selected California residential setups only. Prior SmartDevices catalog/evidence ledgers and their historical dates remain unchanged. Review status: limited primary-source category review; no case-specific insurer qualification, model-by-model compatibility audit, price guarantee or contractor vetting.
+
+| Source | Observed support | Limits |
+|---|---|---|
+| [Farmers leak detection](https://www.farmers.com/leak-detection/) | Current public page identifies Flo and a California Moen offer. | Public category/offer evidence does not determine an individual policy requirement or discount. |
+| [Requested Moen destination](https://www.moen.com/farmers) | User-selected canonical purchase/offer entry, retained exactly. | Direct research fetch failed; do not claim this URL's live redirects, checkout, price or current terms were verified. Farmers' current controlled page independently supports the California relationship. Producer must open and check before client use. |
+| [ADT monitoring](https://www.adt.com/monitoring-plans-security-services), [ADT fire](https://www.adt.com/fire-alarm) | Current public monitoring and fire-system guidance was readable. | Exact equipment, activation, subscriptions and premises eligibility need confirmation. |
+| [SimpliSafe monitoring options](https://support.simplisafe.com/articles/alarm-event-monitoring/what-are-the-service-plan-options) | Current residential monitoring options include professional protection services. | Not every package or standalone device supplies every capability; verify selected equipment and active services. |
+| [Ring professional monitoring](https://ring.com/professional-monitoring), [Ring smoke/CO monitoring](https://ring.com/carbon-monoxide-smoke-monitoring) | Current separate burglary and smoke/CO monitoring information was readable. | Compatible equipment, activation and applicable residential restrictions matter; no insurer approval inferred. |
+| [Little Firefighter valves](https://www.littlefirefighter.com/gas-shutoff-valves/), [manufacturer instructions](https://www.littlefirefighter.com/wp-content/uploads/2023/02/FAGV-INSTRUCTIONS.pdf) | First-party indexed results support earthquake/seismic valve family and qualified installation. | Direct category-page retrieval failed. No exact model, listing, size, local code acceptance or carrier qualification was certified. Installer must determine the correct product before purchase. |
+| [CSLB public data portal](https://www.cslb.ca.gov/onlineservices/dataportal/), [license check](https://www.cslb.ca.gov/onlineservices/checklicenseII/checklicense.aspx) | Government discovery and verification destinations. | Public listings are not endorsements, booking services, or proof of scope for a specific job. |
+
+No marketing copy or provider logos were copied. No prices, universal requirements, guaranteed savings or carrier-approved product labels were added. Starting setup records have review date 2026-09-06 and review-due date 2026-12-05. These are narrow editorial review dates, not proof of a producer's case review or successful retrieval of every target URL. The producer must confirm each selected recommendation before preparing a review.
+
+Authenticated link checks maintain their own timestamp and fingerprint history. They never update the source review dates or publish revised technical/insurance assertions automatically. Full-page changes can be cosmetic; treat flags as review prompts.

@@ -74,8 +74,8 @@ export function getDeviceById(id: string): Device | undefined {
   return devices.find((device) => device.id === id);
 }
 
-export function devicesForConcern(domainId: string, concernId: string): Device[] {
-  return devices
+export function devicesForConcern(domainId: string, concernId: string, publishedDevices: Device[] = devices): Device[] {
+  return publishedDevices
     .filter(
       (device) =>
         device.status === "active" &&

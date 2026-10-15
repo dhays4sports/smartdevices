@@ -2,18 +2,19 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { buildScanResult, questionsFor, type ScanAnswer, type ScanResult } from "@/app/lib/scan";
-import type { DomainId } from "@/app/lib/data";
+import type { Device, DomainId } from "@/app/lib/data";
 
 type Props = {
   domainId: DomainId;
   concernId: string;
   onBack: () => void;
   onComplete: (result: ScanResult, answers: ScanAnswer[]) => void;
+  publishedDevices: Device[];
 };
 
 const DRAFT_KEY = "smartdevices-scan-draft-v1";
 
-export function IntelligentScan({ domainId, concernId, onBack, onComplete }: Props) {
+export function IntelligentScan({ domainId, concernId, onBack, onComplete, publishedDevices }: Props) {
   const questions = useMemo(() => questionsFor(domainId, concernId), [domainId, concernId]);
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<ScanAnswer[]>([]);
@@ -41,7 +42,7 @@ export function IntelligentScan({ domainId, concernId, onBack, onComplete }: Pro
     if (!optionId || !question) return;
     const nextAnswers = [...answers.filter((answer) => answer.questionId !== question.id), { questionId: question.id, optionId }];
     if (index === questions.length - 1) {
-      onComplete(buildScanResult(domainId, concernId, nextAnswers), nextAnswers);
+      onComplete(buildScanResult(domainId, concernId, nextAnswers, publishedDevices), nextAnswers);
       return;
     }
     setAnswers(nextAnswers);

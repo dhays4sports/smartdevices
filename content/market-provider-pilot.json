@@ -1,0 +1,42 @@
+[
+  {
+    "providerId": "moen-direct",
+    "providerName": "Moen",
+    "deviceId": "moen-flo-shutoff",
+    "fulfillmentType": "manufacturer-direct",
+    "allowedDestinationHosts": [
+      "shop.moen.com",
+      "www.moen.com",
+      "moen.com"
+    ],
+    "pilotMode": "observe-only",
+    "notes": "Real manufacturer source. Current manufacturer verification remains unavailable/sold out, so consumer preview is blocked."
+  },
+  {
+    "providerId": "phyn-direct",
+    "providerName": "Phyn",
+    "deviceId": "phyn-plus-v2",
+    "fulfillmentType": "manufacturer-direct",
+    "allowedDestinationHosts": [
+      "phyn.com",
+      "www.phyn.com"
+    ],
+    "pilotMode": "preview-eligible",
+    "notes": "Manufacturer-direct source. Preview eligibility still requires a fresh manufacturer verification record and explicit pilot flags."
+  },
+  {
+    "providerId": "moen-farmers-program",
+    "providerName": "Moen \u00d7 Farmers",
+    "deviceId": "moen-flo-shutoff",
+    "fulfillmentType": "carrier-program",
+    "carrierId": "farmers",
+    "programId": "farmers-ca-flo-water-shutoff",
+    "programJurisdiction": "US-CA",
+    "allowedDestinationHosts": [
+      "www.moen.com",
+      "moen.com"
+    ],
+    "pilotMode": "preview-eligible",
+    "notes": "Farmers-specific Moen fulfillment channel at moen.com/farmers. Channel availability is verified separately from generic Moen retail inventory and requires explicit Farmers program context."
+  }
+]

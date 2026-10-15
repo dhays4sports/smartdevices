@@ -16,12 +16,11 @@ export default function InsurancePage() {
     <><SiteHeader /><main className="insurance-page"><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replaceAll("<", "\\u003c") }} />
       <header className="insurance-hero">
         <p className="eyebrow">Insurance guidance</p>
-        <h1>Your insurer mentioned a device. Start with what that could mean.</h1>
-        <p>SmartDevices separates your stated requirement, public carrier information, technical device fit, and independent recommendations—so one does not masquerade as another.</p>
-        <div className="carrier-truth-strip" aria-label="How carrier guidance is classified"><span>Your context</span><i aria-hidden="true">→</i><span>Current public evidence</span><i aria-hidden="true">→</i><span>Technical capability</span><i aria-hidden="true">→</i><span>Confirmation</span></div>
+        <h1>Did your insurer mention a smart device?</h1>
+        <p>Choose your insurer. We’ll help you understand what kind of device may apply and what to confirm before you act.</p>
       </header>
       <CarrierDirectory carriers={publishedCarriers()} />
-      <aside className="independence-panel" aria-label="SmartDevices independence disclosure"><strong>Independent by design.</strong><p>SmartDevices is not an insurance carrier and does not determine policy requirements, eligibility, discounts, savings, or claim outcomes. Published carrier guidance is dated and scoped; unknowns remain visible.</p></aside>
+      <aside className="independence-panel" aria-label="SmartDevices independence disclosure"><strong>Independent by design.</strong><p>SmartDevices does not determine policy requirements, eligibility or discounts. Carrier-specific guidance is dated, scoped and always includes a confirmation step.</p></aside>
     </main><SiteFooter /></>
   );
 }

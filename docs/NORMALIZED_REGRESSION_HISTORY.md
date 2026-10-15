@@ -124,3 +124,24 @@ The failed dependency audit remains visible to preserve history; SEC-002 and NR-
 | SD42-DOC-001 | 2026-08-26 | Release-document and checkpoint completeness gate | Fail, corrected | Nine focused document/operator/checkpoint tests passed, but the explicit completion-row count found only 57 because the final packaging sprint had no pending completion row. Added the honest pending SD42-CERT-10.5 row; no earlier sprint result changed. |
 | SD42-DOC-002 | 2026-08-26 | Corrected documentation gate plus normalized RC0 regression | Pass | Evidence validation, typecheck, lint, five-stage build, 70 JavaScript and 115 TypeScript tests (185 total), and all 58 unique checkpoint rows passed. |
 | SD42-PKG-001 | 2026-08-26 | Exact immutable source/root package gates | Pass locally | SOURCE passed locked install, evidence/type/lint, four migrations/13 tables, build, 185 tests, production audit, secret/content/protected-hash and exclusion checks; ROOT passed independent install/type/lint and built-runtime/degraded-route checks; ZIP integrity and sibling hashes verified. |
+| SD422-UX-001 | 2026-08-28 | Daily utility and repeat-use loop | Pass locally | Homepage, My Plan and Pro rendered cleanly at 1363 × 936 with zero horizontal overflow; Device Library → create plan → My Plan → exact reopen passed in Chrome. |
+| SD422-REG-001 | 2026-08-28 | v4.2.2 normalized regression | Pass locally | Typecheck, lint, carrier-evidence validation, five-stage production build and 192/192 automated tests passed. Physical mobile browsers, named assistive technologies and representative hardware CWV remain external. |
+| SD423-REG-001 | 2026-08-28 | v4.2.3 clarity convergence | Pass locally | Typecheck, lint, carrier-evidence validation, five-stage production build and 196/196 automated tests passed. Rendered Chrome review covered Home, My Plan loading/empty continuity, Pro daily tools and the California Farmers entry with no authored console errors. |
+
+## v4.3 Evidence Autopilot append-only runs
+
+| Run | UTC date | Scope | Result | Evidence / correction |
+|---|---|---|---|---|
+| SD43-NR-001 | 2026-08-28 | Initial normalized Evidence Autopilot regression | Fail, corrected | The five-stage build passed; three source contracts failed because README route tokens had been removed, the Farmers test expected a formerly static review date, and new console styles exceeded the inherited global-CSS budget. Restored the route contract, made the assertion follow active snapshot metadata, and moved console styles into route-scoped CSS. |
+| SD43-MIG-001 | 2026-08-28 | Five-migration rehearsal | Harness unavailable, corrected | The first command assumed the `sqlite3` CLI was installed. The corrected Python-standard-library SQLite harness applied migrations `0000`–`0004`, produced 17 governed tables, and reported zero foreign-key violations. No migration changed during the correction. |
+| SD43-NR-002 | 2026-08-28 | Focused typed-unit command | Harness fail, corrected | A convenience command referenced nonexistent npm script `test:unit`. The repository's normalized `npm test` command was used instead; product source was unaffected. |
+| SD43-NR-003 | 2026-08-28 | Post-snapshot plan compatibility | Fail, corrected | The plan renderer correctly expanded one historic warning into a list but changed the source-level compatibility marker. Restored the established `historicCarrierWarning` name as a plural collection without reducing runtime behavior. |
+| SD43-NR-004 | 2026-08-28 | Final normalized regression | Pass locally | Typecheck, lint, evidence validation, five-stage production build, 87 JavaScript tests and 124 TypeScript tests passed (211 total). Production-only dependency audit reported zero known vulnerabilities. |
+
+## v4.4 Home Decision append-only runs
+
+| Run | UTC date | Scope | Result | Evidence / correction |
+|---|---|---|---|---|
+| SD44-NR-001 | 2026-09-05 | Initial replaced Home route | Fail, corrected | An inherited runtime text assertion expected the previous water heading. Updated it to the new capability heading and retained a detection-only limitation assertion. Other runtime boundaries were unchanged. |
+| SD44-UX-001 | 2026-09-05 | Home decision and repeat-use flow | Pass locally | Chrome: capability matching, comparison save, literal progress after refresh and My Plans reopen. Same-origin 320/390/768-width layout checks had zero horizontal overflow. Temporary fixtures removed. See V4.4_HOME_DECISION_EXPERIENCE.md for harness corrections and external limitations. |
+| SD44-NR-002 | 2026-09-05 | Final UI regression | Pass locally | Typecheck, lint, build, 90 JavaScript + 129 TypeScript tests (219); historical evidence fixture validation; 5 migrations/17 tables/0 FK violations; production dependency audit 0 known vulnerabilities. No current price/availability recertification implied. |

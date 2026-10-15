@@ -4,8 +4,13 @@
     "slug": "moen-flo-smart-water-shutoff",
     "manufacturer": "Moen",
     "model": "Flo Smart Water Monitor and Shutoff",
-    "domains": ["home"],
-    "concerns": ["water", "vacant-monitoring"],
+    "domains": [
+      "home"
+    ],
+    "concerns": [
+      "water",
+      "vacant-monitoring"
+    ],
     "solution": "Whole-home water monitoring + automatic shutoff",
     "summary": "Installed on the main water line to monitor water activity, send alerts, and support automatic shutoff for certain abnormal-use events.",
     "bestFor": "Homeowners who want whole-home monitoring and automatic intervention.",
@@ -14,15 +19,31 @@
     "subscription": "Moen support stated no monthly fee for core product and app operation when reviewed; optional bundle or service terms require confirmation.",
     "connectivity": "2.4 GHz Wi-Fi, nearby AC power, and mobile app",
     "monitoring": "Flow and pressure monitoring with remote alerts",
-    "capabilities": ["Flow monitoring", "Leak alerts", "Remote shutoff", "Automatic shutoff"],
-    "limitations": ["Compatibility depends on main-line pipe size and installation conditions; reviewed sizes included 3/4 inch, 1 inch, and 1 1/4 inch options", "Moen recommends plumbing-professional in-line installation and a nearby AC outlet", "Offline, power, configuration, and learning-mode conditions may affect connected or automatic behavior", "Manufacturer support stated a one-year limited warranty when reviewed; confirm current model and bundle terms"],
+    "capabilities": [
+      "Flow monitoring",
+      "Leak alerts",
+      "Remote shutoff",
+      "Automatic shutoff"
+    ],
+    "limitations": [
+      "Compatibility depends on main-line pipe size and installation conditions; reviewed sizes included 3/4 inch, 1 inch, and 1 1/4 inch options",
+      "Moen recommends plumbing-professional in-line installation and a nearby AC outlet",
+      "Offline, power, configuration, and learning-mode conditions may affect connected or automatic behavior",
+      "Manufacturer support stated a one-year limited warranty when reviewed; confirm current model and bundle terms"
+    ],
     "insuranceNote": "May be relevant to some carrier loss-prevention requirements. Confirm the exact eligible model and installation documentation with the carrier.",
     "status": "active",
     "availability": "unavailable",
     "lastReviewed": "2026-08-26",
     "sources": [
-      {"title": "Flo Smart Water Monitor and Shutoff", "url": "https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff"},
-      {"title": "Installing the Moen Flo Shutoff", "url": "https://solutions.moen.com/Smart_Water_Security_Products/Help_Center/Setup/Installing_the_Moen_Flo_Shutoff"}
+      {
+        "title": "Flo Smart Water Monitor and Shutoff",
+        "url": "https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff"
+      },
+      {
+        "title": "Installing the Moen Flo Shutoff",
+        "url": "https://solutions.moen.com/Smart_Water_Security_Products/Help_Center/Setup/Installing_the_Moen_Flo_Shutoff"
+      }
     ]
   },
   {
@@ -30,33 +51,65 @@
     "slug": "phyn-plus-smart-water-shutoff-v2",
     "manufacturer": "Phyn",
     "model": "Phyn Plus Smart Water Assistant + Shutoff (2nd Gen)",
-    "domains": ["home"],
-    "concerns": ["water", "vacant-monitoring"],
+    "domains": [
+      "home"
+    ],
+    "concerns": [
+      "water",
+      "vacant-monitoring"
+    ],
     "solution": "Whole-home water monitoring + automatic shutoff",
     "summary": "Uses pressure-wave analysis to monitor plumbing, alert to potential leaks, and support remote or automatic main-water shutoff.",
     "bestFor": "Homes where detailed plumbing monitoring and a built-in shutoff are priorities.",
-    "priceBand": "$500-$700 hardware range when checked; installation is additional.",
+    "priceBand": "$579.99 manufacturer-direct price verified Sep. 22, 2026; installation and any adapters are additional and require a current site-specific check.",
     "installation": "Professional plumbing installation",
     "subscription": "Confirm current service terms with the manufacturer.",
     "connectivity": "Wi-Fi and Phyn app",
     "monitoring": "Pressure, flow, plumbing checks, alerts, and shutoff",
-    "capabilities": ["Leak alerts", "Plumbing checks", "Freeze warnings", "Remote shutoff", "Automatic shutoff"],
-    "limitations": ["Plumbing compatibility must be verified", "Installation and network conditions affect operation", "Automatic shutoff behavior requires correct setup"],
+    "capabilities": [
+      "Leak alerts",
+      "Plumbing checks",
+      "Freeze warnings",
+      "Remote shutoff",
+      "Automatic shutoff"
+    ],
+    "limitations": [
+      "Plumbing compatibility must be verified",
+      "Installation and network conditions affect operation",
+      "Automatic shutoff behavior requires correct setup"
+    ],
     "insuranceNote": "Some insurance programs may consider an activated whole-home shutoff. Carrier acceptance and proof requirements vary.",
     "status": "active",
-    "lastReviewed": "2026-08-26",
+    "lastReviewed": "2026-09-22",
     "sources": [
-      {"title": "Phyn Plus Smart Water Assistant + Shutoff (2nd Gen)", "url": "https://phyn.com/products/phyn-plus-smart-water-assistant-shutoff-v2"},
-      {"title": "Phyn Plus support", "url": "https://helpcenter.phyn.com/help/phyn-plus-1st-2nd-gen"}
-    ]
+      {
+        "title": "Phyn Plus Smart Water Assistant + Shutoff (2nd Gen)",
+        "url": "https://phyn.com/products/phyn-plus-smart-water-assistant-shutoff-v2"
+      },
+      {
+        "title": "Phyn Plus product collection / current shop availability",
+        "url": "https://phyn.com/collections/shop"
+      },
+      {
+        "title": "Phyn Plus support",
+        "url": "https://helpcenter.phyn.com/help/phyn-plus-1st-2nd-gen"
+      }
+    ],
+    "availability": "available"
   },
   {
     "id": "kidde-water-freeze",
     "slug": "kidde-water-leak-freeze-detector",
     "manufacturer": "Kidde",
     "model": "Water Leak + Freeze Detector",
-    "domains": ["home"],
-    "concerns": ["water", "vacant-monitoring", "household-alerts"],
+    "domains": [
+      "home"
+    ],
+    "concerns": [
+      "water",
+      "vacant-monitoring",
+      "household-alerts"
+    ],
     "solution": "Point-of-use leak + freeze sensing",
     "summary": "A connected detector intended to alert when water or freeze conditions are detected at the sensor location.",
     "bestFor": "Placing near water heaters, appliances, sinks, or other localized leak concerns.",
@@ -65,13 +118,24 @@
     "subscription": "Confirm current app and service terms.",
     "connectivity": "Wi-Fi and mobile alerts",
     "monitoring": "Point-of-use water and freeze detection",
-    "capabilities": ["Water detection", "Freeze alerts", "Remote notification"],
-    "limitations": ["Detection-only; does not close the main water valve", "Protects only where sensors are placed", "Connectivity and batteries require maintenance"],
+    "capabilities": [
+      "Water detection",
+      "Freeze alerts",
+      "Remote notification"
+    ],
+    "limitations": [
+      "Detection-only; does not close the main water valve",
+      "Protects only where sensors are placed",
+      "Connectivity and batteries require maintenance"
+    ],
     "insuranceNote": "Useful general loss-prevention equipment, but it may not satisfy a requirement for whole-home monitoring and automatic shutoff.",
     "status": "active",
     "lastReviewed": "2026-08-26",
     "sources": [
-      {"title": "Kidde Water Leak + Freeze Detector", "url": "https://www.kidde.com/products/smart/water-leak-freeze-alarm"}
+      {
+        "title": "Kidde Water Leak + Freeze Detector",
+        "url": "https://www.kidde.com/products/smart/water-leak-freeze-alarm"
+      }
     ]
   },
   {
@@ -79,8 +143,13 @@
     "slug": "ting-electrical-fire-prevention-service",
     "manufacturer": "Whisker Labs",
     "model": "Ting Sensor + Service",
-    "domains": ["home"],
-    "concerns": ["fire-electrical", "vacant-monitoring"],
+    "domains": [
+      "home"
+    ],
+    "concerns": [
+      "fire-electrical",
+      "vacant-monitoring"
+    ],
     "solution": "Whole-home electrical hazard monitoring service",
     "summary": "A plug-in sensor and service that continuously analyzes electrical signals and connects users with a fire-safety team when supported hazards are identified.",
     "bestFor": "Homeowners seeking proactive electrical-hazard awareness beyond smoke detection.",
@@ -89,15 +158,32 @@
     "subscription": "Service subscription is part of the offering; confirm current terms.",
     "connectivity": "Wi-Fi, app, and service monitoring",
     "monitoring": "Continuous electrical-signal analysis and hazard-support service",
-    "capabilities": ["Electrical arcing signal detection", "Power-quality alerts", "Service-team support"],
-    "limitations": ["Does not replace smoke alarms", "Does not detect or prevent every type of fire", "Does not act as a circuit breaker or shut off power"],
+    "capabilities": [
+      "Electrical arcing signal detection",
+      "Power-quality alerts",
+      "Service-team support"
+    ],
+    "limitations": [
+      "Does not replace smoke alarms",
+      "Does not detect or prevent every type of fire",
+      "Does not act as a circuit breaker or shut off power"
+    ],
     "insuranceNote": "Some insurers offer or recognize Ting through specific programs. Eligibility is carrier- and program-specific and must be verified.",
     "status": "active",
     "lastReviewed": "2026-08-26",
     "sources": [
-      {"title": "How Ting Works", "url": "https://www.tingfire.com/how-it-works/"},
-      {"title": "Ting Sensor and Service", "url": "https://www.tingfire.com/get-ting/"},
-      {"title": "Six things Ting does not do", "url": "https://www.tingfire.com/blog/6-things-ting-doesnt-do/"}
+      {
+        "title": "How Ting Works",
+        "url": "https://www.tingfire.com/how-it-works/"
+      },
+      {
+        "title": "Ting Sensor and Service",
+        "url": "https://www.tingfire.com/get-ting/"
+      },
+      {
+        "title": "Six things Ting does not do",
+        "url": "https://www.tingfire.com/blog/6-things-ting-doesnt-do/"
+      }
     ]
   },
   {
@@ -105,8 +191,14 @@
     "slug": "kidde-smart-smoke-carbon-monoxide-alarm",
     "manufacturer": "Kidde",
     "model": "Smart Smoke + Carbon Monoxide Alarm",
-    "domains": ["home", "family"],
-    "concerns": ["fire-electrical", "household-alerts"],
+    "domains": [
+      "home",
+      "family"
+    ],
+    "concerns": [
+      "fire-electrical",
+      "household-alerts"
+    ],
     "solution": "Connected smoke + carbon-monoxide alarm",
     "summary": "A Wi-Fi-connected smoke and CO alarm that can provide mobile notifications and interconnect with supported Kidde hardwired alarms.",
     "bestFor": "Homes wanting remote alarm status and smoke/CO notifications.",
@@ -115,13 +207,25 @@
     "subscription": "Confirm current app/service terms.",
     "connectivity": "Wi-Fi and Kidde app",
     "monitoring": "Smoke and CO detection with remote status/notifications",
-    "capabilities": ["Smoke detection", "CO detection", "Mobile alerts", "Supported interconnection"],
-    "limitations": ["Must be installed and located according to applicable instructions and code", "Remote alerts depend on connectivity", "Not a substitute for required alarm coverage or emergency action"],
+    "capabilities": [
+      "Smoke detection",
+      "CO detection",
+      "Mobile alerts",
+      "Supported interconnection"
+    ],
+    "limitations": [
+      "Must be installed and located according to applicable instructions and code",
+      "Remote alerts depend on connectivity",
+      "Not a substitute for required alarm coverage or emergency action"
+    ],
     "insuranceNote": "Connected alarms may be relevant to some carrier requirements, but professional monitoring and certificate requirements are separate questions.",
     "status": "active",
     "lastReviewed": "2026-08-26",
     "sources": [
-      {"title": "Kidde Smoke + Carbon Monoxide Alarm with smart features", "url": "https://www.kidde.com/products/smart/smoke-and-carbon-monoxide-alarm-with-smart-features"}
+      {
+        "title": "Kidde Smoke + Carbon Monoxide Alarm with smart features",
+        "url": "https://www.kidde.com/products/smart/smoke-and-carbon-monoxide-alarm-with-smart-features"
+      }
     ]
   },
   {
@@ -129,8 +233,17 @@
     "slug": "simplisafe-home-security-system",
     "manufacturer": "SimpliSafe",
     "model": "Home Security System",
-    "domains": ["home", "family", "business"],
-    "concerns": ["security", "vacant-monitoring", "household-alerts", "business-security"],
+    "domains": [
+      "home",
+      "family",
+      "business"
+    ],
+    "concerns": [
+      "security",
+      "vacant-monitoring",
+      "household-alerts",
+      "business-security"
+    ],
     "solution": "Connected security + optional professional monitoring",
     "summary": "A configurable sensor and alarm ecosystem with self-setup options and paid professional monitoring plans.",
     "bestFor": "People who want a modular system and a choice between self-managed and professional monitoring.",
@@ -139,14 +252,29 @@
     "subscription": "Paid monitoring plans; confirm current feature and price details.",
     "connectivity": "Base station, app, supported sensors and cameras",
     "monitoring": "Self-monitoring or eligible professional monitoring",
-    "capabilities": ["Entry detection", "Alarm alerts", "Camera options", "Professional monitoring options"],
-    "limitations": ["Available features depend on selected hardware and plan", "Emergency response is not guaranteed", "Privacy and camera placement require care"],
+    "capabilities": [
+      "Entry detection",
+      "Alarm alerts",
+      "Camera options",
+      "Professional monitoring options"
+    ],
+    "limitations": [
+      "Available features depend on selected hardware and plan",
+      "Emergency response is not guaranteed",
+      "Privacy and camera placement require care"
+    ],
     "insuranceNote": "A carrier may require professional monitoring and documentation rather than a self-monitored system. Verify the exact certificate and service requirements.",
     "status": "active",
     "lastReviewed": "2026-08-26",
     "sources": [
-      {"title": "SimpliSafe Home Security System", "url": "https://simplisafe.com/home-security-shop"},
-      {"title": "Residential Monitoring Plan Options", "url": "https://support.simplisafe.com/articles/alarm-event-monitoring/what-are-the-service-plan-options"}
+      {
+        "title": "SimpliSafe Home Security System",
+        "url": "https://simplisafe.com/home-security-shop"
+      },
+      {
+        "title": "Residential Monitoring Plan Options",
+        "url": "https://support.simplisafe.com/articles/alarm-event-monitoring/what-are-the-service-plan-options"
+      }
     ]
   },
   {
@@ -154,8 +282,15 @@
     "slug": "ring-alarm-pro",
     "manufacturer": "Ring",
     "model": "Alarm Pro",
-    "domains": ["home", "business"],
-    "concerns": ["security", "vacant-monitoring", "business-security"],
+    "domains": [
+      "home",
+      "business"
+    ],
+    "concerns": [
+      "security",
+      "vacant-monitoring",
+      "business-security"
+    ],
     "solution": "Connected alarm + optional professional monitoring",
     "summary": "A connected alarm base with supported sensors, app controls, and eligible subscription-based professional monitoring.",
     "bestFor": "Homes or small spaces already considering the Ring ecosystem and wanting an optional monitored path.",
@@ -164,14 +299,29 @@
     "subscription": "A compatible Ring subscription is required for professional monitoring.",
     "connectivity": "Wi-Fi, app, supported Ring alarm sensors",
     "monitoring": "Self-monitoring or eligible professional monitoring",
-    "capabilities": ["Entry alerts", "Alarm control", "Supported professional monitoring", "Connectivity features"],
-    "limitations": ["Plan and regional availability affect features", "Professional monitoring enrollment is separate", "Cameras and recording require privacy-aware placement"],
+    "capabilities": [
+      "Entry alerts",
+      "Alarm control",
+      "Supported professional monitoring",
+      "Connectivity features"
+    ],
+    "limitations": [
+      "Plan and regional availability affect features",
+      "Professional monitoring enrollment is separate",
+      "Cameras and recording require privacy-aware placement"
+    ],
     "insuranceNote": "Professional monitoring may matter to some carriers. Confirm that the selected plan and certificate meet the carrier's definition.",
     "status": "active",
     "lastReviewed": "2026-08-26",
     "sources": [
-      {"title": "Ring Alarm Pro Base Station", "url": "https://ring.com/products/alarm-pro-base-station"},
-      {"title": "Understanding Professional Monitoring", "url": "https://ring.com/support/articles/46blt/Understanding-Professional-Monitoring-and-Self-Monitoring"}
+      {
+        "title": "Ring Alarm Pro Base Station",
+        "url": "https://ring.com/products/alarm-pro-base-station"
+      },
+      {
+        "title": "Understanding Professional Monitoring",
+        "url": "https://ring.com/support/articles/46blt/Understanding-Professional-Monitoring-and-Self-Monitoring"
+      }
     ]
   },
   {
@@ -179,8 +329,14 @@
     "slug": "airthings-view-plus",
     "manufacturer": "Airthings",
     "model": "View Plus",
-    "domains": ["home", "family"],
-    "concerns": ["air-quality", "vacant-monitoring"],
+    "domains": [
+      "home",
+      "family"
+    ],
+    "concerns": [
+      "air-quality",
+      "vacant-monitoring"
+    ],
     "solution": "Connected indoor air + radon monitoring",
     "summary": "A Wi-Fi air-quality monitor for radon, PM2.5, CO2, VOCs, humidity, temperature, and air pressure with app trends and alerts.",
     "bestFor": "Households wanting broad indoor-air trend visibility, including radon and wildfire-smoke awareness.",
@@ -189,13 +345,26 @@
     "subscription": "Core app use is described without a required monitoring subscription; confirm current terms.",
     "connectivity": "Wi-Fi, app, e-ink display, optional hub function",
     "monitoring": "Seven indoor-air factors with history and notifications",
-    "capabilities": ["Radon monitoring", "PM2.5", "CO2", "VOC", "Humidity and temperature"],
-    "limitations": ["Monitoring does not itself remediate air conditions", "Placement and calibration affect readings", "Health or mitigation decisions may require authoritative guidance or professionals"],
+    "capabilities": [
+      "Radon monitoring",
+      "PM2.5",
+      "CO2",
+      "VOC",
+      "Humidity and temperature"
+    ],
+    "limitations": [
+      "Monitoring does not itself remediate air conditions",
+      "Placement and calibration affect readings",
+      "Health or mitigation decisions may require authoritative guidance or professionals"
+    ],
     "insuranceNote": "General household awareness; no insurance eligibility or discount is implied.",
     "status": "active",
     "lastReviewed": "2026-08-26",
     "sources": [
-      {"title": "Airthings View Plus", "url": "https://www.airthings.com/products/indoor-air-quality/view-plus"}
+      {
+        "title": "Airthings View Plus",
+        "url": "https://www.airthings.com/products/indoor-air-quality/view-plus"
+      }
     ]
   },
   {
@@ -203,8 +372,12 @@
     "slug": "garmin-dash-cam-x310",
     "manufacturer": "Garmin",
     "model": "Dash Cam X310",
-    "domains": ["vehicle"],
-    "concerns": ["dashcam"],
+    "domains": [
+      "vehicle"
+    ],
+    "concerns": [
+      "dashcam"
+    ],
     "solution": "4K front dash camera",
     "summary": "A voice-controlled dash camera with 4K video, 140-degree field of view, incident detection, touchscreen, and optional connected parking features.",
     "bestFor": "Drivers prioritizing high-resolution front recording and a built-in display.",
@@ -213,14 +386,29 @@
     "subscription": "Some remote/Vault features require an active subscription.",
     "connectivity": "Garmin Drive app, Wi-Fi-supported connected features",
     "monitoring": "Driving recording and supported parking incident detection",
-    "capabilities": ["4K recording", "Incident detection", "Voice control", "Parking Guard options"],
-    "limitations": ["Field of view is front-facing unless additional cameras are added", "Parking and remote features have power/connectivity requirements", "Video does not determine fault or guarantee a claim outcome"],
+    "capabilities": [
+      "4K recording",
+      "Incident detection",
+      "Voice control",
+      "Parking Guard options"
+    ],
+    "limitations": [
+      "Field of view is front-facing unless additional cameras are added",
+      "Parking and remote features have power/connectivity requirements",
+      "Video does not determine fault or guarantee a claim outcome"
+    ],
     "insuranceNote": "Useful for incident documentation; it does not guarantee claim acceptance or change coverage.",
     "status": "active",
     "lastReviewed": "2026-08-26",
     "sources": [
-      {"title": "Garmin Dash Cam X310", "url": "https://www.garmin.com/en-US/p/1391409/"},
-      {"title": "Parking Guard manual", "url": "https://www8.garmin.com/manuals/webhelp/GUID-D9E2A866-74A8-4380-BE21-F1522E0149BC/EN-US/GUID-6F7727DB-5D64-4DFF-928B-32F4253F9823.html"}
+      {
+        "title": "Garmin Dash Cam X310",
+        "url": "https://www.garmin.com/en-US/p/1391409/"
+      },
+      {
+        "title": "Parking Guard manual",
+        "url": "https://www8.garmin.com/manuals/webhelp/GUID-D9E2A866-74A8-4380-BE21-F1522E0149BC/EN-US/GUID-6F7727DB-5D64-4DFF-928B-32F4253F9823.html"
+      }
     ]
   },
   {
@@ -228,8 +416,12 @@
     "slug": "garmin-dash-cam-mini-3",
     "manufacturer": "Garmin",
     "model": "Dash Cam Mini 3",
-    "domains": ["vehicle"],
-    "concerns": ["dashcam"],
+    "domains": [
+      "vehicle"
+    ],
+    "concerns": [
+      "dashcam"
+    ],
     "solution": "Compact front dash camera",
     "summary": "An ultra-compact 1080p dash camera with a 140-degree field of view, automatic incident detection, and voice control.",
     "bestFor": "Drivers who prefer a small camera and straightforward front recording.",
@@ -238,13 +430,25 @@
     "subscription": "Confirm current connected-feature and Vault terms.",
     "connectivity": "Garmin Drive app",
     "monitoring": "Front driving recording and incident capture",
-    "capabilities": ["1080p recording", "Incident detection", "Voice control", "Compact design"],
-    "limitations": ["No built-in display", "Front view only without additional cameras", "Video does not determine fault or guarantee a claim outcome"],
+    "capabilities": [
+      "1080p recording",
+      "Incident detection",
+      "Voice control",
+      "Compact design"
+    ],
+    "limitations": [
+      "No built-in display",
+      "Front view only without additional cameras",
+      "Video does not determine fault or guarantee a claim outcome"
+    ],
     "insuranceNote": "Useful for incident documentation; it does not guarantee claim acceptance or change coverage.",
     "status": "active",
     "lastReviewed": "2026-08-26",
     "sources": [
-      {"title": "Garmin Dash Cam Mini 3", "url": "https://www.garmin.com/en-US/p/1223369/"}
+      {
+        "title": "Garmin Dash Cam Mini 3",
+        "url": "https://www.garmin.com/en-US/p/1223369/"
+      }
     ]
   },
   {
@@ -252,8 +456,14 @@
     "slug": "bouncie-gps-vehicle-tracker",
     "manufacturer": "Bouncie",
     "model": "GPS Tracker for Vehicles",
-    "domains": ["vehicle"],
-    "concerns": ["theft", "teen-driver", "diagnostics"],
+    "domains": [
+      "vehicle"
+    ],
+    "concerns": [
+      "theft",
+      "teen-driver",
+      "diagnostics"
+    ],
     "solution": "OBD-connected GPS + driving alerts",
     "summary": "An OBD-connected vehicle service offering location, trip history, driving alerts, and vehicle insights.",
     "bestFor": "Households wanting location and consent-based trip or driving notifications.",
@@ -262,13 +472,25 @@
     "subscription": "Recurring cellular/service plan",
     "connectivity": "Cellular GPS service and mobile app",
     "monitoring": "Location, trips, driving alerts, and selected vehicle insights",
-    "capabilities": ["Location reporting", "Trip history", "Geofence alerts", "Driving-behavior alerts"],
-    "limitations": ["Cellular coverage and OBD power affect operation", "Visible OBD devices may be removed", "Anyone being monitored should understand and consent to the setup"],
+    "capabilities": [
+      "Location reporting",
+      "Trip history",
+      "Geofence alerts",
+      "Driving-behavior alerts"
+    ],
+    "limitations": [
+      "Cellular coverage and OBD power affect operation",
+      "Visible OBD devices may be removed",
+      "Anyone being monitored should understand and consent to the setup"
+    ],
     "insuranceNote": "No premium benefit or theft recovery is guaranteed. Telematics programs offered by insurers are separate products.",
     "status": "active",
     "lastReviewed": "2026-08-26",
     "sources": [
-      {"title": "Bouncie GPS Tracker for Vehicles", "url": "https://www.bouncie.com/gps-tracker-for-vehicles"}
+      {
+        "title": "Bouncie GPS Tracker for Vehicles",
+        "url": "https://www.bouncie.com/gps-tracker-for-vehicles"
+      }
     ]
   },
   {
@@ -276,8 +498,13 @@
     "slug": "carlock-gps-car-tracker",
     "manufacturer": "CarLock",
     "model": "GPS Car Tracker",
-    "domains": ["vehicle"],
-    "concerns": ["theft", "teen-driver"],
+    "domains": [
+      "vehicle"
+    ],
+    "concerns": [
+      "theft",
+      "teen-driver"
+    ],
     "solution": "Vehicle security, GPS, and driving alerts",
     "summary": "A cellular GPS tracker designed to report vehicle location, suspicious activity, routes, battery status, and selected driving behavior.",
     "bestFor": "Drivers prioritizing suspicious-movement alerts and ongoing vehicle-location visibility.",
@@ -286,14 +513,29 @@
     "subscription": "Recurring cloud/cellular service",
     "connectivity": "Preconfigured cellular connection and mobile app",
     "monitoring": "Location, suspicious activity, route, battery, and driver alerts",
-    "capabilities": ["GPS tracking", "Suspicious activity alerts", "Battery monitoring", "Driving alerts"],
-    "limitations": ["Coverage, power, and tampering affect operation", "Location does not guarantee recovery", "Household monitoring should be transparent and consent-based"],
+    "capabilities": [
+      "GPS tracking",
+      "Suspicious activity alerts",
+      "Battery monitoring",
+      "Driving alerts"
+    ],
+    "limitations": [
+      "Coverage, power, and tampering affect operation",
+      "Location does not guarantee recovery",
+      "Household monitoring should be transparent and consent-based"
+    ],
     "insuranceNote": "No recovery or insurance result is guaranteed. Verify any carrier program separately.",
     "status": "active",
     "lastReviewed": "2026-08-26",
     "sources": [
-      {"title": "CarLock GPS car tracker", "url": "https://www.carlock.co/"},
-      {"title": "CarLock device features", "url": "https://www.carlock.co/gps-car-tracker/features-device/"}
+      {
+        "title": "CarLock GPS car tracker",
+        "url": "https://www.carlock.co/"
+      },
+      {
+        "title": "CarLock device features",
+        "url": "https://www.carlock.co/gps-car-tracker/features-device/"
+      }
     ]
   },
   {
@@ -301,8 +543,12 @@
     "slug": "fixd-obd2-sensor",
     "manufacturer": "FIXD",
     "model": "OBD2 Sensor",
-    "domains": ["vehicle"],
-    "concerns": ["diagnostics"],
+    "domains": [
+      "vehicle"
+    ],
+    "concerns": [
+      "diagnostics"
+    ],
     "solution": "Bluetooth vehicle-code reader + maintenance alerts",
     "summary": "A Bluetooth OBD2 sensor and app that translates check-engine codes and provides maintenance reminders for supported vehicles.",
     "bestFor": "Drivers who want plain-language code information before deciding on service.",
@@ -311,14 +557,28 @@
     "subscription": "Core app features and optional premium terms should be reviewed.",
     "connectivity": "Bluetooth and mobile app",
     "monitoring": "On-demand code scans and maintenance reminders",
-    "capabilities": ["OBD2 code reading", "Plain-language explanations", "Maintenance reminders"],
-    "limitations": ["Vehicle compatibility varies", "Code translation is not a complete mechanical diagnosis", "Do not ignore manufacturer warnings or unsafe conditions"],
+    "capabilities": [
+      "OBD2 code reading",
+      "Plain-language explanations",
+      "Maintenance reminders"
+    ],
+    "limitations": [
+      "Vehicle compatibility varies",
+      "Code translation is not a complete mechanical diagnosis",
+      "Do not ignore manufacturer warnings or unsafe conditions"
+    ],
     "insuranceNote": "Vehicle-maintenance awareness only; no insurance eligibility or claim benefit is implied.",
     "status": "active",
     "lastReviewed": "2026-08-26",
     "sources": [
-      {"title": "FIXD Sensor", "url": "https://www.fixd.com/"},
-      {"title": "About FIXD", "url": "https://www.fixd.com/resources/about-us"}
+      {
+        "title": "FIXD Sensor",
+        "url": "https://www.fixd.com/"
+      },
+      {
+        "title": "About FIXD",
+        "url": "https://www.fixd.com/resources/about-us"
+      }
     ]
   },
   {
@@ -326,8 +586,12 @@
     "slug": "monnit-alta-temperature-monitoring",
     "manufacturer": "Monnit",
     "model": "ALTA Wireless Temperature Sensor",
-    "domains": ["business"],
-    "concerns": ["business-temperature"],
+    "domains": [
+      "business"
+    ],
+    "concerns": [
+      "business-temperature"
+    ],
     "solution": "Commercial remote temperature monitoring",
     "summary": "A wireless sensor family for recording and remotely monitoring ambient or asset temperatures through a compatible Monnit gateway/platform.",
     "bestFor": "Small businesses that need alertable temperature history for a room, cooler, freezer, or equipment environment.",
@@ -336,14 +600,29 @@
     "subscription": "Gateway/platform and service requirements vary by configuration.",
     "connectivity": "ALTA wireless sensor ecosystem and monitoring platform",
     "monitoring": "Remote temperature readings and configured alerts",
-    "capabilities": ["Temperature monitoring", "Remote data", "Configured alerts", "Historical readings"],
-    "limitations": ["The correct probe and temperature range must be selected", "A complete system may require a gateway and service", "Does not replace required food-safety procedures or inspections"],
+    "capabilities": [
+      "Temperature monitoring",
+      "Remote data",
+      "Configured alerts",
+      "Historical readings"
+    ],
+    "limitations": [
+      "The correct probe and temperature range must be selected",
+      "A complete system may require a gateway and service",
+      "Does not replace required food-safety procedures or inspections"
+    ],
     "insuranceNote": "Operational monitoring only; carrier or code acceptance must be confirmed separately.",
     "status": "active",
     "lastReviewed": "2026-08-26",
     "sources": [
-      {"title": "Monnit Wireless Temperature Sensors", "url": "https://www.monnit.com/products/sensors/temperature/"},
-      {"title": "ALTA Digital Temperature Sensor", "url": "https://www.monnit.com/products/sensors/temperature/wireless-digital-temperature/"}
+      {
+        "title": "Monnit Wireless Temperature Sensors",
+        "url": "https://www.monnit.com/products/sensors/temperature/"
+      },
+      {
+        "title": "ALTA Digital Temperature Sensor",
+        "url": "https://www.monnit.com/products/sensors/temperature/wireless-digital-temperature/"
+      }
     ]
   },
   {
@@ -351,8 +630,12 @@
     "slug": "monnit-wireless-water-detection",
     "manufacturer": "Monnit",
     "model": "Wireless Water Detection Sensor",
-    "domains": ["business"],
-    "concerns": ["business-water"],
+    "domains": [
+      "business"
+    ],
+    "concerns": [
+      "business-water"
+    ],
     "solution": "Commercial point-of-use water detection",
     "summary": "A wireless sensor family that changes state when a sensing lead contacts water and can report through a compatible remote-monitoring platform.",
     "bestFor": "Monitoring selected areas near equipment, IT systems, plumbing, or inventory.",
@@ -361,14 +644,28 @@
     "subscription": "Gateway/platform and service requirements vary by configuration.",
     "connectivity": "Wireless sensor ecosystem and monitoring platform",
     "monitoring": "Point-of-use water detection and alerts",
-    "capabilities": ["Water contact detection", "Remote alerts", "Commercial sensor options"],
-    "limitations": ["Detection-only unless paired with a separate intervention system", "Only monitors the selected sensor area", "A complete system may require a gateway and service"],
+    "capabilities": [
+      "Water contact detection",
+      "Remote alerts",
+      "Commercial sensor options"
+    ],
+    "limitations": [
+      "Detection-only unless paired with a separate intervention system",
+      "Only monitors the selected sensor area",
+      "A complete system may require a gateway and service"
+    ],
     "insuranceNote": "General loss-prevention awareness; it may not satisfy a carrier requirement for automatic water shutoff.",
     "status": "active",
     "lastReviewed": "2026-08-26",
     "sources": [
-      {"title": "Monnit Water Detection Sensors", "url": "https://www.monnit.com/products/sensors/water-detection/"},
-      {"title": "How Water Detect Sensors Work", "url": "https://www.monnit.com/products/sensors/water-detection/water-detect/"}
+      {
+        "title": "Monnit Water Detection Sensors",
+        "url": "https://www.monnit.com/products/sensors/water-detection/"
+      },
+      {
+        "title": "How Water Detect Sensors Work",
+        "url": "https://www.monnit.com/products/sensors/water-detection/water-detect/"
+      }
     ]
   }
 ]

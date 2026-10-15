@@ -7,10 +7,11 @@ const directory = fs.readFileSync("app/components/CarrierDirectory.tsx", "utf8")
 const farmers = fs.readFileSync("app/farmers/page.tsx", "utf8");
 const selector = fs.readFileSync("app/components/CarrierIntentSelector.tsx", "utf8");
 
-test("carrier discovery exposes names, live results, landmarks, and text disclosures", () => {
-  assert.match(directory, /htmlFor="carrier-search-input"/);
-  assert.match(directory, /aria-live="polite"/);
-  assert.match(directory, /<ul>/);
+test("carrier discovery exposes names, landmarks, a generic path, and text disclosures", () => {
+  assert.match(directory, /aria-labelledby="carrier-directory-title"/);
+  assert.match(directory, /aria-label="Available insurer guidance"/);
+  assert.match(directory, /<ul/);
+  assert.match(directory, /Don’t see your insurer/);
   assert.match(selector, /aria-labelledby="carrier-start-heading"/);
   assert.match(farmers, /SmartDevices is independent/);
 });

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "freezer-monitor",
+    "idea": "Alert me if a freezer gets too warm for more than ten minutes.",
+    "expectedCapability": "temperature",
+    "expectedSafety": "supported"
+  },
+  {
+    "id": "leak-sensor",
+    "idea": "Detect water underneath a water heater and alert me.",
+    "expectedCapability": "water-presence",
+    "expectedSafety": "supported"
+  },
+  {
+    "id": "mailbox-notifier",
+    "idea": "Tell me when my mailbox has been opened.",
+    "expectedCapability": "open-close",
+    "expectedSafety": "supported"
+  },
+  {
+    "id": "plant-monitor",
+    "idea": "Track soil moisture for a houseplant.",
+    "expectedCapability": "soil-moisture",
+    "expectedSafety": "supported"
+  },
+  {
+    "id": "door-monitor",
+    "idea": "Alert me when a side door stays open.",
+    "expectedCapability": "open-close",
+    "expectedSafety": "supported"
+  },
+  {
+    "id": "mesh-freezer-fleet",
+    "idea": "Monitor 100 restaurant freezers across 15 locations as Mesh nodes that our AI operations agent can discover, subscribe to, and diagnose.",
+    "expectedCapability": "temperature",
+    "expectedSafety": "review-required"
+  }
+]

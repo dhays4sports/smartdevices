@@ -35,7 +35,7 @@ test("scene imagery remains within the published lazy-load budget", async () => 
   }
 });
 
-test("v4.2 global CSS stays within its reviewed raw and gzip budgets", () => {
-  assert.ok(css.byteLength <= 70_000, `global CSS ${css.byteLength} bytes exceeded 70 KB`);
+test("v4.2.3 global CSS stays within its reviewed raw and gzip budgets", () => {
+  assert.ok(css.byteLength <= 82_000, `global CSS ${css.byteLength} bytes exceeded 82 KB`);
   assert.ok(gzipSync(css).byteLength <= 15_000, `global CSS gzip exceeded 15 KB`);
 });

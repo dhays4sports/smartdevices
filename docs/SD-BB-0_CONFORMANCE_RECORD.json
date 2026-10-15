@@ -1,0 +1,36 @@
+{
+  "record": "SD-BB-0",
+  "date": "2026-10-02",
+  "business": "SmartDevices.com",
+  "baseline": "v5.2.0-rc.1 + SD-001 documentation addendum",
+  "result": "REDESIGN",
+  "continue": true,
+  "eligibility": "ELIGIBLE_WITH_REDESIGN_CONDITIONS",
+  "customer_wedge": "small commercial/property operators and technically capable solution buyers with bounded monitoring/sensing needs and no dedicated hardware engineering team",
+  "canonical_capability": "Evaluate a bounded physical need and, when custom hardware is justified, produce a reproducible validated device project with requirements, architecture, sourced parts, executable firmware, physical design, test evidence, revisions, and integration posture.",
+  "durable_asset": "SmartDevices Build Evidence Graph",
+  "first_paid_unit": "Validated Build Pack",
+  "critical_path": [
+    "repository_preview_gate",
+    "SD-INTEROP-0.1",
+    "SD-001_BB7",
+    "SD-MVB-001",
+    "MVB",
+    "SD-002",
+    "MESH-DEVICE-001",
+    "MAB_BB8"
+  ],
+  "mesh_device_001_blocks_mvb": false,
+  "marketplace_before_mvb": false,
+  "generic_build_anything_scope": false,
+  "mesh_required_for_all_devices": false,
+  "business_metrics_required": [
+    "owner_intervention_hours",
+    "intervention_rate",
+    "autonomous_gross_profit_efficiency",
+    "gross_margin_per_build",
+    "support_minutes_per_project",
+    "revisions_per_completed_build"
+  ],
+  "runtime_changes": false
+}

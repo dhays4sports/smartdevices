@@ -5,7 +5,7 @@ const sources = read("evidence-sources").sources;
 const rules = read("carrier-rules").rules;
 const fits = read("device-carrier-fit").fits;
 const sourceIds = new Set(sources.map((source) => source.id));
-const now = process.env.SD42_REVIEW_DATE ?? "2026-08-26";
+const now = process.env.SD42_REVIEW_DATE ?? new Date().toISOString().slice(0, 10);
 
 const report = {
   schemaVersion: 1,

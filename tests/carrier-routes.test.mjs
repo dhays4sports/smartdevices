@@ -13,13 +13,12 @@ const farmers = fs.readFileSync("app/farmers/page.tsx", "utf8");
 const alias = fs.readFileSync("app/insurance/farmers/route.ts", "utf8");
 const carrierRoute = fs.readFileSync("app/lib/carrier-route.ts", "utf8");
 
-test("insurance directory is useful, canonical, searchable, and contact-free", () => {
+test("insurance directory is useful, canonical, simple, and contact-free", () => {
   assert.match(page, /alternates: \{ canonical: "\/insurance" \}/);
-  assert.match(page, /Your insurer mentioned a device/);
+  assert.match(page, /Did your insurer mention a smart device/);
   assert.match(page, /Independent by design/);
-  assert.match(directory, /type="search"/);
-  assert.match(directory, /No contact information needed/);
-  assert.match(directory, /We haven’t published that carrier yet/);
+  assert.match(directory, /Available insurer guidance/);
+  assert.match(directory, /Don’t see your insurer/);
   assert.doesNotMatch(directory, /email|phone|address|policy number/i);
 });
 
@@ -33,7 +32,7 @@ test("Farmers has one canonical route and a sanitized permanent alias", () => {
 });
 
 test("navigation, Home results, device details, and plans reach neutral insurance guidance", () => {
-  assert.match(header, /Insurance guidance/);
+  assert.match(header, /label: "Insurance"/);
   assert.match(universe, /result\.domainId === "home"/);
   assert.match(universe, /Check insurance guidance/);
   assert.match(detail, /Insurance relevance · separate evidence/);
@@ -47,7 +46,7 @@ test("homepage keeps the primary protection action while exposing a subordinate 
   assert.match(explorer, /href="\/insurance"/);
 });
 
-test("unknown carrier search preserves a generic protection path", () => {
+test("unpublished carriers preserve a generic protection path", () => {
   assert.match(directory, /href="\/protect\/home"/);
-  assert.match(directory, /filtered\.length/);
+  assert.match(directory, /Don’t see your insurer/);
 });

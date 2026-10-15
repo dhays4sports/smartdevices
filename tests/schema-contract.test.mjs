@@ -29,3 +29,33 @@ test("Pro production route has a server-side authorization boundary", async () =
   assert.match(route, /SMARTDEVICES_DEMO_MODE/);
   assert.match(route, /Authorization required/);
 });
+
+test("Builder persistence is additive and keeps insurance qualification explicit", async () => {
+  const builderMigration = await readFile(new URL("../drizzle/0005_builder_foundation.sql", import.meta.url), "utf8");
+  const journal = JSON.parse(await readFile(new URL("../drizzle/meta/_journal.json", import.meta.url), "utf8"));
+  assert.match(schema, /sqliteTable\("builder_projects"/);
+  assert.match(schema, /sqliteTable\("builder_revisions"/);
+  assert.match(schema, /solution_type/);
+  assert.match(schema, /insurance_status/);
+  assert.match(builderMigration, /CREATE TABLE `builder_projects`/);
+  assert.match(builderMigration, /CREATE TABLE `builder_revisions`/);
+  assert.match(builderMigration, /ADD `solution_type` text/);
+  assert.match(builderMigration, /ADD `insurance_status` text/);
+  const intelligenceMigration = await readFile(new URL("../drizzle/0006_intelligent_device_modes.sql", import.meta.url), "utf8");
+  assert.match(schema, /intelligence_mode/);
+  assert.match(schema, /mesh_profile_json/);
+  assert.match(intelligenceMigration, /ADD `intelligence_mode` text/);
+  const registryMigration = await readFile(new URL("../drizzle/0007_device_registry_foundation.sql", import.meta.url), "utf8");
+  assert.match(schema, /sqliteTable\("device_registry_records"/);
+  assert.match(schema, /registrantSubject: text\("registrant_subject"\)/);
+  assert.match(schema, /ownerSubject: text\("owner_subject"\)/);
+  assert.match(builderMigration, /`owner_subject` text/);
+  assert.doesNotMatch(registryMigration, /owner_subject/);
+  assert.match(schema, /sqliteTable\("device_control_claims"/);
+  assert.match(schema, /sqliteTable\("device_integrations"/);
+  assert.match(registryMigration, /CREATE TABLE `device_registry_records`/);
+  assert.match(registryMigration, /CREATE TABLE `device_control_claims`/);
+  assert.match(registryMigration, /CREATE TABLE `device_integrations`/);
+  assert.ok(journal.entries.some((item) => item.tag === "0007_device_registry_foundation"));
+  assert.equal(journal.entries.at(-1)?.tag, "0011_market_conversion_proof");
+});

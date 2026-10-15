@@ -2,14 +2,15 @@
 
 import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
-import { devicesForConcern, domains, getDeviceById, getDomain, type DomainId } from "@/app/lib/data";
+import { devicesForConcern, domains, getDomain, type Device, type DomainId } from "@/app/lib/data";
 import { createLocalPlan, encodePlanSelection } from "@/app/lib/plan";
 import { createCarrierPlan } from "@/app/lib/plan";
 import { buildScanResult } from "@/app/lib/scan";
 import type { CarrierCategory, ProCarrierData } from "@/app/lib/carrier";
 import { carrierPlanTemplates, carrierTemplateState, type CarrierPlanTemplate } from "@/app/lib/pro-templates";
+import { persistLocalPlan } from "@/app/lib/local-plan-store";
 
-type Props = { userName?: string | null; userEmail?: string | null; demoMode: boolean; carrierData: ProCarrierData };
+type Props = { userName?: string | null; userEmail?: string | null; demoMode: boolean; carrierData: ProCarrierData; publishedDevices: Device[] };
 
 const templates = [
   { name: "High-value home water readiness", domain: "home" as DomainId, concern: "water" },
@@ -18,7 +19,7 @@ const templates = [
   { name: "Incident documentation", domain: "vehicle" as DomainId, concern: "dashcam" },
 ];
 
-export function ProWorkspace({ userName, userEmail, demoMode, carrierData }: Props) {
+export function ProWorkspace({ userName, userEmail, demoMode, carrierData, publishedDevices }: Props) {
   const [workspaceMode, setWorkspaceMode] = useState<"independent" | "carrier">("independent");
   const [carrierId, setCarrierId] = useState(carrierData.carriers[0]?.id ?? "");
   const [jurisdiction, setJurisdiction] = useState("CA");
@@ -38,8 +39,8 @@ export function ProWorkspace({ userName, userEmail, demoMode, carrierData }: Pro
   const [previewAcknowledged, setPreviewAcknowledged] = useState(false);
   const previewRef = useRef<HTMLIFrameElement>(null);
 
-  const scanContext = useMemo(() => buildScanResult(domainId, concernId, []), [domainId, concernId]);
-  const options = workspaceMode === "carrier" ? carrierData.fits.filter((fit) => fit.carrierId === carrierId && fit.jurisdiction === jurisdiction).map((fit) => getDeviceById(fit.deviceId)).filter((device): device is NonNullable<typeof device> => Boolean(device)) : scanContext.recommendations.map((item) => item.device);
+  const scanContext = useMemo(() => buildScanResult(domainId, concernId, [], publishedDevices), [domainId, concernId, publishedDevices]);
+  const options = workspaceMode === "carrier" ? carrierData.fits.filter((fit) => fit.carrierId === carrierId && fit.jurisdiction === jurisdiction).map((fit) => publishedDevices.find((device) => device.id === fit.deviceId)).filter((device): device is NonNullable<typeof device> => Boolean(device)) : scanContext.recommendations.map((item) => item.device);
 
   function changeDomain(next: DomainId) {
     const nextDomain = getDomain(next) ?? domains[0];
@@ -54,7 +55,7 @@ export function ProWorkspace({ userName, userEmail, demoMode, carrierData }: Pro
     const nextDomain = getDomain(template.domain) ?? domains[0];
     setDomainId(template.domain);
     setConcernId(template.concern);
-    setSelected(devicesForConcern(template.domain, template.concern).map((device) => device.id).slice(0, 3));
+    setSelected(devicesForConcern(template.domain, template.concern, publishedDevices).map((device) => device.id).slice(0, 3));
     setGenerated(null);
     setShareStatus("not-requested");
     if (!nextDomain.concerns.some((item) => item.id === template.concern)) setConcernId(nextDomain.concerns[0].id);
@@ -68,10 +69,10 @@ export function ProWorkspace({ userName, userEmail, demoMode, carrierData }: Pro
 
   function generatePlan() {
     const governedRules = carrierData.rules.filter((rule) => rule.carrierId === carrierId && rule.jurisdiction === jurisdiction && rule.capabilityClassIds.some((id) => carrierData.fits.some((fit) => fit.classIds.includes(id) && selected.includes(fit.deviceId))));
-    const plan = workspaceMode === "carrier" ? createCarrierPlan({ carrierId, jurisdiction, intent: carrierIntent, category: carrierCategory, requestedCapabilityIds: [...new Set(governedRules.flatMap((rule) => rule.capabilityClassIds))], assertionSource: "professional-stated", professionalAssertion: true, unknowns: governedRules.length ? [] : ["No current governed product-level rule was selected; confirmation is required."] }, selected) : createLocalPlan(domainId, concernId, selected, "agent", scanContext);
+    const plan = workspaceMode === "carrier" ? createCarrierPlan({ carrierId, jurisdiction, intent: carrierIntent, category: carrierCategory, requestedCapabilityIds: [...new Set(governedRules.flatMap((rule) => rule.capabilityClassIds))], assertionSource: "professional-stated", professionalAssertion: true, unknowns: governedRules.length ? [] : ["No current governed product-level rule was selected; confirmation is required."] }, selected, { carrierData, devices: publishedDevices, reviewDate: new Date().toISOString().slice(0,10) }) : createLocalPlan(domainId, concernId, selected, "agent", scanContext);
     plan.agent = { displayName: agentName || "Your insurance professional", agencyName, email: userEmail ?? undefined, note: note.trim() || undefined, assertionStatus: "professional-supplied" };
-    try { localStorage.setItem(`smartdevices-safety-plan-v${plan.schemaVersion}-${plan.id}`, JSON.stringify(plan)); } catch {}
-    setGenerated(`/plans/${plan.id}?${encodePlanSelection(plan)}`);
+    persistLocalPlan(plan);
+    setGenerated(`/plans/${plan.id}?${encodePlanSelection(plan)}${plan.domain === "home" ? "&view=home-decision" : ""}`);
     setPreviewAcknowledged(false);
   }
 

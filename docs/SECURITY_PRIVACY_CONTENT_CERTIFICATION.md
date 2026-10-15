@@ -52,3 +52,7 @@ The inherited production audit found four high advisories and blocked release. N
 - `npm audit --omit=dev` reports zero production vulnerabilities. The full development audit reports 46 transitive build/test advisories (3 low, 7 moderate, 36 high, 0 critical); several direct toolchain paths offer no compatible automatic fix, so no unsafe forced upgrade was applied.
 
 External penetration/abuse testing, legal/privacy approval, named operations ownership, production identity, secret rotation, retention/deletion jobs, and incident-response activation remain external cutover gates. No external security, legal, carrier, or privacy certification is claimed.
+
+## v5.3 device-registration boundary
+
+The Connect registration validator recursively rejects credential-like keys (`password`, `secret`, `token`, API-key, authorization, cookie, bearer and credential variants). Public/machine-readable catalog records contain capability/connectivity metadata only. Future live integrations must keep raw device credentials server-side and expose only bounded references. Registration, claim, verification, identity, permission, reachability and agent operation remain distinct states.

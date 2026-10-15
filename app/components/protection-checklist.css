@@ -1,0 +1,20 @@
+.protection-checklist { max-width: 1120px; }
+.protection-steps { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; padding: 0; margin: 24px 0; list-style: none; }
+.protection-steps button { display: flex; flex-direction: column; gap: 7px; width: 100%; height: 100%; padding: 16px; text-align: left; color: var(--ink); background: white; border: 1px solid var(--hd-border); border-radius: 16px; }
+.protection-steps button[aria-pressed=true] { border: 2px solid var(--teal); padding: 15px; background: #edf7f6; }
+.protection-steps strong { font-size: 1rem; }
+.protection-steps span { font-size: .875rem; color: var(--hd-muted); }
+.protection-detail { padding: clamp(22px,4vw,40px); background: white; border: 1px solid var(--hd-border); border-radius: 24px; }
+.protection-detail-head { display: flex; justify-content: space-between; align-items: baseline; gap: 18px; flex-wrap: wrap; }
+.protection-detail .protection-recommendation { font-size: 1.2rem; color: var(--ink); font-weight: 600; }
+.protection-checklist .protection-help { margin: 20px 0 0; font-size: .95rem; }
+.protection-checklist .protection-attention { color: #714708; background: #fff3df; padding: 16px; border-radius: 12px; }
+.protection-shared { padding: 16px 20px; border: 1px solid var(--hd-border); border-radius: 16px; }
+.protection-documentation { margin-top: 24px; border-top: 1px solid var(--hd-border); }
+.protection-house { margin-top: 28px; }
+.protection-checklist .button-primary,.protection-checklist .button-subtle { white-space: normal; text-align: center; }
+.protection-checklist .eyebrow { font-size: .875rem; }
+@media(max-width:760px){.protection-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.protection-detail-head{display:block}.protection-checklist .hd-primary-row{align-items:stretch;flex-direction:column;gap:10px}.protection-checklist .hd-next{margin-top:18px}}
+@media(max-width:360px){.protection-steps{grid-template-columns:minmax(0,1fr)}}
+@media(forced-colors:active){.protection-detail,.protection-steps button{border:1px solid CanvasText}.protection-steps button[aria-pressed=true]{outline:2px solid Highlight}}
+@media print{.protection-steps,.protection-house,.protection-checklist .hd-next{display:none}.protection-detail{border:0;padding:0}}

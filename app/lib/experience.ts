@@ -107,6 +107,13 @@ export const EXPERIENCE_EVENTS = [
   "client_intent_selected",
   "followup_requested",
   "carrier_directory_opened",
+  "market_opportunity_created",
+  "market_shadow_cleared",
+  "sponsored_offer_available",
+  "sponsored_offer_viewed",
+  "sponsored_offer_opened",
+  "provider_selected",
+  "market_outcome_recorded",
 ] as const;
 
 export type ExperienceEventName = (typeof EXPERIENCE_EVENTS)[number];
@@ -118,6 +125,10 @@ export type ExperienceEvent = {
   questionId?: string;
   optionId?: string;
   deviceId?: string;
+  marketIntentId?: string;
+  marketOpportunityId?: string;
+  marketOfferId?: string;
+  providerId?: string;
 };
 
 export interface ExperienceEventAdapter {

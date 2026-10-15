@@ -102,3 +102,14 @@ The program was executed as one continuous authorized implementation. The final 
 | 41 | SD41-CERT-10.2 | `da7e795` | Clean extraction/migration/rollback rehearsal (`d189cae` prepared the RC version) |
 | 42 | SD41-CERT-10.3 | `666ab81` | Manifest/guides/cutover statement |
 | 43 | SD41-CERT-10.4 | Package-root `RELEASE_PROVENANCE.txt` + sibling SHA manifest | Exact package rerun and checksums |
+
+## v4.3 Evidence Autopilot checkpoints
+
+The v4.3 request was implemented as one bounded release program rather than retroactively inventing a sprint history. The final source commit recorded in the sibling checksum manifest reproduces all rows below.
+
+| # | Checkpoint | Source state | Outcome |
+|---:|---|---|---|
+| 01 | SD43-AUTO-1.0 | Final v4.3 source commit | Typed evidence lifecycle, server-side admin/scheduler authorization, safe-fetch boundary and conservative confidence policy |
+| 02 | SD43-AUTO-1.1 | Final v4.3 source commit | Four-table append-only migration, observations, decisions, versioned snapshots and rollback |
+| 03 | SD43-AUTO-1.2 | Final v4.3 source commit | One-button console, Pro entrance, scheduled endpoint and active-snapshot public rendering |
+| 04 | SD43-CERT-2.0 | Package-root provenance + sibling SHA manifest | Clean migration/build/test/audit/package and exact root-runtime certification |
