@@ -1,7 +1,7 @@
 # SMARTDEVICES-OUTCOME-FIRST-INTELLIGENCE-1.0 — Local adoption candidate
 
-**Status:** Documentation-only strategic review; no hosted or physical certification.  
-**Portfolio doctrine:** `the-mesh/docs/PORTFOLIO_OUTCOME_FIRST_INTELLIGENCE_1.0.md`.
+**Status:** Project-specific strategic operating lens; documentation only. No hosted or physical certification.  
+**Portfolio doctrine:** [The Mesh canonical outcome-first standard](https://github.com/dhays4sports/the-mesh/blob/main/docs/PORTFOLIO_OUTCOME_FIRST_INTELLIGENCE_1.0.md).
 
 ## Customer outcome
 
