@@ -59,3 +59,8 @@ Start with:
 ## Root deployment
 
 Both final ZIPs extract with this `package.json` at their root. The source package excludes generated build output; the root-deployable package additionally contains verified `dist/`. Neither embeds the v3 baseline, node modules, local environment files, build caches, or prior ZIP packages.
+
+
+## Portfolio reconciliation 1.1
+
+See [SmartDevices adoption note](docs/MESH-PERSONAL-CONTROL-PLANE-ADOPTION-1.1.md). Documentation only: preserve native records, consent, current release state and existing runtime controls. No Mesh dependency or operational authority is introduced.
